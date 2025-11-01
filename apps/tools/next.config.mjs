@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  // Use Vercel's Next.js runtime (no static export)
   transpilePackages: ["@serp-tools/ui"],
   trailingSlash: true,
 };

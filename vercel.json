@@ -1,6 +1,0 @@
-{
-  "framework": "nextjs",
-  "buildCommand": "pnpm --filter serp-tools build",
-  "installCommand": "pnpm install",
-  "outputDirectory": "apps/tools/.next"
-}
