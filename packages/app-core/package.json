@@ -1,5 +1,5 @@
 {
-  "name": "@serp-tools/app-core",
+  "name": "@serp-extensions/app-core",
   "version": "0.0.1",
   "type": "module",
   "private": true,
@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@next/third-parties": "^15.5.0",
-    "@serp-tools/ui": "workspace:*",
+    "@serp-extensions/ui": "workspace:*",
     "lucide-react": "^0.541.0",
     "next": "^15.5.0",
     "next-themes": "^0.4.6",
@@ -19,8 +19,8 @@
     "@types/node": "^20.19.9",
     "@types/react": "^19.1.11",
     "@types/react-dom": "^19.1.8",
-    "@serp-tools/eslint-config": "workspace:^",
-    "@serp-tools/typescript-config": "workspace:*",
+    "@serp-extensions/eslint-config": "workspace:^",
+    "@serp-extensions/typescript-config": "workspace:*",
     "eslint": "^9.34.0",
     "typescript": "^5.9.2"
   },

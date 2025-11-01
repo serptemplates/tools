@@ -8,10 +8,10 @@ importers:
 
   .:
     devDependencies:
-      '@serp-tools/eslint-config':
+      '@serp-extensions/eslint-config':
         specifier: workspace:*
         version: link:packages/eslint-config
-      '@serp-tools/typescript-config':
+      '@serp-extensions/typescript-config':
         specifier: workspace:*
         version: link:packages/typescript-config
       prettier:
@@ -24,15 +24,15 @@ importers:
         specifier: 5.9.2
         version: 5.9.2
 
-  apps/tools:
+  apps/extensions:
     dependencies:
       '@ffmpeg/ffmpeg':
         specifier: ^0.12.15
         version: 0.12.15
-      '@serp-tools/app-core':
+      '@serp-extensions/app-core':
         specifier: workspace:*
         version: link:../../packages/app-core
-      '@serp-tools/ui':
+      '@serp-extensions/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       '@zip.js/zip.js':
@@ -57,10 +57,10 @@ importers:
         specifier: ^19.1.1
         version: 19.2.0(react@19.2.0)
     devDependencies:
-      '@serp-tools/eslint-config':
+      '@serp-extensions/eslint-config':
         specifier: workspace:^
         version: link:../../packages/eslint-config
-      '@serp-tools/typescript-config':
+      '@serp-extensions/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
       '@types/minimatch':
@@ -84,7 +84,7 @@ importers:
       '@next/third-parties':
         specifier: ^15.5.0
         version: 15.5.6(next@15.5.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
-      '@serp-tools/ui':
+      '@serp-extensions/ui':
         specifier: workspace:*
         version: link:../ui
       lucide-react:
@@ -103,10 +103,10 @@ importers:
         specifier: ^19.1.1
         version: 19.2.0(react@19.2.0)
     devDependencies:
-      '@serp-tools/eslint-config':
+      '@serp-extensions/eslint-config':
         specifier: workspace:^
         version: link:../eslint-config
-      '@serp-tools/typescript-config':
+      '@serp-extensions/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
       '@types/node':
@@ -217,10 +217,10 @@ importers:
         specifier: ^3.25.76
         version: 3.25.76
     devDependencies:
-      '@serp-tools/eslint-config':
+      '@serp-extensions/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
-      '@serp-tools/typescript-config':
+      '@serp-extensions/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
       '@tailwindcss/postcss':

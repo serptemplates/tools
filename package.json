@@ -1,5 +1,5 @@
 {
-  "name": "serp-tools",
+  "name": "serp-extensions",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -9,8 +9,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@serp-tools/eslint-config": "workspace:*",
-    "@serp-tools/typescript-config": "workspace:*",
+    "@serp-extensions/eslint-config": "workspace:*",
+    "@serp-extensions/typescript-config": "workspace:*",
     "prettier": "^3.6.2",
     "turbo": "^2.5.6",
     "typescript": "5.9.2"

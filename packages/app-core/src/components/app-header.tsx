@@ -1,7 +1,7 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
-import { Button } from "@serp-tools/ui/components/button";
+import { Button } from "@serp-extensions/ui/components/button";
 import { useState } from "react";
 
 export function AppHeader() {

@@ -1,0 +1,205 @@
+[
+  {
+    "id": "accessibility",
+    "slug": "accessibility",
+    "name": "Accessibility",
+    "description": "Make the web more accessible and comfortable to use",
+    "icon": "Eye"
+  },
+  {
+    "id": "animals",
+    "slug": "animals",
+    "name": "Animals",
+    "description": "Extensions featuring animals and pet-related content",
+    "icon": "Heart"
+  },
+  {
+    "id": "art",
+    "slug": "art",
+    "name": "Art",
+    "description": "Creative tools for digital art and design",
+    "icon": "Palette"
+  },
+  {
+    "id": "artist",
+    "slug": "artist",
+    "name": "Artist",
+    "description": "Tools for artists and creative professionals",
+    "icon": "Palette"
+  },
+  {
+    "id": "cars",
+    "slug": "cars",
+    "name": "Cars",
+    "description": "Automotive tools and car-related extensions",
+    "icon": "Car"
+  },
+  {
+    "id": "colors",
+    "slug": "colors",
+    "name": "Colors",
+    "description": "Color picking, palette generation, and design tools",
+    "icon": "Palette"
+  },
+  {
+    "id": "communication",
+    "slug": "communication",
+    "name": "Communication",
+    "description": "Messaging, email, and communication tools",
+    "icon": "MessageCircle"
+  },
+  {
+    "id": "dark",
+    "slug": "dark",
+    "name": "Dark Mode",
+    "description": "Dark themes and night mode extensions",
+    "icon": "Moon"
+  },
+  {
+    "id": "developer",
+    "slug": "developer",
+    "name": "Developer Tools",
+    "description": "Essential tools for web development and debugging",
+    "icon": "Code"
+  },
+  {
+    "id": "education",
+    "slug": "education",
+    "name": "Education",
+    "description": "Learning tools and educational resources",
+    "icon": "GraduationCap"
+  },
+  {
+    "id": "entertainment",
+    "slug": "entertainment",
+    "name": "Entertainment",
+    "description": "Fun and entertaining browser extensions",
+    "icon": "Music"
+  },
+  {
+    "id": "fun",
+    "slug": "fun",
+    "name": "Fun",
+    "description": "Playful and amusing browser extensions",
+    "icon": "Smile"
+  },
+  {
+    "id": "functionality",
+    "slug": "functionality",
+    "name": "Functionality",
+    "description": "Enhance browser functionality and features",
+    "icon": "Settings"
+  },
+  {
+    "id": "games",
+    "slug": "games",
+    "name": "Games",
+    "description": "Browser-based games and gaming tools",
+    "icon": "Gamepad2"
+  },
+  {
+    "id": "home",
+    "slug": "home",
+    "name": "Home",
+    "description": "Home and lifestyle management tools",
+    "icon": "Home"
+  },
+  {
+    "id": "household",
+    "slug": "household",
+    "name": "Household",
+    "description": "Tools for household management and organization",
+    "icon": "Home"
+  },
+  {
+    "id": "minimalist",
+    "slug": "minimalist",
+    "name": "Minimalist",
+    "description": "Clean, simple, and distraction-free extensions",
+    "icon": "Minimize"
+  },
+  {
+    "id": "nature",
+    "slug": "nature",
+    "name": "Nature",
+    "description": "Nature-themed extensions and environmental tools",
+    "icon": "Trees"
+  },
+  {
+    "id": "news",
+    "slug": "news",
+    "name": "News",
+    "description": "Stay updated with news and current events",
+    "icon": "Newspaper"
+  },
+  {
+    "id": "other",
+    "slug": "other",
+    "name": "Other",
+    "description": "Miscellaneous extensions for various purposes",
+    "icon": "Puzzle"
+  },
+  {
+    "id": "privacy",
+    "slug": "privacy",
+    "name": "Privacy & Security",
+    "description": "Protect your online privacy and enhance browser security",
+    "icon": "Shield"
+  },
+  {
+    "id": "productivity",
+    "slug": "productivity",
+    "name": "Productivity",
+    "description": "Boost your productivity with time-saving tools and workflow enhancers",
+    "icon": "CheckSquare"
+  },
+  {
+    "id": "shopping",
+    "slug": "shopping",
+    "name": "Shopping",
+    "description": "Save money and find the best deals while shopping online",
+    "icon": "ShoppingCart"
+  },
+  {
+    "id": "social",
+    "slug": "social",
+    "name": "Social",
+    "description": "Social media tools and networking extensions",
+    "icon": "Users"
+  },
+  {
+    "id": "space",
+    "slug": "space",
+    "name": "Space",
+    "description": "Space exploration and astronomy-related extensions",
+    "icon": "Rocket"
+  },
+  {
+    "id": "tools",
+    "slug": "tools",
+    "name": "Tools",
+    "description": "Utility tools for various tasks",
+    "icon": "Wrench"
+  },
+  {
+    "id": "travel",
+    "slug": "travel",
+    "name": "Travel",
+    "description": "Travel planning and navigation tools",
+    "icon": "MapPin"
+  },
+  {
+    "id": "well-being",
+    "slug": "well-being",
+    "name": "Well Being",
+    "description": "Health, wellness, and mindfulness extensions",
+    "icon": "Heart"
+  },
+  {
+    "id": "crypto",
+    "slug": "crypto",
+    "name": "Crypto & Web3",
+    "description": "Cryptocurrency wallets, blockchain tools, and Web3 extensions",
+    "icon": "Zap"
+  }
+]
