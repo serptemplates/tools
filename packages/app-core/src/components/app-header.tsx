@@ -9,8 +9,6 @@ export function AppHeader() {
 
   const navLinks = [
     { href: "/", label: "Tools" },
-    { href: "/files", label: "Files" },
-    { href: "/extensions", label: "Extensions" },
   ];
 
   return (

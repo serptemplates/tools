@@ -140,12 +140,8 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-grid-black/[0.02] dark:bg-grid-white/[0.02]" />
         <div className="container relative py-16 md:py-24">
           <div className="mx-auto max-w-2xl text-center">
-            <Badge className="mb-4" variant="secondary">
-              <Sparkles className="mr-1 h-3 w-3" />
-              Finally...
-            </Badge>
             <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-              Tools that work like you want them to
+              SERP Tools
             </h1>
           </div>
         </div>
