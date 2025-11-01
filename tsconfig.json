@@ -1,0 +1,3 @@
+{
+  "extends": "@serp-tools/typescript-config/base.json"
+}
