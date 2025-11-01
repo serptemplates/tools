@@ -1,25 +1,19 @@
 {
-  "name": "serp-extensions",
+  "name": "serp-tools",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "audit:images": "node scripts/audit-images.mjs",
-    "fetch:store-assets": "node scripts/fetch-store-assets.mjs",
-    "db:generate": "drizzle-kit generate --config drizzle.config.ts",
-    "db:push": "drizzle-kit push --config drizzle.config.ts"
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@serp-extensions/eslint-config": "workspace:*",
-    "@serp-extensions/typescript-config": "workspace:*",
+    "@serp-tools/eslint-config": "workspace:*",
+    "@serp-tools/typescript-config": "workspace:*",
     "prettier": "^3.6.2",
     "turbo": "^2.5.6",
-    "typescript": "5.9.2",
-    "drizzle-kit": "^0.31.6",
-    "next": "^15.5.6"
+    "typescript": "5.9.2"
   },
   "packageManager": "pnpm@10.4.1",
   "engines": {

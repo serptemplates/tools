@@ -4,7 +4,7 @@ import { AppHeader } from "./app-header";
 import { Providers } from "./providers";
 import { GTagManager } from "./gtag-manager";
 
-import "@serp-extensions/ui/globals.css";
+import "@serp-tools/ui/globals.css";
 
 const fontSans = Geist({
   subsets: ["latin"],

@@ -11,10 +11,10 @@
   },
   "iconLibrary": "lucide",
   "aliases": {
-    "components": "@serp-extensions/ui/components",
-    "utils": "@serp-extensions/ui/lib/utils",
-    "hooks": "@serp-extensions/ui/hooks",
-    "lib": "@serp-extensions/ui/lib",
-    "ui": "@serp-extensions/ui/components"
+    "components": "@serp-tools/ui/components",
+    "utils": "@serp-tools/ui/lib/utils",
+    "hooks": "@serp-tools/ui/hooks",
+    "lib": "@serp-tools/ui/lib",
+    "ui": "@serp-tools/ui/components"
   }
 }

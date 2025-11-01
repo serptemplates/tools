@@ -1,9 +1,9 @@
 {
-  "extends": "@serp-extensions/typescript-config/react-library.json",
+  "extends": "@serp-tools/typescript-config/react-library.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@serp-extensions/ui/*": ["./src/*"]
+      "@serp-tools/ui/*": ["./src/*"]
     }
   },
   "include": ["."],

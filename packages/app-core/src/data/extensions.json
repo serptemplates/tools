@@ -3,427 +3,240 @@
     "id": "cjpalhdlnbpafiamejdnhcphjbkeiagm",
     "slug": "ublock-origin",
     "name": "uBlock Origin",
-    "description": "Efficient blocker: no ads, no tracking, more speed.",
-    "overview": "uBlock Origin is a general-purpose blocker that is both lightweight and highly configurable. It ships with a host of community maintained filter lists and keeps browsing fast.",
+    "description": "An efficient blocker: easy on memory and CPU footprint, yet can load and enforce thousands more filters than other popular blockers.",
     "category": "privacy",
-    "topics": [
-      "ad-blocker",
-      "privacy"
-    ],
-    "tags": [
-      "ad-blocking",
-      "privacy",
-      "open-source"
-    ],
+    "url": "https://ublockorigin.com/",
+    "chromeStoreUrl": "https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm",
+    "firefoxAddonUrl": "https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/",
     "isActive": true,
-    "isNew": false,
+    "tags": ["ad-blocker", "privacy", "security", "performance"],
+    "rating": 4.6,
+    "users": "10,000,000+",
     "isPopular": true,
-    "rating": 4.8,
-    "ratingCount": 2200,
-    "users": "10M+",
-    "version": "1.59.0",
-    "updated": "2025-09-15",
-    "size": "2.5MiB",
-    "languages": [
-      "English"
-    ],
-    "developer": {
-      "name": "Raymond Hill",
-      "website": "https://github.com/gorhill/uBlock",
-      "email": "contact@example.com"
-    },
-    "website": "https://github.com/gorhill/uBlock",
-    "chromeStoreUrl": "https://chromewebstore.google.com/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm",
-    "firefoxAddonUrl": "https://addons.mozilla.org/firefox/addon/ublock-origin/",
-    "url": "https://github.com/gorhill/uBlock",
-    "icon": "https://lh3.googleusercontent.com/rrgyVBVte7CfjjeTU-rCHDKba7vtq-yn3o8-10p5b6QOj_2VCDAO3VdggV5fUnugbG2eDGPPjoJ9rsiU_tUZBExgLGc=s120",
-    "screenshots": [
-      "https://lh3.googleusercontent.com/xtyNu14tuXEuZZk_P28_dnGYh1kJnjehB4G8Vy6MlMzE6XmM6nnTTFgsMdKVPLEaVQmVxfcepcrrcj1cqAdqwGONrQ=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/0MKfd88QQMceYDLpEcoUzC-Vvu9ztGnj-siwa3VaxDM8cPvqT3nm-NS2zkaiCstWxeu5rsTPAeY6kibYGYhW_5JWYQ=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/fkBLPrlZP_TXDyLFJLn03MvXlzHPnaa3xRgiIgCSR_jAvDRxtebwMR6U7_WniECDjYMVVkYGEnDRs_D4BDyemKRxvA=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/SepkVKV4nqje7vweFTJGQcPGp3I5GkcakGkomOaZMfElrq73-KZjzUwotSeELVFA0X8TvRjz-2b-ZIVlsBOqBXbIsg=s1280-w1280-h800"
-    ],
-    "features": [
-      "Block ads, trackers, and cryptocurrency mining scripts",
-      "Dynamic filtering with fine-grained controls",
-      "Support for community filter lists",
-      "Fast performance with minimal overhead",
-      "Protect against malicious scripts and miners"
-    ],
-    "privacyPolicy": "https://github.com/gorhill/uBlock/wiki/Privacy-policy",
-    "supportSite": "https://github.com/gorhill/uBlock/issues"
+    "isNew": false
   },
   {
     "id": "hdokiejnpimakedhajhdlcegeplioahd",
     "slug": "lastpass",
     "name": "LastPass",
-    "description": "Store passwords and speed through logins with one master password.",
-    "overview": "LastPass remembers your passwords so you don't have to. Save time logging in to your favorite websites and apps.",
-    "category": "productivity",
-    "topics": [
-      "password-manager"
-    ],
-    "tags": [
-      "passwords",
-      "security",
-      "vault"
-    ],
-    "isActive": true,
-    "isNew": false,
-    "isPopular": true,
-    "rating": 4.5,
-    "ratingCount": 185000,
-    "users": "3M+",
-    "version": "4.128.0",
-    "updated": "2025-09-10",
-    "size": "8.2MiB",
-    "languages": [
-      "English"
-    ],
-    "developer": {
-      "name": "LogMeIn",
-      "website": "https://www.lastpass.com/",
-      "email": "support@lastpass.com"
-    },
-    "website": "https://www.lastpass.com/",
-    "chromeStoreUrl": "https://chromewebstore.google.com/detail/lastpass-free-password-ma/hdokiejnpimakedhajhdlcegeplioahd",
+    "description": "Simplify your online life. Store, fill, and generate passwords securely across all your devices.",
+    "category": "security",
     "url": "https://www.lastpass.com/",
-    "icon": "https://lh3.googleusercontent.com/2E-kdWD96KmPMAR7_XC6d_zWHio7n7skW8-9S5R42ZQvTX-djSt-qbwhuiM5znQ5Iqj9SWuP4fqfycgt_OD9aLWh=s120",
-    "screenshots": [
-      "https://lh3.googleusercontent.com/Mp57vU9zV_YomwaP81wyg0HstpGVa7PX4ElutuEoztxCvpjFws-8b-3kQCYqlZ03WNOWgdiRV2IRAyafXdhZfSgC=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/dFufc7dXGmCcAAGJ5wN5M-CW4FAE4PJzPUidA5TKlUMzQGZrOf4cd7KzZnUgVfDhqxpUrOUITFeVwNZ0kWKaI8MS8Q=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/kaONv2KcLdMLdl2ayayM0Xy8Eu53hI3FJKRHe5obYYI1gYrzQ0r3y3mHtAbSGRrYl4L6-SXLq_PzpfB1_xpUNZMn=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/98uHGUP6VHKNmd7w78ZS9ZW8MpQP-XAJ1nQi60Vt5GDOVCUNMf55cjXdcuFyyG5Mqeob7GQWyh2NJ-ez4JDPbSOpuh4=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/jlKRB_MUTVf84iqPv_jYrS1_3xhAksB6gyDOzkHCmZNB1J8GEq1jaxU-UusVUjfWh-xaIroyFFUGqgrvnVLFzMu3ATI=s1280-w1280-h800"
-    ],
-    "features": [
-      "Password storage and autofill",
-      "Secure password sharing",
-      "Multi-factor authentication",
-      "Password strength analysis",
-      "Identity protection monitoring"
-    ],
-    "privacyPolicy": "https://www.lastpass.com/privacy",
-    "supportSite": "https://support.lastpass.com/"
+    "chromeStoreUrl": "https://chrome.google.com/webstore/detail/lastpass-free-password-ma/hdokiejnpimakedhajhdlcegeplioahd",
+    "firefoxAddonUrl": "https://addons.mozilla.org/en-US/firefox/addon/lastpass-password-manager/",
+    "isActive": true,
+    "tags": ["password", "security", "autofill", "manager"],
+    "rating": 4.4,
+    "users": "5,000,000+",
+    "isPopular": true,
+    "isNew": false
   },
   {
     "id": "kbfnbcaeplbcioakkpcpgfkobkghlhen",
     "slug": "grammarly",
     "name": "Grammarly",
-    "description": "Real-time writing suggestions to improve tone, clarity, and correctness.",
-    "overview": "Grammarly helps you write the way you want. Get assistance with tone, clarity, grammar, and more.",
+    "description": "Write your best with Grammarly's AI-powered writing assistant. Check grammar, punctuation, and style instantly.",
     "category": "productivity",
-    "topics": [
-      "grammar-checker",
-      "writing"
-    ],
-    "tags": [
-      "writing",
-      "productivity",
-      "grammar"
-    ],
+    "url": "https://grammarly.com/",
+    "chromeStoreUrl": "https://chrome.google.com/webstore/detail/grammarly-grammar-checker/kbfnbcaeplbcioakkpcpgfkobkghlhen",
+    "firefoxAddonUrl": "https://addons.mozilla.org/en-US/firefox/addon/grammarly-1/",
     "isActive": true,
-    "isNew": false,
+    "tags": ["grammar", "writing", "productivity", "ai"],
+    "rating": 4.5,
+    "users": "10,000,000+",
     "isPopular": true,
-    "rating": 4.4,
-    "ratingCount": 205000,
-    "users": "10M+",
-    "version": "14.1065.0",
-    "updated": "2025-09-12",
-    "size": "5.8MiB",
-    "languages": [
-      "English"
-    ],
-    "developer": {
-      "name": "Grammarly, Inc.",
-      "website": "https://www.grammarly.com/",
-      "email": "support@grammarly.com"
-    },
-    "website": "https://www.grammarly.com/",
-    "chromeStoreUrl": "https://chromewebstore.google.com/detail/grammarly-writing-app/kbfnbcaeplbcioakkpcpgfkobkghlhen",
-    "url": "https://www.grammarly.com/",
-    "icon": "https://lh3.googleusercontent.com/Ywdz5mn9q2Mx76DU45LSH-Pv5OGpqk8QAOY3lT1AWScMTZYQtAhqhVjtY5I2JZK530QIycLZooe2a0k3quGqYUaZ=s120",
-    "screenshots": [
-      "https://lh3.googleusercontent.com/Q_05knjsCYPEa558zmVrIEKKHRW_hCEIjgsoKwSlc7BppddTt-pNRJwIfugwsbFiwTN9MWNVdtcHzBqibjkTxG6T=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/P5bd6HGXcW0-QJqpBnuXBh4xYR6MSprkZ9c06vyEADtCshhSmc7HlYmPsUlj4jA5U9lvXhgu6aolVzT_F6Y8GeldDA=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/n0HvuXAcHjTB1BehzD5gsVYwODPPZ5umkkr4kdi4yPu6Fk5xH_Zv-nGxIEqYRahC7YmLelgKBjo6Jg4lZ9xaLCBl-wE=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/NQG2q5VJHMtmmYKhoQabJ74nlC4cIfZptQiZdSjhiy6YrzYdChWxs0OCDzhwGVVXo7iU4bN8kgy-pGGxMPEuNNDf8Q=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/BXtxdpb_e11gSBCs1XhVZEbOt4E8P_-xPq-VCjzDapfUnWahFbBglwG3YHHtEc33Q67gRFU53i1-u6q8i3Hjjsm2osw=s1280-w1280-h800"
-    ],
-    "features": [
-      "Grammar and spelling corrections",
-      "Style and tone adjustments",
-      "Plagiarism detection",
-      "Citation suggestions",
-      "Expert writing feedback"
-    ],
-    "privacyPolicy": "https://www.grammarly.com/privacy-policy",
-    "supportSite": "https://support.grammarly.com/"
+    "isNew": false
   },
   {
     "id": "bmnlcjabgnpnenekpadlanbbkooimhnj",
     "slug": "honey",
     "name": "Honey",
-    "description": "Automatically search for and apply coupons at checkout.",
-    "overview": "Honey is a free money-saving browser extension that automatically searches the internet and finds the best deals.",
+    "description": "Automatically find and apply coupon codes when you shop online with Honey, the browser extension that helps you save money.",
     "category": "shopping",
-    "topics": [
-      "shopping",
-      "deals"
-    ],
-    "tags": [
-      "shopping",
-      "coupon",
-      "savings"
-    ],
-    "isActive": true,
-    "isNew": false,
-    "isPopular": true,
-    "rating": 4.9,
-    "ratingCount": 450000,
-    "users": "10M+",
-    "version": "19.4.2",
-    "updated": "2025-09-11",
-    "size": "3.2MiB",
-    "languages": [
-      "English"
-    ],
-    "developer": {
-      "name": "Paypal, Inc.",
-      "website": "https://www.joinhoney.com/",
-      "email": "support@joinhoney.com"
-    },
-    "website": "https://www.joinhoney.com/",
-    "chromeStoreUrl": "https://chromewebstore.google.com/detail/honey-automatic-coupons/bmnlcjabgnpnenekpadlanbbkooimhnj",
     "url": "https://www.joinhoney.com/",
-    "icon": "https://lh3.googleusercontent.com/7JKQtRzFchNfomvdwyw0W2xhYnsSjNhWz7h2HpCihLEy9MjrodV4g0UFJFqBKgf2fZsmPF_rTVz-beAVrrXdsEzK5w=s120",
-    "screenshots": [
-      "https://lh3.googleusercontent.com/xZnOscFx46gddB5fhVQjdAHdrqzKQ_vt9zbMc0KQ-vYeqm4Kss4RDY9fPr1TdX2aE0-8XIIk0AFvBm_6SXc1rEaDNw=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/6y3HWD5HbCKjD1tx9vaaq7E50DK8zGRoVZv39vHAkgW8vdCeJUvmoktxGVkYGPqzS2TGm1us9yeVbANm1Mf3o22F=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/gsAJUOpfgexr0jEnaG5KtJkRe9qDTCIvzGvs219gKTX_bqmXdeMceewEqXTJoYmOmlMmDy8p1YsrzbCaY-iHLrYTVQ=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/nf7t70mTi_kFs6UtWXRmvN9Vl_ivPVDzY0l6_cyhtcflDSnWdTRpWnAxmfMEav3MZxTw5s_lcG9pyb_498X9yewaxQ=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/Quv_cXWa9xCanzAm3JRBIgdpTFSLjWwvPPxM1to-IaBmZd8TKA6tIf0QbBlO_qUcMdFdBM6IoYqa66jSYqtq_rmyqA=s1280-w1280-h800"
-    ],
-    "features": [
-      "Automatic coupon finder",
-      "Real-time price comparisons",
-      "Cashback rewards",
-      "Deal notifications",
-      "Price history tracking"
-    ],
-    "privacyPolicy": "https://www.joinhoney.com/privacy",
-    "supportSite": "https://www.joinhoney.com/support"
+    "chromeStoreUrl": "https://chrome.google.com/webstore/detail/honey/bmnlcjabgnpnenekpadlanbbkooimhnj",
+    "firefoxAddonUrl": "https://addons.mozilla.org/en-US/firefox/addon/honey/",
+    "isActive": true,
+    "tags": ["coupon", "shopping", "deals", "savings"],
+    "rating": 4.2,
+    "users": "17,000,000+",
+    "isPopular": true,
+    "isNew": false
   },
   {
     "id": "nkbihfbeogaeaoehlefnkodbefgpgknn",
     "slug": "metamask",
     "name": "MetaMask",
-    "description": "A crypto wallet and gateway to blockchain apps.",
-    "overview": "MetaMask is a software cryptocurrency wallet used to interact with the Ethereum blockchain.",
+    "description": "A crypto wallet & gateway to blockchain apps. Start exploring blockchain applications in seconds.",
     "category": "crypto",
-    "topics": [
-      "web3",
-      "wallet"
-    ],
-    "tags": [
-      "crypto",
-      "wallet",
-      "ethereum"
-    ],
-    "isActive": true,
-    "isNew": false,
-    "isPopular": true,
-    "rating": 4.6,
-    "ratingCount": 350000,
-    "users": "10M+",
-    "version": "12.2.1",
-    "updated": "2025-09-14",
-    "size": "12.5MiB",
-    "languages": [
-      "English"
-    ],
-    "developer": {
-      "name": "ConsenSys Software Inc.",
-      "website": "https://metamask.io/",
-      "email": "support@metamask.io"
-    },
-    "website": "https://metamask.io/",
-    "chromeStoreUrl": "https://chromewebstore.google.com/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn",
     "url": "https://metamask.io/",
-    "icon": "https://lh3.googleusercontent.com/EQpmNpyWc98Rhu0bDzuPPS8ivQN2xZoc-saVhYHm5394wqS6eCRI5KyQFtxQf1z-OgS5HYVxvnUX8iv3uWy5jM2maw=s120",
-    "screenshots": [
-      "https://lh3.googleusercontent.com/r-u4-BaCrM6oJ0U8_SdodBAOptFjhBnH36l9LNIcmmXcRiv3nh8IIz9FPaXdYH9cbdOHJ45cN3JoNDxr4yfe6BRMbA=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/gqfTEKnENuQDF2TCKrF9dZ3UJPT1-HwR-7CWIr_NVSskRomhzB-FM2EGhpuSFBInYOib4j34P4D4PEpISJLIuk5a5y8=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/rIbluOW4lVmEvrXU1ur8cJxrWcZTb53ZrEKc0u0zZ8NXZQX-rjujevKhlSODMxWw5Oja_NBOq9oJGprdUOiCfxwIvw=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/X14fVK3biGgO7FpD1lH2gHnre8fJPBUWjGArUhVfR0HE6xevf23v69LrgwffV6s2rwlAGkhNVxEs-wv4hI7NrkhtUg=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/EvHaIoRHQsEmXXn-uf2NeuJJMveCaGDIgCKg9BlTf2WqBqXsFX9SvDAxtH81z9nOOWweYbH4_OcBgXjR0zM4HEqT=s1280-w1280-h800"
-    ],
-    "features": [
-      "Secure wallet for Ethereum and ERC-20 tokens",
-      "Send and receive cryptocurrency",
-      "Connect to DeFi applications",
-      "Swap tokens directly",
-      "Hardware wallet support"
-    ],
-    "privacyPolicy": "https://metamask.io/privacy.html",
-    "supportSite": "https://support.metamask.io/"
+    "chromeStoreUrl": "https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn",
+    "firefoxAddonUrl": "https://addons.mozilla.org/en-US/firefox/addon/ether-metamask/",
+    "isActive": true,
+    "tags": ["crypto", "blockchain", "wallet", "ethereum"],
+    "rating": 3.6,
+    "users": "10,000,000+",
+    "isPopular": true,
+    "isNew": false
   },
   {
     "id": "eimadpbcbfnmbkopoojfekhnkhdbieeh",
     "slug": "dark-reader",
     "name": "Dark Reader",
-    "description": "Create dark themes for any website with adjustable contrast and filters.",
-    "overview": "Dark Reader is an eye-care extension that enables dark mode on every website. Dark Reader analyzes web-pages and aims to reduce the strain on the eyes while browsing.",
+    "description": "Dark mode for every website. Take care of your eyes, use dark theme for night and daily browsing.",
     "category": "accessibility",
-    "topics": [
-      "dark-mode",
-      "accessibility"
-    ],
-    "tags": [
-      "dark-mode",
-      "accessibility",
-      "visual"
-    ],
-    "isActive": true,
-    "isNew": false,
-    "isPopular": true,
-    "rating": 4.7,
-    "ratingCount": 280000,
-    "users": "5M+",
-    "version": "4.9.95",
-    "updated": "2025-09-13",
-    "size": "2.1MiB",
-    "languages": [
-      "English"
-    ],
-    "developer": {
-      "name": "Dark Reader",
-      "website": "https://darkreader.org/",
-      "email": "help@darkreader.org"
-    },
-    "website": "https://darkreader.org/",
-    "chromeStoreUrl": "https://chromewebstore.google.com/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieeh",
     "url": "https://darkreader.org/",
-    "icon": "https://lh3.googleusercontent.com/T66wTLk-gpBBGsMm0SDJJ3VaI8YM0Utr8NaGCSANmXOfb84K-9GmyXORLKoslfxtasKtQ4spDCdq_zlp_t3QQ6SI0A=s120",
-    "screenshots": [
-      "https://lh3.googleusercontent.com/11RI7SPgjt0vndePuvlWEwXnEG-I62e5cqJWpSiKm2VugSdvQ2SjI1cJvDhIxilKT-YL8RuvsoRidaHAVfk1xFYl=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/wAshpbxsIbME-M2_454viDeTg3RAERq-hXQnPW5TMECfc_ufK4oEnMyY79DY2uZKXRNEk5om1SJnu-eUjJCUlecVdA=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/2_eQJ8fW_h0bD1VYMHL0kwK8_9FEAIT6qZuZzDj5o0UBfW0Nvt4pR0Yrgi5VArfeHthbvtDIa-Idpbkk4u3WvzKhrA=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/E9Nv_5ofx3FqVyriC_uv1vVnTi_qD026pc8XBhMxMk0gFk7tEOoDQofP9UzOviC2UbrtWIQw1W8FdxEN4oooIBzu=s1280-w1280-h800"
-    ],
-    "features": [
-      "Dark mode for every website",
-      "Brightness and contrast adjustment",
-      "Grayscale mode",
-      "Font size adjustment",
-      "Instant on/off toggle"
-    ],
-    "privacyPolicy": "https://darkreader.org/privacy",
-    "supportSite": "https://github.com/darkreader/darkreader/issues"
+    "chromeStoreUrl": "https://chrome.google.com/webstore/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieeh",
+    "firefoxAddonUrl": "https://addons.mozilla.org/en-US/firefox/addon/darkreader/",
+    "isActive": true,
+    "tags": ["dark-mode", "accessibility", "theme", "eyes"],
+    "rating": 4.5,
+    "users": "4,000,000+",
+    "isPopular": true,
+    "isNew": false
   },
   {
-    "id": "pnlccmojcmeohlpggmfnbbiapkmbliob",
+    "id": "jldhpllghnbhlbpcmnajkpdmadaolakh",
     "slug": "todoist",
     "name": "Todoist",
-    "description": "Capture and organize tasks right from the browser.",
-    "overview": "Todoist is the world's #1 task manager and to-do list app. Organize, plan and collaborate on projects with your team.",
+    "description": "Organize your work and life with Todoist. Add websites as tasks, save articles to read later.",
     "category": "productivity",
-    "topics": [
-      "task-manager"
-    ],
-    "tags": [
-      "tasks",
-      "todo",
-      "productivity"
-    ],
-    "isActive": true,
-    "isNew": false,
-    "isPopular": true,
-    "rating": 4.3,
-    "ratingCount": 95000,
-    "users": "2M+",
-    "version": "18.2.5",
-    "updated": "2025-09-11",
-    "size": "4.5MiB",
-    "languages": [
-      "English"
-    ],
-    "developer": {
-      "name": "Doist",
-      "website": "https://todoist.com/",
-      "email": "support@todoist.com"
-    },
-    "website": "https://todoist.com/",
-    "chromeStoreUrl": "https://chromewebstore.google.com/detail/todoist-for-chrome/pnlccmojcmeohlpggmfnbbiapkmbliob",
     "url": "https://todoist.com/",
-    "icon": "https://lh3.googleusercontent.com/W9vTZ6HGIHrsiijueEN2JWxxll8zA3UNmGuYlbd9j6un_uNLCxYUWVOMOD-X90QPo6qFduEdsVgOYdXgALCWPpNmxjI=s120",
-    "screenshots": [
-      "https://lh3.googleusercontent.com/GPzjFlpO0UglzxghUFvnpu9u9Ne_ICzXKY1sb0Sdi-7S0CayG1z57t-8kDKHBUzEGR3YE1Rle_L_c7fSMqxC5kcBrw=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/0sHUzq3MA8yQOxjJb6vqpQSeYKpWnb_5YcfzDO_SV_081PehZoQqOy1s5H1k128Zxa7V-XvPsjOcFdv5xxtbI0Dtzg=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/Sav1f0Au4FaN5LscjEAZ-A9Wo7gLCaMgraGST971l5Ln_APtpZOAVBUCIbAr6w8TLSoF7FFmyMz2iUhuWHY5_Ees9w=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/1Oyr8nWZRKXp1VY-ySqnDJmY3TFt38um8s3Yj5O52ephlIrjASF1H-Uvfmn-VPC9th7dCNjVOpJtCS2_fdxD3J8Q=s1280-w1280-h800",
-      "https://lh3.googleusercontent.com/YvCwYOQuq8QMQmH6fAeGUK0DzihROIzZkUKVga2uTabXKA-QcBH1JaVMiDwYXypSp9qSPLdag7-9sh0kg5YTglVMjw=s1280-w1280-h800"
-    ],
-    "features": [
-      "Quick task capture",
-      "Priority levels and labels",
-      "Recurring tasks",
-      "Project collaboration",
-      "Calendar view and scheduling"
-    ],
-    "privacyPolicy": "https://todoist.com/privacy",
-    "supportSite": "https://todoist.com/help/"
+    "chromeStoreUrl": "https://chrome.google.com/webstore/detail/todoist-for-chrome/jldhpllghnbhlbpcmnajkpdmadaolakh",
+    "firefoxAddonUrl": "https://addons.mozilla.org/en-US/firefox/addon/todoist/",
+    "isActive": true,
+    "tags": ["tasks", "productivity", "organization", "todo"],
+    "rating": 4.1,
+    "users": "1,000,000+",
+    "isPopular": false,
+    "isNew": false
   },
   {
-    "id": "hkgfoiooedgoejojocmhlaklaeopbecg",
+    "id": "niloccemoadcdkdjlinkgdfekeahmflj",
     "slug": "pocket",
     "name": "Pocket",
-    "description": "Save articles and videos from the web to view later.",
-    "overview": "When you find something you want to read, watch or listen to, put it in Pocket. It automatically syncs to all your devices so you can consume the content when you're ready.",
+    "description": "Save articles, videos and stories from any publication, page or app. Curate your own space filled with everything you can't wait to learn.",
     "category": "productivity",
-    "topics": [
-      "reading",
-      "offline"
-    ],
-    "tags": [
-      "reading",
-      "save-later",
-      "productivity"
-    ],
-    "isActive": true,
-    "isNew": false,
-    "isPopular": true,
-    "rating": 4.7,
-    "ratingCount": 125000,
-    "users": "2M+",
-    "version": "3.1.7",
-    "updated": "2025-09-10",
-    "size": "1.8MiB",
-    "languages": [
-      "English"
-    ],
-    "developer": {
-      "name": "Read It Later, Inc.",
-      "website": "https://getpocket.com/",
-      "email": "support@getpocket.com"
-    },
-    "website": "https://getpocket.com/",
-    "chromeStoreUrl": "https://chromewebstore.google.com/detail/save-to-pocket/hkgfoiooedgoejojocmhlaklaeopbecg",
     "url": "https://getpocket.com/",
-    "icon": "https://lh3.googleusercontent.com/cvfpnTKw3B67DtM1ZpJG2PNAIjP6hVMOyYy403X4FMkOuStgG1y4cjCn21vmTnnsip1dTZSVsWBA9IxutGuA3dVDWhg=s120",
-    "screenshots": [
-      "https://dummyimage.com/1280x800/ec4899/ffffff?text=Pocket+Save+Articles",
-      "https://dummyimage.com/1280x800/ec4899/ffffff?text=Pocket+Read+Later",
-      "https://dummyimage.com/1280x800/ec4899/ffffff?text=Pocket+Personalized"
-    ],
-    "features": [
-      "Save articles, videos, and pages",
-      "Read later without internet",
-      "Personalized recommendations",
-      "Search saved content",
-      "Organize with tags and favorites"
-    ],
-    "privacyPolicy": "https://getpocket.com/privacy",
-    "supportSite": "https://help.getpocket.com/"
+    "chromeStoreUrl": "https://chrome.google.com/webstore/detail/save-to-pocket/niloccemoadcdkdjlinkgdfekeahmflj",
+    "firefoxAddonUrl": "https://addons.mozilla.org/en-US/firefox/addon/pocket-save-to-pocket/",
+    "isActive": true,
+    "tags": ["reading", "save", "productivity", "articles"],
+    "rating": 4.4,
+    "users": "3,000,000+",
+    "isPopular": true,
+    "isNew": false
+  },
+  {
+    "id": "ohcpnigalekghcmgcdcenkpelffpdolg",
+    "slug": "colorpick-eyedropper",
+    "name": "ColorPick Eyedropper",
+    "description": "A zoomed eyedropper & color chooser tool that allows you to select color values from webpages.",
+    "category": "developer",
+    "url": "",
+    "chromeStoreUrl": "https://chrome.google.com/webstore/detail/colorpick-eyedropper/ohcpnigalekghcmgcdcenkpelffpdolg",
+    "firefoxAddonUrl": "https://addons.mozilla.org/en-US/firefox/addon/colorpick-eyedropper/",
+    "isActive": true,
+    "tags": ["color", "picker", "developer", "design"],
+    "rating": 4.0,
+    "users": "500,000+",
+    "isPopular": false,
+    "isNew": false
+  },
+  {
+    "id": "gppongmhjkpfnbhagpmjfkannfbllamg",
+    "slug": "wappalyzer",
+    "name": "Wappalyzer",
+    "description": "Identify web technologies. Find out what websites are built with - frameworks, analytics tools, WordPress plugins and more.",
+    "category": "developer",
+    "url": "https://www.wappalyzer.com/",
+    "chromeStoreUrl": "https://chrome.google.com/webstore/detail/wappalyzer/gppongmhjkpfnbhagpmjfkannfbllamg",
+    "firefoxAddonUrl": "https://addons.mozilla.org/en-US/firefox/addon/wappalyzer/",
+    "isActive": true,
+    "tags": ["web-technologies", "developer", "analysis", "frameworks"],
+    "rating": 4.5,
+    "users": "1,000,000+",
+    "isPopular": false,
+    "isNew": false
+  },
+  {
+    "id": "bcjindcccaagfpapjjmafapmmgkkhgoa",
+    "slug": "json-formatter",
+    "name": "JSON Formatter",
+    "description": "Makes JSON easy to read. Open source. Collapsible, with syntax highlighting, clickable URLs, and more.",
+    "category": "developer",
+    "url": "",
+    "chromeStoreUrl": "https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa",
+    "firefoxAddonUrl": "",
+    "isActive": true,
+    "tags": ["json", "developer", "formatter", "syntax"],
+    "rating": 4.6,
+    "users": "2,000,000+",
+    "isPopular": false,
+    "isNew": false
+  },
+  {
+    "id": "mlomiejdfkolichcflejclcbmpeaniij",
+    "slug": "ghostery",
+    "name": "Ghostery",
+    "description": "Block ads, stop trackers and speed up websites. Ghostery's built-in ad blocker removes advertisements from a webpage to eliminate clutter.",
+    "category": "privacy",
+    "url": "https://www.ghostery.com/",
+    "chromeStoreUrl": "https://chrome.google.com/webstore/detail/ghostery-%E2%80%93-privacy-ad-blo/mlomiejdfkolichcflejclcbmpeaniij",
+    "firefoxAddonUrl": "https://addons.mozilla.org/en-US/firefox/addon/ghostery/",
+    "isActive": true,
+    "tags": ["ad-blocker", "privacy", "tracker", "security"],
+    "rating": 4.3,
+    "users": "2,000,000+",
+    "isPopular": true,
+    "isNew": false
+  },
+  {
+    "id": "liecbddmkiiihnedobmlmillhodjkdmb",
+    "slug": "loom",
+    "name": "Loom – Screen Recorder & Screen Capture",
+    "description": "Record your screen and camera with one click. Share your video instantly with a link. Make communication faster with Loom.",
+    "category": "productivity",
+    "url": "https://www.loom.com/",
+    "chromeStoreUrl": "https://chrome.google.com/webstore/detail/loom-%E2%80%93-free-screen-and-ca/liecbddmkiiihnedobmlmillhodjkdmb",
+    "firefoxAddonUrl": "",
+    "isActive": true,
+    "tags": ["screen-recorder", "productivity", "communication", "video"],
+    "rating": 4.7,
+    "users": "14,000,000+",
+    "isPopular": true,
+    "isNew": false
+  },
+  {
+    "id": "knheggckgoiihginacbkhaalnibhilkk",
+    "slug": "notion-web-clipper",
+    "name": "Notion Web Clipper",
+    "description": "Save any page on the web to Notion. Capture articles, tweets, PDFs, and more with one click.",
+    "category": "productivity",
+    "url": "https://www.notion.so/web-clipper",
+    "chromeStoreUrl": "https://chrome.google.com/webstore/detail/notion-web-clipper/knheggckgoiihginacbkhaalnibhilkk",
+    "firefoxAddonUrl": "https://addons.mozilla.org/en-US/firefox/addon/notion-web-clipper/",
+    "isActive": true,
+    "tags": ["notion", "productivity", "clipper", "save"],
+    "rating": 4.0,
+    "users": "1,000,000+",
+    "isPopular": false,
+    "isNew": false
+  },
+  {
+    "id": "laookkfknpbbblfpciffpaejjkokdgca",
+    "slug": "momentum",
+    "name": "Momentum",
+    "description": "Replace your new tab page with a personal dashboard featuring to-do, weather, and inspiration.",
+    "category": "productivity",
+    "url": "https://momentumdash.com/",
+    "chromeStoreUrl": "https://chrome.google.com/webstore/detail/momentum/laookkfknpbbblfpciffpaejjkokdgca",
+    "firefoxAddonUrl": "",
+    "isActive": true,
+    "tags": ["dashboard", "productivity", "new-tab", "inspiration"],
+    "rating": 4.5,
+    "users": "3,000,000+",
+    "isPopular": true,
+    "isNew": false
   }
 ]
