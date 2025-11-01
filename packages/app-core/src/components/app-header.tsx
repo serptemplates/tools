@@ -8,7 +8,9 @@ export function AppHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { href: "/", label: "Tools" },
+    { href: "https://extensions.serp.co", label: "Extensions" },
+    { href: "https://tools.serp.co", label: "Tools" },
+    { href: "https://apps.serp.co", label: "Apps"},
   ];
 
   return (
@@ -30,6 +32,7 @@ export function AppHeader() {
                 key={link.href}
                 href={link.href}
                 className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                target="_blank"
               >
                 {link.label}
               </a>
