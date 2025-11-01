@@ -73,12 +73,6 @@ export function HomePageClient({ extensions, categories }: HomePageClientProps) 
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="sm">
-                <Link href="/best/dark-mode" className="inline-flex items-center gap-2">
-                  See popular picks
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </Button>
             </div>
           </div>
         </div>
