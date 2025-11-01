@@ -14,6 +14,18 @@ type Props = {
   accept?: string;
 };
 
+type CompressionWorkerSuccessMessage = {
+  ok: true;
+  blob: ArrayBuffer;
+};
+
+type CompressionWorkerErrorMessage = {
+  ok: false;
+  error?: string;
+};
+
+type CompressionWorkerMessage = CompressionWorkerSuccessMessage | CompressionWorkerErrorMessage;
+
 export default function BatchHeroConverter({
   title,
   subtitle = "Fast, private, in-browser batch compression.",
@@ -84,7 +96,7 @@ export default function BatchHeroConverter({
 
       if (!file) {
         console.error(`File not found at index ${i}`);
-        continue
+        continue;
       }
 
       try {
@@ -92,13 +104,25 @@ export default function BatchHeroConverter({
         const originalSize = file.size;
 
         const compressedBlob = await new Promise<Blob>((resolve, reject) => {
-          w.onmessage = (ev: MessageEvent<any>) => {
-            if (!ev.data?.ok) {
-              reject(new Error(ev.data?.error || "Compression failed"));
+          w.onmessage = (ev: MessageEvent<CompressionWorkerMessage>) => {
+            if (!ev.data) {
+              reject(new Error("Compression failed"));
               return;
             }
 
-            const blob = new Blob([ev.data.blob], { type: "image/png" });
+            const message = ev.data;
+
+            if ("ok" in message && message.ok === false) {
+              reject(new Error(message.error || "Compression failed"));
+              return;
+            }
+
+            if (!("ok" in message) || !message.ok || !("blob" in message)) {
+              reject(new Error("Compression failed"));
+              return;
+            }
+
+            const blob = new Blob([message.blob], { type: "image/png" });
             resolve(blob);
           };
 
@@ -157,7 +181,7 @@ export default function BatchHeroConverter({
     e.preventDefault();
     setHint("or drop multiple files here");
     setDropEffect("animate-bounce");
-    setTimeout(() => setDropEffect(""), 500);
+    window.setTimeout(() => setDropEffect(""), 500);
 
     const dt = e.dataTransfer;
     handleFiles(dt.files);

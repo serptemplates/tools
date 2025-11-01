@@ -14,7 +14,6 @@ import type {
   FAQ,
   AboutFormatsSection as AboutFormatsSectionData,
   ChangelogEntry,
-  RelatedTool,
   BlogPost
 } from "@/types";
 
@@ -25,7 +24,6 @@ type ToolPageProps = {
   faqs?: FAQ[];
   aboutSection?: AboutFormatsSectionData;
   changelog?: ChangelogEntry[];
-  relatedTools?: RelatedTool[];
   blogPosts?: BlogPost[];
 };
 
@@ -36,7 +34,6 @@ export default function ToolPageTemplate({
   faqs,
   aboutSection,
   changelog,
-  relatedTools,
   blogPosts,
 }: ToolPageProps) {
   // If tool requires FFmpeg, always use single column layout (full dropzone)
@@ -86,8 +83,6 @@ export default function ToolPageTemplate({
       {/* Related Tools Section - right after format cards */}
       {tool.from && tool.to && (
         <RelatedToolsSection
-          currentFrom={tool.from}
-          currentTo={tool.to}
           currentPath={`/${tool.from.toLowerCase()}-to-${tool.to.toLowerCase()}`}
         />
       )}

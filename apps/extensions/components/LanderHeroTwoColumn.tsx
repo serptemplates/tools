@@ -14,6 +14,36 @@ type Props = {
   videoEmbedId?: string;      // YouTube embed ID for video (optional, defaults to bbkhxMpIH4w)
 };
 
+type DropEffect =
+  | "splash"
+  | "bounce"
+  | "spin"
+  | "pulse"
+  | "shake"
+  | "flip"
+  | "zoom"
+  | "confetti"
+  | "rejected"
+  | "";
+
+type WorkerProgressMessage = {
+  type: "progress";
+  ok?: boolean;
+};
+
+type WorkerSuccessMessage = {
+  ok: true;
+  blob?: ArrayBuffer;
+  blobs?: ArrayBuffer[];
+};
+
+type WorkerErrorMessage = {
+  ok: false;
+  error?: string;
+};
+
+type WorkerMessage = WorkerProgressMessage | WorkerSuccessMessage | WorkerErrorMessage;
+
 export default function LanderHeroTwoColumn({
   title,
   subtitle = "Fast, private, in-browser conversion.",
@@ -23,11 +53,10 @@ export default function LanderHeroTwoColumn({
   videoEmbedId = "bbkhxMpIH4w",
 }: Props) {
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const dropRef = useRef<HTMLDivElement | null>(null);
   const workerRef = useRef<Worker | null>(null);
   const [busy, setBusy] = useState(false);
   const [hint, setHint] = useState("or drop files here");
-  const [dropEffect, setDropEffect] = useState<string>("");
+  const [dropEffect, setDropEffect] = useState<DropEffect>("");
   const [capabilities, setCapabilities] = useState<Capabilities | null>(null);
   const [videoPlaying, setVideoPlaying] = useState(false);
   // Generate stable color based on tool properties
@@ -45,9 +74,20 @@ export default function LanderHeroTwoColumn({
     "#0ea5e9", // sky-500
     "#84cc16", // lime-500
   ];
+  const effects: DropEffect[] = [
+    "splash",
+    "bounce",
+    "spin",
+    "pulse",
+    "shake",
+    "flip",
+    "zoom",
+    "confetti",
+    "rejected",
+  ];
 
   // Use a stable hash based on from/to combination
-  const hashCode = (from + to).split('').reduce((hash, char) => {
+  const hashCode = (from + to).split("").reduce((hash, char) => {
     return char.charCodeAt(0) + ((hash << 5) - hash);
   }, 0);
   const randomColor = colors[Math.abs(hashCode) % colors.length];
@@ -61,7 +101,7 @@ export default function LanderHeroTwoColumn({
 
       // Add error handler for worker
       workerRef.current.onerror = (error) => {
-        console.error('Worker error:', error);
+        console.error("Worker error:", error);
       };
     }
     return workerRef.current;
@@ -87,55 +127,73 @@ export default function LanderHeroTwoColumn({
     for (const file of Array.from(files)) {
       const buf = await file.arrayBuffer();
       await new Promise<void>((resolve, reject) => {
-        w.onmessage = (ev: MessageEvent<any>) => {
+        w.onmessage = (ev: MessageEvent<WorkerMessage>) => {
           // Safety check for malformed messages
           if (!ev.data) {
-            console.error('Received malformed worker message:', ev);
+            console.error("Received malformed worker message:", ev);
             return reject(new Error("Malformed worker response"));
           }
 
+          const message = ev.data;
+
           // Handle progress updates for video conversion
-          if (ev.data.type === 'progress') {
+          if ("type" in message && message.type === "progress") {
             // You could update UI progress here if needed
             return;
           }
 
-          if (!ev.data.ok) return reject(new Error(ev.data.error || "Convert failed"));
+          if ("ok" in message && message.ok === false) {
+            const errorMessage = "error" in message && message.error ? message.error : "Convert failed";
+            return reject(new Error(errorMessage));
+          }
+
+          if (!("ok" in message) || !message.ok) {
+            return reject(new Error("Convert failed"));
+          }
+
+          const payload = message;
 
           // Handle PDF pages (returns multiple blobs)
-          if (ev.data.blobs) {
-            const mimeType = to === "png" ? "image/png" : to === "jpg" || to === "jpeg" ? "image/jpeg" : "image/webp";
-            ev.data.blobs.forEach((buf: ArrayBuffer, i: number) => {
-              const blob = new Blob([buf], { type: mimeType });
-              const name = file.name.replace(/\.[^.]+$/, "") + `_page${i + 1}.${to}`;
+          if ("blobs" in payload && payload.blobs && payload.blobs.length) {
+            const mimeType =
+              to === "png"
+                ? "image/png"
+                : to === "jpg" || to === "jpeg"
+                  ? "image/jpeg"
+                  : "image/webp";
+            payload.blobs.forEach((pageBuf: ArrayBuffer, index: number) => {
+              const blob = new Blob([pageBuf], { type: mimeType });
+              const name = file.name.replace(/\.[^.]+$/, "") + `_page${index + 1}.${to}`;
               saveBlob(blob, name);
             });
-          } else {
+          } else if ("blob" in payload && payload.blob) {
             // Determine MIME type based on output format
             let mimeType: string;
-            const videoFormats = ['mp4', 'm4v'];
-            const audioFormats = ['mp3', 'wav', 'ogg', 'aac', 'm4a', 'opus', 'flac'];
+            const videoFormats = ["mp4", "m4v"];
+            const audioFormats = ["mp3", "wav", "ogg", "aac", "m4a", "opus", "flac"];
 
             if (videoFormats.includes(to)) {
-              mimeType = 'video/mp4';
+              mimeType = "video/mp4";
             } else if (audioFormats.includes(to)) {
-              mimeType = `audio/${to === 'm4a' ? 'mp4' : to}`;
-            } else if (to === 'webm') {
-              mimeType = 'video/webm';
-            } else if (to === 'gif') {
-              mimeType = 'image/gif';
-            } else if (to === 'png') {
-              mimeType = 'image/png';
-            } else if (to === 'jpg' || to === 'jpeg') {
-              mimeType = 'image/jpeg';
+              mimeType = `audio/${to === "m4a" ? "mp4" : to}`;
+            } else if (to === "webm") {
+              mimeType = "video/webm";
+            } else if (to === "gif") {
+              mimeType = "image/gif";
+            } else if (to === "png") {
+              mimeType = "image/png";
+            } else if (to === "jpg" || to === "jpeg") {
+              mimeType = "image/jpeg";
             } else {
               // Default for other video/audio formats
-              mimeType = to.startsWith('video/') ? to : `video/${to}`;
+              mimeType = to.startsWith("video/") ? to : `video/${to}`;
             }
 
-            const blob = new Blob([ev.data.blob], { type: mimeType });
+            const blob = new Blob([payload.blob], { type: mimeType });
             const name = file.name.replace(/\.[^.]+$/, "") + "." + to;
             saveBlob(blob, name);
+          } else {
+            return reject(new Error("Missing worker payload"));
           }
           resolve();
         };
@@ -146,8 +204,42 @@ export default function LanderHeroTwoColumn({
         };
 
         // Determine operation type based on format
-        const videoFormats = ['mp4', 'mkv', 'avi', 'webm', 'mov', 'flv', 'ts', 'mts', 'm2ts', 'm4v', 'mpeg', 'mpg', 'vob', '3gp', 'f4v', 'hevc', 'divx', 'mjpeg', 'mpeg2', 'asf', 'wmv', 'mxf'];
-        const audioFormats = ['mp3', 'wav', 'ogg', 'aac', 'm4a', 'opus', 'flac', 'wma', 'aiff', 'mp2'];
+        const videoFormats = [
+          "mp4",
+          "mkv",
+          "avi",
+          "webm",
+          "mov",
+          "flv",
+          "ts",
+          "mts",
+          "m2ts",
+          "m4v",
+          "mpeg",
+          "mpg",
+          "vob",
+          "3gp",
+          "f4v",
+          "hevc",
+          "divx",
+          "mjpeg",
+          "mpeg2",
+          "asf",
+          "wmv",
+          "mxf",
+        ];
+        const audioFormats = [
+          "mp3",
+          "wav",
+          "ogg",
+          "aac",
+          "m4a",
+          "opus",
+          "flac",
+          "wma",
+          "aiff",
+          "mp2",
+        ];
 
         let op: string;
         if (from === "pdf") {
@@ -155,7 +247,8 @@ export default function LanderHeroTwoColumn({
         } else if (videoFormats.includes(from) || audioFormats.includes(to)) {
           // Check if video conversion is supported before attempting
           if (!capabilities?.supportsVideoConversion) {
-            throw new Error(`Video conversion not supported: ${capabilities?.reason || 'Unknown reason'}`);
+            reject(new Error(`Video conversion not supported: ${capabilities?.reason || "Unknown reason"}`));
+            return;
           }
           op = "video";
         } else {
@@ -184,27 +277,14 @@ export default function LanderHeroTwoColumn({
   function onDrop(e: React.DragEvent) {
     e.preventDefault();
 
-    // Trigger fun effect - cycle through based on time
-    const effects = [
-      "splash",
-      "bounce",
-      "spin",
-      "pulse",
-      "shake",
-      "flip",
-      "zoom",
-      "confetti",
-      "rejected"
-    ];
     // Use timestamp to cycle through effects deterministically
     const effectIndex = Math.floor(Date.now() / 1000) % effects.length;
     const effect = effects[effectIndex];
-    if (effect) {
-      setDropEffect(effect);
-    }
+    const effectToUse = (effect ?? "") as DropEffect;
+    setDropEffect(effectToUse);
 
     // Clear effect after animation
-    setTimeout(() => setDropEffect(""), 1000);
+    window.setTimeout(() => setDropEffect(""), 1000);
 
     setHint("Converting…");
     handleFiles(e.dataTransfer.files).finally(() => setHint("or drop files here"));
@@ -213,7 +293,7 @@ export default function LanderHeroTwoColumn({
   // Clear drop effect when component unmounts or effect changes
   useEffect(() => {
     if (dropEffect) {
-      const timer = setTimeout(() => setDropEffect(""), 1000);
+      const timer = window.setTimeout(() => setDropEffect(""), 1000);
       return () => clearTimeout(timer);
     }
   }, [dropEffect]);
@@ -228,7 +308,12 @@ export default function LanderHeroTwoColumn({
   return (
     <section className="w-full bg-white">
       <div className="mx-auto max-w-[1400px] px-6 py-12">
-        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-center mb-12">{title}</h1>
+        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-center mb-4">{title}</h1>
+        {subtitle && (
+          <p className="text-lg text-muted-foreground text-center mb-12 max-w-3xl mx-auto">
+            {subtitle}
+          </p>
+        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
           {/* Video Column */}
@@ -272,7 +357,6 @@ export default function LanderHeroTwoColumn({
           {/* Dropzone Column */}
           <div className="order-1 lg:order-2">
             <div
-              ref={dropRef}
               onDragEnter={onDrag}
               onDragOver={onDrag}
               onDragLeave={onDrag}

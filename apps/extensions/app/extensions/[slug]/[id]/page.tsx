@@ -1,11 +1,28 @@
+import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
+import Script from "next/script";
 import { Button } from "@serp-extensions/ui/components/button";
 import { Badge } from "@serp-extensions/ui/components/badge";
 import { ChevronRight, Star, Users, ExternalLink, Globe, Check, Tag, Zap } from "lucide-react";
-import extensionsData from '@serp-extensions/app-core/data/extensions.json';
-import categoriesData from '@serp-extensions/app-core/data/categories.json';
-import topicsData from '@serp-extensions/app-core/data/topics.json';
+import {
+  getExtensionBySlugAndId,
+  getCategoryBySlug,
+  getTopics,
+} from "@serp-extensions/app-core/lib/catalog";
+import {
+  filterExtensionsForCollection,
+  listBestCollections,
+} from "@/data/bestCollections";
 import { RelatedToolsSection } from "@/components/sections/RelatedToolsSection";
+import {
+  buildBreadcrumbSchema,
+  buildImageGallerySchema,
+  buildProductSchema,
+  buildSoftwareApplicationSchema,
+} from "@/lib/structured-data";
+import { resolveBaseUrl } from "@/lib/sitemap-utils";
 
 interface PageProps {
   params: Promise<{
@@ -14,56 +31,168 @@ interface PageProps {
   }>;
 }
 
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug, id } = await params;
+  const extension = await getExtensionBySlugAndId(slug, id);
+
+  if (!extension) {
+    return {
+      title: "Extension not found",
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
+
+  const category = extension.category ? await getCategoryBySlug(extension.category) : null;
+  const baseUrl = resolveBaseUrl();
+  const pageUrl = `${baseUrl}/extensions/${slug}/${id}`;
+  const categoryName = category?.name ?? extension.category?.replace(/-/g, " ") ?? "Browser";
+  const description = extension.overview ?? extension.description;
+  const images = [extension.icon, ...(extension.screenshots ?? [])].filter(
+    (url): url is string => Boolean(url),
+  );
+  const keywords = Array.from(
+    new Set([
+      extension.name,
+      categoryName,
+      "browser extension",
+      ...extension.tags,
+      ...extension.topics,
+    ]),
+  );
+
+  return {
+    title: `${extension.name} – ${categoryName} Browser Extension Overview`,
+    description,
+    alternates: {
+      canonical: pageUrl,
+    },
+    keywords,
+    openGraph: {
+      title: extension.name,
+      description,
+      url: pageUrl,
+      type: "article",
+      ...(images.length
+        ? {
+            images: images.map((url) => ({ url })),
+          }
+        : {}),
+    },
+    twitter: {
+      title: extension.name,
+      description,
+      card: "summary_large_image",
+      ...(images.length ? { images } : {}),
+    },
+  };
+}
+
 export default async function ExtensionPage({ params }: PageProps) {
   // Await params for Next.js 15+
   const { slug, id } = await params;
-  
-  // Find extension by slug and id (server-side compatible)
-  const extension = (extensionsData as any[]).find(
-    (ext: any) => ext.slug === slug && ext.id === id && ext.isActive
-  );
-  
-  // Find category info
-  const category = (categoriesData as any[]).find(
-    (cat: any) => cat.slug === extension?.category
-  );
 
-  
-  // Get topic names
-  const topicNames = extension?.topics?.map((topicSlug: string) => 
-    (topicsData as any[]).find((t: any) => t.slug === topicSlug)?.name
-  ).filter(Boolean) || [];
+  const [extension, topics] = await Promise.all([
+    getExtensionBySlugAndId(slug, id),
+    getTopics(),
+  ]);
 
   if (!extension) {
-    return (
-      <main className="min-h-screen bg-background">
-        <div className="container mx-auto px-4 py-16">
-          <div className="flex justify-center items-center h-64">
-            <div className="text-center">
-              <h1 className="text-2xl font-bold mb-4">Extension Not Found</h1>
-              <Link href="/">
-                <Button>Back to Extensions</Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </main>
-    );
+    notFound();
   }
 
+  const category = extension.category
+    ? await getCategoryBySlug(extension.category)
+    : null;
+
+  const topicNames = extension.topics
+    .map((topicSlug) => topics.find((topic) => topic.slug === topicSlug)?.name)
+    .filter((name): name is string => Boolean(name));
+
+  const matchingCollections = listBestCollections().filter((collection) =>
+    filterExtensionsForCollection([extension], collection).length > 0,
+  );
+
+  const baseUrl = resolveBaseUrl();
+  const pageUrl = `${baseUrl}/extensions/${slug}/${id}`;
+  const categoryName = category?.name ?? extension.category?.replace(/-/g, " ") ?? undefined;
+  const breadcrumbItems = [
+    { name: "Home", url: `${baseUrl}/` },
+    ...(category
+      ? [
+          { name: "Categories", url: `${baseUrl}/categories` },
+          { name: category.name ?? category.slug, url: `${baseUrl}/categories/${category.slug}` },
+        ]
+      : [{ name: "Extensions", url: `${baseUrl}/` }]),
+    { name: extension.name, url: pageUrl },
+  ];
+  const breadcrumbSchema = buildBreadcrumbSchema(breadcrumbItems);
+  const softwareSchema = buildSoftwareApplicationSchema({
+    extension,
+    pageUrl,
+    categoryName,
+  });
+  const productSchema = buildProductSchema({
+    extension,
+    pageUrl,
+    categoryName,
+  });
+  const mediaImages = [extension.icon, ...(extension.screenshots ?? [])].filter(
+    (image): image is string => Boolean(image),
+  );
+  const imageGallery = buildImageGallerySchema({
+    pageUrl,
+    images: mediaImages,
+    caption: `${extension.name} screenshots and branding`,
+  });
+
   const renderStars = (rating: number) => {
-    return [...Array(5)].map((_, i) => (
+    return Array.from({ length: 5 }, (_, index) => (
       <Star
-        key={i}
+        key={index}
         className={`w-5 h-5 ${
-          i < Math.floor(rating)
+          index < Math.floor(rating)
             ? "fill-amber-400 text-amber-400"
             : "text-gray-300"
         }`}
       />
     ));
-  };  return (
+  };
+
+  return (
     <main className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+      <Script
+        id={`extension-${extension.id}-breadcrumbs`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+      <Script
+        id={`extension-${extension.id}-software-schema`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(softwareSchema),
+        }}
+      />
+      <Script
+        id={`extension-${extension.id}-product-schema`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(productSchema),
+        }}
+      />
+      {imageGallery ? (
+        <Script
+          id={`extension-${extension.id}-image-gallery`}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(imageGallery),
+          }}
+        />
+      ) : null}
       {/* Breadcrumb */}
       <div className="bg-white border-b">
         <div className="container mx-auto px-4 py-3">
@@ -85,10 +214,12 @@ export default async function ExtensionPage({ params }: PageProps) {
             <div className="flex items-start gap-6 mb-8">
               {extension.icon && (
                 <div className="flex-shrink-0">
-                  <img
+                  <Image
                     src={extension.icon}
                     alt={extension.name}
-                    className="w-32 h-32 rounded-lg shadow-lg border-4 border-white bg-white"
+                    width={128}
+                    height={128}
+                    className="w-32 h-32 rounded-lg shadow-lg border-4 border-white bg-white object-cover"
                   />
                 </div>
               )}
@@ -96,20 +227,46 @@ export default async function ExtensionPage({ params }: PageProps) {
                 {/* Badges */}
                 <div className="mb-6 flex flex-wrap gap-2">
                   {category && (
-                    <Badge className="capitalize">
-                      {category.name}
+                    <Badge asChild className="capitalize">
+                      <Link href={`/categories/${category.slug}`}>
+                        {category.name}
+                      </Link>
                     </Badge>
                   )}
                   {extension.isNew && (
-                    <Badge variant="secondary" className="bg-green-100 text-green-700 border-green-200">
-                      New
+                    <Badge
+                      asChild
+                      variant="secondary"
+                      className="border-green-200 bg-green-100 text-green-700"
+                    >
+                      <Link href="/categories">
+                        New
+                      </Link>
                     </Badge>
                   )}
                   {extension.isPopular && (
-                    <Badge variant="secondary" className="bg-blue-100 text-blue-700 border-blue-200">
-                      Popular
+                    <Badge
+                      asChild
+                      variant="secondary"
+                      className="border-blue-200 bg-blue-100 text-blue-700"
+                    >
+                      <Link href="/categories#trending">
+                        Popular
+                      </Link>
                     </Badge>
                   )}
+                  {matchingCollections.map((collection) => (
+                    <Badge
+                      key={collection.slug}
+                      asChild
+                      variant="outline"
+                      className="capitalize"
+                    >
+                      <Link href={`/best/${collection.slug}`}>
+                        {collection.title}
+                      </Link>
+                    </Badge>
+                  ))}
                 </div>
 
                 {/* Title and Description */}
@@ -199,7 +356,7 @@ export default async function ExtensionPage({ params }: PageProps) {
           <div className="container mx-auto px-4 max-w-4xl">
             <h2 className="text-3xl font-bold mb-8 text-gray-900">Key Features</h2>
             <div className="grid gap-4">
-              {extension.features.map((feature: string, index: number) => (
+              {extension.features.map((feature, index) => (
                 <div key={index} className="flex gap-4 p-5 bg-gradient-to-r from-blue-50 to-transparent rounded-lg border border-blue-100">
                   <Check className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
                   <span className="text-lg text-gray-800">{feature}</span>
@@ -216,11 +373,13 @@ export default async function ExtensionPage({ params }: PageProps) {
           <div className="container mx-auto px-4 max-w-4xl">
             <h2 className="text-3xl font-bold mb-8 text-gray-900">Screenshots</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {extension.screenshots.map((screenshot: string, index: number) => (
+              {extension.screenshots.map((screenshot, index) => (
                 <div key={index} className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                  <img
+                  <Image
                     src={screenshot}
                     alt={`Screenshot ${index + 1}`}
+                    width={1280}
+                    height={720}
                     className="w-full h-auto aspect-video object-cover group-hover:scale-105 transition-transform"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -240,7 +399,7 @@ export default async function ExtensionPage({ params }: PageProps) {
               <h3 className="text-2xl font-bold text-gray-900">Topics & Categories</h3>
             </div>
             <div className="flex flex-wrap gap-3">
-              {topicNames.map((topic: string, index: number) => (
+              {topicNames.map((topic, index) => (
                 <Badge key={index} variant="secondary" className="text-base py-2 px-4">
                   {topic}
                 </Badge>
@@ -259,7 +418,7 @@ export default async function ExtensionPage({ params }: PageProps) {
               <h3 className="text-2xl font-bold text-gray-900">Tags</h3>
             </div>
             <div className="flex flex-wrap gap-2">
-              {extension.tags.map((tag: string, index: number) => (
+              {extension.tags.map((tag, index) => (
                 <Badge key={index} variant="outline" className="text-base py-2 px-3 capitalize">
                   {tag}
                 </Badge>
@@ -414,11 +573,9 @@ export default async function ExtensionPage({ params }: PageProps) {
       )}
 
       {/* Related Extensions */}
-      <div className="py-16 bg-white">
-        <div className="container mx-auto px-4">
+      <div>
+        <div>
           <RelatedToolsSection 
-            currentFrom=""
-            currentTo=""
             currentPath={`/extensions/${extension.slug}/${extension.id}`}
           />
         </div>

@@ -3,22 +3,14 @@
 import { useState, useRef } from "react";
 import { Card, CardDescription, CardHeader, CardTitle } from "@serp-extensions/ui/components/card";
 import Link from "next/link";
-import { LucideIcon } from "lucide-react";
+import Image from "next/image";
+import { icons } from "lucide-react";
+
+import type { ToolCardData } from "@/lib/tool-card";
 
 interface ToolCardProps {
-  tool: {
-    id: string;
-    name: string;
-    description: string;
-    href: string;
-    icon?: LucideIcon;
-    imageUrl?: string;
-    rating?: number;
-    users?: string;
-    isPopular?: boolean;
-    isNew?: boolean;
-  };
-};
+  tool: ToolCardData;
+}
 
 const colors = [
   "rgb(239, 68, 68)",   // red-500
@@ -38,6 +30,9 @@ const colors = [
 export function ToolCard({ tool }: ToolCardProps) {
   const [borderColor, setBorderColor] = useState<string>("");
   const colorIndexRef = useRef(0);
+  const IconComponent = tool.iconName
+    ? (icons[tool.iconName as keyof typeof icons] ?? null)
+    : null;
 
   const handleMouseEnter = () => {
     // Cycle through colors sequentially instead of random
@@ -67,13 +62,15 @@ export function ToolCard({ tool }: ToolCardProps) {
           <div className="flex items-start justify-between gap-3 mb-2">
             <div className="flex items-start gap-3">
               {tool.imageUrl ? (
-                <img
+                <Image
                   src={tool.imageUrl}
                   alt={tool.name}
+                  width={32}
+                  height={32}
                   className="h-8 w-8 mt-0.5 rounded-md bg-white object-cover"
                 />
-              ) : tool.icon ? (
-                <tool.icon
+              ) : IconComponent ? (
+                <IconComponent
                   className="h-6 w-6 mt-0.5 transition-colors duration-300"
                   style={{ color: borderColor || undefined }}
                 />

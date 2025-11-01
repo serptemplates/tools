@@ -1,5 +1,4 @@
 import { Card } from "@serp-extensions/ui/components/card";
-import Link from "next/link";
 
 type FormatInfo = {
   name: string;

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 import { SITEMAP_PAGE_SIZE, buildToolEntries, escapeXml } from "@/lib/sitemap-utils";
 
-export function GET(request: Request): NextResponse {
+export async function GET(request: Request): Promise<NextResponse> {
   const { pathname } = new URL(request.url);
   const match = pathname.match(/\/extensions-sitemap-(\d+)\.xml$/);
   const pageNumber = match ? Number.parseInt(match[1] ?? "", 10) : NaN;
@@ -10,7 +10,7 @@ export function GET(request: Request): NextResponse {
     return new NextResponse("Not Found", { status: 404 });
   }
 
-  const entries = buildToolEntries();
+  const entries = await buildToolEntries();
   const totalPages = Math.max(1, Math.ceil(entries.length / SITEMAP_PAGE_SIZE));
 
   if (pageNumber > totalPages) {

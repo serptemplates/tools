@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Button } from "@serp-extensions/ui/components/button";
 import { useState } from "react";
@@ -7,11 +8,12 @@ import { useState } from "react";
 export function AppHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const navLinks = [
-    { href: "https://serp.co", label: "SERP" },
-    { href: "https://extensions.serp.co", label: "Extensions" },
-    { href: "https://tools.serp.co", label: "Tools" },
-    { href: "https://apps.serp.co", label: "Apps"},
+  const navLinks: Array<{ href: string; label: string; external?: boolean }> = [
+    { href: "/categories", label: "Categories" },
+    { href: "https://serp.co", label: "SERP", external: true },
+    { href: "https://extensions.serp.co", label: "Extensions", external: true },
+    { href: "https://tools.serp.co", label: "Tools", external: true },
+    { href: "https://apps.serp.co", label: "Apps", external: true },
   ];
 
   return (
@@ -28,16 +30,27 @@ export function AppHeader() {
             aria-label="Main navigation"
             className="hidden md:flex md:items-center md:space-x-6"
           >
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-                target="_blank"
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.external ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                >
+                  {link.label}
+                </Link>
+              ),
+            )}
           </nav>
 
           {/* Mobile Menu Button */}
@@ -65,16 +78,29 @@ export function AppHeader() {
           className={`border-t py-4 md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}
         >
           <div className="space-y-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="block px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-primary"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.external ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="block px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-primary"
+                  onClick={() => setIsMenuOpen(false)}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="block px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-primary"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ),
+            )}
           </div>
         </nav>
       </div>

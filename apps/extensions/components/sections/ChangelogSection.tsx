@@ -4,13 +4,13 @@ import {
   Sparkles,
   Zap,
   Bug,
-  Wrench,
   AlertCircle,
   CheckCircle,
   Info,
   GitCommit,
   Calendar
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 type ChangeType = 'feature' | 'improvement' | 'fix' | 'breaking' | 'deprecation' | 'performance' | 'security' | 'other';
 
@@ -25,7 +25,7 @@ type ChangelogSectionProps = {
 };
 
 // Icon and color mapping for change types
-const changeTypeConfig: Record<ChangeType, { icon: any; color: string; bgColor: string; label: string }> = {
+const changeTypeConfig: Record<ChangeType, { icon: LucideIcon; color: string; bgColor: string; label: string }> = {
   feature: {
     icon: Sparkles,
     color: 'text-purple-600',

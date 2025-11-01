@@ -11,8 +11,53 @@ type Props = {
   from: string;               // "pdf"
   to: string;                 // "jpg"
   accept?: string;            // optional override accept attr
-  videoEmbedId?: string;      // YouTube embed ID for video
 };
+
+type DropEffect =
+  | "splash"
+  | "bounce"
+  | "spin"
+  | "pulse"
+  | "shake"
+  | "flip"
+  | "zoom"
+  | "confetti"
+  | "rejected"
+  | "";
+
+type WorkerProgressMessage = {
+  type: "progress";
+  progress?: number;
+};
+
+type WorkerSuccessMessage = {
+  ok: true;
+  blob?: ArrayBuffer;
+  blobs?: ArrayBuffer[];
+};
+
+type WorkerErrorMessage = {
+  ok: false;
+  error?: string;
+};
+
+type WorkerMessage = WorkerProgressMessage | WorkerSuccessMessage | WorkerErrorMessage;
+
+const dropEffects: DropEffect[] = [
+  "splash",
+  "bounce",
+  "spin",
+  "pulse",
+  "shake",
+  "flip",
+  "zoom",
+  "confetti",
+  "rejected",
+];
+
+const videoInputFormats = ["mkv", "mp4", "webm", "avi", "mov"];
+const audioFormats = ["mp3", "wav", "ogg"];
+const videoOutputFormats = ["mp4", "webm", "avi", "mov", "gif"];
 
 export default function HeroConverter({
   title,
@@ -20,15 +65,12 @@ export default function HeroConverter({
   from,
   to,
   accept,
-  videoEmbedId,
 }: Props) {
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const dropRef = useRef<HTMLDivElement | null>(null);
   const workerRef = useRef<Worker | null>(null);
-  const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const [busy, setBusy] = useState(false);
   const [hint, setHint] = useState("or drop files here");
-  const [dropEffect, setDropEffect] = useState<string>("");
+  const [dropEffect, setDropEffect] = useState<DropEffect>("");
   const [currentFile, setCurrentFile] = useState<{
     name: string;
     progress: number;
@@ -78,7 +120,7 @@ export default function HeroConverter({
 
     for (const file of Array.from(files)) {
       // Check file size for video files
-      const isVideo = ["mkv", "mp4", "webm", "avi", "mov"].includes(from);
+      const isVideo = videoInputFormats.includes(from);
       const sizeMB = file.size / (1024 * 1024);
 
       if (isVideo && sizeMB > 100) {
@@ -94,37 +136,66 @@ export default function HeroConverter({
 
       const buf = await file.arrayBuffer();
       await new Promise<void>((resolve, reject) => {
-        w.onmessage = (ev: MessageEvent<any>) => {
-          // Handle progress messages
-          if (ev.data?.type === 'progress') {
+        w.onmessage = (ev: MessageEvent<WorkerMessage>) => {
+          if (!ev.data) {
             setCurrentFile({
               name: file.name,
-              progress: ev.data.progress || 0,
+              progress: 0,
+              status: 'error',
+              message: 'Malformed worker response',
+            });
+            return reject(new Error('Malformed worker response'));
+          }
+
+          const message = ev.data;
+
+          // Handle progress messages
+          if ("type" in message && message.type === 'progress') {
+            setCurrentFile({
+              name: file.name,
+              progress: message.progress ?? 0,
               status: 'processing',
               message: undefined
             });
             return;
           }
 
-          if (!ev.data?.ok) {
+          if ("ok" in message && message.ok === false) {
             setCurrentFile({
               name: file.name,
               progress: 0,
               status: 'error',
-              message: ev.data?.error || "Convert failed"
+              message: message.error || "Convert failed"
             });
-            return reject(new Error(ev.data?.error || "Convert failed"));
+            return reject(new Error(message.error || "Convert failed"));
           }
 
+          if (!("ok" in message) || !message.ok) {
+            setCurrentFile({
+              name: file.name,
+              progress: 0,
+              status: 'error',
+              message: 'Convert failed',
+            });
+            return reject(new Error('Convert failed'));
+          }
+
+          const payload = message;
+
           // Handle PDF pages (returns multiple blobs)
-          if (ev.data.blobs) {
-            const mimeType = to === "png" ? "image/png" : to === "jpg" || to === "jpeg" ? "image/jpeg" : "image/webp";
-            ev.data.blobs.forEach((buf: ArrayBuffer, i: number) => {
-              const blob = new Blob([buf], { type: mimeType });
-              const name = file.name.replace(/\.[^.]+$/, "") + `_page${i + 1}.${to}`;
+          if ("blobs" in payload && payload.blobs && payload.blobs.length) {
+            const mimeType =
+              to === "png"
+                ? "image/png"
+                : to === "jpg" || to === "jpeg"
+                  ? "image/jpeg"
+                  : "image/webp";
+            payload.blobs.forEach((pageBuf: ArrayBuffer, index: number) => {
+              const blob = new Blob([pageBuf], { type: mimeType });
+              const name = file.name.replace(/\.[^.]+$/, "") + `_page${index + 1}.${to}`;
               saveBlob(blob, name);
             });
-          } else {
+          } else if ("blob" in payload && payload.blob) {
             // Handle single file conversion (image/video/audio)
             let mimeType = "application/octet-stream";
             if (to === "png") mimeType = "image/png";
@@ -140,7 +211,7 @@ export default function HeroConverter({
             else if (to === "ogg") mimeType = "audio/ogg";
 
             // Ensure we have valid data
-            if (!ev.data.blob || ev.data.blob.byteLength === 0) {
+            if (payload.blob.byteLength === 0) {
               console.error('Received empty blob data');
               setCurrentFile({
                 name: file.name,
@@ -151,7 +222,7 @@ export default function HeroConverter({
               return reject(new Error('Empty output'));
             }
 
-            const blob = new Blob([ev.data.blob], { type: mimeType });
+            const blob = new Blob([payload.blob], { type: mimeType });
             const name = file.name.replace(/\.[^.]+$/, "") + "." + to;
             console.log(`Saving ${name}, size: ${blob.size} bytes, type: ${mimeType}`);
             saveBlob(blob, name);
@@ -162,11 +233,18 @@ export default function HeroConverter({
               status: 'completed',
               message: 'Conversion complete!'
             });
+          } else {
+            setCurrentFile({
+              name: file.name,
+              progress: 0,
+              status: 'error',
+              message: 'Missing worker payload',
+            });
+            return reject(new Error('Missing worker payload'));
           }
           resolve();
         };
-        const isVideo = ["mkv", "mp4", "webm", "avi", "mov"].includes(from) ||
-          ["mp4", "webm", "avi", "mov", "gif", "mp3", "wav", "ogg"].includes(to);
+        const isVideo = videoInputFormats.includes(from) || videoOutputFormats.includes(to) || audioFormats.includes(to);
         const op = from === "pdf" ? "pdf-pages" : isVideo ? "video" : "raster";
         w.postMessage(
           op === "pdf-pages" ? { op, to, buf } :
@@ -188,26 +266,14 @@ export default function HeroConverter({
     e.preventDefault();
 
     // Trigger fun effect - cycle through based on time
-    const effects = [
-      "splash",
-      "bounce",
-      "spin",
-      "pulse",
-      "shake",
-      "flip",
-      "zoom",
-      "confetti",
-      "rejected"
-    ];
     // Use timestamp to cycle through effects deterministically
-    const effectIndex = Math.floor(Date.now() / 1000) % effects.length;
-    const effect = effects[effectIndex];
-    if (effect) {
-      setDropEffect(effect);
-    }
+    const effectIndex = Math.floor(Date.now() / 1000) % dropEffects.length;
+    const effect = dropEffects[effectIndex];
+    const effectToUse = (effect ?? "") as DropEffect;
+    setDropEffect(effectToUse);
 
     // Clear effect after animation
-    setTimeout(() => setDropEffect(""), 1000);
+    window.setTimeout(() => setDropEffect(""), 1000);
 
     setHint("Converting…");
     handleFiles(e.dataTransfer.files).finally(() => setHint("or drop files here"));
@@ -216,7 +282,7 @@ export default function HeroConverter({
   // Clear drop effect when component unmounts or effect changes
   useEffect(() => {
     if (dropEffect) {
-      const timer = setTimeout(() => setDropEffect(""), 1000);
+      const timer = window.setTimeout(() => setDropEffect(""), 1000);
       return () => clearTimeout(timer);
     }
   }, [dropEffect]);
@@ -232,9 +298,6 @@ export default function HeroConverter({
                 : from === "avi" ? ".avi"
                   : from === "mov" ? ".mov"
                     : `.${from}`);
-
-  const isVideoTool = ["mkv", "mp4", "webm", "avi", "mov"].includes(from) ||
-    ["mp4", "webm", "avi", "mov", "gif", "mp3", "wav", "ogg"].includes(to);
 
   return (
     <section className="w-full bg-white">
@@ -252,7 +315,6 @@ export default function HeroConverter({
           </div>
         )}
         <div
-          ref={dropRef}
           onDragEnter={onDrag}
           onDragOver={onDrag}
           onDragLeave={onDrag}
@@ -267,6 +329,9 @@ export default function HeroConverter({
         >
           <div className="flex flex-col items-center space-y-6">
             <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">{title}</h1>
+            {subtitle && (
+              <p className="max-w-2xl text-base text-muted-foreground">{subtitle}</p>
+            )}
 
             <svg
               className="w-12 h-12"

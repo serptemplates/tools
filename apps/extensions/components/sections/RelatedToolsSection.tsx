@@ -1,31 +1,34 @@
-import Link from "next/link";
-import { Card } from "@serp-extensions/ui/components/card";
-import extensionsData from "@serp-extensions/app-core/data/extensions.json";
+"use client";
 
-type Tool = {
-  id: string;
-  name: string;
-  description: string;
-  url?: string;
-  chromeStoreUrl?: string;
-  category?: string;
-  isActive: boolean;
-};
+import { useMemo } from "react";
+import Link from "next/link";
+import extensionsData from "@serp-extensions/app-core/data/extensions.json";
+import type { ExtensionRecord } from "@serp-extensions/app-core/lib/catalog";
+
+import { ToolCard } from "@/components/ToolCard";
+import { mapExtensionToToolCard } from "@/lib/tool-card";
 
 type RelatedToolsSectionProps = {
-  currentFrom: string;
-  currentTo: string;
-  currentPath: string; // to exclude current tool
+  currentPath?: string;
 };
 
-export function RelatedToolsSection({ currentFrom, currentTo, currentPath }: RelatedToolsSectionProps) {
-  const allTools = (extensionsData as any[]).filter(tool => tool.isActive);
+export function RelatedToolsSection({ currentPath }: RelatedToolsSectionProps) {
+  const allTools = useMemo(
+    () => (extensionsData as ExtensionRecord[]).filter((tool) => tool.isActive),
+    []
+  );
 
   // Show up to 5 random other extensions
-  const relatedTools = allTools
-    .filter(tool => tool.chromeStoreUrl !== currentPath && tool.url !== currentPath)
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 5);
+  const relatedTools = useMemo(() => {
+    return allTools
+      .filter((tool) => {
+        if (!currentPath) return true;
+        const extensionPath = `/extensions/${tool.slug}/${tool.id}`;
+        return extensionPath !== currentPath;
+      })
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 6);
+  }, [allTools, currentPath]);
 
   // If no related tools, don't render the section
   if (relatedTools.length === 0) {
@@ -33,25 +36,31 @@ export function RelatedToolsSection({ currentFrom, currentTo, currentPath }: Rel
   }
 
   return (
-    <section className="py-16 bg-gradient-to-b from-white to-gray-50">
-      <div className="mx-auto max-w-7xl px-6">
-        <h2 className="text-2xl font-bold text-center mb-8 text-gray-900">
-          Related Extensions
-        </h2>
+    <section className="border-t border-gray-200 bg-gray-50 py-16">
+      <div className="mx-auto max-w-6xl px-6 md:px-8">
+        <div className="mb-6 flex items-center justify-between gap-4">
+          <h2 className="text-2xl font-semibold text-slate-900">Related Extensions</h2>
+          <Link
+            href="/categories"
+            className="hidden text-xs font-semibold uppercase tracking-[0.16em] text-slate-500 transition-colors hover:text-slate-700 md:inline"
+          >
+            Browse all
+          </Link>
+        </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {relatedTools.map((tool) => (
-            <Link key={tool.id} href={`/extensions/${tool.slug}/${tool.id}`}>
-              <Card className="p-3 hover:shadow-md transition-all duration-200 cursor-pointer border-gray-200 hover:border-blue-300 hover:bg-blue-50/50">
-                <h4 className="font-semibold text-sm text-gray-900 mb-0.5 truncate">
-                  {tool.name}
-                </h4>
-                <p className="text-xs text-gray-600 line-clamp-1">
-                  {tool.description}
-                </p>
-              </Card>
-            </Link>
+            <ToolCard key={tool.id} tool={mapExtensionToToolCard(tool)} />
           ))}
+        </div>
+
+        <div className="mt-10 text-center md:hidden">
+          <Link
+            href="/categories"
+            className="text-sm font-semibold text-blue-600 transition-colors hover:text-blue-700"
+          >
+            Browse all extensions →
+          </Link>
         </div>
       </div>
     </section>

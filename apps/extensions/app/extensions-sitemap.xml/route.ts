@@ -4,8 +4,8 @@ import { buildToolEntries, escapeXml } from "@/lib/sitemap-utils";
 
 export const dynamic = "force-static";
 
-export function GET(): NextResponse {
-  const entries = buildToolEntries();
+export async function GET(): Promise<NextResponse> {
+  const entries = await buildToolEntries();
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

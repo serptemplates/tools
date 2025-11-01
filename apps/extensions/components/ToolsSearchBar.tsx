@@ -15,6 +15,7 @@ type ToolsSearchBarProps = {
   categories: Category[];
   selectedCategory: string;
   setSelectedCategory: (category: string) => void;
+  enableCategoryFilter?: boolean;
 };
 
 export function ToolsSearchBar({
@@ -23,6 +24,7 @@ export function ToolsSearchBar({
   categories,
   selectedCategory,
   setSelectedCategory,
+  enableCategoryFilter = true,
 }: ToolsSearchBarProps) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -38,12 +40,13 @@ export function ToolsSearchBar({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const showCategoryFilter = enableCategoryFilter && categories.length > 0;
   const selectedCategoryName = categories.find(c => c.id === selectedCategory)?.name || "All Tools";
 
   return (
     <div className="mb-8">
       {/* Search and Filters Bar - All on one line */}
-      <div className="flex flex-col lg:flex-row items-center justify-center gap-4">
+      <div className="flex flex-col items-center justify-center gap-4 lg:flex-row">
         {/* Search Input */}
         <div className="relative flex-1 max-w-md">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
@@ -56,41 +59,42 @@ export function ToolsSearchBar({
           />
         </div>
 
-        {/* Category Dropdown */}
-        <div ref={dropdownRef} className="relative w-full lg:w-64">
-          <div
-            onClick={() => setDropdownOpen(!dropdownOpen)}
-            className="w-full h-[48px] px-4 py-3 bg-white border border-gray-200 rounded-lg cursor-pointer hover:border-gray-300 transition-colors flex items-center justify-between"
-          >
-            <span className={selectedCategory === 'all' ? 'text-gray-500' : 'text-gray-900'}>
-              {selectedCategoryName}
-            </span>
-            <ChevronDown className={`h-4 w-4 text-gray-400 transition-transform ${dropdownOpen ? 'rotate-180' : ''
-              }`} />
-          </div>
-
-          {dropdownOpen && (
-            <div className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-64 overflow-auto">
-              {categories.map((category) => (
-                <button
-                  key={category.id}
-                  onClick={() => {
-                    setSelectedCategory(category.id);
-                    setDropdownOpen(false);
-                  }}
-                  className={`w-full px-4 py-2 text-left hover:bg-gray-50 transition-colors flex items-center justify-between ${selectedCategory === category.id ? 'bg-blue-50 text-blue-600' : ''
-                    }`}
-                >
-                  <span>{category.name}</span>
-                  <span className="text-sm text-gray-500">({category.count})</span>
-                </button>
-              ))}
+        {showCategoryFilter && (
+          <div ref={dropdownRef} className="relative w-full lg:w-64">
+            <div
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              className="flex h-[48px] w-full cursor-pointer items-center justify-between rounded-lg border border-gray-200 bg-white px-4 py-3 transition-colors hover:border-gray-300"
+            >
+              <span className={selectedCategory === 'all' ? 'text-gray-500' : 'text-gray-900'}>
+                {selectedCategoryName}
+              </span>
+              <ChevronDown
+                className={`h-4 w-4 text-gray-400 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`}
+              />
             </div>
-          )}
-        </div>
+
+            {dropdownOpen && (
+              <div className="absolute z-10 mt-1 max-h-64 w-full overflow-auto rounded-lg border border-gray-200 bg-white shadow-lg">
+                {categories.map((category) => (
+                  <button
+                    key={category.id}
+                    onClick={() => {
+                      setSelectedCategory(category.id);
+                      setDropdownOpen(false);
+                    }}
+                    className={`flex w-full items-center justify-between px-4 py-2 text-left transition-colors hover:bg-gray-50 ${selectedCategory === category.id ? 'bg-blue-50 text-blue-600' : ''}`}
+                  >
+                    <span>{category.name}</span>
+                    <span className="text-sm text-gray-500">({category.count})</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Clear Filters Button - only show if filters active */}
-        {(searchQuery || selectedCategory !== 'all') && (
+        {(searchQuery || (showCategoryFilter && selectedCategory !== 'all')) && (
           <button
             onClick={() => {
               setSearchQuery('');

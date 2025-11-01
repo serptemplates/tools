@@ -1,4 +1,4 @@
-import extensionsData from '@serp-extensions/app-core/data/extensions.json';
+import { getActiveExtensions } from "@serp-extensions/app-core/lib/catalog";
 
 export const SITEMAP_PAGE_SIZE = 20000;
 
@@ -41,16 +41,16 @@ export function buildCorePageEntries(): SitemapEntry[] {
   ];
 }
 
-export function buildToolEntries(): SitemapEntry[] {
+export async function buildToolEntries(): Promise<SitemapEntry[]> {
   const baseUrl = resolveBaseUrl();
   const now = new Date();
 
-  return (extensionsData as any[])
-    .filter((ext: any) => ext.isActive)
-    .map((ext: any) => ({
-      loc: `${baseUrl}/extensions/${ext.slug}/${ext.id}`,
-      lastModified: ext.updated ? new Date(ext.updated) : now,
-      changeFrequency: "weekly",
-      priority: ext.isPopular ? 0.8 : 0.6,
-    }));
+  const extensions = await getActiveExtensions();
+
+  return extensions.map((extension) => ({
+    loc: `${baseUrl}/extensions/${extension.slug}/${extension.id}`,
+    lastModified: extension.updated ? new Date(extension.updated) : now,
+    changeFrequency: "weekly",
+    priority: extension.isPopular ? 0.8 : 0.6,
+  }));
 }

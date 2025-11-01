@@ -10,7 +10,7 @@ import {
 
 export const dynamic = "force-static";
 
-export function GET(): NextResponse {
+export async function GET(): Promise<NextResponse> {
   const baseUrl = resolveBaseUrl();
   const now = new Date();
 
@@ -20,7 +20,7 @@ export function GET(): NextResponse {
       return !latest || entry.lastModified > latest ? entry.lastModified : latest;
     }, null) ?? now;
 
-  const toolEntries = buildToolEntries();
+  const toolEntries = await buildToolEntries();
   const totalExtensionPages = toolEntries.length
     ? Math.max(1, Math.ceil(toolEntries.length / SITEMAP_PAGE_SIZE))
     : 0;
