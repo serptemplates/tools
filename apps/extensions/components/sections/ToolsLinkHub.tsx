@@ -126,7 +126,7 @@ export function ToolsLinkHub({ relatedTools }: ToolsLinkHubProps) {
     <section className="py-16 bg-gradient-to-b from-gray-100 to-gray-50 border-t border-gray-200">
       <div className="mx-auto max-w-7xl px-6">
         <h2 className="text-2xl font-bold text-center mb-10 text-gray-900">
-          All Conversion Tools
+          Extensions by Category
         </h2>
 
         <div className="space-y-12">

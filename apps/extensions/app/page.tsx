@@ -147,7 +147,7 @@ export default function HomePage() {
         <div className="container relative py-16 md:py-24 px-4">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-              SERP Tools
+              SERP Extensions
             </h1>
           </div>
         </div>
