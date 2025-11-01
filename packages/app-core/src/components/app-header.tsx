@@ -13,7 +13,6 @@ export function AppHeader() {
     { href: "https://tools.serp.co", label: "Tools", external: true },
     { href: "https://apps.serp.co", label: "Apps", external: true },
     { href: "https://filetypes.serp.co", label: "Apps", external: true },
-
   ];
 
   return (
