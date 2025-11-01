@@ -25,6 +25,7 @@
   "devDependencies": {
     "@serp-tools/eslint-config": "workspace:^",
     "@serp-tools/typescript-config": "workspace:*",
+    "@types/minimatch": "^5.1.2",
     "@types/node": "^20.19.9",
     "@types/react": "^19.1.11",
     "@types/react-dom": "^19.1.8",
