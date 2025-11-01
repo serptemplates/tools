@@ -1,0 +1,6 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "pnpm --filter extensions build",
+  "installCommand": "pnpm install",
+  "outputDirectory": "apps/extensions/.next"
+}
