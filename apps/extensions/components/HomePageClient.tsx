@@ -65,8 +65,6 @@ export function HomePageClient({ extensions, categories }: HomePageClientProps) 
     [extensions]
   );
 
-  const tools = useMemo(() => entries.map((entry) => entry.tool), [entries]);
-
   const categoryFilters = useMemo(() => {
     const items = categories
       .map((category) => ({

@@ -8,6 +8,7 @@ export function AppHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
+    { href: "https://serp.co", label: "SERP" },
     { href: "https://extensions.serp.co", label: "Extensions" },
     { href: "https://tools.serp.co", label: "Tools" },
     { href: "https://apps.serp.co", label: "Apps"},

@@ -1,6 +1,6 @@
 import extensionsData from '@serp-extensions/app-core/data/extensions.json';
 
-export const SITEMAP_PAGE_SIZE = 50000;
+export const SITEMAP_PAGE_SIZE = 20000;
 
 interface SitemapEntry {
   loc: string;
@@ -10,7 +10,12 @@ interface SitemapEntry {
 }
 
 export function resolveBaseUrl(): string {
-  return process.env.NEXT_PUBLIC_BASE_URL || "https://example.com";
+  const domain =
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    process.env.NEXT_PUBLIC_BASE_URL ??
+    "https://extensions.serp.co";
+
+  return domain.replace(/\/$/, "");
 }
 
 export function escapeXml(str: string): string {

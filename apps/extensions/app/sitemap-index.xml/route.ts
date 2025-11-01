@@ -21,7 +21,7 @@ export function GET(): NextResponse {
     }, null) ?? now;
 
   const toolEntries = buildToolEntries();
-  const totalToolPages = toolEntries.length
+  const totalExtensionPages = toolEntries.length
     ? Math.max(1, Math.ceil(toolEntries.length / SITEMAP_PAGE_SIZE))
     : 0;
   const toolsLastMod = toolEntries.length
@@ -39,16 +39,16 @@ export function GET(): NextResponse {
     });
   }
 
-  if (totalToolPages > 0 && toolsLastMod) {
+  if (totalExtensionPages > 0 && toolsLastMod) {
     sitemapEntries.push({
-      loc: `${baseUrl}/tools-sitemap.xml`,
+      loc: `${baseUrl}/extensions-sitemap.xml`,
       lastmod: toolsLastMod.toISOString(),
     });
 
     // Only needed if we ever paginate beyond page 1
-    for (let page = 2; page <= totalToolPages; page += 1) {
+    for (let page = 2; page <= totalExtensionPages; page += 1) {
       sitemapEntries.push({
-        loc: `${baseUrl}/tools-sitemap-${page}.xml`,
+        loc: `${baseUrl}/extensions-sitemap-${page}.xml`,
         lastmod: toolsLastMod.toISOString(),
       });
     }

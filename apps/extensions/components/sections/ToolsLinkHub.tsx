@@ -2,125 +2,69 @@
 import Link from "next/link";
 import extensionsData from '@serp-extensions/app-core/data/extensions.json';
 
-type ToolsLinkHubProps = {
-  relatedTools?: Array<{
-    title: string;
-    href: string;
-  }>;
-};
-
-interface Tool {
+type ExtensionSummary = {
   id: string;
+  slug: string;
   name: string;
-  url?: string;
-  chromeStoreUrl?: string;
   category?: string;
-  tags?: string[];
-  isActive: boolean;
-}
-
-// Define better categories based on format types
-const CATEGORY_MAP: Record<string, string> = {
-  'heic': 'Image Formats',
-  'jpg': 'Image Formats',
-  'jpeg': 'Image Formats',
-  'png': 'Image Formats',
-  'webp': 'Image Formats',
-  'gif': 'Image Formats',
-  'bmp': 'Image Formats',
-  'svg': 'Image Formats',
-  'ico': 'Image Formats',
-  'tiff': 'Image Formats',
-
-  'mp4': 'Video Formats',
-  'mkv': 'Video Formats',
-  'avi': 'Video Formats',
-  'mov': 'Video Formats',
-  'webm': 'Video Formats',
-  'flv': 'Video Formats',
-  'wmv': 'Video Formats',
-  'mpeg': 'Video Formats',
-  'm4v': 'Video Formats',
-  'ts': 'Video Formats',
-
-  'mp3': 'Audio Formats',
-  'wav': 'Audio Formats',
-  'ogg': 'Audio Formats',
-  'aac': 'Audio Formats',
-  'm4a': 'Audio Formats',
-  'flac': 'Audio Formats',
-  'opus': 'Audio Formats',
-
-  'pdf': 'Document Formats',
-  'doc': 'Document Formats',
-  'docx': 'Document Formats',
-  'txt': 'Document Formats',
-  'rtf': 'Document Formats',
-
-  'csv': 'Data Formats',
-  'json': 'Data Formats',
-  'xml': 'Data Formats',
-  'yaml': 'Data Formats',
-
-  'zip': 'Archive Formats',
-  'rar': 'Archive Formats',
-  '7z': 'Archive Formats',
-  'tar': 'Archive Formats',
-  'gz': 'Archive Formats',
+  chromeStoreUrl?: string;
+  url?: string;
+  isActive?: boolean;
 };
 
-// Generate dynamic tools from extensions.json
-function generateAllTools() {
-  const allTools = (extensionsData as Tool[]).filter(tool => tool.isActive);
+type ToolsLinkHubProps = {
+  extensions?: ExtensionSummary[];
+};
 
-  // Group tools by category
-  const groupedTools = allTools.reduce((groups, tool) => {
-    const category = tool.category || 'Other Extensions';
+type CategoryGroup = Record<string, Array<{ title: string; href: string }>>;
 
-    const categoryGroup = groups[category] || [];
-    categoryGroup.push({
-      title: tool.name,
-      href: tool.chromeStoreUrl || tool.url || '#'
-    });
-    groups[category] = categoryGroup;
-    return groups;
-  }, {} as Record<string, Array<{ title: string; href: string }>>);
+function formatCategoryLabel(value?: string): string {
+  if (!value) {
+    return "Other Extensions";
+  }
 
-  // Sort tools within each group by name
-  Object.values(groupedTools).forEach(tools => {
-    tools.sort((a, b) => a.title.localeCompare(b.title));
-  });
-
-  // Sort categories
-  const categoryOrder = [
-    'Image Formats',
-    'Video Formats',
-    'Audio Formats',
-    'Document Formats',
-    'Data Formats',
-    'Archive Formats',
-    'Other Tools'
-  ];
-
-  const sortedGroups: Record<string, Array<{ title: string; href: string }>> = {};
-  categoryOrder.forEach(cat => {
-    if (groupedTools[cat]) {
-      sortedGroups[cat] = groupedTools[cat];
-    }
-  });
-
-  // Add any remaining categories
-  Object.keys(groupedTools).forEach(cat => {
-    if (!sortedGroups[cat] && groupedTools[cat]) {
-      sortedGroups[cat] = groupedTools[cat];
-    }
-  });
-
-  return sortedGroups;
+  return value
+    .split(/[-_]/)
+    .map((segment) => segment.charAt(0).toUpperCase() + segment.slice(1))
+    .join(" ");
 }
 
-export function ToolsLinkHub({ relatedTools }: ToolsLinkHubProps) {
-  const allTools = generateAllTools();
+function buildGroups(source: ExtensionSummary[]): CategoryGroup {
+  return source.reduce<CategoryGroup>((groups, extension) => {
+    const key = formatCategoryLabel(extension.category);
+    const next = groups[key] ?? [];
+    const href = `/extensions/${extension.slug}/${extension.id}`;
+
+    next.push({
+      title: extension.name,
+      href: extension.chromeStoreUrl ?? extension.url ?? href,
+    });
+
+    groups[key] = next;
+    return groups;
+  }, {});
+}
+
+function sortGroups(groups: CategoryGroup): CategoryGroup {
+  const sortedEntries = Object.entries(groups)
+    .map(([category, items]) => ({
+      category,
+      items: [...items].sort((a, b) => a.title.localeCompare(b.title)),
+    }))
+    .sort((a, b) => a.category.localeCompare(b.category));
+
+  return sortedEntries.reduce<CategoryGroup>((acc, entry) => {
+    acc[entry.category] = entry.items;
+    return acc;
+  }, {});
+}
+
+export function ToolsLinkHub({ extensions }: ToolsLinkHubProps) {
+  const dataset = extensions && extensions.length > 0
+    ? extensions
+    : ((extensionsData as ExtensionSummary[]).filter((extension) => extension.isActive !== false));
+
+  const grouped = sortGroups(buildGroups(dataset));
 
   return (
     <section className="py-16 bg-gradient-to-b from-gray-100 to-gray-50 border-t border-gray-200">
@@ -130,7 +74,7 @@ export function ToolsLinkHub({ relatedTools }: ToolsLinkHubProps) {
         </h2>
 
         <div className="space-y-12">
-          {Object.entries(allTools).map(([category, tools]) => {
+          {Object.entries(grouped).map(([category, tools]) => {
             // For categories with many tools, use a more compact multi-column layout
             const isLargeCategory = tools.length > 15;
 

@@ -4,7 +4,7 @@ import { SITEMAP_PAGE_SIZE, buildToolEntries, escapeXml } from "@/lib/sitemap-ut
 
 export function GET(request: Request): NextResponse {
   const { pathname } = new URL(request.url);
-  const match = pathname.match(/\/tools-sitemap-(\d+)\.xml$/);
+  const match = pathname.match(/\/extensions-sitemap-(\d+)\.xml$/);
   const pageNumber = match ? Number.parseInt(match[1] ?? "", 10) : NaN;
   if (!Number.isFinite(pageNumber) || pageNumber < 2) {
     return new NextResponse("Not Found", { status: 404 });
@@ -20,17 +20,20 @@ export function GET(request: Request): NextResponse {
   const start = (pageNumber - 1) * SITEMAP_PAGE_SIZE;
   const slice = entries.slice(start, start + SITEMAP_PAGE_SIZE);
 
-  const xml = `<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${slice
-  .map((entry) => `  <url>
-    <loc>${escapeXml(entry.loc)}</loc>
-    <lastmod>${entry.lastModified.toISOString()}</lastmod>
-${entry.changeFrequency ? `    <changefreq>${entry.changeFrequency}</changefreq>\n` : ""}${
-    entry.priority !== undefined
-      ? `    <priority>${entry.priority.toFixed(1)}</priority>\n`
-      : ""
-  }  </url>`)
+  .map((entry) => {
+    const changefreq = entry.changeFrequency
+      ? `    <changefreq>${entry.changeFrequency}</changefreq>\n`
+      : "";
+    const priority =
+      entry.priority !== undefined
+        ? `    <priority>${entry.priority.toFixed(1)}</priority>\n`
+        : "";
+
+    return `  <url>\n    <loc>${escapeXml(entry.loc)}</loc>\n    <lastmod>${entry.lastModified.toISOString()}</lastmod>\n${changefreq}${priority}  </url>`;
+  })
   .join("\n")}
 </urlset>`;
 
