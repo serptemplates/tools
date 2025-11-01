@@ -15,7 +15,7 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "@neondatabase/serverless": "^0.10.4",
-    "drizzle-orm": "^0.38.5"
+    "drizzle-orm": "^0.44.7"
   },
   "devDependencies": {
     "@types/node": "^20.19.9",
