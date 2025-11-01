@@ -6,7 +6,9 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+  "audit:images": "node scripts/audit-images.mjs",
+  "fetch:store-assets": "node scripts/fetch-store-assets.mjs"
   },
   "devDependencies": {
     "@serp-extensions/eslint-config": "workspace:*",
