@@ -1,17 +1,18 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
-import { Button } from "@serp-extensions/ui/components/button";
+import { Button } from "@serp-tools/ui/components/button";
 import { useState } from "react";
 
 export function AppHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const navLinks = [
-    { href: "https://serp.co", label: "SERP" },
-    { href: "https://extensions.serp.co", label: "Extensions" },
-    { href: "https://tools.serp.co", label: "Tools" },
-    { href: "https://apps.serp.co", label: "Apps"},
+ const navLinks: Array<{ href: string; label: string; external?: boolean }> = [
+    { href: "https://serp.co", label: "SERP", external: true },
+    { href: "https://extensions.serp.co", label: "Extensions", external: true },
+    { href: "https://tools.serp.co", label: "Tools", external: true },
+    { href: "https://apps.serp.co", label: "Apps", external: true },
+    { href: "https://filetypes.serp.co", label: "Filetypes", external: true },
   ];
 
   return (
@@ -33,7 +34,6 @@ export function AppHeader() {
                 key={link.href}
                 href={link.href}
                 className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-                target="_blank"
               >
                 {link.label}
               </a>

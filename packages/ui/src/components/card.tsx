@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { cn } from "@serp-extensions/ui/lib/utils";
+import { cn } from "@serp-tools/ui/lib/utils";
 
 function Card({ className, ...props }: React.ComponentProps<"div">) {
   return (
