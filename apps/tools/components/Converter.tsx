@@ -8,8 +8,11 @@ import { Slider } from "@serp-tools/ui/components/slider";
 import { Separator } from "@serp-tools/ui/components/separator";
 import { Upload, Trash2, File as FileIcon, Loader2 } from "lucide-react";
 import { saveBlob } from "./saveAs";
+import { beginToolRun } from "@/lib/telemetry";
+import { convertWithWorker, getOutputMimeType } from "@/lib/convert/workerClient";
 
 type ConvertProps = {
+  toolId?: string;
   title: string;              // "HEIC to JPG"
   from: string;               // "heic"
   to: string;                 // "jpg"
@@ -45,6 +48,7 @@ function extAccept(from: string, extra?: string[]) {
 }
 
 export default function Converter({
+  toolId,
   title,
   from,
   to,
@@ -107,40 +111,51 @@ export default function Converter({
         x.id === item.id ? { ...x, status: "converting" as const } : x
       ));
 
-      try {
-        await new Promise<void>((resolve, reject) => {
-          const handleMessage = (e: MessageEvent) => {
-            if (e.data.id === item.id) {
-              if (e.data.error) {
-                setItems(prev => prev.map(x =>
-                  x.id === item.id
-                    ? { ...x, status: "error" as const, message: e.data.error }
-                    : x
-                ));
-                reject(e.data.error);
-              } else if (e.data.blob) {
-                const outputName = item.file.name.replace(/\.[^.]+$/, `.${to}`);
-                saveBlob(e.data.blob, outputName);
-                setItems(prev => prev.map(x =>
-                  x.id === item.id ? { ...x, status: "done" as const } : x
-                ));
-                resolve();
-              }
-              worker.removeEventListener("message", handleMessage);
-            }
-          };
+      const run = beginToolRun({
+        toolId: toolId ?? `${from}-to-${to}`,
+        from,
+        to,
+        inputBytes: item.file.size,
+        metadata: { fileName: item.file.name },
+      });
 
-          worker.addEventListener("message", handleMessage);
-          worker.postMessage({
-            id: item.id,
-            file: item.file,
-            from,
-            to,
-            quality: to === "jpg" || to === "jpeg" ? quality / 100 : undefined,
-          });
+      try {
+        const buf = await item.file.arrayBuffer();
+        const result = await convertWithWorker({
+          worker,
+          from,
+          to,
+          buf,
+          quality: to === "jpg" || to === "jpeg" ? quality / 100 : undefined,
         });
+
+        if (result.kind === "multiple") {
+          const mimeType = getOutputMimeType(to);
+          result.buffers.forEach((buffer, i) => {
+            const blob = new Blob([buffer], { type: mimeType });
+            const name = item.file.name.replace(/\.[^.]+$/, "") + `_page${i + 1}.${to}`;
+            saveBlob(blob, name);
+          });
+          run.finishSuccess({
+            outputBytes: result.buffers.reduce((sum, buffer) => sum + buffer.byteLength, 0),
+          });
+        } else {
+          const mimeType = getOutputMimeType(to);
+          const blob = new Blob([result.buffer], { type: mimeType });
+          const outputName = item.file.name.replace(/\.[^.]+$/, `.${to}`);
+          saveBlob(blob, outputName);
+          run.finishSuccess({ outputBytes: result.buffer.byteLength });
+        }
+
+        setItems(prev => prev.map(x =>
+          x.id === item.id ? { ...x, status: "done" as const } : x
+        ));
       } catch (err) {
         console.error(`Error converting ${item.file.name}:`, err);
+        run.finishFailure({ errorCode: "convert_failed" });
+        setItems(prev => prev.map(x =>
+          x.id === item.id ? { ...x, status: "error" as const, message: "Convert failed" } : x
+        ));
       }
 
       done++;

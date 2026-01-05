@@ -1,46 +1,99 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Card } from "@serp-tools/ui/components/card";
 import { Badge } from "@serp-tools/ui/components/badge";
+import { beginToolRun } from "@/lib/telemetry";
+
+type Stats = {
+  characters: number;
+  charactersNoSpaces: number;
+  words: number;
+  sentences: number;
+  paragraphs: number;
+  lines: number;
+  readingTime: number;
+  speakingTime: number;
+};
+
+function computeStats(text: string): Stats {
+  const characters = text.length;
+  const charactersNoSpaces = text.replace(/\s/g, "").length;
+  const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+  const sentences = text.split(/[.!?]+/).filter((s) => s.trim().length > 0).length;
+  const paragraphs = text.split(/\n\n+/).filter((p) => p.trim().length > 0).length;
+  const lines = text.split(/\n/).length;
+  const readingTime = Math.ceil(words / 200);
+  const speakingTime = Math.ceil(words / 150);
+
+  return {
+    characters,
+    charactersNoSpaces,
+    words,
+    sentences,
+    paragraphs,
+    lines,
+    readingTime,
+    speakingTime,
+  };
+}
 
 export default function CharacterCounter() {
   const [text, setText] = useState("");
-  const [stats, setStats] = useState({
-    characters: 0,
-    charactersNoSpaces: 0,
-    words: 0,
-    sentences: 0,
-    paragraphs: 0,
-    lines: 0,
-    readingTime: 0,
-    speakingTime: 0,
-  });
+  const [stats, setStats] = useState<Stats>(() => computeStats(""));
+  const lastTelemetryAt = useRef(0);
+  const telemetryTimer = useRef<number | null>(null);
 
   useEffect(() => {
-    // Calculate stats
-    const characters = text.length;
-    const charactersNoSpaces = text.replace(/\s/g, "").length;
-    const words = text.trim() ? text.trim().split(/\s+/).length : 0;
-    const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
-    const paragraphs = text.split(/\n\n+/).filter(p => p.trim().length > 0).length;
-    const lines = text.split(/\n/).length;
+    setStats(computeStats(text));
+  }, [text]);
 
-    // Average reading speed: 200 words per minute
-    const readingTime = Math.ceil(words / 200);
-    // Average speaking speed: 150 words per minute
-    const speakingTime = Math.ceil(words / 150);
+  useEffect(() => {
+    if (!text.trim()) {
+      if (telemetryTimer.current) {
+        window.clearTimeout(telemetryTimer.current);
+        telemetryTimer.current = null;
+      }
+      return;
+    }
 
-    setStats({
-      characters,
-      charactersNoSpaces,
-      words,
-      sentences,
-      paragraphs,
-      lines,
-      readingTime,
-      speakingTime,
-    });
+    if (telemetryTimer.current) {
+      window.clearTimeout(telemetryTimer.current);
+    }
+
+    telemetryTimer.current = window.setTimeout(() => {
+      const now = Date.now();
+      if (now - lastTelemetryAt.current < 10000) return;
+
+      const snapshot = computeStats(text);
+      const inputBytes = new Blob([text]).size;
+      const run = beginToolRun({
+        toolId: "character-counter",
+        inputBytes,
+        metadata: {
+          characters: snapshot.characters,
+          words: snapshot.words,
+          sentences: snapshot.sentences,
+          paragraphs: snapshot.paragraphs,
+          lines: snapshot.lines,
+        },
+      });
+      run.finishSuccess({
+        outputBytes: inputBytes,
+        metadata: {
+          readingTime: snapshot.readingTime,
+          speakingTime: snapshot.speakingTime,
+        },
+      });
+      lastTelemetryAt.current = now;
+    }, 800);
+
+    return () => {
+      if (telemetryTimer.current) {
+        window.clearTimeout(telemetryTimer.current);
+        telemetryTimer.current = null;
+      }
+    };
   }, [text]);
 
   return (
@@ -63,6 +116,7 @@ export default function CharacterCounter() {
                 placeholder="Type or paste your text here..."
                 className="w-full h-96 p-4 border rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
                 style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
+                data-testid="character-counter-input"
               />
               <div className="mt-4 flex gap-2">
                 <button
@@ -100,37 +154,37 @@ export default function CharacterCounter() {
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Characters</span>
-                  <Badge variant="secondary" className="font-mono">
+                  <Badge variant="secondary" className="font-mono" data-testid="stat-characters">
                     {stats.characters.toLocaleString()}
                   </Badge>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Characters (no spaces)</span>
-                  <Badge variant="secondary" className="font-mono">
+                  <Badge variant="secondary" className="font-mono" data-testid="stat-characters-no-spaces">
                     {stats.charactersNoSpaces.toLocaleString()}
                   </Badge>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Words</span>
-                  <Badge variant="secondary" className="font-mono">
+                  <Badge variant="secondary" className="font-mono" data-testid="stat-words">
                     {stats.words.toLocaleString()}
                   </Badge>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Sentences</span>
-                  <Badge variant="secondary" className="font-mono">
+                  <Badge variant="secondary" className="font-mono" data-testid="stat-sentences">
                     {stats.sentences.toLocaleString()}
                   </Badge>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Paragraphs</span>
-                  <Badge variant="secondary" className="font-mono">
+                  <Badge variant="secondary" className="font-mono" data-testid="stat-paragraphs">
                     {stats.paragraphs.toLocaleString()}
                   </Badge>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Lines</span>
-                  <Badge variant="secondary" className="font-mono">
+                  <Badge variant="secondary" className="font-mono" data-testid="stat-lines">
                     {stats.lines.toLocaleString()}
                   </Badge>
                 </div>
@@ -143,13 +197,13 @@ export default function CharacterCounter() {
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Reading time</span>
-                  <Badge variant="secondary">
+                  <Badge variant="secondary" data-testid="stat-reading-time">
                     {stats.readingTime} min
                   </Badge>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Speaking time</span>
-                  <Badge variant="secondary">
+                  <Badge variant="secondary" data-testid="stat-speaking-time">
                     {stats.speakingTime} min
                   </Badge>
                 </div>

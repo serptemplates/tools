@@ -1,0 +1,16 @@
+[
+  {
+    "id": "mp4-downloader",
+    "name": "MP4 Downloader",
+    "url": "https://apps.serp.co/mp4-video-downloader",
+    "formats": ["mp4", "mvp"],
+    "description": "Download MP4 videos from the web."
+  },
+  {
+    "id": "serp-video-downloader",
+    "name": "SERP Video Downloader",
+    "url": "https://apps.serp.co/serp-video-downloader",
+    "formats": ["mp4", "mvp", "mov"],
+    "description": "Download videos in MP4, MOV, and more."
+  }
+]

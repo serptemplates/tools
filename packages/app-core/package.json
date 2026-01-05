@@ -9,23 +9,27 @@
   "dependencies": {
     "@next/third-parties": "^15.5.0",
     "@serp-tools/ui": "workspace:*",
+    "drizzle-orm": "^0.45.1",
     "lucide-react": "^0.541.0",
     "next": "15.5.7",
     "next-themes": "^0.4.6",
+    "postgres": "^3.4.7",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
   "devDependencies": {
+    "@serp-tools/eslint-config": "workspace:^",
+    "@serp-tools/typescript-config": "workspace:*",
     "@types/node": "^20.19.9",
     "@types/react": "^19.1.11",
     "@types/react-dom": "^19.1.8",
-    "@serp-tools/eslint-config": "workspace:^",
-    "@serp-tools/typescript-config": "workspace:*",
     "eslint": "^9.34.0",
     "typescript": "^5.9.2"
   },
   "exports": {
     "./components/*": "./src/components/*.tsx",
+    "./db": "./src/db/index.ts",
+    "./db/*": "./src/db/*.ts",
     "./lib/*": "./src/lib/*.ts",
     "./data/*": "./src/data/*"
   }

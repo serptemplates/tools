@@ -6,6 +6,7 @@ export default function AiToPngPage() {
   return (
     <div className="container py-8">
       <Converter
+        toolId="ai-to-png"
         title="AI to PNG Converter"
         from="ai"
         to="png"

@@ -16,6 +16,9 @@ tools.forEach(tool => {
     if (tool.requiresFFmpeg) {
       tool.content.tool.requiresFFmpeg = true;
     }
+    tool.content.tool.id = tool.id;
+    tool.content.tool.route = tool.route;
+    tool.content.tool.operation = tool.operation;
     toolContent[tool.id] = tool.content;
   }
   // Track FFmpeg requirement

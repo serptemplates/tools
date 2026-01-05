@@ -1,12 +1,10 @@
 "use client";
 import Link from "next/link";
 import toolsData from '@serp-tools/app-core/data/tools.json';
+import type { RelatedTool } from "@/types";
 
 type ToolsLinkHubProps = {
-  relatedTools?: Array<{
-    title: string;
-    href: string;
-  }>;
+  relatedTools?: RelatedTool[];
 };
 
 interface Tool {

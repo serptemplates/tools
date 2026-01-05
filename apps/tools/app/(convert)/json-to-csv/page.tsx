@@ -17,7 +17,7 @@ export default function Page() {
   return (
     <main className="min-h-screen bg-background">
       {/* Custom JSON to CSV Component */}
-      <JsonToCsv />
+      <JsonToCsv toolId="json-to-csv" />
 
       {/* FAQs Section */}
       {content.faqs && <FAQSection faqs={content.faqs} />}

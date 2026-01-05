@@ -5,8 +5,11 @@ import { Button } from "@serp-tools/ui/components/button";
 import { Alert, AlertDescription } from "@serp-tools/ui/components/alert";
 import { AlertTriangle, Download, FileImage, Loader2 } from "lucide-react";
 import { saveBlob } from "@/components/saveAs";
+import { beginToolRun } from "@/lib/telemetry";
+import { compressPngWithWorker, getOutputMimeType } from "@/lib/convert/workerClient";
 
 type Props = {
+  toolId?: string;
   title: string;
   subtitle?: string;
   from: string;
@@ -15,6 +18,7 @@ type Props = {
 };
 
 export default function BatchHeroConverter({
+  toolId,
   title,
   subtitle = "Fast, private, in-browser batch compression.",
   from,
@@ -87,31 +91,29 @@ export default function BatchHeroConverter({
         continue
       }
 
+      const run = beginToolRun({
+        toolId: toolId ?? `${from}-to-${to}`,
+        from,
+        to,
+        inputBytes: file.size,
+        metadata: { fileName: file.name, compressionLevel },
+      });
+
       try {
         const buf = await file.arrayBuffer();
         const originalSize = file.size;
-
-        const compressedBlob = await new Promise<Blob>((resolve, reject) => {
-          w.onmessage = (ev: MessageEvent<any>) => {
-            if (!ev.data?.ok) {
-              reject(new Error(ev.data?.error || "Compression failed"));
-              return;
-            }
-
-            const blob = new Blob([ev.data.blob], { type: "image/png" });
-            resolve(blob);
-          };
-
-          // Quality based on compression level
-          const qualityMap = {
-            low: 0.85,    // Light compression
-            medium: 0.7,  // Moderate compression
-            high: 0.5,    // High compression
-            extreme: 0.3  // Maximum compression
-          };
-
-          w.postMessage({ op: "compress-png", buf, quality: qualityMap[compressionLevel] }, [buf]);
+        const qualityMap = {
+          low: 0.85, // Light compression
+          medium: 0.7, // Moderate compression
+          high: 0.5, // High compression
+          extreme: 0.3, // Maximum compression
+        };
+        const compressedBuffer = await compressPngWithWorker({
+          worker: w,
+          buf,
+          quality: qualityMap[compressionLevel],
         });
+        const compressedBlob = new Blob([compressedBuffer], { type: getOutputMimeType(to) });
 
         const compressedName = file.name.replace(/\.png$/i, "_compressed.png");
         processed.set(compressedName, {
@@ -120,9 +122,14 @@ export default function BatchHeroConverter({
           compressedSize: compressedBlob.size
         });
         setProcessedFiles(new Map(processed));
+        run.finishSuccess({
+          outputBytes: compressedBlob.size,
+          metadata: { compressionLevel },
+        });
       } catch (err) {
         console.error(`Failed to compress ${file.name}:`, err);
         setError(`Failed to compress ${file.name}`);
+        run.finishFailure({ errorCode: "compress_failed", metadata: { compressionLevel } });
       }
     }
 
@@ -188,6 +195,7 @@ export default function BatchHeroConverter({
           onDragLeave={onDrag}
           onDragOver={onDrag}
           onDrop={onDrop}
+          data-testid="batch-compress-dropzone"
           style={{
             borderImage: `linear-gradient(135deg, ${randomColor}, transparent) 1`,
             borderWidth: "3px",
@@ -201,6 +209,7 @@ export default function BatchHeroConverter({
             multiple
             className="hidden"
             onChange={(e) => handleFiles(e.target.files)}
+            data-testid="batch-compress-input"
           />
 
           <div className="text-center">
@@ -314,6 +323,7 @@ export default function BatchHeroConverter({
                     size="lg"
                     className="gap-2"
                     style={{ backgroundColor: randomColor }}
+                    data-testid="batch-compress-download"
                   >
                     <Download className="w-4 h-4" />
                     Download ZIP ({(totalCompressed / 1024 / 1024).toFixed(2)} MB)

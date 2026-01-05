@@ -2,6 +2,7 @@
 export type OperationType = 
   | 'convert'    // Transform from one format to another
   | 'compress'   // Reduce file size
+  | 'bulk'       // Batch processing
   | 'combine'    // Merge multiple files
   | 'download';  // Download from external sources
 
@@ -21,7 +22,8 @@ export interface FAQ {
 
 // Related tool structure
 export interface RelatedTool {
-  href: string;
+  toolId?: string;
+  href?: string;
   title: string;
   description: string;
 }
@@ -36,6 +38,9 @@ export interface AboutSection {
 
 // Tool info for page templates
 export interface ToolInfo {
+  id?: string;
+  route?: string;
+  operation?: OperationType;
   title: string;
   subtitle: string;
   from: string;

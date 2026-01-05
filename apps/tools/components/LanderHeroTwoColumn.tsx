@@ -4,23 +4,30 @@ import { useRef, useState, useEffect } from "react";
 import { Button } from "@serp-tools/ui/components/button";
 import { saveBlob } from "@/components/saveAs";
 import { detectCapabilities, type Capabilities } from "@/lib/capabilities";
+import { beginToolRun } from "@/lib/telemetry";
+import { compressPngWithWorker, convertWithWorker, getOutputMimeType } from "@/lib/convert/workerClient";
+import type { OperationType } from "@/types";
 
 type Props = {
+  toolId?: string;
   title: string;              // e.g., "PDF to JPG"
   subtitle?: string;          // e.g., "Convert each PDF page into a JPG…"
   from: string;               // "pdf"
   to: string;                 // "jpg"
   accept?: string;            // optional override accept attr
   videoEmbedId?: string;      // YouTube embed ID for video (optional, defaults to bbkhxMpIH4w)
+  operation?: OperationType;
 };
 
 export default function LanderHeroTwoColumn({
+  toolId,
   title,
   subtitle = "Fast, private, in-browser conversion.",
   from,
   to,
   accept,
   videoEmbedId = "bbkhxMpIH4w",
+  operation,
 }: Props) {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const dropRef = useRef<HTMLDivElement | null>(null);
@@ -51,11 +58,16 @@ export default function LanderHeroTwoColumn({
     return char.charCodeAt(0) + ((hash << 5) - hash);
   }, 0);
   const randomColor = colors[Math.abs(hashCode) % colors.length];
+  const isPngCompression =
+    operation === "compress" && from.toLowerCase() === "png" && to.toLowerCase() === "png";
 
   function ensureWorker() {
     if (!workerRef.current) {
+      const workerUrl = isPngCompression
+        ? new URL("../workers/compress.worker.ts", import.meta.url)
+        : new URL("../workers/convert.worker.ts", import.meta.url);
       workerRef.current = new Worker(
-        new URL("../workers/convert.worker.ts", import.meta.url),
+        workerUrl,
         { type: "module" }
       );
 
@@ -85,92 +97,55 @@ export default function LanderHeroTwoColumn({
     const w = ensureWorker();
     setBusy(true);
     for (const file of Array.from(files)) {
-      const buf = await file.arrayBuffer();
-      await new Promise<void>((resolve, reject) => {
-        w.onmessage = (ev: MessageEvent<any>) => {
-          // Safety check for malformed messages
-          if (!ev.data) {
-            console.error('Received malformed worker message:', ev);
-            return reject(new Error("Malformed worker response"));
-          }
-
-          // Handle progress updates for video conversion
-          if (ev.data.type === 'progress') {
-            // You could update UI progress here if needed
-            return;
-          }
-
-          if (!ev.data.ok) return reject(new Error(ev.data.error || "Convert failed"));
-
-          // Handle PDF pages (returns multiple blobs)
-          if (ev.data.blobs) {
-            const mimeType = to === "png" ? "image/png" : to === "jpg" || to === "jpeg" ? "image/jpeg" : "image/webp";
-            ev.data.blobs.forEach((buf: ArrayBuffer, i: number) => {
-              const blob = new Blob([buf], { type: mimeType });
-              const name = file.name.replace(/\.[^.]+$/, "") + `_page${i + 1}.${to}`;
-              saveBlob(blob, name);
-            });
-          } else {
-            // Determine MIME type based on output format
-            let mimeType: string;
-            const videoFormats = ['mp4', 'm4v'];
-            const audioFormats = ['mp3', 'wav', 'ogg', 'aac', 'm4a', 'opus', 'flac'];
-
-            if (videoFormats.includes(to)) {
-              mimeType = 'video/mp4';
-            } else if (audioFormats.includes(to)) {
-              mimeType = `audio/${to === 'm4a' ? 'mp4' : to}`;
-            } else if (to === 'webm') {
-              mimeType = 'video/webm';
-            } else if (to === 'gif') {
-              mimeType = 'image/gif';
-            } else if (to === 'png') {
-              mimeType = 'image/png';
-            } else if (to === 'jpg' || to === 'jpeg') {
-              mimeType = 'image/jpeg';
-            } else {
-              // Default for other video/audio formats
-              mimeType = to.startsWith('video/') ? to : `video/${to}`;
-            }
-
-            const blob = new Blob([ev.data.blob], { type: mimeType });
-            const name = file.name.replace(/\.[^.]+$/, "") + "." + to;
-            saveBlob(blob, name);
-          }
-          resolve();
-        };
-
-        // Add worker error handler
-        w.onerror = (error) => {
-          reject(new Error(`Worker error: ${error.message || error}`));
-        };
-
-        // Determine operation type based on format
-        const videoFormats = ['mp4', 'mkv', 'avi', 'webm', 'mov', 'flv', 'ts', 'mts', 'm2ts', 'm4v', 'mpeg', 'mpg', 'vob', '3gp', 'f4v', 'hevc', 'divx', 'mjpeg', 'mpeg2', 'asf', 'wmv', 'mxf'];
-        const audioFormats = ['mp3', 'wav', 'ogg', 'aac', 'm4a', 'opus', 'flac', 'wma', 'aiff', 'mp2'];
-
-        let op: string;
-        if (from === "pdf") {
-          op = "pdf-pages";
-        } else if (videoFormats.includes(from) || audioFormats.includes(to)) {
-          // Check if video conversion is supported before attempting
-          if (!capabilities?.supportsVideoConversion) {
-            throw new Error(`Video conversion not supported: ${capabilities?.reason || 'Unknown reason'}`);
-          }
-          op = "video";
-        } else {
-          op = "raster";
-        }
-
-        console.log(`Converting ${from} to ${to} using operation: ${op}`);
-
-        w.postMessage(op === "raster"
-          ? { op, from, to, buf }
-          : op === "pdf-pages"
-            ? { op, to, buf } // pdf -> jpg/png pages
-            : { op, from, to, buf }, // video conversion
-          [buf]);
+      const run = beginToolRun({
+        toolId: toolId ?? `${from}-to-${to}`,
+        from,
+        to,
+        inputBytes: file.size,
+        metadata: { fileName: file.name },
       });
+      try {
+        const buf = await file.arrayBuffer();
+        if (isPngCompression) {
+          const compressedBuffer = await compressPngWithWorker({
+            worker: w,
+            buf,
+            quality: 0.85,
+          });
+          const blob = new Blob([compressedBuffer], { type: getOutputMimeType("png") });
+          const name = file.name.replace(/\.png$/i, "_compressed.png");
+          saveBlob(blob, name);
+          run.finishSuccess({ outputBytes: blob.size });
+          continue;
+        }
+        const result = await convertWithWorker({
+          worker: w,
+          from,
+          to,
+          buf,
+        });
+
+        if (result.kind === "multiple") {
+          const mimeType = getOutputMimeType(to);
+          result.buffers.forEach((buffer, i) => {
+            const blob = new Blob([buffer], { type: mimeType });
+            const name = file.name.replace(/\.[^.]+$/, "") + `_page${i + 1}.${to}`;
+            saveBlob(blob, name);
+          });
+          run.finishSuccess({
+            outputBytes: result.buffers.reduce((sum, buffer) => sum + buffer.byteLength, 0),
+          });
+        } else {
+          const mimeType = getOutputMimeType(to);
+          const blob = new Blob([result.buffer], { type: mimeType });
+          const name = file.name.replace(/\.[^.]+$/, "") + "." + to;
+          saveBlob(blob, name);
+          run.finishSuccess({ outputBytes: result.buffer.byteLength });
+        }
+      } catch (err: any) {
+        run.finishFailure({ errorCode: err?.message || "convert_failed" });
+        console.error(`Conversion failed for ${file.name}:`, err);
+      }
     }
     setBusy(false);
   }
@@ -206,7 +181,7 @@ export default function LanderHeroTwoColumn({
     // Clear effect after animation
     setTimeout(() => setDropEffect(""), 1000);
 
-    setHint("Converting…");
+    setHint(isPngCompression ? "Compressing…" : "Converting…");
     handleFiles(e.dataTransfer.files).finally(() => setHint("or drop files here"));
   }
 

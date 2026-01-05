@@ -8,6 +8,7 @@ import { ToolsLinkHub } from "@/components/sections/ToolsLinkHub";
 import { BlogSection } from "@/components/sections/BlogSection";
 import { ChangelogSection } from "@/components/sections/ChangelogSection";
 import { RelatedToolsSection } from "@/components/sections/RelatedToolsSection";
+import { RelatedAppsSection } from "@/components/sections/RelatedAppsSection";
 import type {
   ToolInfo,
   VideoSectionData,
@@ -41,6 +42,12 @@ export default function ToolPageTemplate({
 }: ToolPageProps) {
   // If tool requires FFmpeg, always use single column layout (full dropzone)
   const shouldUseTwoColumn = useTwoColumnLayout && videoSection?.embedId && !tool.requiresFFmpeg;
+  const currentRoute =
+    tool.route ??
+    (tool.from && tool.to ? `/${tool.from.toLowerCase()}-to-${tool.to.toLowerCase()}` : undefined);
+  const showRelatedTools = Boolean(
+    (relatedTools && relatedTools.length > 0) || (tool.from && tool.to)
+  );
 
   return (
     <main className="min-h-screen bg-background">
@@ -48,11 +55,13 @@ export default function ToolPageTemplate({
       {shouldUseTwoColumn ? (
         <>
           <LanderHeroTwoColumn
+            toolId={tool.id}
             title={tool.title}
             subtitle={tool.subtitle}
             from={tool.from}
             to={tool.to}
             accept={tool.accept}
+            operation={tool.operation}
             videoEmbedId={videoSection.embedId}
           />
           {/* About the Formats Section - Right after 2-column hero */}
@@ -66,11 +75,13 @@ export default function ToolPageTemplate({
       ) : (
         <>
           <HeroConverter
+            toolId={tool.id}
             title={tool.title}
             subtitle={tool.subtitle}
             from={tool.from}
             to={tool.to}
             accept={tool.accept}
+            operation={tool.operation}
           />
           {/* About the Formats Section - Right after regular hero */}
           {aboutSection && (
@@ -84,11 +95,21 @@ export default function ToolPageTemplate({
       )}
 
       {/* Related Tools Section - right after format cards */}
-      {tool.from && tool.to && (
+      {showRelatedTools && (
         <RelatedToolsSection
           currentFrom={tool.from}
           currentTo={tool.to}
-          currentPath={`/${tool.from.toLowerCase()}-to-${tool.to.toLowerCase()}`}
+          currentRoute={currentRoute}
+          currentToolId={tool.id}
+          relatedTools={relatedTools}
+        />
+      )}
+
+      {/* Related Apps Section */}
+      {tool.from && tool.to && (
+        <RelatedAppsSection
+          currentFrom={tool.from}
+          currentTo={tool.to}
         />
       )}
 

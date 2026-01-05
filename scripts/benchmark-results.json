@@ -1,0 +1,746 @@
+{
+  "baseUrl": "http://localhost:3001",
+  "ranAt": "2026-01-05T20:35:09.837Z",
+  "summary": {
+    "pass": 80,
+    "warn": 0,
+    "fail": 0
+  },
+  "results": [
+    {
+      "id": "heic-to-jpg",
+      "route": "/heic-to-jpg",
+      "status": "pass",
+      "loadMs": 144,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "heic-to-jpeg",
+      "route": "/heic-to-jpeg",
+      "status": "pass",
+      "loadMs": 128,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "heic-to-png",
+      "route": "/heic-to-png",
+      "status": "pass",
+      "loadMs": 105,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "heic-to-pdf",
+      "route": "/heic-to-pdf",
+      "status": "pass",
+      "loadMs": 110,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "heif-to-jpg",
+      "route": "/heif-to-jpg",
+      "status": "pass",
+      "loadMs": 89,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "heif-to-png",
+      "route": "/heif-to-png",
+      "status": "pass",
+      "loadMs": 103,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "heif-to-pdf",
+      "route": "/heif-to-pdf",
+      "status": "pass",
+      "loadMs": 88,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "pdf-to-jpg",
+      "route": "/pdf-to-jpg",
+      "status": "pass",
+      "loadMs": 95,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "pdf-to-png",
+      "route": "/pdf-to-png",
+      "status": "pass",
+      "loadMs": 95,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "jpg-to-pdf",
+      "route": "/jpg-to-pdf",
+      "status": "pass",
+      "loadMs": 98,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "jpeg-to-pdf",
+      "route": "/jpeg-to-pdf",
+      "status": "pass",
+      "loadMs": 103,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "jpg-to-png",
+      "route": "/jpg-to-png",
+      "status": "pass",
+      "loadMs": 88,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "png-to-jpg",
+      "route": "/png-to-jpg",
+      "status": "pass",
+      "loadMs": 98,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "jpeg-to-png",
+      "route": "/jpeg-to-png",
+      "status": "pass",
+      "loadMs": 104,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "jpeg-to-jpg",
+      "route": "/jpeg-to-jpg",
+      "status": "pass",
+      "loadMs": 91,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "webp-to-png",
+      "route": "/webp-to-png",
+      "status": "pass",
+      "loadMs": 108,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "png-to-webp",
+      "route": "/png-to-webp",
+      "status": "pass",
+      "loadMs": 104,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "jpg-to-webp",
+      "route": "/jpg-to-webp",
+      "status": "pass",
+      "loadMs": 111,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "jpeg-to-webp",
+      "route": "/jpeg-to-webp",
+      "status": "pass",
+      "loadMs": 97,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "gif-to-webp",
+      "route": "/gif-to-webp",
+      "status": "pass",
+      "loadMs": 87,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "avif-to-png",
+      "route": "/avif-to-png",
+      "status": "pass",
+      "loadMs": 99,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "avif-to-jpg",
+      "route": "/avif-to-jpg",
+      "status": "pass",
+      "loadMs": 94,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "avif-to-jpeg",
+      "route": "/avif-to-jpeg",
+      "status": "pass",
+      "loadMs": 107,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "bmp-to-jpg",
+      "route": "/bmp-to-jpg",
+      "status": "pass",
+      "loadMs": 108,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "bmp-to-png",
+      "route": "/bmp-to-png",
+      "status": "pass",
+      "loadMs": 104,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "ico-to-png",
+      "route": "/ico-to-png",
+      "status": "pass",
+      "loadMs": 104,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "gif-to-jpg",
+      "route": "/gif-to-jpg",
+      "status": "pass",
+      "loadMs": 106,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "gif-to-png",
+      "route": "/gif-to-png",
+      "status": "pass",
+      "loadMs": 104,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "jfif-to-jpg",
+      "route": "/jfif-to-jpg",
+      "status": "pass",
+      "loadMs": 110,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "jfif-to-jpeg",
+      "route": "/jfif-to-jpeg",
+      "status": "pass",
+      "loadMs": 111,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "jfif-to-png",
+      "route": "/jfif-to-png",
+      "status": "pass",
+      "loadMs": 113,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "jfif-to-pdf",
+      "route": "/jfif-to-pdf",
+      "status": "pass",
+      "loadMs": 95,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "cr2-to-jpg",
+      "route": "/cr2-to-jpg",
+      "status": "pass",
+      "loadMs": 109,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "cr3-to-jpg",
+      "route": "/cr3-to-jpg",
+      "status": "pass",
+      "loadMs": 103,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "dng-to-jpg",
+      "route": "/dng-to-jpg",
+      "status": "pass",
+      "loadMs": 100,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "arw-to-jpg",
+      "route": "/arw-to-jpg",
+      "status": "pass",
+      "loadMs": 110,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "jpg-to-svg",
+      "route": "/jpg-to-svg",
+      "status": "pass",
+      "loadMs": 124,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "png-to-png",
+      "route": "/compress-png",
+      "status": "pass",
+      "loadMs": 94,
+      "detail": "compressed 68 -> 68",
+      "metrics": {
+        "inputBytes": 68,
+        "outputBytes": 68
+      },
+      "errors": []
+    },
+    {
+      "id": "batch-compress-png",
+      "route": "/batch-compress-png",
+      "status": "pass",
+      "loadMs": 127,
+      "detail": "zip size 658",
+      "metrics": {
+        "outputBytes": 658,
+        "outputType": "application/zip"
+      },
+      "errors": []
+    },
+    {
+      "id": "csv-combiner",
+      "route": "/csv-combiner",
+      "status": "pass",
+      "loadMs": 127,
+      "detail": "output 5 lines",
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "json-to-csv",
+      "route": "/json-to-csv",
+      "status": "pass",
+      "loadMs": 89,
+      "detail": "output 3 lines",
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "character-counter",
+      "route": "/character-counter",
+      "status": "pass",
+      "loadMs": 111,
+      "detail": "chars 26, words 4",
+      "metrics": {
+        "characters": 26,
+        "charactersNoSpaces": 22,
+        "words": 4,
+        "sentences": 2,
+        "paragraphs": 2,
+        "lines": 3,
+        "readingTime": 1,
+        "speakingTime": 1
+      },
+      "errors": []
+    },
+    {
+      "id": "mkv-to-mp4",
+      "route": "/mkv-to-mp4",
+      "status": "pass",
+      "loadMs": 107,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mkv-to-webm",
+      "route": "/mkv-to-webm",
+      "status": "pass",
+      "loadMs": 111,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mkv-to-avi",
+      "route": "/mkv-to-avi",
+      "status": "pass",
+      "loadMs": 106,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mkv-to-mov",
+      "route": "/mkv-to-mov",
+      "status": "pass",
+      "loadMs": 90,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mkv-to-gif",
+      "route": "/mkv-to-gif",
+      "status": "pass",
+      "loadMs": 103,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mkv-to-mp3",
+      "route": "/mkv-to-mp3",
+      "status": "pass",
+      "loadMs": 91,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mkv-to-wav",
+      "route": "/mkv-to-wav",
+      "status": "pass",
+      "loadMs": 108,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mkv-to-ogg",
+      "route": "/mkv-to-ogg",
+      "status": "pass",
+      "loadMs": 100,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-mkv",
+      "route": "/mp4-to-mkv",
+      "status": "pass",
+      "loadMs": 102,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-mov",
+      "route": "/mp4-to-mov",
+      "status": "pass",
+      "loadMs": 112,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-avi",
+      "route": "/mp4-to-avi",
+      "status": "pass",
+      "loadMs": 87,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-webm",
+      "route": "/mp4-to-webm",
+      "status": "pass",
+      "loadMs": 94,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-mp3",
+      "route": "/mp4-to-mp3",
+      "status": "pass",
+      "loadMs": 88,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-wav",
+      "route": "/mp4-to-wav",
+      "status": "pass",
+      "loadMs": 99,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-aac",
+      "route": "/mp4-to-aac",
+      "status": "pass",
+      "loadMs": 106,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-m4a",
+      "route": "/mp4-to-m4a",
+      "status": "pass",
+      "loadMs": 99,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-gif",
+      "route": "/mp4-to-gif",
+      "status": "pass",
+      "loadMs": 105,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-ogg",
+      "route": "/mp4-to-ogg",
+      "status": "pass",
+      "loadMs": 91,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-flac",
+      "route": "/mp4-to-flac",
+      "status": "pass",
+      "loadMs": 98,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-opus",
+      "route": "/mp4-to-opus",
+      "status": "pass",
+      "loadMs": 105,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-m4v",
+      "route": "/mp4-to-m4v",
+      "status": "pass",
+      "loadMs": 107,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-ts",
+      "route": "/mp4-to-ts",
+      "status": "pass",
+      "loadMs": 198,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-flv",
+      "route": "/mp4-to-flv",
+      "status": "pass",
+      "loadMs": 106,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-wma",
+      "route": "/mp4-to-wma",
+      "status": "pass",
+      "loadMs": 104,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-aiff",
+      "route": "/mp4-to-aiff",
+      "status": "pass",
+      "loadMs": 97,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-mp2",
+      "route": "/mp4-to-mp2",
+      "status": "pass",
+      "loadMs": 92,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-mpeg",
+      "route": "/mp4-to-mpeg",
+      "status": "pass",
+      "loadMs": 104,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-mpg",
+      "route": "/mp4-to-mpg",
+      "status": "pass",
+      "loadMs": 109,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-vob",
+      "route": "/mp4-to-vob",
+      "status": "pass",
+      "loadMs": 112,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-3gp",
+      "route": "/mp4-to-3gp",
+      "status": "pass",
+      "loadMs": 93,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-f4v",
+      "route": "/mp4-to-f4v",
+      "status": "pass",
+      "loadMs": 95,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-mts",
+      "route": "/mp4-to-mts",
+      "status": "pass",
+      "loadMs": 98,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-m2ts",
+      "route": "/mp4-to-m2ts",
+      "status": "pass",
+      "loadMs": 96,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-hevc",
+      "route": "/mp4-to-hevc",
+      "status": "pass",
+      "loadMs": 120,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-divx",
+      "route": "/mp4-to-divx",
+      "status": "pass",
+      "loadMs": 109,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-mjpeg",
+      "route": "/mp4-to-mjpeg",
+      "status": "pass",
+      "loadMs": 107,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-mpeg2",
+      "route": "/mp4-to-mpeg2",
+      "status": "pass",
+      "loadMs": 101,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    },
+    {
+      "id": "mp4-to-asf",
+      "route": "/mp4-to-asf",
+      "status": "pass",
+      "loadMs": 108,
+      "detail": null,
+      "metrics": null,
+      "errors": []
+    }
+  ]
+}
