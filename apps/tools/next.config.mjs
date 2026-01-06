@@ -1,8 +1,11 @@
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import ffmpegPath from "ffmpeg-static";
 
+const appRoot = path.dirname(fileURLToPath(import.meta.url));
+const tracingRoot = path.resolve(appRoot, "../..");
 const ffmpegDir = ffmpegPath ? path.dirname(ffmpegPath) : null;
-const ffmpegTrace = ffmpegDir ? `./${path.relative(process.cwd(), ffmpegDir)}/**` : null;
+const ffmpegTrace = ffmpegDir ? `./${path.relative(tracingRoot, ffmpegDir)}/**` : null;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -13,6 +16,7 @@ const nextConfig = {
     BUILD_MODE: "server",
     SUPPORTS_VIDEO_CONVERSION: "true",
   },
+  outputFileTracingRoot: tracingRoot,
   outputFileTracingIncludes: ffmpegTrace
     ? {
         "/api/video-convert": [ffmpegTrace],
