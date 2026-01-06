@@ -128,6 +128,9 @@ export async function convertWithWorker(args: {
       return convertImageViaApi(args);
     }
     const serverResult = await convertImageViaApi({ ...args, to: "png" });
+    if (serverResult.kind !== "single") {
+      throw new Error("Server image conversion returned multiple buffers unexpectedly.");
+    }
     args.onProgress?.({ status: "processing", progress: 90 });
     return convertRasterOnMainThread({
       from: "png",
