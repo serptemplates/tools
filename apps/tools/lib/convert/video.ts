@@ -273,7 +273,7 @@ export async function convertVideo(
   // Log the command for debugging
   console.log('[FFmpeg Command]', args.join(' '));
 
-  let data: Uint8Array;
+  let data: Uint8Array | string;
 
   try {
     // Execute conversion
