@@ -13,6 +13,7 @@ export function detectCapabilities(): Capabilities {
   // Check environment variables first
   const buildMode = process.env.BUILD_MODE as 'static' | 'server' || 'static';
   const envSupportsVideo = process.env.SUPPORTS_VIDEO_CONVERSION === 'true';
+  const singleThread = process.env.NEXT_PUBLIC_FFMPEG_SINGLE_THREAD === "true";
   
   // Runtime SharedArrayBuffer detection
   const hasSharedArrayBuffer = typeof SharedArrayBuffer !== 'undefined';
@@ -23,7 +24,7 @@ export function detectCapabilities(): Capabilities {
   
   if (!envSupportsVideo) {
     reason = 'Video conversion disabled in static build mode';
-  } else if (!hasSharedArrayBuffer) {
+  } else if (!singleThread && !hasSharedArrayBuffer) {
     reason = 'SharedArrayBuffer not available - CORS headers required';
   } else {
     supportsVideoConversion = true;
