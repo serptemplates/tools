@@ -18,6 +18,8 @@ Required fields for each tool:
 
 Content is stored in the `tool_content` table (JSONB).
 Internal related tools must reference `toolId` (not `href`); resolve routes from the registry. External links must use full `http(s)` URLs.
+- `howTo` and `infoArticle` are optional; when omitted, templated sections are generated automatically.
+- `infoArticle` content is Markdown (rendered with `react-markdown`), so write it as markdown strings.
 
 ## Tool types
 - Standard convert tools use shared UI (`HeroConverter` or `LanderHeroTwoColumn`) and shared worker API.

@@ -211,32 +211,7 @@ export function ToolsLinkHub({ relatedTools }: ToolsLinkHubProps) {
           })}
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-200">
-          <div className="text-center">
-            <p className="text-sm text-gray-600 mb-4">
-              Can&apos;t find what you&apos;re looking for?
-            </p>
-            <Link
-              href="/"
-              className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold text-sm hover:bg-blue-700 transition-colors"
-            >
-              Browse All Tools
-              <svg
-                className="ml-2 w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"
-                />
-              </svg>
-            </Link>
-          </div>
-        </div>
+
       </div>
     </section>
   );

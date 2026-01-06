@@ -1,6 +1,20 @@
 {
   "formats": [
     {
+      "format": "3gp",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "aac",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Add a real fixture for this format."
+    },
+    {
       "format": "aif",
       "status": "ready",
       "input": "file",
@@ -20,6 +34,13 @@
       "input": "file",
       "fixture": "fixtures/sample.arw",
       "notes": "CC0 sample from raw.pixls.us."
+    },
+    {
+      "format": "asf",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Add a real fixture for this format."
     },
     {
       "format": "avi",
@@ -67,11 +88,39 @@
       ]
     },
     {
+      "format": "divx",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Add a real fixture for this format."
+    },
+    {
       "format": "dng",
       "status": "ready",
       "input": "file",
       "fixture": "fixtures/sample.dng",
       "notes": "CC0 sample from raw.pixls.us."
+    },
+    {
+      "format": "f4v",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "flac",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "flv",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Add a real fixture for this format."
     },
     {
       "format": "gif",
@@ -92,6 +141,13 @@
       "status": "ready",
       "input": "file",
       "fixture": "fixtures/sample.heif",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "hevc",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
       "notes": "Add a real fixture for this format."
     },
     {
@@ -130,10 +186,31 @@
       "notes": "Used by json-to-csv tool."
     },
     {
+      "format": "m2ts",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Add a real fixture for this format."
+    },
+    {
       "format": "m4a",
       "status": "ready",
       "input": "file",
       "fixture": "fixtures/sample.m4a",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "m4v",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "mjpeg",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
       "notes": "Add a real fixture for this format."
     },
     {
@@ -151,6 +228,13 @@
       "notes": "Add a real fixture for this format."
     },
     {
+      "format": "mp2",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Add a real fixture for this format."
+    },
+    {
       "format": "mp3",
       "status": "ready",
       "input": "file",
@@ -165,10 +249,59 @@
       "notes": "Add a real fixture for this format."
     },
     {
+      "format": "mpeg",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "mpeg2",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "mpg",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "mts",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Add a real fixture for this format."
+    },
+    {
       "format": "mxf",
       "status": "ready",
       "input": "file",
       "fixture": "fixtures/sample.mxf",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "ogg",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "ogv",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "opus",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
       "notes": "Add a real fixture for this format."
     },
     {
@@ -187,6 +320,20 @@
       "alternates": [
         "fixtures/sample-2.png"
       ]
+    },
+    {
+      "format": "rm",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "rmvb",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Add a real fixture for this format."
     },
     {
       "format": "svg",
@@ -210,6 +357,20 @@
       "notes": "Add a real fixture for this format."
     },
     {
+      "format": "ts",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "vob",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Add a real fixture for this format."
+    },
+    {
       "format": "wav",
       "status": "ready",
       "input": "file",
@@ -228,6 +389,20 @@
       "status": "ready",
       "input": "file",
       "fixture": "fixtures/sample.webp",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "wma",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "wmv",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
       "notes": "Add a real fixture for this format."
     }
   ],

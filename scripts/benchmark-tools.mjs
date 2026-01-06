@@ -7,7 +7,18 @@ const fixturesDir = path.join(process.cwd(), "apps/tools/benchmarks");
 const fixtureMatrixPath = path.join(fixturesDir, "fixture-matrix.json");
 
 const toolsRaw = await fs.readFile(toolsPath, "utf8");
-const tools = JSON.parse(toolsRaw).filter((tool) => tool.isActive);
+let tools = JSON.parse(toolsRaw).filter((tool) => tool.isActive);
+const toolFilter = process.env.TOOLS_ONLY
+  ? process.env.TOOLS_ONLY.split(",").map((id) => id.trim()).filter(Boolean)
+  : null;
+if (toolFilter?.length) {
+  const filterSet = new Set(toolFilter);
+  tools = tools.filter((tool) => filterSet.has(tool.id));
+}
+const toolLimit = process.env.TOOLS_LIMIT ? Number(process.env.TOOLS_LIMIT) : null;
+if (toolLimit && Number.isFinite(toolLimit)) {
+  tools = tools.slice(0, Math.max(0, toolLimit));
+}
 const fixtureMatrix = JSON.parse(await fs.readFile(fixtureMatrixPath, "utf8"));
 const formatFixtures = new Map(
   (fixtureMatrix.formats ?? []).map((entry) => [entry.format, entry])

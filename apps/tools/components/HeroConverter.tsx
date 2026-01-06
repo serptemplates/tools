@@ -240,9 +240,10 @@ export default function HeroConverter({
     (from === "pdf" ? ".pdf"
       : from === "jpg" ? ".jpg,.jpeg"
         : from === "jpeg" ? ".jpeg,.jpg"
-          : from === "mkv" ? ".mkv"
-            : from === "mp4" ? ".mp4"
-              : from === "webm" ? ".webm"
+          : from === "tiff" ? ".tif,.tiff"
+            : from === "mkv" ? ".mkv"
+              : from === "mp4" ? ".mp4"
+                : from === "webm" ? ".webm"
                 : from === "avi" ? ".avi"
                   : from === "mov" ? ".mov"
                     : `.${from}`);

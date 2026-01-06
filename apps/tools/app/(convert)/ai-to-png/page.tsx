@@ -1,18 +1,10 @@
-"use client";
+import { ToolPageRenderer } from "@/components/ToolPageRenderer";
+import { buildToolMetadata } from "@/lib/metadata";
 
-import Converter from "@/components/Converter";
+const toolId = "ai-to-png";
 
-export default function AiToPngPage() {
-  return (
-    <div className="container py-8">
-      <Converter
-        toolId="ai-to-png"
-        title="AI to PNG Converter"
-        from="ai"
-        to="png"
-        description="Convert Adobe Illustrator files to PNG format"
-        accepts={[".ai"]}
-      />
-    </div>
-  );
+export const generateMetadata = () => buildToolMetadata(toolId);
+
+export default function Page() {
+  return <ToolPageRenderer toolId={toolId} />;
 }

@@ -1,6 +1,7 @@
 // Helper to get tool content from the tools data
 import toolsData from '@serp-tools/app-core/data/tools.json';
 import type { Tool, ToolContent } from '@/types';
+import { buildHowToSection, buildInfoArticleSection } from "@/lib/tool-sections";
 
 const tools = toolsData as Tool[];
 
@@ -12,6 +13,8 @@ export const toolRequiresFFmpeg: Record<string, boolean> = {};
 
 tools.forEach(tool => {
   if (tool.content) {
+    tool.content.howTo = tool.content.howTo ?? buildHowToSection(tool);
+    tool.content.infoArticle = tool.content.infoArticle ?? buildInfoArticleSection(tool);
     // Add requiresFFmpeg flag to the tool content if it exists
     if (tool.requiresFFmpeg) {
       tool.content.tool.requiresFFmpeg = true;

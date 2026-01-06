@@ -1,24 +1,10 @@
-"use client";
+import { ToolPageRenderer } from "@/components/ToolPageRenderer";
+import { buildToolMetadata } from "@/lib/metadata";
 
-import ToolPageTemplate from "@/components/ToolPageTemplate";
-import { toolContent } from '@/lib/tool-content';
+const toolId = "jfif-to-jpeg";
+
+export const generateMetadata = () => buildToolMetadata(toolId);
 
 export default function Page() {
-  const content = toolContent["jfif-to-jpeg"];
-  
-  if (!content) {
-    return <div>Tool not found</div>;
-  }
-  
-  return (
-    <ToolPageTemplate
-      tool={content.tool}
-      videoSection={content.videoSection}
-      faqs={content.faqs}
-      aboutSection={content.aboutSection}
-      changelog={content.changelog}
-      relatedTools={content.relatedTools}
-      blogPosts={content.blogPosts}
-    />
-  );
+  return <ToolPageRenderer toolId={toolId} />;
 }

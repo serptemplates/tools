@@ -9,6 +9,8 @@ import { BlogSection } from "@/components/sections/BlogSection";
 import { ChangelogSection } from "@/components/sections/ChangelogSection";
 import { RelatedToolsSection } from "@/components/sections/RelatedToolsSection";
 import { RelatedAppsSection } from "@/components/sections/RelatedAppsSection";
+import { HowToSection } from "@/components/sections/HowToSection";
+import { InfoArticleSection } from "@/components/sections/InfoArticleSection";
 import type {
   ToolInfo,
   VideoSectionData,
@@ -16,7 +18,9 @@ import type {
   AboutFormatsSection as AboutFormatsSectionData,
   ChangelogEntry,
   RelatedTool,
-  BlogPost
+  BlogPost,
+  HowToSectionData,
+  InfoArticleSectionData
 } from "@/types";
 
 type ToolPageProps = {
@@ -25,6 +29,8 @@ type ToolPageProps = {
   useTwoColumnLayout?: boolean;
   faqs?: FAQ[];
   aboutSection?: AboutFormatsSectionData;
+  howTo?: HowToSectionData;
+  infoArticle?: InfoArticleSectionData;
   changelog?: ChangelogEntry[];
   relatedTools?: RelatedTool[];
   blogPosts?: BlogPost[];
@@ -36,6 +42,8 @@ export default function ToolPageTemplate({
   useTwoColumnLayout = true, // Default to true for two-column layout
   faqs,
   aboutSection,
+  howTo,
+  infoArticle,
   changelog,
   relatedTools,
   blogPosts,
@@ -71,6 +79,7 @@ export default function ToolPageTemplate({
               toFormat={aboutSection.toFormat}
             />
           )}
+          {howTo && <HowToSection title={howTo.title} intro={howTo.intro} steps={howTo.steps} />}
         </>
       ) : (
         <>
@@ -90,6 +99,7 @@ export default function ToolPageTemplate({
               toFormat={aboutSection.toFormat}
             />
           )}
+          {howTo && <HowToSection title={howTo.title} intro={howTo.intro} steps={howTo.steps} />}
           {/* NO VIDEO for FFmpeg tools - they can't support YouTube embeds anyway */}
         </>
       )}
@@ -110,6 +120,13 @@ export default function ToolPageTemplate({
         <RelatedAppsSection
           currentFrom={tool.from}
           currentTo={tool.to}
+        />
+      )}
+
+      {infoArticle && (
+        <InfoArticleSection
+          title={infoArticle.title}
+          markdown={infoArticle.markdown}
         />
       )}
 
