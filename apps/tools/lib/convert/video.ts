@@ -6,18 +6,6 @@ let ffmpeg: FFmpeg | null = null;
 let loaded = false;
 const FAST_VIDEO_FILTER = "fps=12,scale=320:-2:flags=fast_bilinear";
 const FAST_GIF_FILTER = "fps=10,scale=320:-1:flags=fast_bilinear";
-const AUDIO_OUTPUTS = new Set([
-  "mp3",
-  "wav",
-  "ogg",
-  "aac",
-  "m4a",
-  "opus",
-  "flac",
-  "wma",
-  "aiff",
-  "mp2",
-]);
 
 function canRemux(fromFormat: string, toFormat: string) {
   const from = fromFormat.toLowerCase();
@@ -28,15 +16,8 @@ function canRemux(fromFormat: string, toFormat: string) {
   );
 }
 
-export function shouldUseServerConversion(fromFormat: string, toFormat: string) {
-  const from = fromFormat.toLowerCase();
-  const to = toFormat.toLowerCase();
-  if (!detectCapabilities().supportsVideoConversion) {
-    return true;
-  }
-  if (AUDIO_OUTPUTS.has(to)) return false;
-  if (canRemux(from, to)) return false;
-  return true;
+export function shouldUseServerConversion(_fromFormat: string, _toFormat: string) {
+  return !detectCapabilities().supportsVideoConversion;
 }
 
 export async function convertVideoViaApi(
