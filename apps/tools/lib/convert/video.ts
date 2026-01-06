@@ -97,15 +97,19 @@ export async function convertVideo(
   // ff.off('progress', handler);
 
   // Set up progress callback
-  if (options.onProgress) {
-    ff.on('progress', ({ progress, time }: { progress: number; time: number }) => {
-      console.log('[FFmpeg Progress]', progress, time);
-      // Progress is 0-1, convert to percentage
-      options.onProgress?.({
-        ratio: progress || 0,
-        time: time || 0
-      });
-    });
+  const progressHandler = options.onProgress
+    ? ({ progress, time }: { progress: number; time: number }) => {
+        console.log('[FFmpeg Progress]', progress, time);
+        // Progress is 0-1, convert to percentage
+        options.onProgress?.({
+          ratio: progress || 0,
+          time: time || 0,
+        });
+      }
+    : null;
+
+  if (progressHandler) {
+    ff.on('progress', progressHandler);
   }
 
   const inputName = `input.${fromFormat}`;
@@ -264,19 +268,24 @@ export async function convertVideo(
     ];
   }
 
-  // Add progress reporting for better feedback
-  args.push('-progress', 'pipe:1', '-nostats');
-
   args.push(outputName);
 
   // Log the command for debugging
   console.log('[FFmpeg Command]', args.join(' '));
 
-  // Execute conversion
-  await ff.exec(args);
+  let data: Uint8Array;
 
-  // Read output file
-  const data = await ff.readFile(outputName);
+  try {
+    // Execute conversion
+    await ff.exec(args);
+
+    // Read output file
+    data = await ff.readFile(outputName);
+  } finally {
+    if (progressHandler) {
+      ff.off('progress', progressHandler);
+    }
+  }
 
   // Ensure we have a Uint8Array
   if (!(data instanceof Uint8Array)) {
