@@ -1,0 +1,258 @@
+{
+  "formats": [
+    {
+      "format": "aif",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.aif",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "aiff",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.aiff",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "arw",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Raw camera sample required."
+    },
+    {
+      "format": "avi",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.avi",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "avif",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.avif",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "bmp",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.bmp",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "cr2",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Raw camera sample required."
+    },
+    {
+      "format": "cr3",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Raw camera sample required."
+    },
+    {
+      "format": "csv",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.csv",
+      "notes": "CSV combiner uses both files.",
+      "alternates": [
+        "fixtures/sample-2.csv"
+      ]
+    },
+    {
+      "format": "dng",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Raw camera sample required."
+    },
+    {
+      "format": "gif",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.gif",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "heic",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.heic",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "heif",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.heif",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "ico",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.ico",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "jfif",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.jfif",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "jpeg",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.jpg",
+      "notes": "Alias of JPG. Uses the JPG fixture."
+    },
+    {
+      "format": "jpg",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.jpg",
+      "notes": "Canonical JPEG fixture (also used for .jpeg)."
+    },
+    {
+      "format": "json",
+      "status": "ready",
+      "input": "text",
+      "fixture": "fixtures/sample.json",
+      "notes": "Used by json-to-csv tool."
+    },
+    {
+      "format": "m4a",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.m4a",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "mkv",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.mkv",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "mov",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.mov",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "mp3",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.mp3",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "mp4",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.mp4",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "mxf",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.mxf",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "pdf",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.pdf",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "png",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.png",
+      "notes": "Primary image fixture.",
+      "alternates": [
+        "fixtures/sample-2.png"
+      ]
+    },
+    {
+      "format": "svg",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.svg",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "swf",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.swf",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "tiff",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.tiff",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "wav",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.wav",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "webm",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.webm",
+      "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "webp",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.webp",
+      "notes": "Add a real fixture for this format."
+    }
+  ],
+  "toolFixtures": {
+    "batch-compress-png": {
+      "input": "file",
+      "fixtures": [
+        "fixtures/sample.png",
+        "fixtures/sample-2.png"
+      ]
+    },
+    "csv-combiner": {
+      "input": "file",
+      "fixtures": [
+        "fixtures/sample.csv",
+        "fixtures/sample-2.csv"
+      ]
+    },
+    "json-to-csv": {
+      "input": "text",
+      "fixture": "fixtures/sample.json"
+    },
+    "character-counter": {
+      "input": "text",
+      "fixtureText": "Hello world.\n\nSecond line!"
+    }
+  }
+}

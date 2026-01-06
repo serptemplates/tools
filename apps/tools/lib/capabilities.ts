@@ -58,7 +58,7 @@ export const VIDEO_FORMATS = [
 
 export const AUDIO_FORMATS = [
   // Audio formats (extracted from video or converted)
-  'mp3', 'wav', 'ogg', 'aac', 'm4a', 'opus', 'flac', 'wma', 'aiff', 'mp2'
+  'mp3', 'wav', 'ogg', 'aac', 'm4a', 'opus', 'flac', 'wma', 'aif', 'aiff', 'mp2'
 ];
 
 /**

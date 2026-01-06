@@ -9784,5 +9784,472 @@
       ]
     },
     "requiresFFmpeg": true
+  },
+  {
+    "id": "mxf-to-mp4",
+    "name": "MXF to MP4",
+    "description": "Convert MXF files to MP4 format",
+    "operation": "convert",
+    "route": "/mxf-to-mp4",
+    "from": "mxf",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "mxf",
+      "mp4",
+      "convert",
+      "video"
+    ],
+    "priority": 6,
+    "content": {
+      "tool": {
+        "title": "MXF to MP4",
+        "subtitle": "Convert MXF files to MP4 format",
+        "from": "mxf",
+        "to": "mp4"
+      }
+    },
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "aif-to-mp3",
+    "name": "AIF to MP3",
+    "description": "Convert AIF files to MP3 format",
+    "operation": "convert",
+    "route": "/aif-to-mp3",
+    "from": "aif",
+    "to": "mp3",
+    "isActive": true,
+    "tags": [
+      "aif",
+      "mp3",
+      "convert",
+      "audio"
+    ],
+    "priority": 6,
+    "content": {
+      "tool": {
+        "title": "AIF to MP3",
+        "subtitle": "Convert AIF files to MP3 format",
+        "from": "aif",
+        "to": "mp3",
+        "accept": ".aif,.aiff"
+      }
+    },
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "avi-to-mov",
+    "name": "AVI to MOV",
+    "description": "Convert AVI files to MOV format",
+    "operation": "convert",
+    "route": "/avi-to-mov",
+    "from": "avi",
+    "to": "mov",
+    "isActive": true,
+    "tags": [
+      "avi",
+      "mov",
+      "convert",
+      "video"
+    ],
+    "priority": 6,
+    "content": {
+      "tool": {
+        "title": "AVI to MOV",
+        "subtitle": "Convert AVI files to MOV format",
+        "from": "avi",
+        "to": "mov"
+      }
+    },
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "mov-to-webm",
+    "name": "MOV to WEBM",
+    "description": "Convert MOV files to WEBM format",
+    "operation": "convert",
+    "route": "/mov-to-webm",
+    "from": "mov",
+    "to": "webm",
+    "isActive": true,
+    "tags": [
+      "mov",
+      "webm",
+      "convert",
+      "video"
+    ],
+    "priority": 6,
+    "content": {
+      "tool": {
+        "title": "MOV to WEBM",
+        "subtitle": "Convert MOV files to WEBM format",
+        "from": "mov",
+        "to": "webm"
+      }
+    },
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "mp3-to-aac",
+    "name": "MP3 to AAC",
+    "description": "Convert MP3 files to AAC format",
+    "operation": "convert",
+    "route": "/mp3-to-aac",
+    "from": "mp3",
+    "to": "aac",
+    "isActive": true,
+    "tags": [
+      "mp3",
+      "aac",
+      "convert",
+      "audio"
+    ],
+    "priority": 6,
+    "content": {
+      "tool": {
+        "title": "MP3 to AAC",
+        "subtitle": "Convert MP3 files to AAC format",
+        "from": "mp3",
+        "to": "aac"
+      }
+    },
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "mp3-to-flac",
+    "name": "MP3 to FLAC",
+    "description": "Convert MP3 files to FLAC format",
+    "operation": "convert",
+    "route": "/mp3-to-flac",
+    "from": "mp3",
+    "to": "flac",
+    "isActive": true,
+    "tags": [
+      "mp3",
+      "flac",
+      "convert",
+      "audio"
+    ],
+    "priority": 6,
+    "content": {
+      "tool": {
+        "title": "MP3 to FLAC",
+        "subtitle": "Convert MP3 files to FLAC format",
+        "from": "mp3",
+        "to": "flac"
+      }
+    },
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "svg-to-jpg",
+    "name": "SVG to JPG",
+    "description": "Convert SVG files to JPG format",
+    "operation": "convert",
+    "route": "/svg-to-jpg",
+    "from": "svg",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "jpg",
+      "convert",
+      "image"
+    ],
+    "priority": 6,
+    "content": {
+      "tool": {
+        "title": "SVG to JPG",
+        "subtitle": "Convert SVG files to JPG format",
+        "from": "svg",
+        "to": "jpg"
+      }
+    }
+  },
+  {
+    "id": "webm-to-mov",
+    "name": "WEBM to MOV",
+    "description": "Convert WEBM files to MOV format",
+    "operation": "convert",
+    "route": "/webm-to-mov",
+    "from": "webm",
+    "to": "mov",
+    "isActive": true,
+    "tags": [
+      "webm",
+      "mov",
+      "convert",
+      "video"
+    ],
+    "priority": 6,
+    "content": {
+      "tool": {
+        "title": "WEBM to MOV",
+        "subtitle": "Convert WEBM files to MOV format",
+        "from": "webm",
+        "to": "mov"
+      }
+    },
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "swf-to-mp4",
+    "name": "SWF to MP4",
+    "description": "Convert SWF files to MP4 format",
+    "operation": "convert",
+    "route": "/swf-to-mp4",
+    "from": "swf",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "swf",
+      "mp4",
+      "convert",
+      "video"
+    ],
+    "priority": 6,
+    "content": {
+      "tool": {
+        "title": "SWF to MP4",
+        "subtitle": "Convert SWF files to MP4 format",
+        "from": "swf",
+        "to": "mp4"
+      }
+    },
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "wav-to-flac",
+    "name": "WAV to FLAC",
+    "description": "Convert WAV files to FLAC format",
+    "operation": "convert",
+    "route": "/wav-to-flac",
+    "from": "wav",
+    "to": "flac",
+    "isActive": true,
+    "tags": [
+      "wav",
+      "flac",
+      "convert",
+      "audio"
+    ],
+    "priority": 6,
+    "content": {
+      "tool": {
+        "title": "WAV to FLAC",
+        "subtitle": "Convert WAV files to FLAC format",
+        "from": "wav",
+        "to": "flac"
+      }
+    },
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "wav-to-m4a",
+    "name": "WAV to M4A",
+    "description": "Convert WAV files to M4A format",
+    "operation": "convert",
+    "route": "/wav-to-m4a",
+    "from": "wav",
+    "to": "m4a",
+    "isActive": true,
+    "tags": [
+      "wav",
+      "m4a",
+      "convert",
+      "audio"
+    ],
+    "priority": 6,
+    "content": {
+      "tool": {
+        "title": "WAV to M4A",
+        "subtitle": "Convert WAV files to M4A format",
+        "from": "wav",
+        "to": "m4a"
+      }
+    },
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "m4a-to-ogg",
+    "name": "M4A to OGG",
+    "description": "Convert M4A files to OGG format",
+    "operation": "convert",
+    "route": "/m4a-to-ogg",
+    "from": "m4a",
+    "to": "ogg",
+    "isActive": true,
+    "tags": [
+      "m4a",
+      "ogg",
+      "convert",
+      "audio"
+    ],
+    "priority": 6,
+    "content": {
+      "tool": {
+        "title": "M4A to OGG",
+        "subtitle": "Convert M4A files to OGG format",
+        "from": "m4a",
+        "to": "ogg"
+      }
+    },
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "avi-to-mp3",
+    "name": "AVI to MP3",
+    "description": "Convert AVI files to MP3 format",
+    "operation": "convert",
+    "route": "/avi-to-mp3",
+    "from": "avi",
+    "to": "mp3",
+    "isActive": true,
+    "tags": [
+      "avi",
+      "mp3",
+      "convert",
+      "video",
+      "audio"
+    ],
+    "priority": 6,
+    "content": {
+      "tool": {
+        "title": "AVI to MP3",
+        "subtitle": "Convert AVI files to MP3 format",
+        "from": "avi",
+        "to": "mp3"
+      }
+    },
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "jpg-to-jpg",
+    "name": "JPG to JPG",
+    "description": "Convert JPG files to JPG format",
+    "operation": "convert",
+    "route": "/jpg-to-jpg",
+    "from": "jpg",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "convert",
+      "image"
+    ],
+    "priority": 6,
+    "content": {
+      "tool": {
+        "title": "JPG to JPG",
+        "subtitle": "Convert JPG files to JPG format",
+        "from": "jpg",
+        "to": "jpg"
+      }
+    }
+  },
+  {
+    "id": "aiff-to-wav",
+    "name": "AIFF to WAV",
+    "description": "Convert AIFF files to WAV format",
+    "operation": "convert",
+    "route": "/aiff-to-wav",
+    "from": "aiff",
+    "to": "wav",
+    "isActive": true,
+    "tags": [
+      "aiff",
+      "wav",
+      "convert",
+      "audio"
+    ],
+    "priority": 6,
+    "content": {
+      "tool": {
+        "title": "AIFF to WAV",
+        "subtitle": "Convert AIFF files to WAV format",
+        "from": "aiff",
+        "to": "wav",
+        "accept": ".aiff,.aif"
+      }
+    },
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "mp3-to-opus",
+    "name": "MP3 to OPUS",
+    "description": "Convert MP3 files to OPUS format",
+    "operation": "convert",
+    "route": "/mp3-to-opus",
+    "from": "mp3",
+    "to": "opus",
+    "isActive": true,
+    "tags": [
+      "mp3",
+      "opus",
+      "convert",
+      "audio"
+    ],
+    "priority": 6,
+    "content": {
+      "tool": {
+        "title": "MP3 to OPUS",
+        "subtitle": "Convert MP3 files to OPUS format",
+        "from": "mp3",
+        "to": "opus"
+      }
+    },
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "svg-to-webp",
+    "name": "SVG to WEBP",
+    "description": "Convert SVG files to WEBP format",
+    "operation": "convert",
+    "route": "/svg-to-webp",
+    "from": "svg",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "webp",
+      "convert",
+      "image"
+    ],
+    "priority": 6,
+    "content": {
+      "tool": {
+        "title": "SVG to WEBP",
+        "subtitle": "Convert SVG files to WEBP format",
+        "from": "svg",
+        "to": "webp"
+      }
+    }
+  },
+  {
+    "id": "tiff-to-jpg",
+    "name": "TIFF to JPG",
+    "description": "Convert TIFF files to JPG format",
+    "operation": "convert",
+    "route": "/tiff-to-jpg",
+    "from": "tiff",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "tiff",
+      "jpg",
+      "convert",
+      "image"
+    ],
+    "priority": 6,
+    "content": {
+      "tool": {
+        "title": "TIFF to JPG",
+        "subtitle": "Convert TIFF files to JPG format",
+        "from": "tiff",
+        "to": "jpg",
+        "accept": ".tif,.tiff"
+      }
+    }
   }
 ]

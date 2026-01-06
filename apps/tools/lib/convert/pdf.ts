@@ -1,14 +1,20 @@
 // lib/convert/pdf.ts
-// PDF → PNG using pdfjs-dist; worker served from /public to avoid import shape issues.
+// PDF → PNG using a browser-loaded pdfjs bundle to avoid Next.js ESM import issues.
 
-import * as pdfjsLib from "pdfjs-dist";
-
-// IMPORTANT: point to your public copy
 const workerPublicUrl = "/vendor/pdfjs/pdf.worker.min.js";
-// @ts-ignore
-(pdfjsLib as any).GlobalWorkerOptions.workerSrc = workerPublicUrl;
+let pdfjsPromise: Promise<any> | null = null;
+
+async function getPdfjs() {
+  if (!pdfjsPromise) {
+    pdfjsPromise = import(/* webpackIgnore: true */ "/vendor/pdfjs/pdf.min.mjs");
+  }
+  return pdfjsPromise;
+}
 
 export async function renderPdfPages(buf: ArrayBuffer, page?: number, format?: string) {
+  const pdfjsLib = await getPdfjs();
+  // @ts-ignore
+  (pdfjsLib as any).GlobalWorkerOptions.workerSrc = workerPublicUrl;
   const doc = await (pdfjsLib as any).getDocument({ data: buf }).promise;
   const out: Array<ArrayBuffer> = [];
   const pages = page ? [page] : Array.from({ length: doc.numPages }, (_, i) => i + 1);

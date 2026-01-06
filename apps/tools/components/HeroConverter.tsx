@@ -148,6 +148,12 @@ export default function HeroConverter({
           run.finishSuccess({
             outputBytes: result.buffers.reduce((sum, buffer) => sum + buffer.byteLength, 0),
           });
+          setCurrentFile({
+            name: file.name,
+            progress: 100,
+            status: 'completed',
+            message: 'Conversion complete!'
+          });
         } else {
           if (!result.buffer || result.buffer.byteLength === 0) {
             setCurrentFile({
@@ -175,6 +181,7 @@ export default function HeroConverter({
           run.finishSuccess({ outputBytes: result.buffer.byteLength });
         }
       } catch (err: any) {
+        console.error(`Conversion failed for ${file.name}:`, err);
         setCurrentFile({
           name: file.name,
           progress: 0,
@@ -247,7 +254,7 @@ export default function HeroConverter({
       <div className="mx-auto max-w-7xl px-6 py-8 text-center">
 
         {/* Show progress when converting */}
-        {currentFile && busy && (
+        {currentFile && (
           <div className="mb-6 max-w-2xl mx-auto">
             <VideoProgress
               fileName={currentFile.name}
@@ -263,6 +270,7 @@ export default function HeroConverter({
           onDragOver={onDrag}
           onDragLeave={onDrag}
           onDrop={onDrop}
+          data-testid="tool-dropzone"
           className={`mt-8 mx-auto max-w-6xl border-2 border-dashed rounded-2xl p-12 hover:border-opacity-80 transition-colors cursor-pointer ${dropEffect ? `animate-${dropEffect}` : ""
             }`}
           style={{
@@ -316,6 +324,7 @@ export default function HeroConverter({
             multiple
             accept={acceptAttr}
             className="hidden"
+            data-testid="tool-file-input"
             onChange={(e) => handleFiles(e.target.files)}
           />
         </div>

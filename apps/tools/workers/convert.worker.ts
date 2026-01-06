@@ -1,15 +1,7 @@
-/// <reference lib="webworker" />
 import { decodeToRGBA } from "../lib/convert/decode";
 import { encodeFromRGBA } from "../lib/convert/encode";
 
-type RasterJob = { op: "raster"; from: string; to: string; quality?: number; buf: ArrayBuffer };
-type PdfJob = { op: "pdf-pages"; page?: number; to?: string; buf: ArrayBuffer };
-type VideoJob = { op: "video"; from: string; to: string; quality?: number; buf: ArrayBuffer };
-type Job = RasterJob | PdfJob | VideoJob;
-
-declare const self: DedicatedWorkerGlobalScope;
-
-self.onmessage = async (e: MessageEvent<Job>) => {
+self.onmessage = async (e: MessageEvent<any>) => {
   try {
     const job = e.data;
 
@@ -25,7 +17,7 @@ self.onmessage = async (e: MessageEvent<Job>) => {
     if (job.op === "pdf-pages") {
       const { renderPdfPages } = await import("../lib/convert/pdf");
       const bufs = await renderPdfPages(job.buf, job.page, job.to);
-      self.postMessage({ ok: true, blobs: bufs }, bufs as unknown as Transferable[]);
+      self.postMessage({ ok: true, blobs: bufs }, bufs);
       return;
     }
 
@@ -77,7 +69,7 @@ self.onmessage = async (e: MessageEvent<Job>) => {
 
         // Don't transfer the buffer, just send it normally
         self.postMessage({ ok: true, blob: outputBuffer });
-      } catch (videoErr: any) {
+      } catch (videoErr) {
         console.error('Video conversion error:', videoErr);
         self.postMessage({ ok: false, error: `Video conversion failed: ${videoErr?.message || videoErr}` });
       }
@@ -85,7 +77,7 @@ self.onmessage = async (e: MessageEvent<Job>) => {
     }
 
     self.postMessage({ ok: false, error: "Unknown op" });
-  } catch (err: any) {
+  } catch (err) {
     self.postMessage({ ok: false, error: err?.message || String(err) });
   }
 };

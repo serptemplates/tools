@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import { Button } from "@serp-tools/ui/components/button";
 import { saveBlob } from "@/components/saveAs";
+import { VideoProgress } from "@/components/VideoProgress";
 import { detectCapabilities, type Capabilities } from "@/lib/capabilities";
 import { beginToolRun } from "@/lib/telemetry";
 import { compressPngWithWorker, convertWithWorker, getOutputMimeType } from "@/lib/convert/workerClient";
@@ -37,6 +38,12 @@ export default function LanderHeroTwoColumn({
   const [dropEffect, setDropEffect] = useState<string>("");
   const [capabilities, setCapabilities] = useState<Capabilities | null>(null);
   const [videoPlaying, setVideoPlaying] = useState(false);
+  const [currentFile, setCurrentFile] = useState<{
+    name: string;
+    progress: number;
+    status: "loading" | "processing" | "completed" | "error";
+    message?: string;
+  } | null>(null);
   // Generate stable color based on tool properties
   const colors = [
     "#ef4444", // red-500
@@ -104,6 +111,12 @@ export default function LanderHeroTwoColumn({
         inputBytes: file.size,
         metadata: { fileName: file.name },
       });
+      setCurrentFile({
+        name: file.name,
+        progress: 0,
+        status: "processing",
+        message: undefined,
+      });
       try {
         const buf = await file.arrayBuffer();
         if (isPngCompression) {
@@ -116,6 +129,12 @@ export default function LanderHeroTwoColumn({
           const name = file.name.replace(/\.png$/i, "_compressed.png");
           saveBlob(blob, name);
           run.finishSuccess({ outputBytes: blob.size });
+          setCurrentFile({
+            name: file.name,
+            progress: 100,
+            status: "completed",
+            message: "Compression complete!",
+          });
           continue;
         }
         const result = await convertWithWorker({
@@ -123,6 +142,14 @@ export default function LanderHeroTwoColumn({
           from,
           to,
           buf,
+          onProgress: (update) => {
+            setCurrentFile({
+              name: file.name,
+              progress: update.progress ?? 0,
+              status: update.status === "loading" ? "loading" : "processing",
+              message: update.status === "loading" ? "Loading converter…" : undefined,
+            });
+          },
         });
 
         if (result.kind === "multiple") {
@@ -135,16 +162,34 @@ export default function LanderHeroTwoColumn({
           run.finishSuccess({
             outputBytes: result.buffers.reduce((sum, buffer) => sum + buffer.byteLength, 0),
           });
+          setCurrentFile({
+            name: file.name,
+            progress: 100,
+            status: "completed",
+            message: "Conversion complete!",
+          });
         } else {
           const mimeType = getOutputMimeType(to);
           const blob = new Blob([result.buffer], { type: mimeType });
           const name = file.name.replace(/\.[^.]+$/, "") + "." + to;
           saveBlob(blob, name);
           run.finishSuccess({ outputBytes: result.buffer.byteLength });
+          setCurrentFile({
+            name: file.name,
+            progress: 100,
+            status: "completed",
+            message: "Conversion complete!",
+          });
         }
       } catch (err: any) {
         run.finishFailure({ errorCode: err?.message || "convert_failed" });
         console.error(`Conversion failed for ${file.name}:`, err);
+        setCurrentFile({
+          name: file.name,
+          progress: 0,
+          status: "error",
+          message: err?.message || "Convert failed",
+        });
       }
     }
     setBusy(false);
@@ -205,6 +250,17 @@ export default function LanderHeroTwoColumn({
       <div className="mx-auto max-w-[1400px] px-6 py-12">
         <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-center mb-12">{title}</h1>
 
+        {currentFile && (
+          <div className="mb-8 max-w-3xl mx-auto">
+            <VideoProgress
+              fileName={currentFile.name}
+              progress={currentFile.progress}
+              status={currentFile.status}
+              message={currentFile.message}
+            />
+          </div>
+        )}
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
           {/* Video Column */}
           <div className="order-2 lg:order-1">
@@ -252,6 +308,7 @@ export default function LanderHeroTwoColumn({
               onDragOver={onDrag}
               onDragLeave={onDrag}
               onDrop={onDrop}
+              data-testid="tool-dropzone"
               className={`border-2 border-dashed rounded-xl p-12 hover:border-opacity-80 transition-colors cursor-pointer w-full flex items-center justify-center ${dropEffect ? `animate-${dropEffect}` : ""
                 }`}
               style={{
@@ -324,6 +381,7 @@ export default function LanderHeroTwoColumn({
                 multiple
                 accept={acceptAttr}
                 className="hidden"
+                data-testid="tool-file-input"
                 onChange={(e) => handleFiles(e.target.files)}
               />
             </div>

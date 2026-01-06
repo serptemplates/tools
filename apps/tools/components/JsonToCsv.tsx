@@ -169,6 +169,7 @@ export default function JsonToCsv({ toolId }: Props) {
                       <button
                         onClick={downloadCSV}
                         className="px-3 py-1 text-sm bg-green-100 hover:bg-green-200 text-green-700 rounded-lg transition-colors"
+                        data-testid="json-to-csv-download"
                       >
                         Download CSV
                       </button>

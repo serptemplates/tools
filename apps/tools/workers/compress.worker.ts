@@ -1,10 +1,6 @@
-/// <reference lib="webworker" />
-
 import UPNG from "upng-js";
 
-type CompressJob = { op: "compress-png"; buf: ArrayBuffer; quality?: number };
-
-function qualityToColorCount(quality: number) {
+function qualityToColorCount(quality) {
   const clamped = Math.max(0, Math.min(1, quality));
   if (clamped >= 0.99) {
     return 0;
@@ -12,7 +8,7 @@ function qualityToColorCount(quality: number) {
   return Math.max(16, Math.round(clamped * 256));
 }
 
-self.onmessage = async (e: MessageEvent<CompressJob>) => {
+self.onmessage = async (e: MessageEvent<any>) => {
   try {
     const job = e.data;
 
@@ -43,7 +39,7 @@ self.onmessage = async (e: MessageEvent<CompressJob>) => {
     }
 
     self.postMessage({ ok: true, blob: output }, [output]);
-  } catch (err: any) {
+  } catch (err) {
     self.postMessage({ ok: false, error: err?.message || String(err) });
   }
 };

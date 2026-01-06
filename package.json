@@ -5,9 +5,10 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "lint": "turbo lint",
+    "lint": "turbo lint && node scripts/validate-tools.mjs",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "benchmark:tools": "node scripts/benchmark-tools.mjs"
+    "benchmark:tools": "node scripts/benchmark-tools.mjs",
+    "lint:tools": "node scripts/validate-tools.mjs"
   },
   "devDependencies": {
     "@serp-tools/eslint-config": "workspace:*",

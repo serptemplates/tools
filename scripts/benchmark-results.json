@@ -1,354 +1,652 @@
 {
-  "baseUrl": "http://localhost:3001",
-  "ranAt": "2026-01-05T20:35:09.837Z",
+  "baseUrl": "http://localhost:3100",
+  "ranAt": "2026-01-06T06:04:21.236Z",
   "summary": {
-    "pass": 80,
-    "warn": 0,
-    "fail": 0
+    "pass": 94,
+    "warn": 4,
+    "fail": 0,
+    "missingFixtures": 4
   },
   "results": [
     {
       "id": "heic-to-jpg",
       "route": "/heic-to-jpg",
       "status": "pass",
-      "loadMs": 144,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 439,
+      "detail": "output 816",
+      "metrics": {
+        "outputBytes": 816,
+        "outputType": "image/jpeg"
+      },
+      "fixture": {
+        "format": "heic",
+        "status": "ready",
+        "fixture": "fixtures/sample.heic"
+      },
       "errors": []
     },
     {
       "id": "heic-to-jpeg",
       "route": "/heic-to-jpeg",
       "status": "pass",
-      "loadMs": 128,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 414,
+      "detail": "output 816",
+      "metrics": {
+        "outputBytes": 816,
+        "outputType": "image/jpeg"
+      },
+      "fixture": {
+        "format": "heic",
+        "status": "ready",
+        "fixture": "fixtures/sample.heic"
+      },
       "errors": []
     },
     {
       "id": "heic-to-png",
       "route": "/heic-to-png",
       "status": "pass",
-      "loadMs": 105,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 422,
+      "detail": "output 485",
+      "metrics": {
+        "outputBytes": 485,
+        "outputType": "image/png"
+      },
+      "fixture": {
+        "format": "heic",
+        "status": "ready",
+        "fixture": "fixtures/sample.heic"
+      },
       "errors": []
     },
     {
       "id": "heic-to-pdf",
       "route": "/heic-to-pdf",
       "status": "pass",
-      "loadMs": 110,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 440,
+      "detail": "output 981",
+      "metrics": {
+        "outputBytes": 981,
+        "outputType": "application/pdf"
+      },
+      "fixture": {
+        "format": "heic",
+        "status": "ready",
+        "fixture": "fixtures/sample.heic"
+      },
       "errors": []
     },
     {
       "id": "heif-to-jpg",
       "route": "/heif-to-jpg",
       "status": "pass",
-      "loadMs": 89,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 452,
+      "detail": "output 816",
+      "metrics": {
+        "outputBytes": 816,
+        "outputType": "image/jpeg"
+      },
+      "fixture": {
+        "format": "heif",
+        "status": "ready",
+        "fixture": "fixtures/sample.heif"
+      },
       "errors": []
     },
     {
       "id": "heif-to-png",
       "route": "/heif-to-png",
       "status": "pass",
-      "loadMs": 103,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 539,
+      "detail": "output 485",
+      "metrics": {
+        "outputBytes": 485,
+        "outputType": "image/png"
+      },
+      "fixture": {
+        "format": "heif",
+        "status": "ready",
+        "fixture": "fixtures/sample.heif"
+      },
       "errors": []
     },
     {
       "id": "heif-to-pdf",
       "route": "/heif-to-pdf",
       "status": "pass",
-      "loadMs": 88,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 584,
+      "detail": "output 981",
+      "metrics": {
+        "outputBytes": 981,
+        "outputType": "application/pdf"
+      },
+      "fixture": {
+        "format": "heif",
+        "status": "ready",
+        "fixture": "fixtures/sample.heif"
+      },
       "errors": []
     },
     {
       "id": "pdf-to-jpg",
       "route": "/pdf-to-jpg",
       "status": "pass",
-      "loadMs": 95,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 566,
+      "detail": "output 978",
+      "metrics": {
+        "outputBytes": 978,
+        "outputType": "image/jpeg"
+      },
+      "fixture": {
+        "format": "pdf",
+        "status": "ready",
+        "fixture": "fixtures/sample.pdf"
+      },
       "errors": []
     },
     {
       "id": "pdf-to-png",
       "route": "/pdf-to-png",
       "status": "pass",
-      "loadMs": 95,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 1935,
+      "detail": "output 1559",
+      "metrics": {
+        "outputBytes": 1559,
+        "outputType": "image/png"
+      },
+      "fixture": {
+        "format": "pdf",
+        "status": "ready",
+        "fixture": "fixtures/sample.pdf"
+      },
       "errors": []
     },
     {
       "id": "jpg-to-pdf",
       "route": "/jpg-to-pdf",
       "status": "pass",
-      "loadMs": 98,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 546,
+      "detail": "output 980",
+      "metrics": {
+        "outputBytes": 980,
+        "outputType": "application/pdf"
+      },
+      "fixture": {
+        "format": "jpg",
+        "status": "ready",
+        "fixture": "fixtures/sample.jpg"
+      },
       "errors": []
     },
     {
       "id": "jpeg-to-pdf",
       "route": "/jpeg-to-pdf",
       "status": "pass",
-      "loadMs": 103,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 481,
+      "detail": "output 980",
+      "metrics": {
+        "outputBytes": 980,
+        "outputType": "application/pdf"
+      },
+      "fixture": {
+        "format": "jpeg",
+        "status": "ready",
+        "fixture": "fixtures/sample.jpg"
+      },
       "errors": []
     },
     {
       "id": "jpg-to-png",
       "route": "/jpg-to-png",
       "status": "pass",
-      "loadMs": 88,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 491,
+      "detail": "output 536",
+      "metrics": {
+        "outputBytes": 536,
+        "outputType": "image/png"
+      },
+      "fixture": {
+        "format": "jpg",
+        "status": "ready",
+        "fixture": "fixtures/sample.jpg"
+      },
       "errors": []
     },
     {
       "id": "png-to-jpg",
       "route": "/png-to-jpg",
       "status": "pass",
-      "loadMs": 98,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 515,
+      "detail": "output 816",
+      "metrics": {
+        "outputBytes": 816,
+        "outputType": "image/jpeg"
+      },
+      "fixture": {
+        "format": "png",
+        "status": "ready",
+        "fixture": "fixtures/sample.png"
+      },
       "errors": []
     },
     {
       "id": "jpeg-to-png",
       "route": "/jpeg-to-png",
       "status": "pass",
-      "loadMs": 104,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 461,
+      "detail": "output 536",
+      "metrics": {
+        "outputBytes": 536,
+        "outputType": "image/png"
+      },
+      "fixture": {
+        "format": "jpeg",
+        "status": "ready",
+        "fixture": "fixtures/sample.jpg"
+      },
       "errors": []
     },
     {
       "id": "jpeg-to-jpg",
       "route": "/jpeg-to-jpg",
       "status": "pass",
-      "loadMs": 91,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 488,
+      "detail": "output 816",
+      "metrics": {
+        "outputBytes": 816,
+        "outputType": "image/jpeg"
+      },
+      "fixture": {
+        "format": "jpeg",
+        "status": "ready",
+        "fixture": "fixtures/sample.jpg"
+      },
       "errors": []
     },
     {
       "id": "webp-to-png",
       "route": "/webp-to-png",
       "status": "pass",
-      "loadMs": 108,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 507,
+      "detail": "output 945",
+      "metrics": {
+        "outputBytes": 945,
+        "outputType": "image/png"
+      },
+      "fixture": {
+        "format": "webp",
+        "status": "ready",
+        "fixture": "fixtures/sample.webp"
+      },
       "errors": []
     },
     {
       "id": "png-to-webp",
       "route": "/png-to-webp",
       "status": "pass",
-      "loadMs": 104,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 511,
+      "detail": "output 586",
+      "metrics": {
+        "outputBytes": 586,
+        "outputType": "image/webp"
+      },
+      "fixture": {
+        "format": "png",
+        "status": "ready",
+        "fixture": "fixtures/sample.png"
+      },
       "errors": []
     },
     {
       "id": "jpg-to-webp",
       "route": "/jpg-to-webp",
       "status": "pass",
-      "loadMs": 111,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 518,
+      "detail": "output 586",
+      "metrics": {
+        "outputBytes": 586,
+        "outputType": "image/webp"
+      },
+      "fixture": {
+        "format": "jpg",
+        "status": "ready",
+        "fixture": "fixtures/sample.jpg"
+      },
       "errors": []
     },
     {
       "id": "jpeg-to-webp",
       "route": "/jpeg-to-webp",
       "status": "pass",
-      "loadMs": 97,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 490,
+      "detail": "output 586",
+      "metrics": {
+        "outputBytes": 586,
+        "outputType": "image/webp"
+      },
+      "fixture": {
+        "format": "jpeg",
+        "status": "ready",
+        "fixture": "fixtures/sample.jpg"
+      },
       "errors": []
     },
     {
       "id": "gif-to-webp",
       "route": "/gif-to-webp",
       "status": "pass",
-      "loadMs": 87,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 514,
+      "detail": "output 586",
+      "metrics": {
+        "outputBytes": 586,
+        "outputType": "image/webp"
+      },
+      "fixture": {
+        "format": "gif",
+        "status": "ready",
+        "fixture": "fixtures/sample.gif"
+      },
       "errors": []
     },
     {
       "id": "avif-to-png",
       "route": "/avif-to-png",
       "status": "pass",
-      "loadMs": 99,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 502,
+      "detail": "output 536",
+      "metrics": {
+        "outputBytes": 536,
+        "outputType": "image/png"
+      },
+      "fixture": {
+        "format": "avif",
+        "status": "ready",
+        "fixture": "fixtures/sample.avif"
+      },
       "errors": []
     },
     {
       "id": "avif-to-jpg",
       "route": "/avif-to-jpg",
       "status": "pass",
-      "loadMs": 94,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 549,
+      "detail": "output 816",
+      "metrics": {
+        "outputBytes": 816,
+        "outputType": "image/jpeg"
+      },
+      "fixture": {
+        "format": "avif",
+        "status": "ready",
+        "fixture": "fixtures/sample.avif"
+      },
       "errors": []
     },
     {
       "id": "avif-to-jpeg",
       "route": "/avif-to-jpeg",
       "status": "pass",
-      "loadMs": 107,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 529,
+      "detail": "output 816",
+      "metrics": {
+        "outputBytes": 816,
+        "outputType": "image/jpeg"
+      },
+      "fixture": {
+        "format": "avif",
+        "status": "ready",
+        "fixture": "fixtures/sample.avif"
+      },
       "errors": []
     },
     {
       "id": "bmp-to-jpg",
       "route": "/bmp-to-jpg",
       "status": "pass",
-      "loadMs": 108,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 496,
+      "detail": "output 816",
+      "metrics": {
+        "outputBytes": 816,
+        "outputType": "image/jpeg"
+      },
+      "fixture": {
+        "format": "bmp",
+        "status": "ready",
+        "fixture": "fixtures/sample.bmp"
+      },
       "errors": []
     },
     {
       "id": "bmp-to-png",
       "route": "/bmp-to-png",
       "status": "pass",
-      "loadMs": 104,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 508,
+      "detail": "output 536",
+      "metrics": {
+        "outputBytes": 536,
+        "outputType": "image/png"
+      },
+      "fixture": {
+        "format": "bmp",
+        "status": "ready",
+        "fixture": "fixtures/sample.bmp"
+      },
       "errors": []
     },
     {
       "id": "ico-to-png",
       "route": "/ico-to-png",
       "status": "pass",
-      "loadMs": 104,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 526,
+      "detail": "output 536",
+      "metrics": {
+        "outputBytes": 536,
+        "outputType": "image/png"
+      },
+      "fixture": {
+        "format": "ico",
+        "status": "ready",
+        "fixture": "fixtures/sample.ico"
+      },
       "errors": []
     },
     {
       "id": "gif-to-jpg",
       "route": "/gif-to-jpg",
       "status": "pass",
-      "loadMs": 106,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 524,
+      "detail": "output 816",
+      "metrics": {
+        "outputBytes": 816,
+        "outputType": "image/jpeg"
+      },
+      "fixture": {
+        "format": "gif",
+        "status": "ready",
+        "fixture": "fixtures/sample.gif"
+      },
       "errors": []
     },
     {
       "id": "gif-to-png",
       "route": "/gif-to-png",
       "status": "pass",
-      "loadMs": 104,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 541,
+      "detail": "output 536",
+      "metrics": {
+        "outputBytes": 536,
+        "outputType": "image/png"
+      },
+      "fixture": {
+        "format": "gif",
+        "status": "ready",
+        "fixture": "fixtures/sample.gif"
+      },
       "errors": []
     },
     {
       "id": "jfif-to-jpg",
       "route": "/jfif-to-jpg",
       "status": "pass",
-      "loadMs": 110,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 556,
+      "detail": "output 816",
+      "metrics": {
+        "outputBytes": 816,
+        "outputType": "image/jpeg"
+      },
+      "fixture": {
+        "format": "jfif",
+        "status": "ready",
+        "fixture": "fixtures/sample.jfif"
+      },
       "errors": []
     },
     {
       "id": "jfif-to-jpeg",
       "route": "/jfif-to-jpeg",
       "status": "pass",
-      "loadMs": 111,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 559,
+      "detail": "output 816",
+      "metrics": {
+        "outputBytes": 816,
+        "outputType": "image/jpeg"
+      },
+      "fixture": {
+        "format": "jfif",
+        "status": "ready",
+        "fixture": "fixtures/sample.jfif"
+      },
       "errors": []
     },
     {
       "id": "jfif-to-png",
       "route": "/jfif-to-png",
       "status": "pass",
-      "loadMs": 113,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 581,
+      "detail": "output 536",
+      "metrics": {
+        "outputBytes": 536,
+        "outputType": "image/png"
+      },
+      "fixture": {
+        "format": "jfif",
+        "status": "ready",
+        "fixture": "fixtures/sample.jfif"
+      },
       "errors": []
     },
     {
       "id": "jfif-to-pdf",
       "route": "/jfif-to-pdf",
       "status": "pass",
-      "loadMs": 95,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 616,
+      "detail": "output 980",
+      "metrics": {
+        "outputBytes": 980,
+        "outputType": "application/pdf"
+      },
+      "fixture": {
+        "format": "jfif",
+        "status": "ready",
+        "fixture": "fixtures/sample.jfif"
+      },
       "errors": []
     },
     {
       "id": "cr2-to-jpg",
       "route": "/cr2-to-jpg",
-      "status": "pass",
-      "loadMs": 109,
+      "status": "warn",
+      "loadMs": 633,
       "detail": null,
       "metrics": null,
-      "errors": []
+      "fixture": {
+        "format": "cr2",
+        "status": "missing",
+        "fixture": null
+      },
+      "errors": [
+        "missing fixture for cr2"
+      ]
     },
     {
       "id": "cr3-to-jpg",
       "route": "/cr3-to-jpg",
-      "status": "pass",
-      "loadMs": 103,
+      "status": "warn",
+      "loadMs": 648,
       "detail": null,
       "metrics": null,
-      "errors": []
+      "fixture": {
+        "format": "cr3",
+        "status": "missing",
+        "fixture": null
+      },
+      "errors": [
+        "missing fixture for cr3"
+      ]
     },
     {
       "id": "dng-to-jpg",
       "route": "/dng-to-jpg",
-      "status": "pass",
-      "loadMs": 100,
+      "status": "warn",
+      "loadMs": 687,
       "detail": null,
       "metrics": null,
-      "errors": []
+      "fixture": {
+        "format": "dng",
+        "status": "missing",
+        "fixture": null
+      },
+      "errors": [
+        "missing fixture for dng"
+      ]
     },
     {
       "id": "arw-to-jpg",
       "route": "/arw-to-jpg",
-      "status": "pass",
-      "loadMs": 110,
+      "status": "warn",
+      "loadMs": 665,
       "detail": null,
       "metrics": null,
-      "errors": []
+      "fixture": {
+        "format": "arw",
+        "status": "missing",
+        "fixture": null
+      },
+      "errors": [
+        "missing fixture for arw"
+      ]
     },
     {
       "id": "jpg-to-svg",
       "route": "/jpg-to-svg",
       "status": "pass",
-      "loadMs": 124,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 889,
+      "detail": "output 867",
+      "metrics": {
+        "outputBytes": 867,
+        "outputType": "image/svg+xml"
+      },
+      "fixture": {
+        "format": "jpg",
+        "status": "ready",
+        "fixture": "fixtures/sample.jpg"
+      },
       "errors": []
     },
     {
       "id": "png-to-png",
       "route": "/compress-png",
       "status": "pass",
-      "loadMs": 94,
-      "detail": "compressed 68 -> 68",
+      "loadMs": 633,
+      "detail": "compressed 292 -> 124",
       "metrics": {
-        "inputBytes": 68,
-        "outputBytes": 68
+        "inputBytes": 292,
+        "outputBytes": 124
+      },
+      "fixture": {
+        "format": "png",
+        "status": "ready",
+        "fixture": "fixtures/sample.png"
       },
       "errors": []
     },
@@ -356,11 +654,16 @@
       "id": "batch-compress-png",
       "route": "/batch-compress-png",
       "status": "pass",
-      "loadMs": 127,
-      "detail": "zip size 658",
+      "loadMs": 708,
+      "detail": "zip size 767",
       "metrics": {
-        "outputBytes": 658,
+        "outputBytes": 767,
         "outputType": "application/zip"
+      },
+      "fixture": {
+        "format": "png",
+        "status": "ready",
+        "fixture": "fixtures/sample.png"
       },
       "errors": []
     },
@@ -368,25 +671,41 @@
       "id": "csv-combiner",
       "route": "/csv-combiner",
       "status": "pass",
-      "loadMs": 127,
+      "loadMs": 167,
       "detail": "output 5 lines",
-      "metrics": null,
+      "metrics": {
+        "outputBytes": 66,
+        "outputType": "text/csv"
+      },
+      "fixture": {
+        "format": "csv",
+        "status": "ready",
+        "fixture": "fixtures/sample.csv"
+      },
       "errors": []
     },
     {
       "id": "json-to-csv",
       "route": "/json-to-csv",
       "status": "pass",
-      "loadMs": 89,
+      "loadMs": 1211,
       "detail": "output 3 lines",
-      "metrics": null,
+      "metrics": {
+        "outputBytes": 36,
+        "outputType": "text/csv"
+      },
+      "fixture": {
+        "format": "json",
+        "status": "ready",
+        "fixture": "fixtures/sample.json"
+      },
       "errors": []
     },
     {
       "id": "character-counter",
       "route": "/character-counter",
       "status": "pass",
-      "loadMs": 111,
+      "loadMs": 666,
       "detail": "chars 26, words 4",
       "metrics": {
         "characters": 26,
@@ -398,348 +717,959 @@
         "readingTime": 1,
         "speakingTime": 1
       },
+      "fixture": null,
       "errors": []
     },
     {
       "id": "mkv-to-mp4",
       "route": "/mkv-to-mp4",
       "status": "pass",
-      "loadMs": 107,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 649,
+      "detail": "output 12474",
+      "metrics": {
+        "outputBytes": 12474,
+        "outputType": "video/mp4"
+      },
+      "fixture": {
+        "format": "mkv",
+        "status": "ready",
+        "fixture": "fixtures/sample.mkv"
+      },
       "errors": []
     },
     {
       "id": "mkv-to-webm",
       "route": "/mkv-to-webm",
       "status": "pass",
-      "loadMs": 111,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 684,
+      "detail": "output 7493",
+      "metrics": {
+        "outputBytes": 7493,
+        "outputType": "video/webm"
+      },
+      "fixture": {
+        "format": "mkv",
+        "status": "ready",
+        "fixture": "fixtures/sample.mkv"
+      },
       "errors": []
     },
     {
       "id": "mkv-to-avi",
       "route": "/mkv-to-avi",
       "status": "pass",
-      "loadMs": 106,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 686,
+      "detail": "output 37738",
+      "metrics": {
+        "outputBytes": 37738,
+        "outputType": "video/x-msvideo"
+      },
+      "fixture": {
+        "format": "mkv",
+        "status": "ready",
+        "fixture": "fixtures/sample.mkv"
+      },
       "errors": []
     },
     {
       "id": "mkv-to-mov",
       "route": "/mkv-to-mov",
       "status": "pass",
-      "loadMs": 90,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 685,
+      "detail": "output 12525",
+      "metrics": {
+        "outputBytes": 12525,
+        "outputType": "video/quicktime"
+      },
+      "fixture": {
+        "format": "mkv",
+        "status": "ready",
+        "fixture": "fixtures/sample.mkv"
+      },
       "errors": []
     },
     {
       "id": "mkv-to-gif",
       "route": "/mkv-to-gif",
       "status": "pass",
-      "loadMs": 103,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 719,
+      "detail": "output 1515",
+      "metrics": {
+        "outputBytes": 1515,
+        "outputType": "image/gif"
+      },
+      "fixture": {
+        "format": "mkv",
+        "status": "ready",
+        "fixture": "fixtures/sample.mkv"
+      },
       "errors": []
     },
     {
       "id": "mkv-to-mp3",
       "route": "/mkv-to-mp3",
       "status": "pass",
-      "loadMs": 91,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 692,
+      "detail": "output 26478",
+      "metrics": {
+        "outputBytes": 26478,
+        "outputType": "audio/mpeg"
+      },
+      "fixture": {
+        "format": "mkv",
+        "status": "ready",
+        "fixture": "fixtures/sample.mkv"
+      },
       "errors": []
     },
     {
       "id": "mkv-to-wav",
       "route": "/mkv-to-wav",
       "status": "pass",
-      "loadMs": 108,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 706,
+      "detail": "output 92238",
+      "metrics": {
+        "outputBytes": 92238,
+        "outputType": "audio/wav"
+      },
+      "fixture": {
+        "format": "mkv",
+        "status": "ready",
+        "fixture": "fixtures/sample.mkv"
+      },
       "errors": []
     },
     {
       "id": "mkv-to-ogg",
       "route": "/mkv-to-ogg",
       "status": "pass",
-      "loadMs": 100,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 764,
+      "detail": "output 7288",
+      "metrics": {
+        "outputBytes": 7288,
+        "outputType": "audio/ogg"
+      },
+      "fixture": {
+        "format": "mkv",
+        "status": "ready",
+        "fixture": "fixtures/sample.mkv"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-mkv",
       "route": "/mp4-to-mkv",
       "status": "pass",
-      "loadMs": 102,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 743,
+      "detail": "output 11587",
+      "metrics": {
+        "outputBytes": 11587,
+        "outputType": "video/x-matroska"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-mov",
       "route": "/mp4-to-mov",
       "status": "pass",
-      "loadMs": 112,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 844,
+      "detail": "output 12481",
+      "metrics": {
+        "outputBytes": 12481,
+        "outputType": "video/quicktime"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-avi",
       "route": "/mp4-to-avi",
       "status": "pass",
-      "loadMs": 87,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 806,
+      "detail": "output 37738",
+      "metrics": {
+        "outputBytes": 37738,
+        "outputType": "video/x-msvideo"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-webm",
       "route": "/mp4-to-webm",
       "status": "pass",
-      "loadMs": 94,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 148,
+      "detail": "output 7201",
+      "metrics": {
+        "outputBytes": 7201,
+        "outputType": "video/webm"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-mp3",
       "route": "/mp4-to-mp3",
       "status": "pass",
-      "loadMs": 88,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 752,
+      "detail": "output 26478",
+      "metrics": {
+        "outputBytes": 26478,
+        "outputType": "audio/mpeg"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-wav",
       "route": "/mp4-to-wav",
       "status": "pass",
-      "loadMs": 99,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 1276,
+      "detail": "output 90190",
+      "metrics": {
+        "outputBytes": 90190,
+        "outputType": "audio/wav"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-aac",
       "route": "/mp4-to-aac",
       "status": "pass",
-      "loadMs": 106,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 630,
+      "detail": "output 14550",
+      "metrics": {
+        "outputBytes": 14550,
+        "outputType": "audio/aac"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-m4a",
       "route": "/mp4-to-m4a",
       "status": "pass",
-      "loadMs": 99,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 622,
+      "detail": "output 15214",
+      "metrics": {
+        "outputBytes": 15214,
+        "outputType": "audio/mp4"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-gif",
       "route": "/mp4-to-gif",
       "status": "pass",
-      "loadMs": 105,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 595,
+      "detail": "output 1515",
+      "metrics": {
+        "outputBytes": 1515,
+        "outputType": "image/gif"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-ogg",
       "route": "/mp4-to-ogg",
       "status": "pass",
-      "loadMs": 91,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 606,
+      "detail": "output 6949",
+      "metrics": {
+        "outputBytes": 6949,
+        "outputType": "audio/ogg"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-flac",
       "route": "/mp4-to-flac",
       "status": "pass",
-      "loadMs": 98,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 557,
+      "detail": "output 59160",
+      "metrics": {
+        "outputBytes": 59160,
+        "outputType": "audio/flac"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-opus",
       "route": "/mp4-to-opus",
       "status": "pass",
-      "loadMs": 105,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 613,
+      "detail": "output 20875",
+      "metrics": {
+        "outputBytes": 20875,
+        "outputType": "audio/opus"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-m4v",
       "route": "/mp4-to-m4v",
       "status": "pass",
-      "loadMs": 107,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 581,
+      "detail": "output 12418",
+      "metrics": {
+        "outputBytes": 12418,
+        "outputType": "video/x-m4v"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-ts",
       "route": "/mp4-to-ts",
       "status": "pass",
-      "loadMs": 198,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 570,
+      "detail": "output 18988",
+      "metrics": {
+        "outputBytes": 18988,
+        "outputType": "video/mp2t"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-flv",
       "route": "/mp4-to-flv",
       "status": "pass",
-      "loadMs": 106,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 581,
+      "detail": "output 15422",
+      "metrics": {
+        "outputBytes": 15422,
+        "outputType": "video/x-flv"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-wma",
       "route": "/mp4-to-wma",
       "status": "pass",
-      "loadMs": 104,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 549,
+      "detail": "output 35902",
+      "metrics": {
+        "outputBytes": 35902,
+        "outputType": "audio/x-ms-wma"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-aiff",
       "route": "/mp4-to-aiff",
       "status": "pass",
-      "loadMs": 97,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 547,
+      "detail": "output 90166",
+      "metrics": {
+        "outputBytes": 90166,
+        "outputType": "audio/aiff"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-mp2",
       "route": "/mp4-to-mp2",
       "status": "pass",
-      "loadMs": 92,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 1879,
+      "detail": "output 25077",
+      "metrics": {
+        "outputBytes": 25077,
+        "outputType": "audio/mpeg"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-mpeg",
       "route": "/mp4-to-mpeg",
       "status": "pass",
-      "loadMs": 104,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 645,
+      "detail": "output 18432",
+      "metrics": {
+        "outputBytes": 18432,
+        "outputType": "video/mpeg"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-mpg",
       "route": "/mp4-to-mpg",
       "status": "pass",
-      "loadMs": 109,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 555,
+      "detail": "output 18432",
+      "metrics": {
+        "outputBytes": 18432,
+        "outputType": "video/mpeg"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-vob",
       "route": "/mp4-to-vob",
       "status": "pass",
-      "loadMs": 112,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 571,
+      "detail": "output 20480",
+      "metrics": {
+        "outputBytes": 20480,
+        "outputType": "video/dvd"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-3gp",
       "route": "/mp4-to-3gp",
       "status": "pass",
-      "loadMs": 93,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 145,
+      "detail": "output 10559",
+      "metrics": {
+        "outputBytes": 10559,
+        "outputType": "video/3gpp"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-f4v",
       "route": "/mp4-to-f4v",
       "status": "pass",
-      "loadMs": 95,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 526,
+      "detail": "output 15729",
+      "metrics": {
+        "outputBytes": 15729,
+        "outputType": "video/x-f4v"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-mts",
       "route": "/mp4-to-mts",
       "status": "pass",
-      "loadMs": 98,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 559,
+      "detail": "output 18988",
+      "metrics": {
+        "outputBytes": 18988,
+        "outputType": "video/mp2t"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-m2ts",
       "route": "/mp4-to-m2ts",
       "status": "pass",
-      "loadMs": 96,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 575,
+      "detail": "output 24576",
+      "metrics": {
+        "outputBytes": 24576,
+        "outputType": "video/mp2t"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-hevc",
       "route": "/mp4-to-hevc",
       "status": "pass",
-      "loadMs": 120,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 572,
+      "detail": "output 17423",
+      "metrics": {
+        "outputBytes": 17423,
+        "outputType": "video/mp4"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-divx",
       "route": "/mp4-to-divx",
       "status": "pass",
-      "loadMs": 109,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 551,
+      "detail": "output 37738",
+      "metrics": {
+        "outputBytes": 37738,
+        "outputType": "video/avi"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-mjpeg",
       "route": "/mp4-to-mjpeg",
       "status": "pass",
-      "loadMs": 107,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 531,
+      "detail": "output 109534",
+      "metrics": {
+        "outputBytes": 109534,
+        "outputType": "video/x-motion-jpeg"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-mpeg2",
       "route": "/mp4-to-mpeg2",
       "status": "pass",
-      "loadMs": 101,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 593,
+      "detail": "output 18432",
+      "metrics": {
+        "outputBytes": 18432,
+        "outputType": "application/octet-stream"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
       "errors": []
     },
     {
       "id": "mp4-to-asf",
       "route": "/mp4-to-asf",
       "status": "pass",
-      "loadMs": 108,
-      "detail": null,
-      "metrics": null,
+      "loadMs": 621,
+      "detail": "output 20257",
+      "metrics": {
+        "outputBytes": 20257,
+        "outputType": "video/x-ms-asf"
+      },
+      "fixture": {
+        "format": "mp4",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp4"
+      },
+      "errors": []
+    },
+    {
+      "id": "mxf-to-mp4",
+      "route": "/mxf-to-mp4",
+      "status": "pass",
+      "loadMs": 599,
+      "detail": "output 16465",
+      "metrics": {
+        "outputBytes": 16465,
+        "outputType": "video/mp4"
+      },
+      "fixture": {
+        "format": "mxf",
+        "status": "ready",
+        "fixture": "fixtures/sample.mxf"
+      },
+      "errors": []
+    },
+    {
+      "id": "aif-to-mp3",
+      "route": "/aif-to-mp3",
+      "status": "pass",
+      "loadMs": 594,
+      "detail": "output 25748",
+      "metrics": {
+        "outputBytes": 25748,
+        "outputType": "audio/mpeg"
+      },
+      "fixture": {
+        "format": "aif",
+        "status": "ready",
+        "fixture": "fixtures/sample.aif"
+      },
+      "errors": []
+    },
+    {
+      "id": "avi-to-mov",
+      "route": "/avi-to-mov",
+      "status": "pass",
+      "loadMs": 609,
+      "detail": "output 16652",
+      "metrics": {
+        "outputBytes": 16652,
+        "outputType": "video/quicktime"
+      },
+      "fixture": {
+        "format": "avi",
+        "status": "ready",
+        "fixture": "fixtures/sample.avi"
+      },
+      "errors": []
+    },
+    {
+      "id": "mov-to-webm",
+      "route": "/mov-to-webm",
+      "status": "pass",
+      "loadMs": 137,
+      "detail": "output 7181",
+      "metrics": {
+        "outputBytes": 7181,
+        "outputType": "video/webm"
+      },
+      "fixture": {
+        "format": "mov",
+        "status": "ready",
+        "fixture": "fixtures/sample.mov"
+      },
+      "errors": []
+    },
+    {
+      "id": "mp3-to-aac",
+      "route": "/mp3-to-aac",
+      "status": "pass",
+      "loadMs": 586,
+      "detail": "output 16488",
+      "metrics": {
+        "outputBytes": 16488,
+        "outputType": "audio/aac"
+      },
+      "fixture": {
+        "format": "mp3",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp3"
+      },
+      "errors": []
+    },
+    {
+      "id": "mp3-to-flac",
+      "route": "/mp3-to-flac",
+      "status": "pass",
+      "loadMs": 527,
+      "detail": "output 53400",
+      "metrics": {
+        "outputBytes": 53400,
+        "outputType": "audio/flac"
+      },
+      "fixture": {
+        "format": "mp3",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp3"
+      },
+      "errors": []
+    },
+    {
+      "id": "svg-to-jpg",
+      "route": "/svg-to-jpg",
+      "status": "pass",
+      "loadMs": 872,
+      "detail": "output 2585",
+      "metrics": {
+        "outputBytes": 2585,
+        "outputType": "image/jpeg"
+      },
+      "fixture": {
+        "format": "svg",
+        "status": "ready",
+        "fixture": "fixtures/sample.svg"
+      },
+      "errors": []
+    },
+    {
+      "id": "webm-to-mov",
+      "route": "/webm-to-mov",
+      "status": "pass",
+      "loadMs": 571,
+      "detail": "output 16260",
+      "metrics": {
+        "outputBytes": 16260,
+        "outputType": "video/quicktime"
+      },
+      "fixture": {
+        "format": "webm",
+        "status": "ready",
+        "fixture": "fixtures/sample.webm"
+      },
+      "errors": []
+    },
+    {
+      "id": "swf-to-mp4",
+      "route": "/swf-to-mp4",
+      "status": "pass",
+      "loadMs": 571,
+      "detail": "output 15888",
+      "metrics": {
+        "outputBytes": 15888,
+        "outputType": "video/mp4"
+      },
+      "fixture": {
+        "format": "swf",
+        "status": "ready",
+        "fixture": "fixtures/sample.swf"
+      },
+      "errors": []
+    },
+    {
+      "id": "wav-to-flac",
+      "route": "/wav-to-flac",
+      "status": "pass",
+      "loadMs": 558,
+      "detail": "output 20874",
+      "metrics": {
+        "outputBytes": 20874,
+        "outputType": "audio/flac"
+      },
+      "fixture": {
+        "format": "wav",
+        "status": "ready",
+        "fixture": "fixtures/sample.wav"
+      },
+      "errors": []
+    },
+    {
+      "id": "wav-to-m4a",
+      "route": "/wav-to-m4a",
+      "status": "pass",
+      "loadMs": 567,
+      "detail": "output 19479",
+      "metrics": {
+        "outputBytes": 19479,
+        "outputType": "audio/mp4"
+      },
+      "fixture": {
+        "format": "wav",
+        "status": "ready",
+        "fixture": "fixtures/sample.wav"
+      },
+      "errors": []
+    },
+    {
+      "id": "m4a-to-ogg",
+      "route": "/m4a-to-ogg",
+      "status": "pass",
+      "loadMs": 551,
+      "detail": "output 6781",
+      "metrics": {
+        "outputBytes": 6781,
+        "outputType": "audio/ogg"
+      },
+      "fixture": {
+        "format": "m4a",
+        "status": "ready",
+        "fixture": "fixtures/sample.m4a"
+      },
+      "errors": []
+    },
+    {
+      "id": "avi-to-mp3",
+      "route": "/avi-to-mp3",
+      "status": "pass",
+      "loadMs": 634,
+      "detail": "output 27035",
+      "metrics": {
+        "outputBytes": 27035,
+        "outputType": "audio/mpeg"
+      },
+      "fixture": {
+        "format": "avi",
+        "status": "ready",
+        "fixture": "fixtures/sample.avi"
+      },
+      "errors": []
+    },
+    {
+      "id": "jpg-to-jpg",
+      "route": "/jpg-to-jpg",
+      "status": "pass",
+      "loadMs": 549,
+      "detail": "output 816",
+      "metrics": {
+        "outputBytes": 816,
+        "outputType": "image/jpeg"
+      },
+      "fixture": {
+        "format": "jpg",
+        "status": "ready",
+        "fixture": "fixtures/sample.jpg"
+      },
+      "errors": []
+    },
+    {
+      "id": "aiff-to-wav",
+      "route": "/aiff-to-wav",
+      "status": "pass",
+      "loadMs": 556,
+      "detail": "output 88278",
+      "metrics": {
+        "outputBytes": 88278,
+        "outputType": "audio/wav"
+      },
+      "fixture": {
+        "format": "aiff",
+        "status": "ready",
+        "fixture": "fixtures/sample.aiff"
+      },
+      "errors": []
+    },
+    {
+      "id": "mp3-to-opus",
+      "route": "/mp3-to-opus",
+      "status": "pass",
+      "loadMs": 591,
+      "detail": "output 21021",
+      "metrics": {
+        "outputBytes": 21021,
+        "outputType": "audio/opus"
+      },
+      "fixture": {
+        "format": "mp3",
+        "status": "ready",
+        "fixture": "fixtures/sample.mp3"
+      },
+      "errors": []
+    },
+    {
+      "id": "svg-to-webp",
+      "route": "/svg-to-webp",
+      "status": "pass",
+      "loadMs": 561,
+      "detail": "output 1846",
+      "metrics": {
+        "outputBytes": 1846,
+        "outputType": "image/webp"
+      },
+      "fixture": {
+        "format": "svg",
+        "status": "ready",
+        "fixture": "fixtures/sample.svg"
+      },
+      "errors": []
+    },
+    {
+      "id": "tiff-to-jpg",
+      "route": "/tiff-to-jpg",
+      "status": "pass",
+      "loadMs": 135,
+      "detail": "output 3476",
+      "metrics": {
+        "outputBytes": 3476,
+        "outputType": "image/jpeg"
+      },
+      "fixture": {
+        "format": "tiff",
+        "status": "ready",
+        "fixture": "fixtures/sample.tiff"
+      },
       "errors": []
     }
   ]

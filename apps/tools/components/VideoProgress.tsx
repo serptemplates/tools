@@ -50,7 +50,7 @@ export function VideoProgress({ fileName, progress, status, message }: VideoProg
   };
 
   return (
-    <Card className="p-4 mb-3">
+    <Card className="p-4 mb-3" data-testid="video-progress">
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -72,7 +72,7 @@ export function VideoProgress({ fileName, progress, status, message }: VideoProg
 
         {status === 'processing' && (
           <div className="flex justify-between text-xs text-muted-foreground">
-            <span>Processing video...</span>
+            <span>Processing file...</span>
             <span>{Math.round(progress)}%</span>
           </div>
         )}

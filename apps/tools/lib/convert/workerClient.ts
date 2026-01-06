@@ -14,16 +14,21 @@ export type ProgressUpdate = {
   time?: number;
 };
 
+const SERVER_IMAGE_INPUTS = new Set(["tiff", "tif"]);
+
 const MIME_MAP: Record<string, string> = {
   png: "image/png",
   jpg: "image/jpeg",
   jpeg: "image/jpeg",
   webp: "image/webp",
   gif: "image/gif",
+  tiff: "image/tiff",
+  tif: "image/tiff",
   mp4: "video/mp4",
   webm: "video/webm",
   avi: "video/x-msvideo",
   mov: "video/quicktime",
+  mkv: "video/x-matroska",
   m4v: "video/x-m4v",
   mpeg: "video/mpeg",
   mpg: "video/mpeg",
@@ -48,6 +53,8 @@ const MIME_MAP: Record<string, string> = {
   divx: "video/avi",
   mjpeg: "video/x-motion-jpeg",
   asf: "video/x-ms-asf",
+  pdf: "application/pdf",
+  svg: "image/svg+xml",
 };
 
 export function getOutputMimeType(format: string) {
@@ -57,9 +64,6 @@ export function getOutputMimeType(format: string) {
 export function resolveConversionOp(from: string, to: string, capabilities = detectCapabilities()): ConversionOp {
   if (from === "pdf") return "pdf-pages";
   if (requiresVideoConversion(from, to)) {
-    if (!capabilities.supportsVideoConversion) {
-      throw new Error(`Video conversion not supported: ${capabilities.reason || "Unknown reason"}`);
-    }
     return "video";
   }
   return "raster";
@@ -73,14 +77,32 @@ export async function convertWithWorker(args: {
   onProgress?: (update: ProgressUpdate) => void;
   quality?: number;
 }): Promise<ConversionResult> {
+  const fromExt = args.from.toLowerCase();
+  if (shouldUseServerImageConversion(fromExt)) {
+    return convertImageViaApi(args);
+  }
+  if (fromExt === "heic" || fromExt === "heif") {
+    return convertRasterOnMainThread(args);
+  }
+  if (fromExt === "pdf") {
+    const { renderPdfPages } = await import("./pdf");
+    const buffers = await renderPdfPages(args.buf, undefined, args.to);
+    return { kind: "multiple", buffers };
+  }
   const op = resolveConversionOp(args.from, args.to);
+  if (op === "video") {
+    return convertVideoOnMainThread(args);
+  }
   const workerBuf = op === "raster" ? args.buf.slice(0) : args.buf;
 
   try {
     return await convertWithWorkerInner({ ...args, op, buf: workerBuf });
   } catch (error) {
-    if (op === "raster" && isDecodeError(error)) {
+    if (op === "raster" && (isDecodeError(error) || isWorkerError(error))) {
       return convertRasterOnMainThread(args);
+    }
+    if (op === "video" && isWorkerError(error)) {
+      return convertVideoOnMainThread(args);
     }
     throw error;
   }
@@ -126,7 +148,15 @@ async function convertWithWorkerInner(args: {
     };
 
     args.worker.onerror = (error) => {
-      reject(new Error(`Worker error: ${error.message || error}`));
+      const detailParts = [
+        (error as ErrorEvent).message,
+        (error as ErrorEvent).filename,
+        (error as ErrorEvent).lineno,
+        (error as ErrorEvent).colno,
+        (error as ErrorEvent).error instanceof Error ? (error as ErrorEvent).error.message : null,
+      ].filter(Boolean);
+      const detail = detailParts.length ? detailParts.join(" | ") : String(error);
+      reject(new Error(`Worker error: ${detail}`));
     };
 
     if (args.op === "pdf-pages") {
@@ -180,7 +210,15 @@ async function compressPngWithWorkerInner(args: {
     };
 
     args.worker.onerror = (error) => {
-      reject(new Error(`Worker error: ${error.message || error}`));
+      const detailParts = [
+        (error as ErrorEvent).message,
+        (error as ErrorEvent).filename,
+        (error as ErrorEvent).lineno,
+        (error as ErrorEvent).colno,
+        (error as ErrorEvent).error instanceof Error ? (error as ErrorEvent).error.message : null,
+      ].filter(Boolean);
+      const detail = detailParts.length ? detailParts.join(" | ") : String(error);
+      reject(new Error(`Worker error: ${detail}`));
     };
 
     args.worker.postMessage({ op: "compress-png", buf: args.buf, quality: args.quality }, [args.buf]);
@@ -199,6 +237,46 @@ function isDecodeError(error: unknown) {
   ].some((marker) => normalized.includes(marker));
 }
 
+function isWorkerError(error: unknown) {
+  const message = error instanceof Error ? error.message : String(error);
+  return message.toLowerCase().includes("worker error");
+}
+
+function shouldUseServerImageConversion(fromExt: string) {
+  return SERVER_IMAGE_INPUTS.has(fromExt.toLowerCase());
+}
+
+async function convertImageViaApi(args: {
+  from: string;
+  to: string;
+  buf: ArrayBuffer;
+  onProgress?: (update: ProgressUpdate) => void;
+}): Promise<ConversionResult> {
+  args.onProgress?.({ status: "processing", progress: 5 });
+  const response = await fetch(`/api/image-convert?from=${args.from}&to=${args.to}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/octet-stream",
+    },
+    body: args.buf,
+  });
+
+  if (!response.ok) {
+    let detail = "";
+    try {
+      const data = await response.json();
+      detail = data?.error ? `: ${data.error}` : "";
+    } catch {
+      detail = "";
+    }
+    throw new Error(`Server conversion failed (${response.status})${detail}`);
+  }
+
+  const buffer = await response.arrayBuffer();
+  args.onProgress?.({ status: "processing", progress: 100 });
+  return { kind: "single", buffer };
+}
+
 async function convertRasterOnMainThread(args: {
   from: string;
   to: string;
@@ -208,6 +286,36 @@ async function convertRasterOnMainThread(args: {
   const rgba = await decodeToRGBA(args.from, args.buf);
   const blob = await encodeFromRGBA(args.to, rgba, args.quality ?? 0.85);
   const buffer = await blob.arrayBuffer();
+  return { kind: "single", buffer };
+}
+
+async function convertVideoOnMainThread(args: {
+  from: string;
+  to: string;
+  buf: ArrayBuffer;
+  onProgress?: (update: ProgressUpdate) => void;
+  quality?: number;
+}): Promise<ConversionResult> {
+  const { convertVideo, convertVideoViaApi, shouldUseServerConversion } = await import("./video");
+  let buffer: ArrayBuffer;
+
+  if (shouldUseServerConversion(args.from, args.to)) {
+    args.onProgress?.({ status: "processing", progress: 5 });
+    buffer = await convertVideoViaApi(args.buf, args.from, args.to);
+    args.onProgress?.({ status: "processing", progress: 100 });
+  } else {
+    buffer = await convertVideo(args.buf, args.from, args.to, {
+      quality: args.quality,
+      onProgress: (progress) => {
+        args.onProgress?.({
+          status: "processing",
+          progress: progress.ratio * 100,
+          time: progress.time,
+        });
+      },
+    });
+  }
+
   return { kind: "single", buffer };
 }
 

@@ -124,6 +124,7 @@ function mergeCsvFiles(parsedFiles: ParsedCsv[]) {
 export default function CsvCombiner({ toolId }: Props) {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [files, setFiles] = useState<FileEntry[]>([]);
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [output, setOutput] = useState("");
   const [stats, setStats] = useState({ rows: 0, columns: 0 });
   const [error, setError] = useState("");
@@ -136,6 +137,7 @@ export default function CsvCombiner({ toolId }: Props) {
   function handleFiles(list: FileList | null) {
     if (!list || list.length === 0) return;
     const next = Array.from(list);
+    setSelectedFiles(next);
     setFiles(next.map((file) => ({ name: file.name, size: file.size })));
     setOutput("");
     setStats({ rows: 0, columns: 0 });
@@ -143,12 +145,11 @@ export default function CsvCombiner({ toolId }: Props) {
   }
 
   async function combineCsv() {
-    if (!inputRef.current?.files?.length) {
+    if (selectedFiles.length === 0) {
       setError("Please add at least two CSV files.");
       return;
     }
 
-    const selectedFiles = Array.from(inputRef.current.files);
     if (selectedFiles.length < 2) {
       setError("Please add at least two CSV files.");
       return;
@@ -261,6 +262,7 @@ export default function CsvCombiner({ toolId }: Props) {
               </Button>
               <Button variant="outline" onClick={() => {
                 setFiles([]);
+                setSelectedFiles([]);
                 setOutput("");
                 setStats({ rows: 0, columns: 0 });
                 setError("");
@@ -286,7 +288,12 @@ export default function CsvCombiner({ toolId }: Props) {
               data-testid="csv-combiner-output"
             />
             <div className="mt-4">
-              <Button onClick={downloadCsv} disabled={!output} variant="secondary">
+              <Button
+                onClick={downloadCsv}
+                disabled={!output}
+                variant="secondary"
+                data-testid="csv-combiner-download"
+              >
                 Download Combined CSV
               </Button>
             </div>

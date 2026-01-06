@@ -288,7 +288,10 @@ export default function BatchHeroConverter({
                 <p className="text-gray-600 dark:text-gray-300">
                   Compressing file {currentFileIndex + 1} of {files.length}...
                 </p>
-                <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                <div
+                  className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700"
+                  data-testid="batch-progress"
+                >
                   <div
                     className="bg-blue-600 h-2.5 rounded-full transition-all duration-300"
                     style={{ width: `${compressionRate}%` }}

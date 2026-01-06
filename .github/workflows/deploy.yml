@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Run tools SOP checks
+        run: pnpm lint:tools
+
       - name: Build apps
         run: pnpm build
 
