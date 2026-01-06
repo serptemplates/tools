@@ -19,8 +19,8 @@ const nextConfig = {
   outputFileTracingRoot: tracingRoot,
   outputFileTracingIncludes: ffmpegTrace
     ? {
-        "/api/video-convert": [ffmpegTrace],
-        "/api/image-convert": [ffmpegTrace],
+        "/app/api/video-convert": [ffmpegTrace],
+        "/app/api/image-convert": [ffmpegTrace],
       }
     : {},
   async headers() {
