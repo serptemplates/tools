@@ -17,10 +17,12 @@ function canRemux(fromFormat: string, toFormat: string) {
 }
 
 export function shouldUseServerConversion(fromFormat: string, toFormat: string) {
-  void fromFormat;
-  void toFormat;
   const preferServer = process.env.NEXT_PUBLIC_VIDEO_CONVERSION_PREFER_SERVER === "true";
   if (preferServer) {
+    return true;
+  }
+  const serverOnly = new Set(["mxf", "rm", "rmvb"]);
+  if (serverOnly.has(toFormat.toLowerCase())) {
     return true;
   }
   return !detectCapabilities().supportsVideoConversion;
@@ -146,17 +148,24 @@ export async function convertVideo(
     }
   }
   // Audio extraction from MP4
-  else if (['mp3', 'wav', 'ogg', 'aac', 'm4a', 'opus', 'flac', 'wma', 'aiff', 'mp2'].includes(toFormat)) {
+  else if ([
+    'mp3', 'wav', 'ogg', 'oga', 'aac', 'm4a', 'm4r', 'opus', 'flac', 'wma', 'aiff', 'mp2',
+    'alac', 'amr', 'au', 'caf', 'cdda'
+  ].includes(toFormat)) {
     if (toFormat === 'mp3') {
       args.push('-acodec', 'libmp3lame', '-b:a', '192k');
     } else if (toFormat === 'wav') {
       args.push('-acodec', 'pcm_s16le');
     } else if (toFormat === 'ogg') {
       args.push('-acodec', 'libvorbis', '-q:a', '5');
+    } else if (toFormat === 'oga') {
+      args.push('-acodec', 'libvorbis', '-q:a', '5', '-f', 'ogg');
     } else if (toFormat === 'aac') {
       args.push('-acodec', 'aac', '-b:a', '192k');
     } else if (toFormat === 'm4a') {
       args.push('-acodec', 'aac', '-b:a', '192k');
+    } else if (toFormat === 'm4r') {
+      args.push('-acodec', 'aac', '-b:a', '192k', '-f', 'ipod');
     } else if (toFormat === 'opus') {
       args.push('-acodec', 'libopus', '-b:a', '128k');
     } else if (toFormat === 'flac') {
@@ -167,6 +176,16 @@ export async function convertVideo(
       args.push('-acodec', 'pcm_s16be');
     } else if (toFormat === 'mp2') {
       args.push('-acodec', 'mp2', '-b:a', '192k');
+    } else if (toFormat === 'alac') {
+      args.push('-acodec', 'alac', '-f', 'ipod');
+    } else if (toFormat === 'amr') {
+      args.push('-acodec', 'libopencore_amrnb', '-ar', '8000', '-ac', '1', '-b:a', '12.2k', '-f', 'amr');
+    } else if (toFormat === 'au') {
+      args.push('-acodec', 'pcm_s16be', '-ar', '44100', '-ac', '2', '-f', 'au');
+    } else if (toFormat === 'caf') {
+      args.push('-acodec', 'pcm_s16le', '-ar', '44100', '-ac', '2', '-f', 'caf');
+    } else if (toFormat === 'cdda') {
+      args.push('-acodec', 'pcm_s16le', '-ar', '44100', '-ac', '2', '-f', 's16le');
     }
     args.push('-vn'); // No video for audio extraction
   }
@@ -184,8 +203,27 @@ export async function convertVideo(
     args.push('-vf', FAST_VIDEO_FILTER);
   } else if (toFormat === 'webm') {
     // Use faster VP8 instead of VP9
-    args.push('-c:v', 'libvpx', '-crf', '40', '-b:v', '0', '-deadline', 'realtime', '-cpu-used', '8');
-    args.push('-c:a', 'libvorbis', '-b:a', '64k');
+    args.push(
+      '-c:v',
+      'libvpx',
+      '-crf',
+      '40',
+      '-b:v',
+      '0',
+      '-deadline',
+      'realtime',
+      '-cpu-used',
+      '8',
+      '-auto-alt-ref',
+      '0',
+      '-pix_fmt',
+      'yuv420p'
+    );
+    if (fromFormat === 'gif') {
+      args.push('-an');
+    } else {
+      args.push('-c:a', 'libvorbis', '-b:a', '64k');
+    }
     args.push('-vf', FAST_VIDEO_FILTER);
   } else if (toFormat === 'avi') {
     args.push('-c:v', 'mpeg4', '-vtag', 'xvid', '-q:v', '10', '-bf', '0');
@@ -247,6 +285,21 @@ export async function convertVideo(
     args.push('-c:a', 'mp3', '-b:a', '96k');
     args.push('-vf', FAST_VIDEO_FILTER);
     outputName = outputName.replace('.divx', '.avi'); // Use AVI container
+  } else if (toFormat === 'av1') {
+    // AV1 codec in MP4 container
+    args.push('-c:v', 'libaom-av1', '-crf', '35', '-b:v', '0', '-cpu-used', '8');
+    args.push('-c:a', 'aac', '-b:a', '96k');
+    args.push('-tag:v', 'av01');
+    args.push('-movflags', '+faststart');
+    args.push('-vf', FAST_VIDEO_FILTER);
+    outputName = outputName.replace('.av1', '.mp4'); // Use MP4 container
+  } else if (toFormat === 'avchd') {
+    // AVCHD-style transport stream
+    args.push('-c:v', 'libx264', '-preset', 'ultrafast', '-crf', '30', '-tune', 'zerolatency');
+    args.push('-c:a', 'aac', '-b:a', '96k');
+    args.push('-vf', FAST_VIDEO_FILTER);
+    args.push('-f', 'mpegts');
+    outputName = outputName.replace('.avchd', '.m2ts'); // Use M2TS container
   } else if (toFormat === 'mjpeg') {
     // Motion JPEG
     args.push('-c:v', 'mjpeg', '-q:v', '8', '-r', '12');

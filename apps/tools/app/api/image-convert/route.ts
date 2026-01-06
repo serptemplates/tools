@@ -1,6 +1,6 @@
 import { spawn } from "node:child_process";
 import { randomUUID } from "node:crypto";
-import { promises as fs } from "node:fs";
+import { existsSync, promises as fs } from "node:fs";
 import path from "node:path";
 import { tmpdir } from "node:os";
 import ffmpegPath from "ffmpeg-static";
@@ -9,7 +9,7 @@ export const runtime = "nodejs";
 
 const IMAGE_OUTPUTS = new Set(["jpg", "jpeg", "png", "webp", "gif", "bmp", "tiff", "tif"]);
 const RAW_INPUTS = new Set(["cr2", "cr3", "dng", "arw"]);
-const FFMPEG_BINARY = ffmpegPath ?? "ffmpeg";
+const FFMPEG_BINARY = ffmpegPath && existsSync(ffmpegPath) ? ffmpegPath : "ffmpeg";
 
 function resolveOutputExtension(to: string) {
   if (to === "jpeg") return "jpg";

@@ -26,9 +26,12 @@ let pdfjsPromise: Promise<PdfjsModule> | null = null;
 
 async function getPdfjs() {
   if (!pdfjsPromise) {
-    pdfjsPromise = import("pdfjs-dist/legacy/build/pdf").then(
-      (mod) => mod as unknown as PdfjsModule
-    );
+    pdfjsPromise = import(/* webpackIgnore: true */ "/vendor/pdfjs/pdf.min.mjs")
+      .then((mod) => mod as unknown as PdfjsModule)
+      .catch(async () => {
+        const mod = await import("pdfjs-dist/legacy/build/pdf");
+        return mod as unknown as PdfjsModule;
+      });
   }
   return pdfjsPromise;
 }

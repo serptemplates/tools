@@ -10365,6 +10365,54 @@
     ]
   },
   {
+    "id": "png-to-avif",
+    "name": "PNG to AVIF",
+    "description": "Convert PNG images to AVIF",
+    "operation": "convert",
+    "route": "/png-to-avif",
+    "from": "png",
+    "to": "avif",
+    "isActive": true,
+    "tags": [
+      "png",
+      "avif",
+      "image",
+      "convert"
+    ]
+  },
+  {
+    "id": "jpg-to-avif",
+    "name": "JPG to AVIF",
+    "description": "Convert JPG images to AVIF",
+    "operation": "convert",
+    "route": "/jpg-to-avif",
+    "from": "jpg",
+    "to": "avif",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "avif",
+      "image",
+      "convert"
+    ]
+  },
+  {
+    "id": "gif-to-avif",
+    "name": "GIF to AVIF",
+    "description": "Convert GIF images to AVIF",
+    "operation": "convert",
+    "route": "/gif-to-avif",
+    "from": "gif",
+    "to": "avif",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "avif",
+      "image",
+      "convert"
+    ]
+  },
+  {
     "id": "gif-to-svg",
     "name": "GIF to SVG",
     "description": "Convert GIF files to SVG format",
@@ -13037,7 +13085,7 @@
     "route": "/midi-to-mp3",
     "from": "midi",
     "to": "mp3",
-    "isActive": true,
+    "isActive": false,
     "tags": [
       "midi",
       "mp3",
@@ -13156,7 +13204,7 @@
     "route": "/mod-to-mp4",
     "from": "mod",
     "to": "mp4",
-    "isActive": true,
+    "isActive": false,
     "tags": [
       "mod",
       "mp4",
@@ -13207,7 +13255,7 @@
     "route": "/midi-to-wav",
     "from": "midi",
     "to": "wav",
-    "isActive": true,
+    "isActive": false,
     "tags": [
       "midi",
       "wav",
@@ -13462,7 +13510,7 @@
     "route": "/mod-to-mov",
     "from": "mod",
     "to": "mov",
-    "isActive": true,
+    "isActive": false,
     "tags": [
       "mod",
       "mov",
@@ -13496,7 +13544,7 @@
     "route": "/shn-to-mp3",
     "from": "shn",
     "to": "mp3",
-    "isActive": true,
+    "isActive": false,
     "tags": [
       "shn",
       "mp3",
@@ -13513,7 +13561,7 @@
     "route": "/ape-to-mp3",
     "from": "ape",
     "to": "mp3",
-    "isActive": true,
+    "isActive": false,
     "tags": [
       "ape",
       "mp3",
@@ -13547,7 +13595,7 @@
     "route": "/aaf-to-mp4",
     "from": "aaf",
     "to": "mp4",
-    "isActive": true,
+    "isActive": false,
     "tags": [
       "aaf",
       "mp4",
@@ -13598,7 +13646,7 @@
     "route": "/ape-to-flac",
     "from": "ape",
     "to": "flac",
-    "isActive": true,
+    "isActive": false,
     "tags": [
       "ape",
       "flac",
@@ -13649,7 +13697,7 @@
     "route": "/mod-to-avi",
     "from": "mod",
     "to": "avi",
-    "isActive": true,
+    "isActive": false,
     "tags": [
       "mod",
       "avi",
@@ -13887,7 +13935,7 @@
     "route": "/shn-to-flac",
     "from": "shn",
     "to": "flac",
-    "isActive": true,
+    "isActive": false,
     "tags": [
       "shn",
       "flac",
@@ -13910,6 +13958,295 @@
       "mp4",
       "convert",
       "video"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "mp3-to-m4r",
+    "name": "MP3 to M4R",
+    "description": "Convert MP3 files to M4R format",
+    "operation": "convert",
+    "route": "/mp3-to-m4r",
+    "from": "mp3",
+    "to": "m4r",
+    "isActive": true,
+    "tags": [
+      "mp3",
+      "m4r",
+      "convert",
+      "audio"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "m4p-to-mp3",
+    "name": "M4P to MP3",
+    "description": "Convert M4P files to MP3 format",
+    "operation": "convert",
+    "route": "/m4p-to-mp3",
+    "from": "m4p",
+    "to": "mp3",
+    "isActive": true,
+    "tags": [
+      "m4p",
+      "mp3",
+      "convert",
+      "audio"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "flac-to-alac",
+    "name": "FLAC to ALAC",
+    "description": "Convert FLAC files to ALAC format",
+    "operation": "convert",
+    "route": "/flac-to-alac",
+    "from": "flac",
+    "to": "alac",
+    "isActive": true,
+    "tags": [
+      "flac",
+      "alac",
+      "convert",
+      "audio"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "avchd-to-mp4",
+    "name": "AVCHD to MP4",
+    "description": "Convert AVCHD files to MP4 format",
+    "operation": "convert",
+    "route": "/avchd-to-mp4",
+    "from": "avchd",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "avchd",
+      "mp4",
+      "convert",
+      "video"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "mpv-to-mp4",
+    "name": "MPV to MP4",
+    "description": "Convert MPV files to MP4 format",
+    "operation": "convert",
+    "route": "/mpv-to-mp4",
+    "from": "mpv",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "mpv",
+      "mp4",
+      "convert",
+      "video"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "m4a-to-m4r",
+    "name": "M4A to M4R",
+    "description": "Convert M4A files to M4R format",
+    "operation": "convert",
+    "route": "/m4a-to-m4r",
+    "from": "m4a",
+    "to": "m4r",
+    "isActive": true,
+    "tags": [
+      "m4a",
+      "m4r",
+      "convert",
+      "audio"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "mp4-to-m4r",
+    "name": "MP4 to M4R",
+    "description": "Extract M4R audio from MP4 video files",
+    "operation": "convert",
+    "route": "/mp4-to-m4r",
+    "from": "mp4",
+    "to": "m4r",
+    "isActive": true,
+    "tags": [
+      "mp4",
+      "m4r",
+      "convert",
+      "audio"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "wav-to-m4r",
+    "name": "WAV to M4R",
+    "description": "Convert WAV files to M4R format",
+    "operation": "convert",
+    "route": "/wav-to-m4r",
+    "from": "wav",
+    "to": "m4r",
+    "isActive": true,
+    "tags": [
+      "wav",
+      "m4r",
+      "convert",
+      "audio"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "mp4-to-av1",
+    "name": "MP4 to AV1",
+    "description": "Convert MP4 video files to AV1 format",
+    "operation": "convert",
+    "route": "/mp4-to-av1",
+    "from": "mp4",
+    "to": "av1",
+    "isActive": true,
+    "tags": [
+      "mp4",
+      "av1",
+      "convert",
+      "video"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "mp3-to-amr",
+    "name": "MP3 to AMR",
+    "description": "Convert MP3 files to AMR format",
+    "operation": "convert",
+    "route": "/mp3-to-amr",
+    "from": "mp3",
+    "to": "amr",
+    "isActive": true,
+    "tags": [
+      "mp3",
+      "amr",
+      "convert",
+      "audio"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "mp4-to-avchd",
+    "name": "MP4 to AVCHD",
+    "description": "Convert MP4 video files to AVCHD format",
+    "operation": "convert",
+    "route": "/mp4-to-avchd",
+    "from": "mp4",
+    "to": "avchd",
+    "isActive": true,
+    "tags": [
+      "mp4",
+      "avchd",
+      "convert",
+      "video"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "mp3-to-oga",
+    "name": "MP3 to OGA",
+    "description": "Convert MP3 files to OGA format",
+    "operation": "convert",
+    "route": "/mp3-to-oga",
+    "from": "mp3",
+    "to": "oga",
+    "isActive": true,
+    "tags": [
+      "mp3",
+      "oga",
+      "convert",
+      "audio"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "mp3-to-caf",
+    "name": "MP3 to CAF",
+    "description": "Convert MP3 files to CAF format",
+    "operation": "convert",
+    "route": "/mp3-to-caf",
+    "from": "mp3",
+    "to": "caf",
+    "isActive": true,
+    "tags": [
+      "mp3",
+      "caf",
+      "convert",
+      "audio"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "mp3-to-cdda",
+    "name": "MP3 to CDDA",
+    "description": "Convert MP3 files to CDDA format",
+    "operation": "convert",
+    "route": "/mp3-to-cdda",
+    "from": "mp3",
+    "to": "cdda",
+    "isActive": true,
+    "tags": [
+      "mp3",
+      "cdda",
+      "convert",
+      "audio"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "mp3-to-au",
+    "name": "MP3 to AU",
+    "description": "Convert MP3 files to AU format",
+    "operation": "convert",
+    "route": "/mp3-to-au",
+    "from": "mp3",
+    "to": "au",
+    "isActive": true,
+    "tags": [
+      "mp3",
+      "au",
+      "convert",
+      "audio"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "mp4-to-amr",
+    "name": "MP4 to AMR",
+    "description": "Extract AMR audio from MP4 video files",
+    "operation": "convert",
+    "route": "/mp4-to-amr",
+    "from": "mp4",
+    "to": "amr",
+    "isActive": true,
+    "tags": [
+      "mp4",
+      "amr",
+      "convert",
+      "audio"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "wav-to-amr",
+    "name": "WAV to AMR",
+    "description": "Convert WAV files to AMR format",
+    "operation": "convert",
+    "route": "/wav-to-amr",
+    "from": "wav",
+    "to": "amr",
+    "isActive": true,
+    "tags": [
+      "wav",
+      "amr",
+      "convert",
+      "audio"
     ],
     "requiresFFmpeg": true
   }

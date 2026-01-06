@@ -15,11 +15,13 @@ export type ProgressUpdate = {
 };
 
 const SERVER_IMAGE_INPUTS = new Set(["tiff", "tif", "cr2", "cr3", "dng", "arw"]);
+const SERVER_IMAGE_OUTPUTS = new Set(["jpg", "jpeg", "png", "webp", "gif", "bmp", "tiff", "tif"]);
 
 const MIME_MAP: Record<string, string> = {
   png: "image/png",
   jpg: "image/jpeg",
   jpeg: "image/jpeg",
+  avif: "image/avif",
   webp: "image/webp",
   gif: "image/gif",
   tiff: "image/tiff",
@@ -35,13 +37,20 @@ const MIME_MAP: Record<string, string> = {
   mp3: "audio/mpeg",
   wav: "audio/wav",
   ogg: "audio/ogg",
+  oga: "audio/ogg",
   aac: "audio/aac",
   m4a: "audio/mp4",
+  m4r: "audio/mp4",
   opus: "audio/opus",
   flac: "audio/flac",
   wma: "audio/x-ms-wma",
   aiff: "audio/aiff",
   mp2: "audio/mpeg",
+  alac: "audio/mp4",
+  amr: "audio/amr",
+  au: "audio/basic",
+  caf: "audio/x-caf",
+  cdda: "audio/x-cdda",
   ts: "video/mp2t",
   mts: "video/mp2t",
   m2ts: "video/mp2t",
@@ -60,6 +69,8 @@ const MIME_MAP: Record<string, string> = {
   rmvb: "application/vnd.rn-realmedia-vbr",
   swf: "application/x-shockwave-flash",
   mxf: "application/mxf",
+  av1: "video/mp4",
+  avchd: "video/mp2t",
   pdf: "application/pdf",
   svg: "image/svg+xml",
 };
@@ -96,8 +107,34 @@ export async function convertWithWorker(args: {
   quality?: number;
 }): Promise<ConversionResult> {
   const fromExt = args.from.toLowerCase();
+  const toExt = args.to.toLowerCase();
+  if (fromExt === "ai") {
+    const { renderPdfPages } = await import("./pdf");
+    const rasterFormat = toExt === "jpg" || toExt === "jpeg" ? "jpg" : "png";
+    const buffers = await renderPdfPages(args.buf, undefined, rasterFormat);
+    if (toExt === "svg") {
+      const svgBuffers = [];
+      for (const buffer of buffers) {
+        const rgba = await decodeToRGBA("png", buffer);
+        const blob = await encodeFromRGBA("svg", rgba, args.quality ?? 0.85);
+        svgBuffers.push(await blob.arrayBuffer());
+      }
+      return { kind: "multiple", buffers: svgBuffers };
+    }
+    return { kind: "multiple", buffers };
+  }
   if (shouldUseServerImageConversion(fromExt)) {
-    return convertImageViaApi(args);
+    if (SERVER_IMAGE_OUTPUTS.has(toExt)) {
+      return convertImageViaApi(args);
+    }
+    const serverResult = await convertImageViaApi({ ...args, to: "png" });
+    args.onProgress?.({ status: "processing", progress: 90 });
+    return convertRasterOnMainThread({
+      from: "png",
+      to: args.to,
+      buf: serverResult.buffer,
+      quality: args.quality,
+    });
   }
   if (fromExt === "heic" || fromExt === "heif") {
     return convertRasterOnMainThread(args);
