@@ -23,5 +23,14 @@ await Promise.all(
     const target = path.join(dir, "ffmpeg");
     await fs.copyFile(ffmpegPath, target);
     await fs.chmod(target, 0o755);
+
+    const traceFile = path.join(dir, "route.js.nft.json");
+    try {
+      const trace = JSON.parse(await fs.readFile(traceFile, "utf8"));
+      trace.files = Array.from(new Set([...(trace.files ?? []), "ffmpeg"]));
+      await fs.writeFile(traceFile, JSON.stringify(trace));
+    } catch {
+      // If the trace isn't present, skip modifying it.
+    }
   })
 );
