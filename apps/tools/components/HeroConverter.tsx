@@ -69,8 +69,8 @@ export default function HeroConverter({
   function ensureWorker() {
     if (!workerRef.current) {
       const workerUrl = isPngCompression
-        ? new URL("../workers/compress.worker.ts", import.meta.url)
-        : new URL("../workers/convert.worker.ts", import.meta.url);
+        ? new URL("../workers/compress.worker.js", import.meta.url)
+        : new URL("../workers/convert.worker.js", import.meta.url);
       workerRef.current = new Worker(
         workerUrl,
         { type: "module" }

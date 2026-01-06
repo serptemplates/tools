@@ -1,12 +1,12 @@
 // lib/convert/pdf.ts
-// PDF → PNG using a browser-loaded pdfjs bundle to avoid Next.js ESM import issues.
+// PDF → PNG using the legacy pdfjs bundle for worker compatibility.
 
 const workerPublicUrl = "/vendor/pdfjs/pdf.worker.min.js";
 let pdfjsPromise: Promise<any> | null = null;
 
 async function getPdfjs() {
   if (!pdfjsPromise) {
-    pdfjsPromise = import(/* webpackIgnore: true */ "/vendor/pdfjs/pdf.min.mjs");
+    pdfjsPromise = import("pdfjs-dist/legacy/build/pdf");
   }
   return pdfjsPromise;
 }

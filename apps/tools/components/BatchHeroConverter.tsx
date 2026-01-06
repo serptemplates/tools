@@ -50,7 +50,7 @@ export default function BatchHeroConverter({
   function ensureWorker() {
     if (!workerRef.current) {
       workerRef.current = new Worker(
-        new URL("../workers/compress.worker.ts", import.meta.url),
+        new URL("../workers/compress.worker.js", import.meta.url),
         { type: "module" }
       );
     }

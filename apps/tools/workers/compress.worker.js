@@ -8,7 +8,7 @@ function qualityToColorCount(quality) {
   return Math.max(16, Math.round(clamped * 256));
 }
 
-self.onmessage = async (e: MessageEvent<any>) => {
+self.onmessage = async (e) => {
   try {
     const job = e.data;
 

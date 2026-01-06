@@ -70,7 +70,7 @@ export default function Converter({
 
   function ensureWorker() {
     if (!workerRef.current) {
-      workerRef.current = new Worker(new URL("../workers/convert.worker.ts", import.meta.url), { type: "module" });
+      workerRef.current = new Worker(new URL("../workers/convert.worker.js", import.meta.url), { type: "module" });
     }
     return workerRef.current;
   }
