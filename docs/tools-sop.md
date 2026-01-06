@@ -46,12 +46,21 @@ Internal related tools must reference `toolId` (not `href`); resolve routes from
 - Set `BUILD_MODE=server` and `SUPPORTS_VIDEO_CONVERSION=true` in Next config for FFmpeg support.
 - Use the multi-threaded FFmpeg core from the CDN only when COOP/COEP is enabled.
 - For image formats that are not reliably decodable in browsers (ex: TIFF), route conversion through the server API (`/api/image-convert`) instead of client raster decode.
-- Server conversion routes must use `runtime = "nodejs"` and rely on system FFmpeg.
+- Server conversion routes must use `runtime = "nodejs"` and use `ffmpeg-static` (packaged binary) for deploy portability.
 
 ## Vendor assets (public)
 - PDF worker must be available at `/vendor/pdfjs/pdf.worker.min.js`.
 - HEIF bundle + wasm must be available at `/vendor/libheif/libheif-bundle.js` and `/vendor/libheif/libheif.wasm`.
+- FFmpeg cores must be available at `/vendor/ffmpeg/ffmpeg-core.js`, `/vendor/ffmpeg/ffmpeg-core.wasm`, and `/vendor/ffmpeg/ffmpeg-core.worker.js`.
+- Single-thread FFmpeg cores must be available at `/vendor/ffmpeg-st/ffmpeg-core.js` and `/vendor/ffmpeg-st/ffmpeg-core.wasm`.
 - Keep these file paths stable across releases.
+
+## Sitemaps & indexing
+- `/sitemap-index.xml` must include `pages-index.xml` and `tools-index.xml` (and `categories-index.xml` only if category routes exist).
+- `pages-index.xml` includes only static pages (`/`, legal, contact, etc.). Do not mix tool routes here.
+- `tools-index.xml` is generated from the tool registry (active tools only).
+- If category pages exist, add a `categories-index.xml` + paginated sitemap and keep rewrites up to date.
+- Keep `/sitemap-:page.xml` as a compatibility alias for the combined list.
 
 ## Output semantics
 - `*-to-pdf` uses rasterized PDF output via `pdf-lib`.
@@ -79,6 +88,7 @@ Internal related tools must reference `toolId` (not `href`); resolve routes from
    - Manual sanity check on one representative file.
    - Verify: dropzone upload, progress update, successful operation, download works, output matches intent.
    - Run benchmark smoke tests (`node scripts/benchmark-tools.mjs`).
+   - If you add dependencies for a tool, run `pnpm install` and commit `pnpm-lock.yaml` (CI uses frozen lockfile).
 
 ## QA checklist (per tool)
 - Dropzone accepts drag/drop and click-to-upload.
@@ -100,6 +110,7 @@ Internal related tools must reference `toolId` (not `href`); resolve routes from
 ## Lint gate
 - `pnpm lint:tools` runs `scripts/validate-tools.mjs` in CI.
 - Gate enforces required `data-testid` hooks for dropzones, progress, and download buttons so QA automation can validate flows.
+- Gate enforces sitemap structure (pages vs tools, rewrites) and FFmpeg asset availability.
 
 ## Migration helpers
 - Seed DB: `node scripts/seed-tools.mjs`

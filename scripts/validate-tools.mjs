@@ -86,6 +86,10 @@ if (await pathExists(toolsPackagePath)) {
   if (devScript.includes("--turbopack")) {
     fail("apps/tools/package.json dev script must not use --turbopack (module workers break).");
   }
+  const deps = { ...(toolsPackage.dependencies ?? {}), ...(toolsPackage.devDependencies ?? {}) };
+  if (!deps["ffmpeg-static"]) {
+    fail("apps/tools/package.json must include ffmpeg-static.");
+  }
 } else {
   fail("Missing apps/tools/package.json.");
 }
@@ -105,6 +109,15 @@ if (await pathExists(nextConfigPath)) {
   if (!nextConfig.includes("BUILD_MODE")) {
     fail("next.config.mjs must set BUILD_MODE env.");
   }
+  if (!nextConfig.includes("/pages-:page.xml")) {
+    fail("next.config.mjs must rewrite /pages-:page.xml to the pages sitemap.");
+  }
+  if (!nextConfig.includes("/tools-:page.xml")) {
+    fail("next.config.mjs must rewrite /tools-:page.xml to the tools sitemap.");
+  }
+  if (!nextConfig.includes("/categories-:page.xml")) {
+    fail("next.config.mjs must rewrite /categories-:page.xml to the categories sitemap (even if optional).");
+  }
 } else {
   fail("Missing apps/tools/next.config.mjs.");
 }
@@ -113,6 +126,11 @@ const vendorAssets = [
   "apps/tools/public/vendor/pdfjs/pdf.worker.min.js",
   "apps/tools/public/vendor/libheif/libheif-bundle.js",
   "apps/tools/public/vendor/libheif/libheif.wasm",
+  "apps/tools/public/vendor/ffmpeg/ffmpeg-core.js",
+  "apps/tools/public/vendor/ffmpeg/ffmpeg-core.wasm",
+  "apps/tools/public/vendor/ffmpeg/ffmpeg-core.worker.js",
+  "apps/tools/public/vendor/ffmpeg-st/ffmpeg-core.js",
+  "apps/tools/public/vendor/ffmpeg-st/ffmpeg-core.wasm",
 ];
 for (const asset of vendorAssets) {
   if (!(await pathExists(path.join(root, asset)))) {
@@ -182,6 +200,32 @@ for (const entry of requiredTestIds) {
       fail(`${entry.file} must include data-testid="${id}".`);
     }
   }
+}
+
+const sitemapIndexPath = path.join(root, "apps/tools/app/sitemap-index.xml/route.ts");
+if (await pathExists(sitemapIndexPath)) {
+  const sitemapIndex = await fs.readFile(sitemapIndexPath, "utf8");
+  if (!sitemapIndex.includes("pages-index.xml")) {
+    fail("sitemap-index.xml must include pages-index.xml.");
+  }
+  if (!sitemapIndex.includes("tools-index.xml")) {
+    fail("sitemap-index.xml must include tools-index.xml.");
+  }
+  if (!sitemapIndex.includes("getCategoryPaths")) {
+    fail("sitemap-index.xml must conditionally include categories-index.xml when category routes exist.");
+  }
+} else {
+  fail("Missing apps/tools/app/sitemap-index.xml/route.ts.");
+}
+
+const toolsIndexPath = path.join(root, "apps/tools/app/tools-index.xml/route.ts");
+if (!(await pathExists(toolsIndexPath))) {
+  fail("Missing apps/tools/app/tools-index.xml/route.ts.");
+}
+
+const toolsSitemapPath = path.join(root, "apps/tools/app/sitemaps/tools/[page]/route.ts");
+if (!(await pathExists(toolsSitemapPath))) {
+  fail("Missing apps/tools/app/sitemaps/tools/[page]/route.ts.");
 }
 
 if (warnings.length) {
