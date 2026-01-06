@@ -7,6 +7,7 @@ import { tmpdir } from "node:os";
 export const runtime = "nodejs";
 
 const IMAGE_OUTPUTS = new Set(["jpg", "jpeg", "png", "webp", "gif", "bmp", "tiff", "tif"]);
+const RAW_INPUTS = new Set(["cr2", "cr3", "dng", "arw"]);
 
 function resolveOutputExtension(to: string) {
   if (to === "jpeg") return "jpg";
@@ -43,6 +44,31 @@ function buildFfmpegArgs(to: string, inputPath: string, outputPath: string) {
   return args;
 }
 
+function buildMagickArgs(to: string, inputPath: string, outputPath: string) {
+  const output = resolveOutputExtension(to);
+  const args = [inputPath];
+
+  switch (output) {
+    case "jpg":
+      args.push("-quality", "85");
+      break;
+    case "webp":
+      args.push("-quality", "80");
+      break;
+    case "png":
+      args.push("-define", "png:compression-level=6");
+      break;
+    case "tiff":
+      args.push("-define", "tiff:compression=zip");
+      break;
+    default:
+      break;
+  }
+
+  args.push(outputPath);
+  return args;
+}
+
 function runFfmpeg(args: string[]) {
   return new Promise<void>((resolve, reject) => {
     const proc = spawn("ffmpeg", args, { stdio: ["ignore", "ignore", "pipe"] });
@@ -59,6 +85,83 @@ function runFfmpeg(args: string[]) {
       reject(new Error(stderr || `ffmpeg exited with code ${code}`));
     });
   });
+}
+
+function runMagick(args: string[]) {
+  return new Promise<void>((resolve, reject) => {
+    const proc = spawn("magick", args, { stdio: ["ignore", "ignore", "pipe"] });
+    let stderr = "";
+    proc.stderr.on("data", (chunk) => {
+      stderr += chunk.toString();
+    });
+    proc.on("error", reject);
+    proc.on("close", (code) => {
+      if (code === 0) {
+        resolve();
+        return;
+      }
+      reject(new Error(stderr || `magick exited with code ${code}`));
+    });
+  });
+}
+
+async function runExiftoolBinary(args: string[]) {
+  return new Promise<Buffer>((resolve, reject) => {
+    const proc = spawn("exiftool", args, { stdio: ["ignore", "pipe", "pipe"] });
+    const chunks: Buffer[] = [];
+    let stderr = "";
+    proc.stdout.on("data", (chunk) => chunks.push(Buffer.from(chunk)));
+    proc.stderr.on("data", (chunk) => {
+      stderr += chunk.toString();
+    });
+    proc.on("error", reject);
+    proc.on("close", (code) => {
+      if (code === 0) {
+        resolve(Buffer.concat(chunks));
+        return;
+      }
+      reject(new Error(stderr || `exiftool exited with code ${code}`));
+    });
+  });
+}
+
+async function extractRawPreview(inputPath: string) {
+  try {
+    const preview = await runExiftoolBinary(["-b", "-PreviewImage", inputPath]);
+    if (preview.length) return preview;
+  } catch {
+    // ignore and try alternate tag
+  }
+  const fallback = await runExiftoolBinary(["-b", "-JpgFromRaw", inputPath]);
+  if (!fallback.length) {
+    throw new Error("No preview image available in raw file.");
+  }
+  return fallback;
+}
+
+async function convertRawImage(args: {
+  from: string;
+  to: string;
+  inputPath: string;
+  outputPath: string;
+  workDir: string;
+}) {
+  try {
+    await runMagick(buildMagickArgs(args.to, args.inputPath, args.outputPath));
+    return;
+  } catch {
+    const preview = await extractRawPreview(args.inputPath);
+    const previewPath = path.join(args.workDir, "preview.jpg");
+    await fs.writeFile(previewPath, preview);
+
+    const outputFormat = resolveOutputExtension(args.to);
+    if (outputFormat === "jpg") {
+      await fs.copyFile(previewPath, args.outputPath);
+      return;
+    }
+
+    await runMagick(buildMagickArgs(args.to, previewPath, args.outputPath));
+  }
 }
 
 export async function POST(request: Request) {
@@ -88,8 +191,12 @@ export async function POST(request: Request) {
     const outputPath = path.join(workDir, `output.${outputExt}`);
     await fs.writeFile(inputPath, inputBuffer);
 
-    const args = buildFfmpegArgs(to, inputPath, outputPath);
-    await runFfmpeg(args);
+    if (RAW_INPUTS.has(from)) {
+      await convertRawImage({ from, to, inputPath, outputPath, workDir });
+    } else {
+      const args = buildFfmpegArgs(to, inputPath, outputPath);
+      await runFfmpeg(args);
+    }
 
     const outputBuffer = await fs.readFile(outputPath);
     return new Response(outputBuffer, {

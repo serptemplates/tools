@@ -18,6 +18,18 @@ const nextConfig = {
       },
     ];
   },
+  async rewrites() {
+    return [
+      {
+        source: "/sitemap-:page.xml",
+        destination: "/sitemap/:page",
+      },
+      {
+        source: "/pages-:page.xml",
+        destination: "/sitemaps/pages/:page",
+      },
+    ];
+  },
 };
 
 export default nextConfig;

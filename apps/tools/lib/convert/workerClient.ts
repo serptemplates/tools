@@ -14,7 +14,7 @@ export type ProgressUpdate = {
   time?: number;
 };
 
-const SERVER_IMAGE_INPUTS = new Set(["tiff", "tif"]);
+const SERVER_IMAGE_INPUTS = new Set(["tiff", "tif", "cr2", "cr3", "dng", "arw"]);
 
 const MIME_MAP: Record<string, string> = {
   png: "image/png",
