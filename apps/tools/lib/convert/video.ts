@@ -166,7 +166,7 @@ export async function convertVideo(
     args.push('-vf', FAST_VIDEO_FILTER);
   } else if (toFormat === 'webm') {
     // Use faster VP8 instead of VP9
-    args.push('-c:v', 'libvpx-vp8', '-crf', '40', '-b:v', '0', '-deadline', 'realtime', '-cpu-used', '8');
+    args.push('-c:v', 'libvpx', '-crf', '40', '-b:v', '0', '-deadline', 'realtime', '-cpu-used', '8');
     args.push('-c:a', 'libvorbis', '-b:a', '64k');
     args.push('-vf', FAST_VIDEO_FILTER);
   } else if (toFormat === 'avi') {
