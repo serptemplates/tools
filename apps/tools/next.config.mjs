@@ -46,6 +46,14 @@ const nextConfig = {
         source: "/pages-:page.xml",
         destination: "/sitemaps/pages/:page",
       },
+      {
+        source: "/tools-:page.xml",
+        destination: "/sitemaps/tools/:page",
+      },
+      {
+        source: "/categories-:page.xml",
+        destination: "/sitemaps/categories/:page",
+      },
     ];
   },
 };

@@ -1,15 +1,13 @@
 import { NextResponse } from "next/server";
 
-import { escapeXml, getCategoryPaths, resolveSiteBase } from "@/lib/sitemap";
+import { escapeXml, getToolPaths, PAGE_SIZE, resolveSiteBase } from "@/lib/sitemap";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
   const base = resolveSiteBase(request);
-  const sitemapUrls = [`${base}/pages-index.xml`, `${base}/tools-index.xml`];
-  if (getCategoryPaths().length > 0) {
-    sitemapUrls.push(`${base}/categories-index.xml`);
-  }
+  const totalPages = Math.max(1, Math.ceil(getToolPaths().length / PAGE_SIZE));
+  const sitemapUrls = Array.from({ length: totalPages }, (_, index) => `${base}/tools-${index}.xml`);
 
   const xml = [
     `<?xml version="1.0" encoding="UTF-8"?>`,

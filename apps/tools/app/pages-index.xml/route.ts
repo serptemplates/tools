@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 
-import { escapeXml, getSitemapPaths, PAGE_SIZE, resolveSiteBase } from "@/lib/sitemap";
+import { escapeXml, getPagePaths, PAGE_SIZE, resolveSiteBase } from "@/lib/sitemap";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
   const base = resolveSiteBase(request);
-  const totalPages = Math.max(1, Math.ceil(getSitemapPaths().length / PAGE_SIZE));
+  const totalPages = Math.max(1, Math.ceil(getPagePaths().length / PAGE_SIZE));
   const sitemapUrls = Array.from({ length: totalPages }, (_, index) => `${base}/pages-${index}.xml`);
 
   const xml = [
