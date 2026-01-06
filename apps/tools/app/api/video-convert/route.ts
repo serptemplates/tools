@@ -3,6 +3,7 @@ import { randomUUID } from "node:crypto";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { tmpdir } from "node:os";
+import ffmpegPath from "ffmpeg-static";
 
 export const runtime = "nodejs";
 
@@ -18,6 +19,7 @@ const AUDIO_OUTPUTS = new Set([
   "aiff",
   "mp2",
 ]);
+const FFMPEG_BINARY = ffmpegPath ?? "ffmpeg";
 
 const FAST_FILTER = "fps=12,scale=320:-2:flags=fast_bilinear";
 
@@ -158,7 +160,7 @@ function buildFfmpegArgs(from: string, to: string, inputPath: string, outputPath
 
 function runFfmpeg(args: string[]) {
   return new Promise<void>((resolve, reject) => {
-    const proc = spawn("ffmpeg", args, { stdio: ["ignore", "ignore", "pipe"] });
+    const proc = spawn(FFMPEG_BINARY, args, { stdio: ["ignore", "ignore", "pipe"] });
     let stderr = "";
     proc.stderr.on("data", (chunk) => {
       stderr += chunk.toString();

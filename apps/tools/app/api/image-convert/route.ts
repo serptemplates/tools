@@ -3,11 +3,13 @@ import { randomUUID } from "node:crypto";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { tmpdir } from "node:os";
+import ffmpegPath from "ffmpeg-static";
 
 export const runtime = "nodejs";
 
 const IMAGE_OUTPUTS = new Set(["jpg", "jpeg", "png", "webp", "gif", "bmp", "tiff", "tif"]);
 const RAW_INPUTS = new Set(["cr2", "cr3", "dng", "arw"]);
+const FFMPEG_BINARY = ffmpegPath ?? "ffmpeg";
 
 function resolveOutputExtension(to: string) {
   if (to === "jpeg") return "jpg";
@@ -71,7 +73,7 @@ function buildMagickArgs(to: string, inputPath: string, outputPath: string) {
 
 function runFfmpeg(args: string[]) {
   return new Promise<void>((resolve, reject) => {
-    const proc = spawn("ffmpeg", args, { stdio: ["ignore", "ignore", "pipe"] });
+    const proc = spawn(FFMPEG_BINARY, args, { stdio: ["ignore", "ignore", "pipe"] });
     let stderr = "";
     proc.stderr.on("data", (chunk) => {
       stderr += chunk.toString();
