@@ -65,18 +65,27 @@ async function loadFFmpeg(): Promise<FFmpeg> {
   if (!ffmpeg) {
     ffmpeg = new FFmpeg();
 
-    // Load FFmpeg with multi-threading support (requires SharedArrayBuffer)
-    const baseURL = '/vendor/ffmpeg';
+    const useSingleThread = process.env.NEXT_PUBLIC_FFMPEG_SINGLE_THREAD === "true";
+    const baseURL = useSingleThread ? "/vendor/ffmpeg-st" : "/vendor/ffmpeg";
 
     ffmpeg.on('log', ({ message }) => {
       console.log('[FFmpeg]', message);
     });
 
-    await ffmpeg.load({
+    const loadConfig: {
+      coreURL: string;
+      wasmURL: string;
+      workerURL?: string;
+    } = {
       coreURL: `${baseURL}/ffmpeg-core.js`,
       wasmURL: `${baseURL}/ffmpeg-core.wasm`,
-      workerURL: `${baseURL}/ffmpeg-core.worker.js`,
-    });
+    };
+
+    if (!useSingleThread) {
+      loadConfig.workerURL = `${baseURL}/ffmpeg-core.worker.js`;
+    }
+
+    await ffmpeg.load(loadConfig);
 
     loaded = true;
   }

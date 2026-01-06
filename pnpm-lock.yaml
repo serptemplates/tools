@@ -32,6 +32,9 @@ importers:
 
   apps/tools:
     dependencies:
+      '@ffmpeg/core':
+        specifier: 0.12.6
+        version: 0.12.6
       '@ffmpeg/core-mt':
         specifier: 0.12.6
         version: 0.12.6
@@ -635,6 +638,10 @@ packages:
 
   '@ffmpeg/core-mt@0.12.6':
     resolution: {integrity: sha512-f7wrOeUk24VFRi2Gfsp/mwwkK1hbDV0ajgm2fOU/oRi+IDullyzAYdHOagAWfpSZXcTPAGZ1Ild7HmBwr3k2tg==}
+    engines: {node: '>=16.x'}
+
+  '@ffmpeg/core@0.12.6':
+    resolution: {integrity: sha512-PrjWBTfGn2WVn9T7wGnzfFwChbqWeZc7tM9vvJZVRadYFUDakfzy7W0LpYC0cvvK0xT82qlBsk38lQhJ/Hps5A==}
     engines: {node: '>=16.x'}
 
   '@ffmpeg/ffmpeg@0.12.15':
@@ -2665,7 +2672,7 @@ packages:
   next@15.5.7:
     resolution: {integrity: sha512-+t2/0jIJ48kUpGKkdlhgkv+zPTEOoXyr60qXe68eB/pl3CMJaLeIGjzp5D6Oqt25hCBiBTt8wEeeAzfJvUKnPQ==}
     engines: {node: ^18.18.0 || ^19.8.0 || >= 20.0.0}
-    deprecated: This version has a security vulnerability. Please upgrade to a patched version. See https://nextjs.org/blog/CVE-2025-66478 for more details.
+    deprecated: This version has a security vulnerability. Please upgrade to a patched version. See https://nextjs.org/blog/security-update-2025-12-11 for more details.
     hasBin: true
     peerDependencies:
       '@opentelemetry/api': ^1.1.0
@@ -3650,6 +3657,8 @@ snapshots:
       levn: 0.4.1
 
   '@ffmpeg/core-mt@0.12.6': {}
+
+  '@ffmpeg/core@0.12.6': {}
 
   '@ffmpeg/ffmpeg@0.12.15':
     dependencies:
