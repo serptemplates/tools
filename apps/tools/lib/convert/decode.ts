@@ -8,6 +8,15 @@ type CanvasSource = CanvasImageSource & {
   close?: () => void;
 };
 
+type ImageDecoderLike = {
+  decode: () => Promise<{ image: CanvasSource }>;
+  close?: () => void;
+};
+
+type ImageDecoderCtor = new (init: { data: BufferSource; type?: string }) => ImageDecoderLike;
+
+type CanvasLike = HTMLCanvasElement | OffscreenCanvas;
+
 function getCanvasDimensions(source: CanvasSource) {
   const width =
     typeof source.width === "number" ? source.width : source.displayWidth;
@@ -25,13 +34,17 @@ function getCanvasDimensions(source: CanvasSource) {
 async function bitmapToRGBA(source: CanvasSource): Promise<RGBA> {
   const { width, height } = getCanvasDimensions(source);
   const useOffscreen = typeof OffscreenCanvas !== "undefined";
-  const canvas: any = useOffscreen
+  const canvas: CanvasLike = useOffscreen
     ? new OffscreenCanvas(width, height)
     : Object.assign(document.createElement("canvas"), { width, height });
 
-  const ctx = canvas.getContext("2d")!;
-  ctx.drawImage(source, 0, 0, width, height);
-  const img = ctx.getImageData(0, 0, width, height);
+  const ctx = canvas.getContext("2d");
+  if (!ctx) {
+    throw new Error("Failed to create 2D canvas context.");
+  }
+  const ctx2d = ctx as CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D;
+  ctx2d.drawImage(source, 0, 0, width, height);
+  const img = ctx2d.getImageData(0, 0, width, height);
   source.close?.();
   return { data: img.data, width: img.width, height: img.height };
 }
@@ -78,7 +91,7 @@ async function decodeViaImage(blob: Blob): Promise<RGBA> {
 }
 
 async function decodeWithImageDecoder(mime: string | undefined, buf: ArrayBuffer): Promise<RGBA | null> {
-  const ImageDecoderCtor = (globalThis as any).ImageDecoder;
+  const ImageDecoderCtor = (globalThis as { ImageDecoder?: ImageDecoderCtor }).ImageDecoder;
   if (!ImageDecoderCtor || !mime) return null;
 
   try {

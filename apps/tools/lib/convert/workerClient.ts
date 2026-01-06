@@ -1,4 +1,4 @@
-import { detectCapabilities, requiresVideoConversion } from "@/lib/capabilities";
+import { requiresVideoConversion } from "@/lib/capabilities";
 import { decodeToRGBA } from "@/lib/convert/decode";
 import { encodeFromRGBA } from "@/lib/convert/encode";
 
@@ -61,13 +61,24 @@ export function getOutputMimeType(format: string) {
   return MIME_MAP[format.toLowerCase()] ?? "application/octet-stream";
 }
 
-export function resolveConversionOp(from: string, to: string, capabilities = detectCapabilities()): ConversionOp {
+export function resolveConversionOp(from: string, to: string): ConversionOp {
   if (from === "pdf") return "pdf-pages";
   if (requiresVideoConversion(from, to)) {
     return "video";
   }
   return "raster";
 }
+
+type WorkerMessage = {
+  type?: "progress";
+  status?: string;
+  progress?: number;
+  time?: number;
+  ok?: boolean;
+  error?: string;
+  blob?: ArrayBuffer;
+  blobs?: ArrayBuffer[];
+};
 
 export async function convertWithWorker(args: {
   worker: Worker;
@@ -101,9 +112,6 @@ export async function convertWithWorker(args: {
     if (op === "raster" && (isDecodeError(error) || isWorkerError(error))) {
       return convertRasterOnMainThread(args);
     }
-    if (op === "video" && isWorkerError(error)) {
-      return convertVideoOnMainThread(args);
-    }
     throw error;
   }
 }
@@ -118,7 +126,7 @@ async function convertWithWorkerInner(args: {
   op: ConversionOp;
 }): Promise<ConversionResult> {
   return await new Promise<ConversionResult>((resolve, reject) => {
-    args.worker.onmessage = (ev: MessageEvent<any>) => {
+    args.worker.onmessage = (ev: MessageEvent<WorkerMessage>) => {
       if (!ev.data) {
         return reject(new Error("Malformed worker response"));
       }
@@ -182,7 +190,7 @@ export async function compressPngWithWorker(args: {
   const workerBuf = args.buf.slice(0);
   try {
     return await compressPngWithWorkerInner({ ...args, buf: workerBuf });
-  } catch (error) {
+  } catch {
     return await compressPngOnMainThread(args);
   }
 }
@@ -193,7 +201,7 @@ async function compressPngWithWorkerInner(args: {
   quality?: number;
 }): Promise<ArrayBuffer> {
   return await new Promise<ArrayBuffer>((resolve, reject) => {
-    args.worker.onmessage = (ev: MessageEvent<any>) => {
+    args.worker.onmessage = (ev: MessageEvent<WorkerMessage>) => {
       if (!ev.data) {
         return reject(new Error("Malformed worker response"));
       }

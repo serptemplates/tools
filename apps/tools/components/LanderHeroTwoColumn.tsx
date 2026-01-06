@@ -181,14 +181,15 @@ export default function LanderHeroTwoColumn({
             message: "Conversion complete!",
           });
         }
-      } catch (err: any) {
-        run.finishFailure({ errorCode: err?.message || "convert_failed" });
+      } catch (err: unknown) {
+        const message = err instanceof Error ? err.message : "Convert failed";
+        run.finishFailure({ errorCode: message || "convert_failed" });
         console.error(`Conversion failed for ${file.name}:`, err);
         setCurrentFile({
           name: file.name,
           progress: 0,
           status: "error",
-          message: err?.message || "Convert failed",
+          message,
         });
       }
     }
@@ -248,7 +249,8 @@ export default function LanderHeroTwoColumn({
   return (
     <section className="w-full bg-white">
       <div className="mx-auto max-w-[1400px] px-6 py-12">
-        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-center mb-12">{title}</h1>
+        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-center">{title}</h1>
+        <p className="text-sm text-muted-foreground text-center mb-10">{subtitle}</p>
 
         {currentFile && (
           <div className="mb-8 max-w-3xl mx-auto">

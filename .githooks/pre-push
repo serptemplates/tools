@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+
+echo "Running eslint..."
+pnpm -C apps/tools lint
+
+echo "Running typecheck..."
+pnpm -C apps/tools typecheck
+
+echo "Running tools SOP checks..."
+pnpm lint:tools

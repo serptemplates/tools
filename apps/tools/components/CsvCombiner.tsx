@@ -185,8 +185,8 @@ export default function CsvCombiner({ toolId }: Props) {
         outputBytes: new Blob([merged.csv]).size,
         metadata: { rows: merged.rows, columns: merged.columns },
       });
-    } catch (err: any) {
-      setError(err?.message || "Failed to combine CSV files.");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Failed to combine CSV files.");
       run.finishFailure({ errorCode: "combine_failed" });
     } finally {
       setBusy(false);

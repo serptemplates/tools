@@ -3,17 +3,47 @@
 
 export type RGBA = { data: Uint8ClampedArray; width: number; height: number };
 
+type HeifImage = {
+  get_width: () => number;
+  get_height: () => number;
+  display: (...args: unknown[]) => void;
+  free?: () => void;
+};
+
+type HeifContext = {
+  read: (bytes: Uint8Array) => void;
+  getPrimaryImageHandle: () => { decode: () => HeifImage; free?: () => void };
+  free?: () => void;
+};
+
+type HeifDecoder = {
+  decode: (bytes: Uint8Array) => HeifImage[];
+};
+
+type HeifModule = {
+  HeifContext?: new () => HeifContext;
+  HeifDecoder?: new () => HeifDecoder;
+  HeifImage?: unknown;
+};
+
+type HeifGlobal = typeof globalThis & {
+  libheif?: () => Promise<HeifModule>;
+  HeifContext?: new () => HeifContext;
+  HeifDecoder?: new () => HeifDecoder;
+  HeifImage?: unknown;
+};
+
 // Where you put the bundle file (see step below)
 const BUNDLE_URL = "/vendor/libheif/libheif-bundle.js";
 
 let inited = false;
-let g: any = null; // global
+let g: HeifGlobal | null = null; // global
 
 function hasDocument(): boolean {
-  return typeof document !== "undefined" && !!(document as any).createElement;
+  return typeof document !== "undefined" && "createElement" in document;
 }
-function getGlobal(): any {
-  return (globalThis as any);
+function getGlobal(): HeifGlobal {
+  return globalThis as HeifGlobal;
 }
 
 function loadScriptInWindow(src: string): Promise<void> {
@@ -36,12 +66,15 @@ async function loadScriptInWorker(src: string): Promise<void> {
     return r.text();
   });
   // Executes in worker scope; attaches factory to globalThis.libheif
-  (0, eval)(code); // eslint-disable-line no-eval
+  (0, eval)(code);
 }
 
 async function ensureHeif() {
   if (inited) return;
   g = getGlobal();
+  if (!g) {
+    throw new Error("Global scope unavailable for libheif.");
+  }
 
   if (hasDocument()) {
     await loadScriptInWindow(BUNDLE_URL);
@@ -51,7 +84,7 @@ async function ensureHeif() {
 
   // Some builds expose a factory on g.libheif(), others attach classes directly.
   if (typeof g.libheif === "function") {
-    const mod = await g.libheif(); // returns Module (with classes on it AND/OR on global)
+    const mod = await g.libheif();
     // Prefer classes from module; fall back to globals.
     g.HeifContext   = g.HeifContext   || mod.HeifContext;
     g.HeifDecoder   = g.HeifDecoder   || mod.HeifDecoder;
@@ -68,6 +101,9 @@ async function ensureHeif() {
 /** Unified decode: prefers HeifContext if present; otherwise uses HeifDecoder */
 export async function decodeHeifToRGBA(buf: ArrayBuffer): Promise<RGBA> {
   await ensureHeif();
+  if (!g) {
+    throw new Error("libheif not initialized.");
+  }
 
   const bytes = new Uint8Array(buf);
 
@@ -101,8 +137,8 @@ export async function decodeHeifToRGBA(buf: ArrayBuffer): Promise<RGBA> {
   if (typeof g.HeifDecoder === "function") {
     const dec = new g.HeifDecoder();
     const images = dec.decode(bytes);
-    if (!images || !images.length) throw new Error("No images in HEIF");
-    const img = images[0];
+    const [img] = images ?? [];
+    if (!img) throw new Error("No images in HEIF");
     const width = img.get_width();
     const height = img.get_height();
     const rgba = new Uint8ClampedArray(width * height * 4);

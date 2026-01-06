@@ -154,6 +154,7 @@ function generateAllTools() {
 }
 
 export function ToolsLinkHub({ relatedTools }: ToolsLinkHubProps) {
+  void relatedTools;
   const allTools = generateAllTools();
 
   return (

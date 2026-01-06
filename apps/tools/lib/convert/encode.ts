@@ -6,16 +6,20 @@ export async function encodeFromRGBA(
   quality = 0.85
 ): Promise<Blob> {
   const useOffscreen = typeof OffscreenCanvas !== "undefined";
-  const canvas: any = useOffscreen
+  const canvas: HTMLCanvasElement | OffscreenCanvas = useOffscreen
     ? new OffscreenCanvas(rgba.width, rgba.height)
     : Object.assign(document.createElement("canvas"), { width: rgba.width, height: rgba.height });
 
-  const ctx = canvas.getContext("2d")!;
-  ctx.putImageData(new ImageData(new Uint8ClampedArray(rgba.data), rgba.width, rgba.height), 0, 0);
+  const ctx = canvas.getContext("2d");
+  if (!ctx) {
+    throw new Error("Failed to create 2D canvas context.");
+  }
+  const ctx2d = ctx as CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D;
+  ctx2d.putImageData(new ImageData(new Uint8ClampedArray(rgba.data), rgba.width, rgba.height), 0, 0);
 
   const canvasToBlob = async (type: string, q?: number) => {
-    if (canvas.convertToBlob) {
-      return canvas.convertToBlob({
+    if ("convertToBlob" in canvas) {
+      return (canvas as OffscreenCanvas).convertToBlob({
         type,
         quality: type === "image/png" ? undefined : q,
       });
@@ -64,7 +68,11 @@ export async function encodeFromRGBA(
       height: rgba.height,
     });
     const pdfBytes = await pdfDoc.save();
-    return new Blob([pdfBytes], { type: "application/pdf" });
+    const pdfBuffer = pdfBytes.buffer.slice(
+      pdfBytes.byteOffset,
+      pdfBytes.byteOffset + pdfBytes.byteLength
+    ) as ArrayBuffer;
+    return new Blob([pdfBuffer], { type: "application/pdf" });
   }
 
   const mime =

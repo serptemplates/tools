@@ -19,7 +19,7 @@ export function normalizePath(path: string) {
 }
 
 export function resolveSiteBase(request: Request) {
-  const envBase = process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || process.env.VERCEL_URL;
+  const envBase = process.env.NEXT_PUBLIC_SITE_URL;
   if (envBase) {
     const withProtocol = envBase.startsWith("http") ? envBase : `https://${envBase}`;
     return normalizeBase(withProtocol);

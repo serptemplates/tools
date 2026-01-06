@@ -128,11 +128,9 @@ export async function POST(request: Request) {
   let db;
   try {
     db = getDb();
-  } catch (err: any) {
-    return NextResponse.json(
-      { ok: false, error: err?.message || "Database unavailable" },
-      { status: 500 }
-    );
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : "Database unavailable";
+    return NextResponse.json({ ok: false, error: message }, { status: 500 });
   }
   if (!db) {
     return NextResponse.json({ ok: true, skipped: true, reason: "DATABASE_URL not set" });

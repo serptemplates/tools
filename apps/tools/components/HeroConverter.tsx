@@ -15,7 +15,6 @@ type Props = {
   from: string;               // "pdf"
   to: string;                 // "jpg"
   accept?: string;            // optional override accept attr
-  videoEmbedId?: string;      // YouTube embed ID for video
   operation?: OperationType;
 };
 
@@ -26,13 +25,11 @@ export default function HeroConverter({
   from,
   to,
   accept,
-  videoEmbedId,
   operation,
 }: Props) {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const dropRef = useRef<HTMLDivElement | null>(null);
   const workerRef = useRef<Worker | null>(null);
-  const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const [busy, setBusy] = useState(false);
   const [hint, setHint] = useState("or drop files here");
   const [dropEffect, setDropEffect] = useState<string>("");
@@ -180,15 +177,16 @@ export default function HeroConverter({
 
           run.finishSuccess({ outputBytes: result.buffer.byteLength });
         }
-      } catch (err: any) {
+      } catch (err: unknown) {
+        const message = err instanceof Error ? err.message : "Convert failed";
         console.error(`Conversion failed for ${file.name}:`, err);
         setCurrentFile({
           name: file.name,
           progress: 0,
           status: 'error',
-          message: err?.message || "Convert failed"
+          message
         });
-        run.finishFailure({ errorCode: err?.message || "convert_failed" });
+        run.finishFailure({ errorCode: message || "convert_failed" });
       }
     }
     setBusy(false);
@@ -281,6 +279,7 @@ export default function HeroConverter({
         >
           <div className="flex flex-col items-center space-y-6">
             <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">{title}</h1>
+            <p className="text-sm text-muted-foreground">{subtitle}</p>
 
             <svg
               className="w-12 h-12"

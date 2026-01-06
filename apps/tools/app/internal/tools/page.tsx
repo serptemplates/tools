@@ -40,8 +40,8 @@ export default async function ToolsDashboard({ searchParams }: PageProps) {
       throw new Error("Telemetry database not configured (DATABASE_URL not set).");
     }
     rows = await db.select().from(toolStatus).orderBy(desc(toolStatus.updatedAt));
-  } catch (err: any) {
-    errorMessage = err?.message || "Failed to load tool status.";
+  } catch (err: unknown) {
+    errorMessage = err instanceof Error ? err.message : "Failed to load tool status.";
   }
 
   return (

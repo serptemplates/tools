@@ -38,17 +38,6 @@ export function VideoProgress({ fileName, progress, status, message }: VideoProg
     }
   };
 
-  const getProgressColor = () => {
-    switch (status) {
-      case 'error':
-        return 'bg-red-500';
-      case 'completed':
-        return 'bg-green-500';
-      default:
-        return 'bg-blue-500';
-    }
-  };
-
   return (
     <Card className="p-4 mb-3" data-testid="video-progress">
       <div className="space-y-3">

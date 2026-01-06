@@ -34,7 +34,7 @@ export function RelatedToolsSection({
   currentToolId,
   relatedTools,
 }: RelatedToolsSectionProps) {
-  const allTools = (toolsData as any[]).filter(tool => tool.isActive);
+  const allTools = (toolsData as Tool[]).filter((tool) => tool.isActive);
   const toolsById = new Map(allTools.map((tool) => [tool.id, tool as Tool]));
   const toolsByRoute = new Map(allTools.map((tool) => [tool.route, tool as Tool]));
 

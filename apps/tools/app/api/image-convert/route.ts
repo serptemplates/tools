@@ -205,8 +205,9 @@ export async function POST(request: Request) {
         "Content-Length": outputBuffer.length.toString(),
       },
     });
-  } catch (error: any) {
-    return new Response(JSON.stringify({ error: error?.message || "FFmpeg failed" }), {
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : "FFmpeg failed";
+    return new Response(JSON.stringify({ error: message }), {
       status: 500,
     });
   } finally {
