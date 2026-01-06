@@ -9,7 +9,15 @@ const routeDirs = ["video-convert", "image-convert"].map((route) =>
 );
 
 if (!ffmpegPath) {
-  throw new Error("ffmpeg-static did not resolve a binary path");
+  console.warn("ffmpeg-static did not resolve a binary path; skipping copy.");
+  process.exit(0);
+}
+
+try {
+  await fs.access(ffmpegPath);
+} catch {
+  console.warn("ffmpeg-static binary not found; skipping copy.");
+  process.exit(0);
 }
 
 await Promise.all(
@@ -21,8 +29,12 @@ await Promise.all(
     }
 
     const target = path.join(dir, "ffmpeg");
-    await fs.copyFile(ffmpegPath, target);
-    await fs.chmod(target, 0o755);
+    try {
+      await fs.copyFile(ffmpegPath, target);
+      await fs.chmod(target, 0o755);
+    } catch {
+      return;
+    }
 
     const traceFile = path.join(dir, "route.js.nft.json");
     try {
