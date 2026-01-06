@@ -20,6 +20,7 @@ export default function Page() {
     <main className="min-h-screen bg-background">
       {/* Hero Section with Batch Tool */}
       <BatchHeroConverter
+        toolId={content.tool.id}
         title={content.tool.title}
         subtitle={content.tool.subtitle}
         from={content.tool.from}

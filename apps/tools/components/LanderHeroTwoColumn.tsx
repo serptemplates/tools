@@ -3,24 +3,32 @@
 import { useRef, useState, useEffect } from "react";
 import { Button } from "@serp-tools/ui/components/button";
 import { saveBlob } from "@/components/saveAs";
+import { VideoProgress } from "@/components/VideoProgress";
 import { detectCapabilities, type Capabilities } from "@/lib/capabilities";
+import { beginToolRun } from "@/lib/telemetry";
+import { compressPngWithWorker, convertWithWorker, getOutputMimeType } from "@/lib/convert/workerClient";
+import type { OperationType } from "@/types";
 
 type Props = {
+  toolId?: string;
   title: string;              // e.g., "PDF to JPG"
   subtitle?: string;          // e.g., "Convert each PDF page into a JPG…"
   from: string;               // "pdf"
   to: string;                 // "jpg"
   accept?: string;            // optional override accept attr
   videoEmbedId?: string;      // YouTube embed ID for video (optional, defaults to bbkhxMpIH4w)
+  operation?: OperationType;
 };
 
 export default function LanderHeroTwoColumn({
+  toolId,
   title,
   subtitle = "Fast, private, in-browser conversion.",
   from,
   to,
   accept,
   videoEmbedId = "bbkhxMpIH4w",
+  operation,
 }: Props) {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const dropRef = useRef<HTMLDivElement | null>(null);
@@ -30,6 +38,12 @@ export default function LanderHeroTwoColumn({
   const [dropEffect, setDropEffect] = useState<string>("");
   const [capabilities, setCapabilities] = useState<Capabilities | null>(null);
   const [videoPlaying, setVideoPlaying] = useState(false);
+  const [currentFile, setCurrentFile] = useState<{
+    name: string;
+    progress: number;
+    status: "loading" | "processing" | "completed" | "error";
+    message?: string;
+  } | null>(null);
   // Generate stable color based on tool properties
   const colors = [
     "#ef4444", // red-500
@@ -51,11 +65,16 @@ export default function LanderHeroTwoColumn({
     return char.charCodeAt(0) + ((hash << 5) - hash);
   }, 0);
   const randomColor = colors[Math.abs(hashCode) % colors.length];
+  const isPngCompression =
+    operation === "compress" && from.toLowerCase() === "png" && to.toLowerCase() === "png";
 
   function ensureWorker() {
     if (!workerRef.current) {
+      const workerUrl = isPngCompression
+        ? new URL("../workers/compress.worker.js", import.meta.url)
+        : new URL("../workers/convert.worker.js", import.meta.url);
       workerRef.current = new Worker(
-        new URL("../workers/convert.worker.ts", import.meta.url),
+        workerUrl,
         { type: "module" }
       );
 
@@ -85,92 +104,94 @@ export default function LanderHeroTwoColumn({
     const w = ensureWorker();
     setBusy(true);
     for (const file of Array.from(files)) {
-      const buf = await file.arrayBuffer();
-      await new Promise<void>((resolve, reject) => {
-        w.onmessage = (ev: MessageEvent<any>) => {
-          // Safety check for malformed messages
-          if (!ev.data) {
-            console.error('Received malformed worker message:', ev);
-            return reject(new Error("Malformed worker response"));
-          }
-
-          // Handle progress updates for video conversion
-          if (ev.data.type === 'progress') {
-            // You could update UI progress here if needed
-            return;
-          }
-
-          if (!ev.data.ok) return reject(new Error(ev.data.error || "Convert failed"));
-
-          // Handle PDF pages (returns multiple blobs)
-          if (ev.data.blobs) {
-            const mimeType = to === "png" ? "image/png" : to === "jpg" || to === "jpeg" ? "image/jpeg" : "image/webp";
-            ev.data.blobs.forEach((buf: ArrayBuffer, i: number) => {
-              const blob = new Blob([buf], { type: mimeType });
-              const name = file.name.replace(/\.[^.]+$/, "") + `_page${i + 1}.${to}`;
-              saveBlob(blob, name);
-            });
-          } else {
-            // Determine MIME type based on output format
-            let mimeType: string;
-            const videoFormats = ['mp4', 'm4v'];
-            const audioFormats = ['mp3', 'wav', 'ogg', 'aac', 'm4a', 'opus', 'flac'];
-
-            if (videoFormats.includes(to)) {
-              mimeType = 'video/mp4';
-            } else if (audioFormats.includes(to)) {
-              mimeType = `audio/${to === 'm4a' ? 'mp4' : to}`;
-            } else if (to === 'webm') {
-              mimeType = 'video/webm';
-            } else if (to === 'gif') {
-              mimeType = 'image/gif';
-            } else if (to === 'png') {
-              mimeType = 'image/png';
-            } else if (to === 'jpg' || to === 'jpeg') {
-              mimeType = 'image/jpeg';
-            } else {
-              // Default for other video/audio formats
-              mimeType = to.startsWith('video/') ? to : `video/${to}`;
-            }
-
-            const blob = new Blob([ev.data.blob], { type: mimeType });
-            const name = file.name.replace(/\.[^.]+$/, "") + "." + to;
-            saveBlob(blob, name);
-          }
-          resolve();
-        };
-
-        // Add worker error handler
-        w.onerror = (error) => {
-          reject(new Error(`Worker error: ${error.message || error}`));
-        };
-
-        // Determine operation type based on format
-        const videoFormats = ['mp4', 'mkv', 'avi', 'webm', 'mov', 'flv', 'ts', 'mts', 'm2ts', 'm4v', 'mpeg', 'mpg', 'vob', '3gp', 'f4v', 'hevc', 'divx', 'mjpeg', 'mpeg2', 'asf', 'wmv', 'mxf'];
-        const audioFormats = ['mp3', 'wav', 'ogg', 'aac', 'm4a', 'opus', 'flac', 'wma', 'aiff', 'mp2'];
-
-        let op: string;
-        if (from === "pdf") {
-          op = "pdf-pages";
-        } else if (videoFormats.includes(from) || audioFormats.includes(to)) {
-          // Check if video conversion is supported before attempting
-          if (!capabilities?.supportsVideoConversion) {
-            throw new Error(`Video conversion not supported: ${capabilities?.reason || 'Unknown reason'}`);
-          }
-          op = "video";
-        } else {
-          op = "raster";
-        }
-
-        console.log(`Converting ${from} to ${to} using operation: ${op}`);
-
-        w.postMessage(op === "raster"
-          ? { op, from, to, buf }
-          : op === "pdf-pages"
-            ? { op, to, buf } // pdf -> jpg/png pages
-            : { op, from, to, buf }, // video conversion
-          [buf]);
+      const run = beginToolRun({
+        toolId: toolId ?? `${from}-to-${to}`,
+        from,
+        to,
+        inputBytes: file.size,
+        metadata: { fileName: file.name },
       });
+      setCurrentFile({
+        name: file.name,
+        progress: 0,
+        status: "processing",
+        message: undefined,
+      });
+      try {
+        const buf = await file.arrayBuffer();
+        if (isPngCompression) {
+          const compressedBuffer = await compressPngWithWorker({
+            worker: w,
+            buf,
+            quality: 0.85,
+          });
+          const blob = new Blob([compressedBuffer], { type: getOutputMimeType("png") });
+          const name = file.name.replace(/\.png$/i, "_compressed.png");
+          saveBlob(blob, name);
+          run.finishSuccess({ outputBytes: blob.size });
+          setCurrentFile({
+            name: file.name,
+            progress: 100,
+            status: "completed",
+            message: "Compression complete!",
+          });
+          continue;
+        }
+        const result = await convertWithWorker({
+          worker: w,
+          from,
+          to,
+          buf,
+          onProgress: (update) => {
+            setCurrentFile({
+              name: file.name,
+              progress: update.progress ?? 0,
+              status: update.status === "loading" ? "loading" : "processing",
+              message: update.status === "loading" ? "Loading converter…" : undefined,
+            });
+          },
+        });
+
+        if (result.kind === "multiple") {
+          const mimeType = getOutputMimeType(to);
+          result.buffers.forEach((buffer, i) => {
+            const blob = new Blob([buffer], { type: mimeType });
+            const name = file.name.replace(/\.[^.]+$/, "") + `_page${i + 1}.${to}`;
+            saveBlob(blob, name);
+          });
+          run.finishSuccess({
+            outputBytes: result.buffers.reduce((sum, buffer) => sum + buffer.byteLength, 0),
+          });
+          setCurrentFile({
+            name: file.name,
+            progress: 100,
+            status: "completed",
+            message: "Conversion complete!",
+          });
+        } else {
+          const mimeType = getOutputMimeType(to);
+          const blob = new Blob([result.buffer], { type: mimeType });
+          const name = file.name.replace(/\.[^.]+$/, "") + "." + to;
+          saveBlob(blob, name);
+          run.finishSuccess({ outputBytes: result.buffer.byteLength });
+          setCurrentFile({
+            name: file.name,
+            progress: 100,
+            status: "completed",
+            message: "Conversion complete!",
+          });
+        }
+      } catch (err: unknown) {
+        const message = err instanceof Error ? err.message : "Convert failed";
+        run.finishFailure({ errorCode: message || "convert_failed" });
+        console.error(`Conversion failed for ${file.name}:`, err);
+        setCurrentFile({
+          name: file.name,
+          progress: 0,
+          status: "error",
+          message,
+        });
+      }
     }
     setBusy(false);
   }
@@ -206,7 +227,7 @@ export default function LanderHeroTwoColumn({
     // Clear effect after animation
     setTimeout(() => setDropEffect(""), 1000);
 
-    setHint("Converting…");
+    setHint(isPngCompression ? "Compressing…" : "Converting…");
     handleFiles(e.dataTransfer.files).finally(() => setHint("or drop files here"));
   }
 
@@ -228,7 +249,19 @@ export default function LanderHeroTwoColumn({
   return (
     <section className="w-full bg-white">
       <div className="mx-auto max-w-[1400px] px-6 py-12">
-        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-center mb-12">{title}</h1>
+        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-center">{title}</h1>
+        <p className="text-sm text-muted-foreground text-center mb-10">{subtitle}</p>
+
+        {currentFile && (
+          <div className="mb-8 max-w-3xl mx-auto">
+            <VideoProgress
+              fileName={currentFile.name}
+              progress={currentFile.progress}
+              status={currentFile.status}
+              message={currentFile.message}
+            />
+          </div>
+        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
           {/* Video Column */}
@@ -277,6 +310,7 @@ export default function LanderHeroTwoColumn({
               onDragOver={onDrag}
               onDragLeave={onDrag}
               onDrop={onDrop}
+              data-testid="tool-dropzone"
               className={`border-2 border-dashed rounded-xl p-12 hover:border-opacity-80 transition-colors cursor-pointer w-full flex items-center justify-center ${dropEffect ? `animate-${dropEffect}` : ""
                 }`}
               style={{
@@ -349,6 +383,7 @@ export default function LanderHeroTwoColumn({
                 multiple
                 accept={acceptAttr}
                 className="hidden"
+                data-testid="tool-file-input"
                 onChange={(e) => handleFiles(e.target.files)}
               />
             </div>

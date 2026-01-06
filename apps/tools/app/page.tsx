@@ -1,13 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useMemo, useState } from "react";
 import { Button } from "@serp-tools/ui/components/button";
-import { Badge } from "@serp-tools/ui/components/badge";
 import { ToolCard } from "@/components/ToolCard";
 import { ToolsSearchBar } from "@/components/ToolsSearchBar";
 import { ToolsLinkHub } from "@/components/sections/ToolsLinkHub";
 import {
-  Sparkles,
   ArrowRight,
   Image,
   FileImage,
@@ -17,10 +15,43 @@ import {
   Video,
   Music
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import toolsData from '@serp-tools/app-core/data/tools.json';
 
+type ToolData = {
+  id: string;
+  name: string;
+  description: string;
+  operation?: string;
+  route?: string;
+  from?: string;
+  to?: string;
+  isActive?: boolean;
+  keywords?: string[];
+  isNew?: boolean;
+  isPopular?: boolean;
+};
+
+type ProcessedTool = {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  icon: LucideIcon;
+  href: string;
+  tags: string[];
+  isNew: boolean;
+  isPopular: boolean;
+};
+
+type ToolCategory = {
+  id: string;
+  name: string;
+  count: number;
+};
+
 // Icon mapping for tools
-const iconMap: { [key: string]: any } = {
+const iconMap: Record<string, LucideIcon> = {
   'heic-to-jpg': Image,
   'heic-to-jpeg': Image,
   'heic-to-png': Image,
@@ -76,62 +107,65 @@ const iconMap: { [key: string]: any } = {
 };
 
 // Process tools from JSON data
-const processedTools = toolsData
-  .filter((tool: any) => tool.isActive)
-  .map((tool: any) => ({
+const processedTools: ProcessedTool[] = (toolsData as ToolData[])
+  .filter((tool) => tool.isActive)
+  .map((tool) => {
+    const tags = [tool.from, tool.to].filter((tag): tag is string => Boolean(tag));
+    return {
     id: tool.id,
     name: tool.name,
     description: tool.description,
-    category: tool.operation || 'converter',
+    category: tool.operation ?? 'convert',
     icon: iconMap[tool.id] || Image,
-    href: tool.route,
-    tags: [tool.from, tool.to].filter(Boolean).concat(tool.keywords || []),
-    isNew: tool.isNew || false,
-    isPopular: tool.isPopular || false,
-  }));
+    href: tool.route ?? "/",
+    tags: tags.concat(tool.keywords ?? []),
+    isNew: Boolean(tool.isNew),
+    isPopular: Boolean(tool.isPopular),
+  };
+});
 
 
 export default function HomePage() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
-  const [tools, setTools] = useState(processedTools);
-  const [categories, setCategories] = useState<any[]>([]);
+  const tools = processedTools;
+  const categories = useMemo<ToolCategory[]>(() => {
+    const categoryMap = new Map<string, ToolCategory>();
+    categoryMap.set("all", { id: "all", name: "All Tools", count: tools.length });
 
-  useEffect(() => {
-    // Create categories from tools
-    const categoryMap = new Map();
-    categoryMap.set('all', { id: 'all', name: 'All Tools', count: tools.length });
-
-    tools.forEach(tool => {
+    tools.forEach((tool) => {
       if (!categoryMap.has(tool.category)) {
-        // Use proper category names without pluralization
         let catName = tool.category.charAt(0).toUpperCase() + tool.category.slice(1);
-        if (tool.category === 'combine') catName = 'Combine';
-        else if (tool.category === 'compress') catName = 'Compress';
-        else if (tool.category === 'convert') catName = 'Convert';
-        else if (tool.category === 'download') catName = 'Download';
-        else if (tool.category === 'bulk') catName = 'Bulk Operations';
+        if (tool.category === "combine") catName = "Combine";
+        else if (tool.category === "compress") catName = "Compress";
+        else if (tool.category === "convert") catName = "Convert";
+        else if (tool.category === "download") catName = "Download";
+        else if (tool.category === "bulk") catName = "Bulk Operations";
 
         categoryMap.set(tool.category, {
           id: tool.category,
           name: catName,
-          count: 0
+          count: 0,
         });
       }
-      categoryMap.get(tool.category).count++;
+      const entry = categoryMap.get(tool.category);
+      if (entry) entry.count += 1;
     });
 
-    setCategories(Array.from(categoryMap.values()));
+    return Array.from(categoryMap.values());
   }, [tools]);
 
   // Filter tools based on category and search
-  const filteredTools = tools.filter(tool => {
-    const matchesCategory = selectedCategory === "all" || tool.category === selectedCategory;
-    const matchesSearch = tool.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      tool.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      tool.tags.some((tag: string) => tag?.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchesCategory && matchesSearch;
-  });
+  const filteredTools = useMemo(() => {
+    const search = searchQuery.toLowerCase();
+    return tools.filter((tool) => {
+      const matchesCategory = selectedCategory === "all" || tool.category === selectedCategory;
+      const matchesSearch = tool.name.toLowerCase().includes(search) ||
+        tool.description.toLowerCase().includes(search) ||
+        tool.tags.some((tag) => tag.toLowerCase().includes(search));
+      return matchesCategory && matchesSearch;
+    });
+  }, [tools, searchQuery, selectedCategory]);
 
   return (
     <main className="min-h-screen">

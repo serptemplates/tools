@@ -8,8 +8,11 @@ import { Slider } from "@serp-tools/ui/components/slider";
 import { Separator } from "@serp-tools/ui/components/separator";
 import { Upload, Trash2, File as FileIcon, Loader2 } from "lucide-react";
 import { saveBlob } from "./saveAs";
+import { beginToolRun } from "@/lib/telemetry";
+import { convertWithWorker, getOutputMimeType } from "@/lib/convert/workerClient";
 
 type ConvertProps = {
+  toolId?: string;
   title: string;              // "HEIC to JPG"
   from: string;               // "heic"
   to: string;                 // "jpg"
@@ -45,6 +48,7 @@ function extAccept(from: string, extra?: string[]) {
 }
 
 export default function Converter({
+  toolId,
   title,
   from,
   to,
@@ -53,6 +57,7 @@ export default function Converter({
   qualityDefault = 85,
 }: ConvertProps) {
   const workerRef = useRef<Worker | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const [items, setItems] = useState<Item[]>([]);
   const [quality, setQuality] = useState<number>(qualityDefault);
   const [busy, setBusy] = useState(false);
@@ -65,7 +70,7 @@ export default function Converter({
 
   function ensureWorker() {
     if (!workerRef.current) {
-      workerRef.current = new Worker(new URL("../workers/convert.worker.ts", import.meta.url), { type: "module" });
+      workerRef.current = new Worker(new URL("../workers/convert.worker.js", import.meta.url), { type: "module" });
     }
     return workerRef.current;
   }
@@ -107,40 +112,51 @@ export default function Converter({
         x.id === item.id ? { ...x, status: "converting" as const } : x
       ));
 
-      try {
-        await new Promise<void>((resolve, reject) => {
-          const handleMessage = (e: MessageEvent) => {
-            if (e.data.id === item.id) {
-              if (e.data.error) {
-                setItems(prev => prev.map(x =>
-                  x.id === item.id
-                    ? { ...x, status: "error" as const, message: e.data.error }
-                    : x
-                ));
-                reject(e.data.error);
-              } else if (e.data.blob) {
-                const outputName = item.file.name.replace(/\.[^.]+$/, `.${to}`);
-                saveBlob(e.data.blob, outputName);
-                setItems(prev => prev.map(x =>
-                  x.id === item.id ? { ...x, status: "done" as const } : x
-                ));
-                resolve();
-              }
-              worker.removeEventListener("message", handleMessage);
-            }
-          };
+      const run = beginToolRun({
+        toolId: toolId ?? `${from}-to-${to}`,
+        from,
+        to,
+        inputBytes: item.file.size,
+        metadata: { fileName: item.file.name },
+      });
 
-          worker.addEventListener("message", handleMessage);
-          worker.postMessage({
-            id: item.id,
-            file: item.file,
-            from,
-            to,
-            quality: to === "jpg" || to === "jpeg" ? quality / 100 : undefined,
-          });
+      try {
+        const buf = await item.file.arrayBuffer();
+        const result = await convertWithWorker({
+          worker,
+          from,
+          to,
+          buf,
+          quality: to === "jpg" || to === "jpeg" ? quality / 100 : undefined,
         });
+
+        if (result.kind === "multiple") {
+          const mimeType = getOutputMimeType(to);
+          result.buffers.forEach((buffer, i) => {
+            const blob = new Blob([buffer], { type: mimeType });
+            const name = item.file.name.replace(/\.[^.]+$/, "") + `_page${i + 1}.${to}`;
+            saveBlob(blob, name);
+          });
+          run.finishSuccess({
+            outputBytes: result.buffers.reduce((sum, buffer) => sum + buffer.byteLength, 0),
+          });
+        } else {
+          const mimeType = getOutputMimeType(to);
+          const blob = new Blob([result.buffer], { type: mimeType });
+          const outputName = item.file.name.replace(/\.[^.]+$/, `.${to}`);
+          saveBlob(blob, outputName);
+          run.finishSuccess({ outputBytes: result.buffer.byteLength });
+        }
+
+        setItems(prev => prev.map(x =>
+          x.id === item.id ? { ...x, status: "done" as const } : x
+        ));
       } catch (err) {
         console.error(`Error converting ${item.file.name}:`, err);
+        run.finishFailure({ errorCode: "convert_failed" });
+        setItems(prev => prev.map(x =>
+          x.id === item.id ? { ...x, status: "error" as const, message: "Convert failed" } : x
+        ));
       }
 
       done++;
@@ -160,25 +176,28 @@ export default function Converter({
       <CardContent className="space-y-4">
         <div
           className="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-lg p-8 text-center hover:border-gray-400 dark:hover:border-gray-600 transition-colors cursor-pointer"
+          data-testid="tool-dropzone"
           onDragOver={(e) => { e.preventDefault(); e.stopPropagation(); }}
           onDrop={(e) => {
             e.preventDefault();
             e.stopPropagation();
             onDrop(e.dataTransfer.files);
           }}
-          onClick={() => {
-            const input = document.createElement("input");
-            input.type = "file";
-            input.multiple = true;
-            input.accept = acceptAttr;
-            input.onchange = () => onDrop(input.files);
-            input.click();
-          }}
+          onClick={() => inputRef.current?.click()}
         >
           <Upload className="mx-auto h-12 w-12 text-gray-400 mb-4" />
           <p className="text-lg font-medium mb-2">Drop {from.toUpperCase()} files here</p>
           <p className="text-sm text-muted-foreground">or click to browse</p>
         </div>
+        <input
+          ref={inputRef}
+          type="file"
+          multiple
+          accept={acceptAttr}
+          className="hidden"
+          data-testid="tool-file-input"
+          onChange={(e) => onDrop(e.target.files)}
+        />
 
         {(to === "jpg" || to === "jpeg") && (
           <>
@@ -235,7 +254,7 @@ export default function Converter({
               </div>
 
               {busy && overall > 0 && (
-                <Progress value={overall} className="w-full" />
+                <Progress value={overall} className="w-full" data-testid="tool-progress" />
               )}
 
               <div className="space-y-1 max-h-60 overflow-y-auto">

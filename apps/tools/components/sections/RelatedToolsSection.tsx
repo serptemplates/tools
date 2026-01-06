@@ -12,26 +12,83 @@ type Tool = {
   isActive: boolean;
 };
 
-type RelatedToolsSectionProps = {
-  currentFrom: string;
-  currentTo: string;
-  currentPath: string; // to exclude current tool
+type RelatedToolEntry = {
+  toolId?: string;
+  href?: string;
+  title: string;
+  description?: string;
 };
 
-export function RelatedToolsSection({ currentFrom, currentTo, currentPath }: RelatedToolsSectionProps) {
-  const allTools = (toolsData as any[]).filter(tool => tool.isActive);
+type RelatedToolsSectionProps = {
+  currentFrom?: string;
+  currentTo?: string;
+  currentRoute?: string; // to exclude current tool
+  currentToolId?: string;
+  relatedTools?: RelatedToolEntry[];
+};
 
-  // Find all tools that involve either format (combining both)
-  const relatedTools = allTools.filter(tool =>
-    ((tool.from === currentFrom || tool.to === currentFrom ||
-      tool.from === currentTo || tool.to === currentTo)) &&
-    tool.route !== currentPath
+export function RelatedToolsSection({
+  currentFrom,
+  currentTo,
+  currentRoute,
+  currentToolId,
+  relatedTools,
+}: RelatedToolsSectionProps) {
+  const allTools = (toolsData as Tool[]).filter((tool) => tool.isActive);
+  const toolsById = new Map(allTools.map((tool) => [tool.id, tool as Tool]));
+  const toolsByRoute = new Map(allTools.map((tool) => [tool.route, tool as Tool]));
+
+  const resolvedFromContent = (relatedTools ?? [])
+    .map((tool, index) => {
+      if (tool.toolId) {
+        const resolved = toolsById.get(tool.toolId);
+        if (!resolved) return null;
+        return {
+          ...resolved,
+          description: tool.description ?? resolved.description,
+          name: tool.title || resolved.name,
+        };
+      }
+      if (tool.href) {
+        if (tool.href.startsWith("/")) {
+          const resolved = toolsByRoute.get(tool.href);
+          if (!resolved) return null;
+          return {
+            ...resolved,
+            description: tool.description ?? resolved.description,
+            name: tool.title || resolved.name,
+          };
+        }
+        return {
+          id: tool.toolId ?? `related-${index}`,
+          name: tool.title,
+          description: tool.description ?? "",
+          route: tool.href,
+          isActive: true,
+        } as Tool;
+      }
+      return null;
+    })
+    .filter(Boolean) as Tool[];
+
+  const curatedTools = resolvedFromContent.filter((tool) =>
+    (currentToolId ? tool.id !== currentToolId : true) &&
+    (currentRoute ? tool.route !== currentRoute : true)
   );
 
+  // Find all tools that involve either format (combining both)
+  const relatedToolsFallback = currentFrom && currentTo
+    ? allTools.filter(tool =>
+        ((tool.from === currentFrom || tool.to === currentFrom ||
+          tool.from === currentTo || tool.to === currentTo)) &&
+        (currentRoute ? tool.route !== currentRoute : true) &&
+        (currentToolId ? tool.id !== currentToolId : true)
+      )
+    : [];
+
   // Remove duplicates
-  const uniqueTools = Array.from(new Set(relatedTools.map(t => t.id)))
-    .map(id => relatedTools.find(t => t.id === id))
-    .filter(Boolean);
+  const toolsToShow = curatedTools.length ? curatedTools : relatedToolsFallback;
+  const uniqueTools = Array.from(new Map(toolsToShow.map(tool => [tool.id || tool.route, tool])).values());
 
   // If no related tools, don't render the section
   if (uniqueTools.length === 0) {

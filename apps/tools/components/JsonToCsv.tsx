@@ -5,8 +5,13 @@ import { Card } from "@serp-tools/ui/components/card";
 import { Button } from "@serp-tools/ui/components/button";
 import { Badge } from "@serp-tools/ui/components/badge";
 import { saveBlob } from "@/components/saveAs";
+import { beginToolRun } from "@/lib/telemetry";
 
-export default function JsonToCsv() {
+type Props = {
+  toolId?: string;
+};
+
+export default function JsonToCsv({ toolId }: Props) {
   const [jsonInput, setJsonInput] = useState("");
   const [csvOutput, setCsvOutput] = useState("");
   const [error, setError] = useState("");
@@ -21,16 +26,26 @@ export default function JsonToCsv() {
       return;
     }
 
+    const inputBytes = new Blob([jsonInput]).size;
+    const run = beginToolRun({
+      toolId: toolId ?? "json-to-csv",
+      from: "json",
+      to: "csv",
+      inputBytes,
+    });
+
     try {
       const data = JSON.parse(jsonInput);
 
       if (!Array.isArray(data)) {
         setError("JSON must be an array of objects");
+        run.finishFailure({ errorCode: "invalid_format" });
         return;
       }
 
       if (data.length === 0) {
         setError("JSON array is empty");
+        run.finishFailure({ errorCode: "empty_array" });
         return;
       }
 
@@ -60,8 +75,13 @@ export default function JsonToCsv() {
       const csv = csvRows.join('\n');
       setCsvOutput(csv);
       setStats({ rows: data.length, columns: headers.length });
+      run.finishSuccess({
+        outputBytes: new Blob([csv]).size,
+        metadata: { rows: data.length, columns: headers.length },
+      });
     } catch (e) {
       setError("Invalid JSON: " + (e as Error).message);
+      run.finishFailure({ errorCode: "invalid_json" });
     }
   };
 
@@ -125,6 +145,7 @@ export default function JsonToCsv() {
                 placeholder='[{"name": "John", "age": 30}, {"name": "Jane", "age": 25}]'
                 className="w-full h-96 p-4 border rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono text-sm"
                 spellCheck={false}
+                data-testid="json-input"
               />
               {error && (
                 <div className="mt-2 p-2 bg-red-50 border border-red-200 rounded text-red-600 text-sm">
@@ -148,6 +169,7 @@ export default function JsonToCsv() {
                       <button
                         onClick={downloadCSV}
                         className="px-3 py-1 text-sm bg-green-100 hover:bg-green-200 text-green-700 rounded-lg transition-colors"
+                        data-testid="json-to-csv-download"
                       >
                         Download CSV
                       </button>
@@ -160,6 +182,7 @@ export default function JsonToCsv() {
                 readOnly
                 placeholder="CSV output will appear here..."
                 className="w-full h-96 p-4 border rounded-lg resize-none bg-gray-50 font-mono text-sm"
+                data-testid="csv-output"
               />
             </Card>
           </div>
@@ -171,6 +194,7 @@ export default function JsonToCsv() {
             onClick={convertJsonToCsv}
             size="lg"
             className="px-8"
+            data-testid="json-convert"
           >
             Convert JSON to CSV
           </Button>
