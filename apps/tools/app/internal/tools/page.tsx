@@ -4,7 +4,7 @@ import { toolStatus } from "@serp-tools/app-core/db/schema";
 import { desc } from "drizzle-orm";
 
 type PageProps = {
-  searchParams?: Record<string, string | string[] | undefined>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 };
 
 const toolMap = new Map(
@@ -16,9 +16,10 @@ const toolMap = new Map(
 
 export default async function ToolsDashboard({ searchParams }: PageProps) {
   const token = process.env.INTERNAL_DASHBOARD_TOKEN;
-  const providedToken = Array.isArray(searchParams?.token)
-    ? searchParams?.token[0]
-    : searchParams?.token;
+  const resolvedSearchParams = searchParams ? await searchParams : undefined;
+  const providedToken = Array.isArray(resolvedSearchParams?.token)
+    ? resolvedSearchParams?.token[0]
+    : resolvedSearchParams?.token;
   if (token && token !== providedToken) {
     return (
       <main className="min-h-screen p-8">
