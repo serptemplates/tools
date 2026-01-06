@@ -30,7 +30,7 @@ JPG and JPEG are the same format. We treat `jpg` as canonical and use a single f
 3. If the tool is custom (text-based), update `toolFixtures` instead.
 
 ## Raw formats
-Camera RAW formats (`arw`, `cr2`, `cr3`, `dng`) require real sample files and are currently marked `missing`. Add a fixture and flip their status to `ready` when available.
+Camera RAW formats (`arw`, `cr2`, `cr3`, `dng`) are covered with CC0 samples from raw.pixls.us and marked `ready` in the matrix.
 
 ## Benchmark usage
 The benchmark runner reads the matrix and records fixture coverage in the results. Missing fixtures are reported in the benchmark summary so we can track coverage gaps.

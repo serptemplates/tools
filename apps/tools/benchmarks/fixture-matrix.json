@@ -16,10 +16,10 @@
     },
     {
       "format": "arw",
-      "status": "missing",
+      "status": "ready",
       "input": "file",
-      "fixture": null,
-      "notes": "Raw camera sample required."
+      "fixture": "fixtures/sample.arw",
+      "notes": "CC0 sample from raw.pixls.us."
     },
     {
       "format": "avi",
@@ -44,17 +44,17 @@
     },
     {
       "format": "cr2",
-      "status": "missing",
+      "status": "ready",
       "input": "file",
-      "fixture": null,
-      "notes": "Raw camera sample required."
+      "fixture": "fixtures/sample.cr2",
+      "notes": "CC0 sample from raw.pixls.us."
     },
     {
       "format": "cr3",
-      "status": "missing",
+      "status": "ready",
       "input": "file",
-      "fixture": null,
-      "notes": "Raw camera sample required."
+      "fixture": "fixtures/sample.cr3",
+      "notes": "CC0 sample from raw.pixls.us."
     },
     {
       "format": "csv",
@@ -68,10 +68,10 @@
     },
     {
       "format": "dng",
-      "status": "missing",
+      "status": "ready",
       "input": "file",
-      "fixture": null,
-      "notes": "Raw camera sample required."
+      "fixture": "fixtures/sample.dng",
+      "notes": "CC0 sample from raw.pixls.us."
     },
     {
       "format": "gif",
