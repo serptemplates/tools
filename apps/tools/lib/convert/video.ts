@@ -16,7 +16,9 @@ function canRemux(fromFormat: string, toFormat: string) {
   );
 }
 
-export function shouldUseServerConversion(_fromFormat: string, _toFormat: string) {
+export function shouldUseServerConversion(fromFormat: string, toFormat: string) {
+  void fromFormat;
+  void toFormat;
   return !detectCapabilities().supportsVideoConversion;
 }
 
