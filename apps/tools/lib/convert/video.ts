@@ -119,7 +119,8 @@ export async function convertVideo(
   await ff.writeFile(inputName, new Uint8Array(inputBuffer));
 
   // Build FFmpeg command based on output format
-  let args: string[] = ['-i', inputName];
+  const baseArgs = ['-y', '-nostdin'];
+  let args: string[] = [...baseArgs, '-i', inputName];
 
   // For container-to-container conversions with compatible codecs, use copy (super fast)
   const canUseCopyCodec = canRemux(fromFormat, toFormat);
@@ -261,10 +262,11 @@ export async function convertVideo(
 
     // Use palette to create GIF
     args = [
+      ...baseArgs,
       '-i', inputName,
       '-i', paletteName,
       '-lavfi', `${FAST_GIF_FILTER}[x];[x][1:v]paletteuse`,
-      '-loop', '0'
+      '-loop', '0',
     ];
   }
 
@@ -276,8 +278,17 @@ export async function convertVideo(
   let data: Uint8Array | string;
 
   try {
+    try {
+      await ff.deleteFile(outputName);
+    } catch {
+      // Ignore missing output file
+    }
+
     // Execute conversion
-    await ff.exec(args);
+    const exitCode = await ff.exec(args);
+    if (exitCode !== 0) {
+      throw new Error(`FFmpeg failed with exit code ${exitCode}`);
+    }
 
     // Read output file
     data = await ff.readFile(outputName);
