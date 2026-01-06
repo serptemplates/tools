@@ -1,4 +1,4 @@
-import { requiresVideoConversion } from "@/lib/capabilities";
+import { detectCapabilities, requiresVideoConversion } from "@/lib/capabilities";
 import { decodeToRGBA } from "@/lib/convert/decode";
 import { encodeFromRGBA } from "@/lib/convert/encode";
 
@@ -307,21 +307,48 @@ async function convertVideoOnMainThread(args: {
   const { convertVideo, convertVideoViaApi, shouldUseServerConversion } = await import("./video");
   let buffer: ArrayBuffer;
 
-  if (shouldUseServerConversion(args.from, args.to)) {
+  const preferServer = shouldUseServerConversion(args.from, args.to);
+  const canUseClient = detectCapabilities().supportsVideoConversion;
+
+  if (preferServer) {
     args.onProgress?.({ status: "processing", progress: 5 });
-    buffer = await convertVideoViaApi(args.buf, args.from, args.to);
-    args.onProgress?.({ status: "processing", progress: 100 });
+    try {
+      buffer = await convertVideoViaApi(args.buf, args.from, args.to);
+      args.onProgress?.({ status: "processing", progress: 100 });
+    } catch (error) {
+      if (!canUseClient) {
+        throw error;
+      }
+      console.warn("Server conversion failed, falling back to client conversion.", error);
+      buffer = await convertVideo(args.buf, args.from, args.to, {
+        quality: args.quality,
+        onProgress: (progress) => {
+          args.onProgress?.({
+            status: "processing",
+            progress: progress.ratio * 100,
+            time: progress.time,
+          });
+        },
+      });
+    }
   } else {
-    buffer = await convertVideo(args.buf, args.from, args.to, {
-      quality: args.quality,
-      onProgress: (progress) => {
-        args.onProgress?.({
-          status: "processing",
-          progress: progress.ratio * 100,
-          time: progress.time,
-        });
-      },
-    });
+    try {
+      buffer = await convertVideo(args.buf, args.from, args.to, {
+        quality: args.quality,
+        onProgress: (progress) => {
+          args.onProgress?.({
+            status: "processing",
+            progress: progress.ratio * 100,
+            time: progress.time,
+          });
+        },
+      });
+    } catch (error) {
+      console.warn("Client conversion failed, falling back to server conversion.", error);
+      args.onProgress?.({ status: "processing", progress: 5 });
+      buffer = await convertVideoViaApi(args.buf, args.from, args.to);
+      args.onProgress?.({ status: "processing", progress: 100 });
+    }
   }
 
   return { kind: "single", buffer };

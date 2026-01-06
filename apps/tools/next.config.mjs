@@ -15,6 +15,7 @@ const nextConfig = {
   env: {
     BUILD_MODE: "server",
     SUPPORTS_VIDEO_CONVERSION: "true",
+    NEXT_PUBLIC_VIDEO_CONVERSION_PREFER_SERVER: "true",
   },
   outputFileTracingRoot: tracingRoot,
   outputFileTracingIncludes: ffmpegTrace

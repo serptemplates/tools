@@ -19,6 +19,10 @@ function canRemux(fromFormat: string, toFormat: string) {
 export function shouldUseServerConversion(fromFormat: string, toFormat: string) {
   void fromFormat;
   void toFormat;
+  const preferServer = process.env.NEXT_PUBLIC_VIDEO_CONVERSION_PREFER_SERVER === "true";
+  if (preferServer) {
+    return true;
+  }
   return !detectCapabilities().supportsVideoConversion;
 }
 
