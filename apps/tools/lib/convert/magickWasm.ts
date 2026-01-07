@@ -3,12 +3,13 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 
 import { createRequire } from "node:module";
+import type { IMagickImage, MagickFormat as MagickFormatType } from "@imagemagick/magick-wasm";
 
 const require = createRequire(import.meta.url);
 const { ImageMagick, MagickFormat, initializeImageMagick } =
   require("@imagemagick/magick-wasm") as typeof import("@imagemagick/magick-wasm");
 
-const MAGICK_FORMATS: Record<string, string> = {
+const MAGICK_FORMATS: Record<string, MagickFormatType> = {
   ai: MagickFormat.Ai,
   apng: MagickFormat.APng,
   bmp: MagickFormat.Bmp,
@@ -86,8 +87,8 @@ export async function convertWithMagickWasm(input: Buffer, from: string, to: str
   }
 
   const bytes = new Uint8Array(input);
-  const output = await ImageMagick.read(bytes, fromFormat, (image) =>
-    image.write(toFormat, (data) => data)
+  const output = await ImageMagick.read<Uint8Array>(bytes, fromFormat, (image: IMagickImage) =>
+    image.write(toFormat, (data: Uint8Array) => data)
   );
 
   return Buffer.from(output);

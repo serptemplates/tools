@@ -105,7 +105,6 @@ const MIME_MAP: Record<string, string> = {
   av1: "video/mp4",
   avchd: "video/mp2t",
   pdf: "application/pdf",
-  svg: "image/svg+xml",
 };
 
 export function getOutputMimeType(format: string) {

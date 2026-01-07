@@ -1,112 +1,129 @@
 {
   "baseUrl": "http://localhost:3000",
-  "ranAt": "2026-01-07T13:52:37.108Z",
+  "ranAt": "2026-01-07T14:10:49.570Z",
   "summary": {
-    "pass": 6,
+    "pass": 7,
     "warn": 0,
     "fail": 0,
     "missingFixtures": 0
   },
   "results": [
     {
-      "id": "ico-to-png",
-      "route": "/ico-to-png",
+      "id": "cdda-to-flac",
+      "route": "/cdda-to-flac",
       "status": "pass",
-      "loadMs": 750,
-      "detail": "output 536",
+      "loadMs": 2479,
+      "detail": "output 395739",
       "metrics": {
-        "outputBytes": 536,
-        "outputType": "image/png"
+        "outputBytes": 395739,
+        "outputType": "audio/flac"
       },
       "fixture": {
-        "format": "ico",
+        "format": "cdda",
         "status": "ready",
-        "fixture": "fixtures/sample.ico"
+        "fixture": "fixtures/sample.cdda"
       },
       "errors": []
     },
     {
-      "id": "ai-to-png",
-      "route": "/ai-to-png",
+      "id": "cdda-to-mp3",
+      "route": "/cdda-to-mp3",
       "status": "pass",
-      "loadMs": 864,
-      "detail": "output 3580208",
+      "loadMs": 335,
+      "detail": "output 78380",
       "metrics": {
-        "outputBytes": 3580208,
-        "outputType": "image/png"
+        "outputBytes": 78380,
+        "outputType": "audio/mpeg"
       },
       "fixture": {
-        "format": "ai",
+        "format": "cdda",
         "status": "ready",
-        "fixture": "fixtures/sample.ai"
+        "fixture": "fixtures/sample.cdda"
       },
       "errors": []
     },
     {
-      "id": "dds-to-png",
-      "route": "/dds-to-png",
+      "id": "cdda-to-wav",
+      "route": "/cdda-to-wav",
       "status": "pass",
-      "loadMs": 251,
-      "detail": "output 319",
+      "loadMs": 184,
+      "detail": "output 617422",
       "metrics": {
-        "outputBytes": 319,
-        "outputType": "image/png"
+        "outputBytes": 617422,
+        "outputType": "audio/wav"
       },
       "fixture": {
-        "format": "dds",
+        "format": "cdda",
         "status": "ready",
-        "fixture": "fixtures/sample.dds"
+        "fixture": "fixtures/sample.cdda"
       },
       "errors": []
     },
     {
-      "id": "psd-to-png",
-      "route": "/psd-to-png",
+      "id": "mp4-to-cdda",
+      "route": "/mp4-to-cdda",
       "status": "pass",
-      "loadMs": 343,
-      "detail": "output 446",
+      "loadMs": 191,
+      "detail": "output 180224",
       "metrics": {
-        "outputBytes": 446,
-        "outputType": "image/png"
+        "outputBytes": 180224,
+        "outputType": "audio/x-cdda"
       },
       "fixture": {
-        "format": "psd",
+        "format": "mp4",
         "status": "ready",
-        "fixture": "fixtures/sample.psd"
+        "fixture": "fixtures/sample.mp4"
       },
       "errors": []
     },
     {
-      "id": "tga-to-png",
-      "route": "/tga-to-png",
+      "id": "mpeg2-to-mp3",
+      "route": "/mpeg2-to-mp3",
       "status": "pass",
-      "loadMs": 219,
-      "detail": "output 332",
+      "loadMs": 184,
+      "detail": "output 25747",
       "metrics": {
-        "outputBytes": 332,
-        "outputType": "image/png"
+        "outputBytes": 25747,
+        "outputType": "audio/mpeg"
       },
       "fixture": {
-        "format": "tga",
+        "format": "mpeg2",
         "status": "ready",
-        "fixture": "fixtures/sample.tga"
+        "fixture": "fixtures/sample.mpeg2"
       },
       "errors": []
     },
     {
-      "id": "cur-to-png",
-      "route": "/cur-to-png",
+      "id": "mpeg2-to-wav",
+      "route": "/mpeg2-to-wav",
       "status": "pass",
-      "loadMs": 194,
-      "detail": "output 536",
+      "loadMs": 182,
+      "detail": "output 89934",
       "metrics": {
-        "outputBytes": 536,
-        "outputType": "image/png"
+        "outputBytes": 89934,
+        "outputType": "audio/wav"
       },
       "fixture": {
-        "format": "cur",
+        "format": "mpeg2",
         "status": "ready",
-        "fixture": "fixtures/sample.cur"
+        "fixture": "fixtures/sample.mpeg2"
+      },
+      "errors": []
+    },
+    {
+      "id": "wav-to-cdda",
+      "route": "/wav-to-cdda",
+      "status": "pass",
+      "loadMs": 184,
+      "detail": "output 176400",
+      "metrics": {
+        "outputBytes": 176400,
+        "outputType": "audio/x-cdda"
+      },
+      "fixture": {
+        "format": "wav",
+        "status": "ready",
+        "fixture": "fixtures/sample.wav"
       },
       "errors": []
     }
