@@ -14249,5 +14249,622 @@
       "audio"
     ],
     "requiresFFmpeg": true
+  },
+  {
+    "id": "png-to-jpeg",
+    "name": "PNG to JPEG",
+    "description": "Convert PNG images to JPEG format",
+    "operation": "convert",
+    "route": "/png-to-jpeg",
+    "from": "png",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "png",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "webp-to-jpeg",
+    "name": "WEBP to JPEG",
+    "description": "Convert WEBP images to JPEG format",
+    "operation": "convert",
+    "route": "/webp-to-jpeg",
+    "from": "webp",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "webp",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-svg",
+    "name": "JPEG to SVG",
+    "description": "Convert JPEG images to SVG format",
+    "operation": "convert",
+    "route": "/jpeg-to-svg",
+    "from": "jpeg",
+    "to": "svg",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "svg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-jpeg",
+    "name": "JPG to JPEG",
+    "description": "Convert JPG images to JPEG format",
+    "operation": "convert",
+    "route": "/jpg-to-jpeg",
+    "from": "jpg",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "tif-to-jpg",
+    "name": "TIF to JPG",
+    "description": "Convert TIF images to JPG format",
+    "operation": "convert",
+    "route": "/tif-to-jpg",
+    "from": "tif",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "tif",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "tif-to-png",
+    "name": "TIF to PNG",
+    "description": "Convert TIF images to PNG format",
+    "operation": "convert",
+    "route": "/tif-to-png",
+    "from": "tif",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "tif",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-jpeg",
+    "name": "SVG to JPEG",
+    "description": "Convert SVG images to JPEG format",
+    "operation": "convert",
+    "route": "/svg-to-jpeg",
+    "from": "svg",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "tiff-to-jpeg",
+    "name": "TIFF to JPEG",
+    "description": "Convert TIFF images to JPEG format",
+    "operation": "convert",
+    "route": "/tiff-to-jpeg",
+    "from": "tiff",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "tiff",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-jpeg",
+    "name": "GIF to JPEG",
+    "description": "Convert GIF images to JPEG format",
+    "operation": "convert",
+    "route": "/gif-to-jpeg",
+    "from": "gif",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-jpeg",
+    "name": "BMP to JPEG",
+    "description": "Convert BMP images to JPEG format",
+    "operation": "convert",
+    "route": "/bmp-to-jpeg",
+    "from": "bmp",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-avif",
+    "name": "JPEG to AVIF",
+    "description": "Convert JPEG images to AVIF format",
+    "operation": "convert",
+    "route": "/jpeg-to-avif",
+    "from": "jpeg",
+    "to": "avif",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "avif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "tif-to-webp",
+    "name": "TIF to WEBP",
+    "description": "Convert TIF images to WEBP format",
+    "operation": "convert",
+    "route": "/tif-to-webp",
+    "from": "tif",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "tif",
+      "webp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dng-to-png",
+    "name": "DNG to PNG",
+    "description": "Convert DNG images to PNG format",
+    "operation": "convert",
+    "route": "/dng-to-png",
+    "from": "dng",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "png",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-png",
+    "name": "CR2 to PNG",
+    "description": "Convert CR2 images to PNG format",
+    "operation": "convert",
+    "route": "/cr2-to-png",
+    "from": "cr2",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "png",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "arw-to-png",
+    "name": "ARW to PNG",
+    "description": "Convert ARW images to PNG format",
+    "operation": "convert",
+    "route": "/arw-to-png",
+    "from": "arw",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "arw",
+      "png",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-jpeg",
+    "name": "CR2 to JPEG",
+    "description": "Convert CR2 images to JPEG format",
+    "operation": "convert",
+    "route": "/cr2-to-jpeg",
+    "from": "cr2",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "jpeg",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-png",
+    "name": "CR3 to PNG",
+    "description": "Convert CR3 images to PNG format",
+    "operation": "convert",
+    "route": "/cr3-to-png",
+    "from": "cr3",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "png",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "dng-to-jpeg",
+    "name": "DNG to JPEG",
+    "description": "Convert DNG images to JPEG format",
+    "operation": "convert",
+    "route": "/dng-to-jpeg",
+    "from": "dng",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "jpeg",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "arw-to-jpeg",
+    "name": "ARW to JPEG",
+    "description": "Convert ARW images to JPEG format",
+    "operation": "convert",
+    "route": "/arw-to-jpeg",
+    "from": "arw",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "arw",
+      "jpeg",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-jpeg",
+    "name": "CR3 to JPEG",
+    "description": "Convert CR3 images to JPEG format",
+    "operation": "convert",
+    "route": "/cr3-to-jpeg",
+    "from": "cr3",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "jpeg",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-tiff",
+    "name": "CR2 to TIFF",
+    "description": "Convert CR2 images to TIFF format",
+    "operation": "convert",
+    "route": "/cr2-to-tiff",
+    "from": "cr2",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "tiff",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "dng-to-tiff",
+    "name": "DNG to TIFF",
+    "description": "Convert DNG images to TIFF format",
+    "operation": "convert",
+    "route": "/dng-to-tiff",
+    "from": "dng",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "tiff",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "arw-to-tiff",
+    "name": "ARW to TIFF",
+    "description": "Convert ARW images to TIFF format",
+    "operation": "convert",
+    "route": "/arw-to-tiff",
+    "from": "arw",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "arw",
+      "tiff",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-tiff",
+    "name": "CR3 to TIFF",
+    "description": "Convert CR3 images to TIFF format",
+    "operation": "convert",
+    "route": "/cr3-to-tiff",
+    "from": "cr3",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "tiff",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "arw-to-bmp",
+    "name": "ARW to BMP",
+    "description": "Convert ARW images to BMP format",
+    "operation": "convert",
+    "route": "/arw-to-bmp",
+    "from": "arw",
+    "to": "bmp",
+    "isActive": true,
+    "tags": [
+      "arw",
+      "bmp",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "arw-to-gif",
+    "name": "ARW to GIF",
+    "description": "Convert ARW images to GIF format",
+    "operation": "convert",
+    "route": "/arw-to-gif",
+    "from": "arw",
+    "to": "gif",
+    "isActive": true,
+    "tags": [
+      "arw",
+      "gif",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "arw-to-tif",
+    "name": "ARW to TIF",
+    "description": "Convert ARW images to TIF format",
+    "operation": "convert",
+    "route": "/arw-to-tif",
+    "from": "arw",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "arw",
+      "tif",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "arw-to-webp",
+    "name": "ARW to WEBP",
+    "description": "Convert ARW images to WEBP format",
+    "operation": "convert",
+    "route": "/arw-to-webp",
+    "from": "arw",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "arw",
+      "webp",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-gif",
+    "name": "CR2 to GIF",
+    "description": "Convert CR2 images to GIF format",
+    "operation": "convert",
+    "route": "/cr2-to-gif",
+    "from": "cr2",
+    "to": "gif",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "gif",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-tif",
+    "name": "CR2 to TIF",
+    "description": "Convert CR2 images to TIF format",
+    "operation": "convert",
+    "route": "/cr2-to-tif",
+    "from": "cr2",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "tif",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-webp",
+    "name": "CR2 to WEBP",
+    "description": "Convert CR2 images to WEBP format",
+    "operation": "convert",
+    "route": "/cr2-to-webp",
+    "from": "cr2",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "webp",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-gif",
+    "name": "CR3 to GIF",
+    "description": "Convert CR3 images to GIF format",
+    "operation": "convert",
+    "route": "/cr3-to-gif",
+    "from": "cr3",
+    "to": "gif",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "gif",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-tif",
+    "name": "CR3 to TIF",
+    "description": "Convert CR3 images to TIF format",
+    "operation": "convert",
+    "route": "/cr3-to-tif",
+    "from": "cr3",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "tif",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-webp",
+    "name": "CR3 to WEBP",
+    "description": "Convert CR3 images to WEBP format",
+    "operation": "convert",
+    "route": "/cr3-to-webp",
+    "from": "cr3",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "webp",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "dng-to-gif",
+    "name": "DNG to GIF",
+    "description": "Convert DNG images to GIF format",
+    "operation": "convert",
+    "route": "/dng-to-gif",
+    "from": "dng",
+    "to": "gif",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "gif",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "dng-to-tif",
+    "name": "DNG to TIF",
+    "description": "Convert DNG images to TIF format",
+    "operation": "convert",
+    "route": "/dng-to-tif",
+    "from": "dng",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "tif",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "dng-to-webp",
+    "name": "DNG to WEBP",
+    "description": "Convert DNG images to WEBP format",
+    "operation": "convert",
+    "route": "/dng-to-webp",
+    "from": "dng",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "webp",
+      "convert",
+      "image",
+      "raw"
+    ]
   }
 ]

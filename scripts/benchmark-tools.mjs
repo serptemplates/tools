@@ -44,6 +44,7 @@ const MIME_MAP = {
   ico: "image/x-icon",
   avif: "image/avif",
   tiff: "image/tiff",
+  tif: "image/tiff",
   mp4: "video/mp4",
   webm: "video/webm",
   avi: "video/x-msvideo",

@@ -24,6 +24,7 @@ const MIME_MAP: Record<string, string> = {
   avif: "image/avif",
   webp: "image/webp",
   gif: "image/gif",
+  bmp: "image/bmp",
   tiff: "image/tiff",
   tif: "image/tiff",
   mp4: "video/mp4",

@@ -10,11 +10,25 @@ export const runtime = "nodejs";
 const IMAGE_OUTPUTS = new Set(["jpg", "jpeg", "png", "webp", "gif", "bmp", "tiff", "tif"]);
 const RAW_INPUTS = new Set(["cr2", "cr3", "dng", "arw"]);
 const FFMPEG_BINARY = ffmpegPath && existsSync(ffmpegPath) ? ffmpegPath : "ffmpeg";
+const OUTPUT_MIME_MAP: Record<string, string> = {
+  jpg: "image/jpeg",
+  jpeg: "image/jpeg",
+  png: "image/png",
+  webp: "image/webp",
+  gif: "image/gif",
+  bmp: "image/bmp",
+  tiff: "image/tiff",
+  tif: "image/tiff",
+};
 
 function resolveOutputExtension(to: string) {
   if (to === "jpeg") return "jpg";
   if (to === "tif") return "tiff";
   return to;
+}
+
+function resolveOutputMime(to: string) {
+  return OUTPUT_MIME_MAP[to] ?? "application/octet-stream";
 }
 
 function buildFfmpegArgs(to: string, inputPath: string, outputPath: string) {
@@ -203,7 +217,7 @@ export async function POST(request: Request) {
     const outputBuffer = await fs.readFile(outputPath);
     return new Response(outputBuffer, {
       headers: {
-        "Content-Type": "application/octet-stream",
+        "Content-Type": resolveOutputMime(to),
         "Content-Length": outputBuffer.length.toString(),
       },
     });

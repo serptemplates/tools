@@ -558,6 +558,13 @@
       "input": "file",
       "fixture": "fixtures/sample.wtv",
       "notes": "WTV sample from FFmpeg samples."
+    },
+    {
+      "format": "tif",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.tif",
+      "notes": "Alias of TIFF fixture."
     }
   ],
   "toolFixtures": {
