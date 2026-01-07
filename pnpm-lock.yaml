@@ -41,6 +41,9 @@ importers:
       '@ffmpeg/ffmpeg':
         specifier: ^0.12.15
         version: 0.12.15
+      '@imagemagick/magick-wasm':
+        specifier: ^0.0.37
+        version: 0.0.37
       '@serp-tools/app-core':
         specifier: workspace:*
         version: link:../../packages/app-core
@@ -673,6 +676,9 @@ packages:
   '@humanwhocodes/retry@0.4.3':
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
+
+  '@imagemagick/magick-wasm@0.0.37':
+    resolution: {integrity: sha512-tVs9hcWu9u7I3Jz/XvUYVvCEniuxAR+JjZEzI+yKtQmYAtNsLF1WjoH1HZGCKPumaB9jAHZlcf2RGT9+1l3nxQ==}
 
   '@img/colour@1.0.0':
     resolution: {integrity: sha512-A5P/LfWGFSl6nsckYtjw9da+19jB8hkJ6ACTGcDfEJ0aE+l2n2El7dsVM7UVHZQ9s2lmYMWlrS21YLy2IR1LUw==}
@@ -3979,6 +3985,8 @@ snapshots:
   '@humanwhocodes/module-importer@1.0.1': {}
 
   '@humanwhocodes/retry@0.4.3': {}
+
+  '@imagemagick/magick-wasm@0.0.37': {}
 
   '@img/colour@1.0.0':
     optional: true

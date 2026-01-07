@@ -4,11 +4,32 @@ import { existsSync, promises as fs } from "node:fs";
 import path from "node:path";
 import { tmpdir } from "node:os";
 import ffmpegPath from "ffmpeg-static";
+import { canUseMagickWasm, convertWithMagickWasm } from "@/lib/convert/magickWasm";
 
 export const runtime = "nodejs";
 
-const IMAGE_OUTPUTS = new Set(["jpg", "jpeg", "png", "webp", "gif", "bmp", "tiff", "tif"]);
+const IMAGE_OUTPUTS = new Set([
+  "jpg",
+  "jpeg",
+  "png",
+  "webp",
+  "gif",
+  "bmp",
+  "tiff",
+  "tif",
+  "svg",
+  "ico",
+  "cur",
+  "tga",
+  "dds",
+  "psd",
+  "apng",
+  "xcf",
+  "ai",
+]);
 const RAW_INPUTS = new Set(["cr2", "cr3", "dng", "arw"]);
+const MAGICK_ONLY_INPUTS = new Set(["psd", "tga", "dds", "xcf", "ai", "apng"]);
+const MAGICK_ONLY_OUTPUTS = new Set(["tga", "dds", "cur"]);
 const FFMPEG_BINARY = ffmpegPath && existsSync(ffmpegPath) ? ffmpegPath : "ffmpeg";
 const OUTPUT_MIME_MAP: Record<string, string> = {
   jpg: "image/jpeg",
@@ -19,6 +40,15 @@ const OUTPUT_MIME_MAP: Record<string, string> = {
   bmp: "image/bmp",
   tiff: "image/tiff",
   tif: "image/tiff",
+  svg: "image/svg+xml",
+  ico: "image/x-icon",
+  cur: "image/x-icon",
+  tga: "image/x-tga",
+  dds: "image/vnd-ms.dds",
+  psd: "image/vnd.adobe.photoshop",
+  apng: "image/apng",
+  xcf: "image/x-xcf",
+  ai: "application/postscript",
 };
 
 function resolveOutputExtension(to: string) {
@@ -161,22 +191,37 @@ async function convertRawImage(args: {
   inputPath: string;
   outputPath: string;
   workDir: string;
+  inputBuffer: Buffer;
 }) {
   try {
     await runMagick(buildMagickArgs(args.to, args.inputPath, args.outputPath));
     return;
   } catch {
-    const preview = await extractRawPreview(args.inputPath);
-    const previewPath = path.join(args.workDir, "preview.jpg");
-    await fs.writeFile(previewPath, preview);
-
-    const outputFormat = resolveOutputExtension(args.to);
-    if (outputFormat === "jpg") {
-      await fs.copyFile(previewPath, args.outputPath);
+    if (canUseMagickWasm(args.from, args.to)) {
+      const output = await convertWithMagickWasm(args.inputBuffer, args.from, args.to);
+      await fs.writeFile(args.outputPath, output);
       return;
     }
+  }
 
+  const preview = await extractRawPreview(args.inputPath);
+  const previewPath = path.join(args.workDir, "preview.jpg");
+  await fs.writeFile(previewPath, preview);
+
+  const outputFormat = resolveOutputExtension(args.to);
+  if (outputFormat === "jpg") {
+    await fs.copyFile(previewPath, args.outputPath);
+    return;
+  }
+
+  try {
     await runMagick(buildMagickArgs(args.to, previewPath, args.outputPath));
+  } catch {
+    if (!canUseMagickWasm("jpg", args.to)) {
+      throw new Error("Magick WASM does not support raw preview conversion.");
+    }
+    const output = await convertWithMagickWasm(preview, "jpg", args.to);
+    await fs.writeFile(args.outputPath, output);
   }
 }
 
@@ -208,10 +253,34 @@ export async function POST(request: Request) {
     await fs.writeFile(inputPath, inputBuffer);
 
     if (RAW_INPUTS.has(from)) {
-      await convertRawImage({ from, to, inputPath, outputPath, workDir });
+      await convertRawImage({ from, to, inputPath, outputPath, workDir, inputBuffer });
     } else {
-      const args = buildFfmpegArgs(to, inputPath, outputPath);
-      await runFfmpeg(args);
+      const shouldUseMagick = MAGICK_ONLY_INPUTS.has(from) || MAGICK_ONLY_OUTPUTS.has(to);
+      if (shouldUseMagick && canUseMagickWasm(from, to)) {
+        const output = await convertWithMagickWasm(inputBuffer, from, to);
+        return new Response(output, {
+          headers: {
+            "Content-Type": resolveOutputMime(to),
+            "Content-Length": output.length.toString(),
+          },
+        });
+      }
+
+      try {
+        const args = buildFfmpegArgs(to, inputPath, outputPath);
+        await runFfmpeg(args);
+      } catch (error) {
+        if (canUseMagickWasm(from, to)) {
+          const output = await convertWithMagickWasm(inputBuffer, from, to);
+          return new Response(output, {
+            headers: {
+              "Content-Type": resolveOutputMime(to),
+              "Content-Length": output.length.toString(),
+            },
+          });
+        }
+        throw error;
+      }
     }
 
     const outputBuffer = await fs.readFile(outputPath);

@@ -1,27 +1,112 @@
 {
   "baseUrl": "http://localhost:3000",
-  "ranAt": "2026-01-07T13:24:58.197Z",
+  "ranAt": "2026-01-07T13:52:37.108Z",
   "summary": {
-    "pass": 1,
+    "pass": 6,
     "warn": 0,
     "fail": 0,
     "missingFixtures": 0
   },
   "results": [
     {
-      "id": "arw-to-bmp",
-      "route": "/arw-to-bmp",
+      "id": "ico-to-png",
+      "route": "/ico-to-png",
       "status": "pass",
-      "loadMs": 441,
-      "detail": "output 5235978",
+      "loadMs": 750,
+      "detail": "output 536",
       "metrics": {
-        "outputBytes": 5235978,
-        "outputType": "image/bmp"
+        "outputBytes": 536,
+        "outputType": "image/png"
       },
       "fixture": {
-        "format": "arw",
+        "format": "ico",
         "status": "ready",
-        "fixture": "fixtures/sample.arw"
+        "fixture": "fixtures/sample.ico"
+      },
+      "errors": []
+    },
+    {
+      "id": "ai-to-png",
+      "route": "/ai-to-png",
+      "status": "pass",
+      "loadMs": 864,
+      "detail": "output 3580208",
+      "metrics": {
+        "outputBytes": 3580208,
+        "outputType": "image/png"
+      },
+      "fixture": {
+        "format": "ai",
+        "status": "ready",
+        "fixture": "fixtures/sample.ai"
+      },
+      "errors": []
+    },
+    {
+      "id": "dds-to-png",
+      "route": "/dds-to-png",
+      "status": "pass",
+      "loadMs": 251,
+      "detail": "output 319",
+      "metrics": {
+        "outputBytes": 319,
+        "outputType": "image/png"
+      },
+      "fixture": {
+        "format": "dds",
+        "status": "ready",
+        "fixture": "fixtures/sample.dds"
+      },
+      "errors": []
+    },
+    {
+      "id": "psd-to-png",
+      "route": "/psd-to-png",
+      "status": "pass",
+      "loadMs": 343,
+      "detail": "output 446",
+      "metrics": {
+        "outputBytes": 446,
+        "outputType": "image/png"
+      },
+      "fixture": {
+        "format": "psd",
+        "status": "ready",
+        "fixture": "fixtures/sample.psd"
+      },
+      "errors": []
+    },
+    {
+      "id": "tga-to-png",
+      "route": "/tga-to-png",
+      "status": "pass",
+      "loadMs": 219,
+      "detail": "output 332",
+      "metrics": {
+        "outputBytes": 332,
+        "outputType": "image/png"
+      },
+      "fixture": {
+        "format": "tga",
+        "status": "ready",
+        "fixture": "fixtures/sample.tga"
+      },
+      "errors": []
+    },
+    {
+      "id": "cur-to-png",
+      "route": "/cur-to-png",
+      "status": "pass",
+      "loadMs": 194,
+      "detail": "output 536",
+      "metrics": {
+        "outputBytes": 536,
+        "outputType": "image/png"
+      },
+      "fixture": {
+        "format": "cur",
+        "status": "ready",
+        "fixture": "fixtures/sample.cur"
       },
       "errors": []
     }

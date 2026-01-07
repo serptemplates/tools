@@ -14,8 +14,35 @@ export type ProgressUpdate = {
   time?: number;
 };
 
-const SERVER_IMAGE_INPUTS = new Set(["tiff", "tif", "cr2", "cr3", "dng", "arw"]);
-const SERVER_IMAGE_OUTPUTS = new Set(["jpg", "jpeg", "png", "webp", "gif", "bmp", "tiff", "tif"]);
+const SERVER_IMAGE_INPUTS = new Set([
+  "tiff",
+  "tif",
+  "cr2",
+  "cr3",
+  "dng",
+  "arw",
+  "psd",
+  "tga",
+  "dds",
+  "xcf",
+  "ai",
+  "apng",
+]);
+const SERVER_IMAGE_OUTPUTS = new Set([
+  "jpg",
+  "jpeg",
+  "png",
+  "webp",
+  "gif",
+  "bmp",
+  "tiff",
+  "tif",
+  "svg",
+  "ico",
+  "cur",
+  "tga",
+  "dds",
+]);
 
 const MIME_MAP: Record<string, string> = {
   png: "image/png",
@@ -27,6 +54,11 @@ const MIME_MAP: Record<string, string> = {
   bmp: "image/bmp",
   tiff: "image/tiff",
   tif: "image/tiff",
+  ico: "image/x-icon",
+  cur: "image/x-icon",
+  svg: "image/svg+xml",
+  tga: "image/x-tga",
+  dds: "image/vnd-ms.dds",
   mp4: "video/mp4",
   webm: "video/webm",
   avi: "video/x-msvideo",

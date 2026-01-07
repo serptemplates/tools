@@ -565,6 +565,41 @@
       "input": "file",
       "fixture": "fixtures/sample.tif",
       "notes": "Alias of TIFF fixture."
+    },
+    {
+      "format": "dds",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.dds",
+      "notes": "Generated with magick-wasm."
+    },
+    {
+      "format": "psd",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.psd",
+      "notes": "Generated with magick-wasm."
+    },
+    {
+      "format": "eps",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.eps",
+      "notes": "Generated with magick-wasm."
+    },
+    {
+      "format": "tga",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.tga",
+      "notes": "Generated with magick-wasm."
+    },
+    {
+      "format": "cur",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.cur",
+      "notes": "Generated with magick-wasm."
     }
   ],
   "toolFixtures": {

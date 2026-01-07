@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --port 3000",
-    "build": "next build && node scripts/copy-ffmpeg.mjs",
+    "build": "next build && node scripts/copy-ffmpeg.mjs && node scripts/copy-magick-wasm.mjs",
     "start": "next start",
     "lint": "next lint --max-warnings 0",
     "typecheck": "tsc --noEmit"
@@ -14,6 +14,7 @@
     "@ffmpeg/core": "0.12.6",
     "@ffmpeg/core-mt": "0.12.6",
     "@ffmpeg/ffmpeg": "^0.12.15",
+    "@imagemagick/magick-wasm": "^0.0.37",
     "@serp-tools/app-core": "workspace:*",
     "@serp-tools/ui": "workspace:*",
     "@zip.js/zip.js": "^2.7.72",
@@ -25,8 +26,8 @@
     "pdf-lib": "^1.17.1",
     "pdfjs-dist": "^5.4.54",
     "react": "^19.1.1",
-    "react-markdown": "^9.0.1",
     "react-dom": "^19.1.1",
+    "react-markdown": "^9.0.1",
     "remark-gfm": "^4.0.0",
     "upng-js": "^2.1.0"
   },

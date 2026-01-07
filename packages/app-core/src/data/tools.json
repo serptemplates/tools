@@ -14866,5 +14866,1829 @@
       "image",
       "raw"
     ]
+  },
+  {
+    "id": "png-to-ico",
+    "name": "PNG to ICO",
+    "description": "Convert PNG images to ICO format",
+    "operation": "convert",
+    "route": "/png-to-ico",
+    "from": "png",
+    "to": "ico",
+    "isActive": true,
+    "tags": [
+      "png",
+      "ico",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-png",
+    "name": "DDS to PNG",
+    "description": "Convert DDS images to PNG format",
+    "operation": "convert",
+    "route": "/dds-to-png",
+    "from": "dds",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "png-to-dds",
+    "name": "PNG to DDS",
+    "description": "Convert PNG images to DDS format",
+    "operation": "convert",
+    "route": "/png-to-dds",
+    "from": "png",
+    "to": "dds",
+    "isActive": true,
+    "tags": [
+      "png",
+      "dds",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "psd-to-png",
+    "name": "PSD to PNG",
+    "description": "Convert PSD images to PNG format",
+    "operation": "convert",
+    "route": "/psd-to-png",
+    "from": "psd",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "psd",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-ico",
+    "name": "JPG to ICO",
+    "description": "Convert JPG images to ICO format",
+    "operation": "convert",
+    "route": "/jpg-to-ico",
+    "from": "jpg",
+    "to": "ico",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "ico",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "eps-to-png",
+    "name": "EPS to PNG",
+    "description": "Convert EPS images to PNG format",
+    "operation": "convert",
+    "route": "/eps-to-png",
+    "from": "eps",
+    "to": "png",
+    "isActive": false,
+    "tags": [
+      "eps",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "psd-to-jpg",
+    "name": "PSD to JPG",
+    "description": "Convert PSD images to JPG format",
+    "operation": "convert",
+    "route": "/psd-to-jpg",
+    "from": "psd",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "psd",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "eps-to-svg",
+    "name": "EPS to SVG",
+    "description": "Convert EPS images to SVG format",
+    "operation": "convert",
+    "route": "/eps-to-svg",
+    "from": "eps",
+    "to": "svg",
+    "isActive": false,
+    "tags": [
+      "eps",
+      "svg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-ico",
+    "name": "SVG to ICO",
+    "description": "Convert SVG images to ICO format",
+    "operation": "convert",
+    "route": "/svg-to-ico",
+    "from": "svg",
+    "to": "ico",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "ico",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "png-to-bmp",
+    "name": "PNG to BMP",
+    "description": "Convert PNG images to BMP format",
+    "operation": "convert",
+    "route": "/png-to-bmp",
+    "from": "png",
+    "to": "bmp",
+    "isActive": true,
+    "tags": [
+      "png",
+      "bmp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-gif",
+    "name": "JPG to GIF",
+    "description": "Convert JPG images to GIF format",
+    "operation": "convert",
+    "route": "/jpg-to-gif",
+    "from": "jpg",
+    "to": "gif",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "gif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-ico",
+    "name": "JPEG to ICO",
+    "description": "Convert JPEG images to ICO format",
+    "operation": "convert",
+    "route": "/jpeg-to-ico",
+    "from": "jpeg",
+    "to": "ico",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "ico",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "png-to-eps",
+    "name": "PNG to EPS",
+    "description": "Convert PNG images to EPS format",
+    "operation": "convert",
+    "route": "/png-to-eps",
+    "from": "png",
+    "to": "eps",
+    "isActive": false,
+    "tags": [
+      "png",
+      "eps",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "tga-to-png",
+    "name": "TGA to PNG",
+    "description": "Convert TGA images to PNG format",
+    "operation": "convert",
+    "route": "/tga-to-png",
+    "from": "tga",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "tga",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "webp-to-ico",
+    "name": "WEBP to ICO",
+    "description": "Convert WEBP images to ICO format",
+    "operation": "convert",
+    "route": "/webp-to-ico",
+    "from": "webp",
+    "to": "ico",
+    "isActive": true,
+    "tags": [
+      "webp",
+      "ico",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "eps-to-jpg",
+    "name": "EPS to JPG",
+    "description": "Convert EPS images to JPG format",
+    "operation": "convert",
+    "route": "/eps-to-jpg",
+    "from": "eps",
+    "to": "jpg",
+    "isActive": false,
+    "tags": [
+      "eps",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-bmp",
+    "name": "JPG to BMP",
+    "description": "Convert JPG images to BMP format",
+    "operation": "convert",
+    "route": "/jpg-to-bmp",
+    "from": "jpg",
+    "to": "bmp",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "bmp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "png-to-cur",
+    "name": "PNG to CUR",
+    "description": "Convert PNG images to CUR format",
+    "operation": "convert",
+    "route": "/png-to-cur",
+    "from": "png",
+    "to": "cur",
+    "isActive": true,
+    "tags": [
+      "png",
+      "cur",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-eps",
+    "name": "SVG to EPS",
+    "description": "Convert SVG images to EPS format",
+    "operation": "convert",
+    "route": "/svg-to-eps",
+    "from": "svg",
+    "to": "eps",
+    "isActive": false,
+    "tags": [
+      "svg",
+      "eps",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ai-to-jpg",
+    "name": "AI to JPG",
+    "description": "Convert AI images to JPG format",
+    "operation": "convert",
+    "route": "/ai-to-jpg",
+    "from": "ai",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "ai",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "png-to-tiff",
+    "name": "PNG to TIFF",
+    "description": "Convert PNG images to TIFF format",
+    "operation": "convert",
+    "route": "/png-to-tiff",
+    "from": "png",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "png",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-tiff",
+    "name": "JPG to TIFF",
+    "description": "Convert JPG images to TIFF format",
+    "operation": "convert",
+    "route": "/jpg-to-tiff",
+    "from": "jpg",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "png-to-tga",
+    "name": "PNG to TGA",
+    "description": "Convert PNG images to TGA format",
+    "operation": "convert",
+    "route": "/png-to-tga",
+    "from": "png",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "png",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-eps",
+    "name": "JPG to EPS",
+    "description": "Convert JPG images to EPS format",
+    "operation": "convert",
+    "route": "/jpg-to-eps",
+    "from": "jpg",
+    "to": "eps",
+    "isActive": false,
+    "tags": [
+      "jpg",
+      "eps",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "psd-to-jpeg",
+    "name": "PSD to JPEG",
+    "description": "Convert PSD images to JPEG format",
+    "operation": "convert",
+    "route": "/psd-to-jpeg",
+    "from": "psd",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "psd",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-png",
+    "name": "CUR to PNG",
+    "description": "Convert CUR images to PNG format",
+    "operation": "convert",
+    "route": "/cur-to-png",
+    "from": "cur",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-gif",
+    "name": "GIF to GIF",
+    "description": "Convert GIF images to GIF format",
+    "operation": "convert",
+    "route": "/gif-to-gif",
+    "from": "gif",
+    "to": "gif",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "gif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "psd-to-svg",
+    "name": "PSD to SVG",
+    "description": "Convert PSD images to SVG format",
+    "operation": "convert",
+    "route": "/psd-to-svg",
+    "from": "psd",
+    "to": "svg",
+    "isActive": true,
+    "tags": [
+      "psd",
+      "svg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-gif",
+    "name": "SVG to GIF",
+    "description": "Convert SVG images to GIF format",
+    "operation": "convert",
+    "route": "/svg-to-gif",
+    "from": "svg",
+    "to": "gif",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "gif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-tiff",
+    "name": "JPEG to TIFF",
+    "description": "Convert JPEG images to TIFF format",
+    "operation": "convert",
+    "route": "/jpeg-to-tiff",
+    "from": "jpeg",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "tga-to-jpg",
+    "name": "TGA to JPG",
+    "description": "Convert TGA images to JPG format",
+    "operation": "convert",
+    "route": "/tga-to-jpg",
+    "from": "tga",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "tga",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-bmp",
+    "name": "JPEG to BMP",
+    "description": "Convert JPEG images to BMP format",
+    "operation": "convert",
+    "route": "/jpeg-to-bmp",
+    "from": "jpeg",
+    "to": "bmp",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "bmp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-dds",
+    "name": "JPG to DDS",
+    "description": "Convert JPG images to DDS format",
+    "operation": "convert",
+    "route": "/jpg-to-dds",
+    "from": "jpg",
+    "to": "dds",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "dds",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ai-to-jpeg",
+    "name": "AI to JPEG",
+    "description": "Convert AI images to JPEG format",
+    "operation": "convert",
+    "route": "/ai-to-jpeg",
+    "from": "ai",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "ai",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-jpg",
+    "name": "DDS to JPG",
+    "description": "Convert DDS images to JPG format",
+    "operation": "convert",
+    "route": "/dds-to-jpg",
+    "from": "dds",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-tga",
+    "name": "JPG to TGA",
+    "description": "Convert JPG images to TGA format",
+    "operation": "convert",
+    "route": "/jpg-to-tga",
+    "from": "jpg",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-eps",
+    "name": "JPEG to EPS",
+    "description": "Convert JPEG images to EPS format",
+    "operation": "convert",
+    "route": "/jpeg-to-eps",
+    "from": "jpeg",
+    "to": "eps",
+    "isActive": false,
+    "tags": [
+      "jpeg",
+      "eps",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-tiff",
+    "name": "SVG to TIFF",
+    "description": "Convert SVG images to TIFF format",
+    "operation": "convert",
+    "route": "/svg-to-tiff",
+    "from": "svg",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-ico",
+    "name": "BMP to ICO",
+    "description": "Convert BMP images to ICO format",
+    "operation": "convert",
+    "route": "/bmp-to-ico",
+    "from": "bmp",
+    "to": "ico",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "ico",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "eps-to-jpeg",
+    "name": "EPS to JPEG",
+    "description": "Convert EPS images to JPEG format",
+    "operation": "convert",
+    "route": "/eps-to-jpeg",
+    "from": "eps",
+    "to": "jpeg",
+    "isActive": false,
+    "tags": [
+      "eps",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-ico",
+    "name": "GIF to ICO",
+    "description": "Convert GIF images to ICO format",
+    "operation": "convert",
+    "route": "/gif-to-ico",
+    "from": "gif",
+    "to": "ico",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "ico",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-svg",
+    "name": "SVG to SVG",
+    "description": "Convert SVG images to SVG format",
+    "operation": "convert",
+    "route": "/svg-to-svg",
+    "from": "svg",
+    "to": "svg",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "svg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "psd-to-gif",
+    "name": "PSD to GIF",
+    "description": "Convert PSD images to GIF format",
+    "operation": "convert",
+    "route": "/psd-to-gif",
+    "from": "psd",
+    "to": "gif",
+    "isActive": true,
+    "tags": [
+      "psd",
+      "gif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "tiff-to-gif",
+    "name": "TIFF to GIF",
+    "description": "Convert TIFF images to GIF format",
+    "operation": "convert",
+    "route": "/tiff-to-gif",
+    "from": "tiff",
+    "to": "gif",
+    "isActive": true,
+    "tags": [
+      "tiff",
+      "gif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-bmp",
+    "name": "GIF to BMP",
+    "description": "Convert GIF images to BMP format",
+    "operation": "convert",
+    "route": "/gif-to-bmp",
+    "from": "gif",
+    "to": "bmp",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "bmp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-tga",
+    "name": "GIF to TGA",
+    "description": "Convert GIF images to TGA format",
+    "operation": "convert",
+    "route": "/gif-to-tga",
+    "from": "gif",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-jpeg",
+    "name": "JPEG to JPEG",
+    "description": "Convert JPEG images to JPEG format",
+    "operation": "convert",
+    "route": "/jpeg-to-jpeg",
+    "from": "jpeg",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "eps-to-tiff",
+    "name": "EPS to TIFF",
+    "description": "Convert EPS images to TIFF format",
+    "operation": "convert",
+    "route": "/eps-to-tiff",
+    "from": "eps",
+    "to": "tiff",
+    "isActive": false,
+    "tags": [
+      "eps",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-tiff",
+    "name": "BMP to TIFF",
+    "description": "Convert BMP images to TIFF format",
+    "operation": "convert",
+    "route": "/bmp-to-tiff",
+    "from": "bmp",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-cur",
+    "name": "JPG to CUR",
+    "description": "Convert JPG images to CUR format",
+    "operation": "convert",
+    "route": "/jpg-to-cur",
+    "from": "jpg",
+    "to": "cur",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "cur",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-gif",
+    "name": "BMP to GIF",
+    "description": "Convert BMP images to GIF format",
+    "operation": "convert",
+    "route": "/bmp-to-gif",
+    "from": "bmp",
+    "to": "gif",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "gif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-jpeg",
+    "name": "DDS to JPEG",
+    "description": "Convert DDS images to JPEG format",
+    "operation": "convert",
+    "route": "/dds-to-jpeg",
+    "from": "dds",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-cur",
+    "name": "GIF to CUR",
+    "description": "Convert GIF images to CUR format",
+    "operation": "convert",
+    "route": "/gif-to-cur",
+    "from": "gif",
+    "to": "cur",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "cur",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-tiff",
+    "name": "GIF to TIFF",
+    "description": "Convert GIF images to TIFF format",
+    "operation": "convert",
+    "route": "/gif-to-tiff",
+    "from": "gif",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-tif",
+    "name": "JPEG to TIF",
+    "description": "Convert JPEG images to TIF format",
+    "operation": "convert",
+    "route": "/jpeg-to-tif",
+    "from": "jpeg",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "tif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "tiff-to-eps",
+    "name": "TIFF to EPS",
+    "description": "Convert TIFF images to EPS format",
+    "operation": "convert",
+    "route": "/tiff-to-eps",
+    "from": "tiff",
+    "to": "eps",
+    "isActive": false,
+    "tags": [
+      "tiff",
+      "eps",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ai-to-tiff",
+    "name": "AI to TIFF",
+    "description": "Convert AI images to TIFF format",
+    "operation": "convert",
+    "route": "/ai-to-tiff",
+    "from": "ai",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "ai",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-dds",
+    "name": "BMP to DDS",
+    "description": "Convert BMP images to DDS format",
+    "operation": "convert",
+    "route": "/bmp-to-dds",
+    "from": "bmp",
+    "to": "dds",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "dds",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-tga",
+    "name": "JPEG to TGA",
+    "description": "Convert JPEG images to TGA format",
+    "operation": "convert",
+    "route": "/jpeg-to-tga",
+    "from": "jpeg",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "psd-to-webp",
+    "name": "PSD to WEBP",
+    "description": "Convert PSD images to WEBP format",
+    "operation": "convert",
+    "route": "/psd-to-webp",
+    "from": "psd",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "psd",
+      "webp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "tif-to-tiff",
+    "name": "TIF to TIFF",
+    "description": "Convert TIF images to TIFF format",
+    "operation": "convert",
+    "route": "/tif-to-tiff",
+    "from": "tif",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "tif",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ai-to-gif",
+    "name": "AI to GIF",
+    "description": "Convert AI images to GIF format",
+    "operation": "convert",
+    "route": "/ai-to-gif",
+    "from": "ai",
+    "to": "gif",
+    "isActive": true,
+    "tags": [
+      "ai",
+      "gif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-eps",
+    "name": "BMP to EPS",
+    "description": "Convert BMP images to EPS format",
+    "operation": "convert",
+    "route": "/bmp-to-eps",
+    "from": "bmp",
+    "to": "eps",
+    "isActive": false,
+    "tags": [
+      "bmp",
+      "eps",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-tga",
+    "name": "BMP to TGA",
+    "description": "Convert BMP images to TGA format",
+    "operation": "convert",
+    "route": "/bmp-to-tga",
+    "from": "bmp",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-tif",
+    "name": "BMP to TIF",
+    "description": "Convert BMP images to TIF format",
+    "operation": "convert",
+    "route": "/bmp-to-tif",
+    "from": "bmp",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "tif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-gif",
+    "name": "CUR to GIF",
+    "description": "Convert CUR images to GIF format",
+    "operation": "convert",
+    "route": "/cur-to-gif",
+    "from": "cur",
+    "to": "gif",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "gif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "eps-to-ico",
+    "name": "EPS to ICO",
+    "description": "Convert EPS images to ICO format",
+    "operation": "convert",
+    "route": "/eps-to-ico",
+    "from": "eps",
+    "to": "ico",
+    "isActive": false,
+    "tags": [
+      "eps",
+      "ico",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "eps-to-webp",
+    "name": "EPS to WEBP",
+    "description": "Convert EPS images to WEBP format",
+    "operation": "convert",
+    "route": "/eps-to-webp",
+    "from": "eps",
+    "to": "webp",
+    "isActive": false,
+    "tags": [
+      "eps",
+      "webp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-tif",
+    "name": "GIF to TIF",
+    "description": "Convert GIF images to TIF format",
+    "operation": "convert",
+    "route": "/gif-to-tif",
+    "from": "gif",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "tif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ico-to-tga",
+    "name": "ICO to TGA",
+    "description": "Convert ICO images to TGA format",
+    "operation": "convert",
+    "route": "/ico-to-tga",
+    "from": "ico",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "ico",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-tga",
+    "name": "SVG to TGA",
+    "description": "Convert SVG images to TGA format",
+    "operation": "convert",
+    "route": "/svg-to-tga",
+    "from": "svg",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-tif",
+    "name": "SVG to TIF",
+    "description": "Convert SVG images to TIF format",
+    "operation": "convert",
+    "route": "/svg-to-tif",
+    "from": "svg",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "tif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "webp-to-webp",
+    "name": "WEBP to WEBP",
+    "description": "Convert WEBP images to WEBP format",
+    "operation": "convert",
+    "route": "/webp-to-webp",
+    "from": "webp",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "webp",
+      "webp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ai-to-bmp",
+    "name": "AI to BMP",
+    "description": "Convert AI images to BMP format",
+    "operation": "convert",
+    "route": "/ai-to-bmp",
+    "from": "ai",
+    "to": "bmp",
+    "isActive": true,
+    "tags": [
+      "ai",
+      "bmp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ai-to-cur",
+    "name": "AI to CUR",
+    "description": "Convert AI images to CUR format",
+    "operation": "convert",
+    "route": "/ai-to-cur",
+    "from": "ai",
+    "to": "cur",
+    "isActive": true,
+    "tags": [
+      "ai",
+      "cur",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ai-to-dds",
+    "name": "AI to DDS",
+    "description": "Convert AI images to DDS format",
+    "operation": "convert",
+    "route": "/ai-to-dds",
+    "from": "ai",
+    "to": "dds",
+    "isActive": true,
+    "tags": [
+      "ai",
+      "dds",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ai-to-ico",
+    "name": "AI to ICO",
+    "description": "Convert AI images to ICO format",
+    "operation": "convert",
+    "route": "/ai-to-ico",
+    "from": "ai",
+    "to": "ico",
+    "isActive": true,
+    "tags": [
+      "ai",
+      "ico",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ai-to-tga",
+    "name": "AI to TGA",
+    "description": "Convert AI images to TGA format",
+    "operation": "convert",
+    "route": "/ai-to-tga",
+    "from": "ai",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "ai",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ai-to-tif",
+    "name": "AI to TIF",
+    "description": "Convert AI images to TIF format",
+    "operation": "convert",
+    "route": "/ai-to-tif",
+    "from": "ai",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "ai",
+      "tif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ai-to-webp",
+    "name": "AI to WEBP",
+    "description": "Convert AI images to WEBP format",
+    "operation": "convert",
+    "route": "/ai-to-webp",
+    "from": "ai",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "ai",
+      "webp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-bmp",
+    "name": "BMP to BMP",
+    "description": "Convert BMP images to BMP format",
+    "operation": "convert",
+    "route": "/bmp-to-bmp",
+    "from": "bmp",
+    "to": "bmp",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "bmp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-cur",
+    "name": "BMP to CUR",
+    "description": "Convert BMP images to CUR format",
+    "operation": "convert",
+    "route": "/bmp-to-cur",
+    "from": "bmp",
+    "to": "cur",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "cur",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-cur",
+    "name": "CUR to CUR",
+    "description": "Convert CUR images to CUR format",
+    "operation": "convert",
+    "route": "/cur-to-cur",
+    "from": "cur",
+    "to": "cur",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "cur",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-dds",
+    "name": "CUR to DDS",
+    "description": "Convert CUR images to DDS format",
+    "operation": "convert",
+    "route": "/cur-to-dds",
+    "from": "cur",
+    "to": "dds",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "dds",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-eps",
+    "name": "CUR to EPS",
+    "description": "Convert CUR images to EPS format",
+    "operation": "convert",
+    "route": "/cur-to-eps",
+    "from": "cur",
+    "to": "eps",
+    "isActive": false,
+    "tags": [
+      "cur",
+      "eps",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-ico",
+    "name": "CUR to ICO",
+    "description": "Convert CUR images to ICO format",
+    "operation": "convert",
+    "route": "/cur-to-ico",
+    "from": "cur",
+    "to": "ico",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "ico",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-jpeg",
+    "name": "CUR to JPEG",
+    "description": "Convert CUR images to JPEG format",
+    "operation": "convert",
+    "route": "/cur-to-jpeg",
+    "from": "cur",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-jpg",
+    "name": "CUR to JPG",
+    "description": "Convert CUR images to JPG format",
+    "operation": "convert",
+    "route": "/cur-to-jpg",
+    "from": "cur",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-svg",
+    "name": "CUR to SVG",
+    "description": "Convert CUR images to SVG format",
+    "operation": "convert",
+    "route": "/cur-to-svg",
+    "from": "cur",
+    "to": "svg",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "svg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-tga",
+    "name": "CUR to TGA",
+    "description": "Convert CUR images to TGA format",
+    "operation": "convert",
+    "route": "/cur-to-tga",
+    "from": "cur",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-tif",
+    "name": "CUR to TIF",
+    "description": "Convert CUR images to TIF format",
+    "operation": "convert",
+    "route": "/cur-to-tif",
+    "from": "cur",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "tif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-tiff",
+    "name": "CUR to TIFF",
+    "description": "Convert CUR images to TIFF format",
+    "operation": "convert",
+    "route": "/cur-to-tiff",
+    "from": "cur",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-webp",
+    "name": "CUR to WEBP",
+    "description": "Convert CUR images to WEBP format",
+    "operation": "convert",
+    "route": "/cur-to-webp",
+    "from": "cur",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "webp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-dds",
+    "name": "DDS to DDS",
+    "description": "Convert DDS images to DDS format",
+    "operation": "convert",
+    "route": "/dds-to-dds",
+    "from": "dds",
+    "to": "dds",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "dds",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-eps",
+    "name": "DDS to EPS",
+    "description": "Convert DDS images to EPS format",
+    "operation": "convert",
+    "route": "/dds-to-eps",
+    "from": "dds",
+    "to": "eps",
+    "isActive": false,
+    "tags": [
+      "dds",
+      "eps",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-gif",
+    "name": "DDS to GIF",
+    "description": "Convert DDS images to GIF format",
+    "operation": "convert",
+    "route": "/dds-to-gif",
+    "from": "dds",
+    "to": "gif",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "gif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-ico",
+    "name": "DDS to ICO",
+    "description": "Convert DDS images to ICO format",
+    "operation": "convert",
+    "route": "/dds-to-ico",
+    "from": "dds",
+    "to": "ico",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "ico",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-svg",
+    "name": "DDS to SVG",
+    "description": "Convert DDS images to SVG format",
+    "operation": "convert",
+    "route": "/dds-to-svg",
+    "from": "dds",
+    "to": "svg",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "svg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-tif",
+    "name": "DDS to TIF",
+    "description": "Convert DDS images to TIF format",
+    "operation": "convert",
+    "route": "/dds-to-tif",
+    "from": "dds",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "tif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-tiff",
+    "name": "DDS to TIFF",
+    "description": "Convert DDS images to TIFF format",
+    "operation": "convert",
+    "route": "/dds-to-tiff",
+    "from": "dds",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-webp",
+    "name": "DDS to WEBP",
+    "description": "Convert DDS images to WEBP format",
+    "operation": "convert",
+    "route": "/dds-to-webp",
+    "from": "dds",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "webp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "eps-to-eps",
+    "name": "EPS to EPS",
+    "description": "Convert EPS images to EPS format",
+    "operation": "convert",
+    "route": "/eps-to-eps",
+    "from": "eps",
+    "to": "eps",
+    "isActive": false,
+    "tags": [
+      "eps",
+      "eps",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "eps-to-gif",
+    "name": "EPS to GIF",
+    "description": "Convert EPS images to GIF format",
+    "operation": "convert",
+    "route": "/eps-to-gif",
+    "from": "eps",
+    "to": "gif",
+    "isActive": false,
+    "tags": [
+      "eps",
+      "gif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "eps-to-tga",
+    "name": "EPS to TGA",
+    "description": "Convert EPS images to TGA format",
+    "operation": "convert",
+    "route": "/eps-to-tga",
+    "from": "eps",
+    "to": "tga",
+    "isActive": false,
+    "tags": [
+      "eps",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "eps-to-tif",
+    "name": "EPS to TIF",
+    "description": "Convert EPS images to TIF format",
+    "operation": "convert",
+    "route": "/eps-to-tif",
+    "from": "eps",
+    "to": "tif",
+    "isActive": false,
+    "tags": [
+      "eps",
+      "tif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ico-to-ico",
+    "name": "ICO to ICO",
+    "description": "Convert ICO images to ICO format",
+    "operation": "convert",
+    "route": "/ico-to-ico",
+    "from": "ico",
+    "to": "ico",
+    "isActive": true,
+    "tags": [
+      "ico",
+      "ico",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ico-to-tif",
+    "name": "ICO to TIF",
+    "description": "Convert ICO images to TIF format",
+    "operation": "convert",
+    "route": "/ico-to-tif",
+    "from": "ico",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "ico",
+      "tif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ico-to-tiff",
+    "name": "ICO to TIFF",
+    "description": "Convert ICO images to TIFF format",
+    "operation": "convert",
+    "route": "/ico-to-tiff",
+    "from": "ico",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "ico",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "tga-to-tga",
+    "name": "TGA to TGA",
+    "description": "Convert TGA images to TGA format",
+    "operation": "convert",
+    "route": "/tga-to-tga",
+    "from": "tga",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "tga",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "tga-to-tif",
+    "name": "TGA to TIF",
+    "description": "Convert TGA images to TIF format",
+    "operation": "convert",
+    "route": "/tga-to-tif",
+    "from": "tga",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "tga",
+      "tif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "tga-to-tiff",
+    "name": "TGA to TIFF",
+    "description": "Convert TGA images to TIFF format",
+    "operation": "convert",
+    "route": "/tga-to-tiff",
+    "from": "tga",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "tga",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "tga-to-webp",
+    "name": "TGA to WEBP",
+    "description": "Convert TGA images to WEBP format",
+    "operation": "convert",
+    "route": "/tga-to-webp",
+    "from": "tga",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "tga",
+      "webp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "tif-to-tif",
+    "name": "TIF to TIF",
+    "description": "Convert TIF images to TIF format",
+    "operation": "convert",
+    "route": "/tif-to-tif",
+    "from": "tif",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "tif",
+      "tif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "tiff-to-tiff",
+    "name": "TIFF to TIFF",
+    "description": "Convert TIFF images to TIFF format",
+    "operation": "convert",
+    "route": "/tiff-to-tiff",
+    "from": "tiff",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "tiff",
+      "tiff",
+      "convert",
+      "image"
+    ]
   }
 ]
