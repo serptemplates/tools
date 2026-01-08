@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Card } from "@serp-tools/ui/components/card";
 import { Badge } from "@serp-tools/ui/components/badge";
+import { ToolVideoPanel } from "@/components/ToolVideoPanel";
 import { beginToolRun } from "@/lib/telemetry";
 
 type Stats = {
@@ -38,11 +39,16 @@ function computeStats(text: string): Stats {
   };
 }
 
-export default function CharacterCounter() {
+type Props = {
+  videoEmbedId?: string;
+};
+
+export default function CharacterCounter({ videoEmbedId }: Props) {
   const [text, setText] = useState("");
   const [stats, setStats] = useState<Stats>(() => computeStats(""));
   const lastTelemetryAt = useRef(0);
   const telemetryTimer = useRef<number | null>(null);
+  const [videoPlaying, setVideoPlaying] = useState(false);
 
   useEffect(() => {
     setStats(computeStats(text));
@@ -106,13 +112,24 @@ export default function CharacterCounter() {
           </p>
         </div>
 
+        {videoEmbedId && (
+          <div className="mb-10">
+            <ToolVideoPanel embedId={videoEmbedId} autoplay={videoPlaying} />
+          </div>
+        )}
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Text Input Area */}
           <div className="lg:col-span-2">
             <Card className="p-6">
               <textarea
                 value={text}
-                onChange={(e) => setText(e.target.value)}
+                onChange={(e) => {
+                  if (!videoPlaying && e.target.value.trim()) {
+                    setVideoPlaying(true);
+                  }
+                  setText(e.target.value);
+                }}
                 placeholder="Type or paste your text here..."
                 className="w-full h-96 p-4 border rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
                 style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}

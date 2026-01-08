@@ -1,5 +1,4 @@
 import BatchHeroConverter from "@/components/BatchHeroConverter";
-import { VideoSection } from "@/components/sections/VideoSection";
 import { AboutFormatsSection } from "@/components/sections/AboutFormatsSection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { ToolsLinkHub } from "@/components/sections/ToolsLinkHub";
@@ -9,6 +8,7 @@ import { HowToSection } from "@/components/sections/HowToSection";
 import { InfoArticleSection } from "@/components/sections/InfoArticleSection";
 import { buildToolMetadata } from "@/lib/metadata";
 import { toolContent } from '@/lib/tool-content';
+import { requiresCoepForTool } from "@/lib/coep";
 
 const toolId = "batch-compress-png";
 
@@ -20,6 +20,10 @@ export default function Page() {
   if (!content) {
     return <div>Tool not found</div>;
   }
+  const videoEmbedId =
+    content.videoSection && !requiresCoepForTool(content.tool)
+      ? content.videoSection.embedId
+      : undefined;
 
   return (
     <main className="min-h-screen bg-background">
@@ -31,6 +35,7 @@ export default function Page() {
         from={content.tool.from}
         to={content.tool.to}
         accept={content.tool.accept}
+        videoEmbedId={videoEmbedId}
       />
 
       {/* About the Formats Section */}
@@ -40,9 +45,6 @@ export default function Page() {
           toFormat={content.aboutSection.toFormat}
         />
       )}
-
-      {/* Video Section */}
-      {content.videoSection && <VideoSection embedId={content.videoSection.embedId} />}
 
       {content.howTo && (
         <HowToSection title={content.howTo.title} intro={content.howTo.intro} steps={content.howTo.steps} />

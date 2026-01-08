@@ -11,6 +11,7 @@ import { RelatedToolsSection } from "@/components/sections/RelatedToolsSection";
 import { RelatedAppsSection } from "@/components/sections/RelatedAppsSection";
 import { HowToSection } from "@/components/sections/HowToSection";
 import { InfoArticleSection } from "@/components/sections/InfoArticleSection";
+import { requiresCoepForTool } from "@/lib/coep";
 import type {
   ToolInfo,
   VideoSectionData,
@@ -48,8 +49,9 @@ export default function ToolPageTemplate({
   relatedTools,
   blogPosts,
 }: ToolPageProps) {
-  // If tool requires FFmpeg, always use single column layout (full dropzone)
-  const shouldUseTwoColumn = useTwoColumnLayout && videoSection?.embedId && !tool.requiresFFmpeg;
+  const requiresCoep = requiresCoepForTool(tool);
+  // If tool requires COEP, avoid templates that embed YouTube.
+  const shouldUseTwoColumn = useTwoColumnLayout && videoSection?.embedId && !requiresCoep;
   const currentRoute =
     tool.route ??
     (tool.from && tool.to ? `/${tool.from.toLowerCase()}-to-${tool.to.toLowerCase()}` : undefined);

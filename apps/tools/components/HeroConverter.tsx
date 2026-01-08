@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import { Button } from "@serp-tools/ui/components/button";
 import { saveBlob } from "@/components/saveAs";
 import { VideoProgress } from "@/components/VideoProgress";
+import { ToolAdInline, ToolAdRail } from "@/components/ToolAds";
 import { beginToolRun } from "@/lib/telemetry";
 import { compressPngWithWorker, convertWithWorker, getOutputMimeType } from "@/lib/convert/workerClient";
 import type { OperationType } from "@/types";
@@ -33,6 +34,7 @@ export default function HeroConverter({
   const [busy, setBusy] = useState(false);
   const [hint, setHint] = useState("or drop files here");
   const [dropEffect, setDropEffect] = useState<string>("");
+  const [adsVisible, setAdsVisible] = useState(false);
   const [currentFile, setCurrentFile] = useState<{
     name: string;
     progress: number;
@@ -82,6 +84,7 @@ export default function HeroConverter({
 
   async function handleFiles(files: FileList | null) {
     if (!files || !files.length) return;
+    if (!adsVisible) setAdsVisible(true);
     const w = ensureWorker();
     setBusy(true);
 
@@ -248,86 +251,92 @@ export default function HeroConverter({
                   : from === "mov" ? ".mov"
                     : `.${from}`);
 
+  const adSlotPrefix = toolId ?? `${from}-to-${to}`;
+
   return (
     <section className="w-full bg-white">
-      <div className="mx-auto max-w-7xl px-6 py-8 text-center">
-
-        {/* Show progress when converting */}
-        {currentFile && (
-          <div className="mb-6 max-w-2xl mx-auto">
-            <VideoProgress
-              fileName={currentFile.name}
-              progress={currentFile.progress}
-              status={currentFile.status}
-              message={currentFile.message}
-            />
-          </div>
-        )}
-        <div
-          ref={dropRef}
-          onDragEnter={onDrag}
-          onDragOver={onDrag}
-          onDragLeave={onDrag}
-          onDrop={onDrop}
-          data-testid="tool-dropzone"
-          className={`mt-8 mx-auto max-w-6xl border-2 border-dashed rounded-2xl p-12 hover:border-opacity-80 transition-colors cursor-pointer ${dropEffect ? `animate-${dropEffect}` : ""
-            }`}
-          style={{
-            backgroundColor: randomColor + "15", // 15 is ~8% opacity
-            borderColor: randomColor,
-          }}
-          onClick={onPick}
-        >
-          <div className="flex flex-col items-center space-y-6">
-            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">{title}</h1>
-            <p className="text-sm text-muted-foreground">{subtitle}</p>
-
-            <svg
-              className="w-12 h-12"
-              fill="none"
-              stroke="currentColor"
-              style={{ color: randomColor }}
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.5}
-                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-              />
-            </svg>
-
-            <Button
-              size="lg"
-              className="h-12 px-8 rounded-xl text-white shadow-lg"
+      <div className="mx-auto max-w-7xl px-6 py-8">
+        <ToolAdRail visible={adsVisible} slotPrefix={adSlotPrefix} className="items-start">
+          <div className="text-center">
+            {/* Show progress when converting */}
+            {currentFile && (
+              <div className="mb-6 max-w-2xl mx-auto">
+                <VideoProgress
+                  fileName={currentFile.name}
+                  progress={currentFile.progress}
+                  status={currentFile.status}
+                  message={currentFile.message}
+                />
+              </div>
+            )}
+            <div
+              ref={dropRef}
+              onDragEnter={onDrag}
+              onDragOver={onDrag}
+              onDragLeave={onDrag}
+              onDrop={onDrop}
+              data-testid="tool-dropzone"
+              className={`mt-8 mx-auto max-w-6xl border-2 border-dashed rounded-2xl p-12 hover:border-opacity-80 transition-colors cursor-pointer ${dropEffect ? `animate-${dropEffect}` : ""
+                }`}
               style={{
-                backgroundColor: randomColor,
+                backgroundColor: randomColor + "15", // 15 is ~8% opacity
                 borderColor: randomColor,
               }}
-              onClick={(e) => {
-                e.stopPropagation();
-                onPick();
-              }}
-              disabled={busy}
+              onClick={onPick}
             >
-              {busy ? "Working…" : `CHOOSE FILES`}
-            </Button>
+              <div className="flex flex-col items-center space-y-6">
+                <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">{title}</h1>
+                <p className="text-sm text-muted-foreground">{subtitle}</p>
 
-            <div className="text-sm" style={{ color: randomColor }}>
-              <p className="font-medium">{hint}</p>
+                <svg
+                  className="w-12 h-12"
+                  fill="none"
+                  stroke="currentColor"
+                  style={{ color: randomColor }}
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                  />
+                </svg>
+
+                <Button
+                  size="lg"
+                  className="h-12 px-8 rounded-xl text-white shadow-lg"
+                  style={{
+                    backgroundColor: randomColor,
+                    borderColor: randomColor,
+                  }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onPick();
+                  }}
+                  disabled={busy}
+                >
+                  {busy ? "Working…" : `CHOOSE FILES`}
+                </Button>
+
+                <div className="text-sm" style={{ color: randomColor }}>
+                  <p className="font-medium">{hint}</p>
+                </div>
+              </div>
+
+              <input
+                ref={inputRef}
+                type="file"
+                multiple
+                accept={acceptAttr}
+                className="hidden"
+                data-testid="tool-file-input"
+                onChange={(e) => handleFiles(e.target.files)}
+              />
             </div>
           </div>
-
-          <input
-            ref={inputRef}
-            type="file"
-            multiple
-            accept={acceptAttr}
-            className="hidden"
-            data-testid="tool-file-input"
-            onChange={(e) => handleFiles(e.target.files)}
-          />
-        </div>
+        </ToolAdRail>
+        <ToolAdInline visible={adsVisible} slotId={`${adSlotPrefix}-inline`} className="mt-6" />
       </div>
     </section>
   );

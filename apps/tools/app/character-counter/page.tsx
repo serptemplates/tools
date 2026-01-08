@@ -7,6 +7,7 @@ import { InfoArticleSection } from "@/components/sections/InfoArticleSection";
 import { ToolsLinkHub } from "@/components/sections/ToolsLinkHub";
 import { buildToolMetadata } from "@/lib/metadata";
 import { toolContent } from '@/lib/tool-content';
+import { requiresCoepForTool } from "@/lib/coep";
 
 const toolId = "character-counter";
 
@@ -18,11 +19,15 @@ export default function Page() {
   if (!content) {
     return <div>Tool not found</div>;
   }
+  const videoEmbedId =
+    content.videoSection && !requiresCoepForTool(content.tool)
+      ? content.videoSection.embedId
+      : undefined;
 
   return (
     <main className="min-h-screen bg-background">
       {/* Custom Character Counter Component */}
-      <CharacterCounter />
+      <CharacterCounter videoEmbedId={videoEmbedId} />
 
       {/* Related Tools Section - Character counter doesn't have from/to formats */}
 

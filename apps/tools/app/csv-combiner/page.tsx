@@ -6,9 +6,9 @@ import { ChangelogSection } from "@/components/sections/ChangelogSection";
 import { HowToSection } from "@/components/sections/HowToSection";
 import { InfoArticleSection } from "@/components/sections/InfoArticleSection";
 import { ToolsLinkHub } from "@/components/sections/ToolsLinkHub";
-import { VideoSection } from "@/components/sections/VideoSection";
 import { buildToolMetadata } from "@/lib/metadata";
 import { toolContent } from "@/lib/tool-content";
+import { requiresCoepForTool } from "@/lib/coep";
 
 const toolId = "csv-combiner";
 
@@ -20,10 +20,14 @@ export default function Page() {
   if (!content) {
     return <div>Tool not found</div>;
   }
+  const videoEmbedId =
+    content.videoSection && !requiresCoepForTool(content.tool)
+      ? content.videoSection.embedId
+      : undefined;
 
   return (
     <main className="min-h-screen bg-background">
-      <CsvCombiner toolId={content.tool.id} />
+      <CsvCombiner toolId={content.tool.id} videoEmbedId={videoEmbedId} />
 
       {content.aboutSection && (
         <AboutFormatsSection
@@ -31,8 +35,6 @@ export default function Page() {
           toFormat={content.aboutSection.toFormat}
         />
       )}
-
-      {content.videoSection && <VideoSection embedId={content.videoSection.embedId} />}
 
       {content.howTo && (
         <HowToSection title={content.howTo.title} intro={content.howTo.intro} steps={content.howTo.steps} />
