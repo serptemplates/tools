@@ -813,6 +813,616 @@
     "requiresFFmpeg": true
   },
   {
+    "id": "audio-to-text",
+    "name": "Audio to Text",
+    "description": "Transcribe audio and video files to text",
+    "operation": "convert",
+    "route": "/audio-to-text",
+    "from": "mp3",
+    "to": "txt",
+    "isActive": true,
+    "tags": [
+      "audio",
+      "video",
+      "text",
+      "transcribe",
+      "speech"
+    ],
+    "content": {
+      "tool": {
+        "title": "Audio to Text",
+        "subtitle": "Transcribe audio or video files to text from uploads or public links.",
+        "from": "audio/video",
+        "to": "text",
+        "accept": ".mp3,.wav,.m4a,.aac,.flac,.ogg,.opus,.mp4,.mov,.mkv,.webm,.avi,.m4v"
+      },
+      "howTo": {
+        "title": "How to transcribe audio or video to text",
+        "intro": "Follow these steps to turn audio into a readable transcript.",
+        "steps": [
+          "Upload an audio or video file, or paste a public link.",
+          "Wait while we extract the audio and transcribe it.",
+          "Download the transcript or copy the text."
+        ]
+      },
+      "infoArticle": {
+        "title": "About audio and video transcription",
+        "markdown": "Audio to Text transcribes speech from audio or video files. Uploaded files are processed in your browser. If you paste a public link, the server fetches the media and streams it to your browser for transcription. The speech model downloads on first use and runs locally.\n\nThis tool is best for interviews, meetings, lectures, and voice notes. Larger files take longer to process and may use more memory.\n\n**Why use this tool**\n\n- Handles uploads or public links.\n- Creates a plain text transcript you can edit or share.\n- Works with common audio and video formats."
+      },
+      "faqs": [
+        {
+          "question": "Do my files get uploaded?",
+          "answer": "Uploads are processed locally in your browser. If you paste a public link, the server fetches the media and streams it to your browser. The model files are downloaded when needed."
+        },
+        {
+          "question": "Which file types are supported?",
+          "answer": "Common audio and video formats like MP3, WAV, M4A, AAC, FLAC, OGG, OPUS, MP4, MOV, MKV, WEBM, AVI, and M4V."
+        },
+        {
+          "question": "Can I use YouTube or SoundCloud links?",
+          "answer": "Yes for public links. Private or logged-in content is not supported yet."
+        },
+        {
+          "question": "Why is the first run slower?",
+          "answer": "The speech model downloads the first time you run the tool. After that it is cached for faster use."
+        },
+        {
+          "question": "What does the output look like?",
+          "answer": "You get a plain text transcript (.txt) that you can download or copy."
+        }
+      ],
+      "aboutSection": {
+        "title": "Audio/Video to Text transcription",
+        "fromFormat": {
+          "name": "Audio/Video",
+          "fullName": "Audio or video files",
+          "description": "Recordings with spoken audio, such as interviews, meetings, podcasts, and lectures."
+        },
+        "toFormat": {
+          "name": "Text",
+          "fullName": "Plain text transcript",
+          "description": "A simple text file that you can edit, share, and search."
+        }
+      }
+    },
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "audio-to-transcript",
+    "name": "Audio to Transcript",
+    "description": "Transcribe audio and video files to a text transcript",
+    "operation": "convert",
+    "route": "/audio-to-transcript",
+    "from": "mp3",
+    "to": "txt",
+    "isActive": true,
+    "tags": [
+      "audio",
+      "transcript",
+      "text",
+      "transcribe",
+      "speech"
+    ],
+    "content": {
+      "tool": {
+        "title": "Audio to Transcript",
+        "subtitle": "Transcribe audio or video files to a text transcript from uploads or public links.",
+        "from": "audio/video",
+        "to": "transcript",
+        "accept": ".mp3,.wav,.m4a,.aac,.flac,.ogg,.opus,.mp4,.mov,.mkv,.webm,.avi,.m4v"
+      },
+      "howTo": {
+        "title": "How to transcribe audio or video to a transcript",
+        "intro": "Follow these steps to turn audio into a readable transcript.",
+        "steps": [
+          "Upload an audio or video file, or paste a public link.",
+          "Wait while we extract the audio and transcribe it.",
+          "Download the transcript or copy the text."
+        ]
+      },
+      "infoArticle": {
+        "title": "About audio and video transcription",
+        "markdown": "Audio to Transcript transcribes speech from audio or video files. Uploaded files are processed in your browser. If you paste a public link, the server fetches the media and streams it to your browser for transcription. The speech model downloads on first use and runs locally.\n\nThis tool is best for interviews, meetings, lectures, and voice notes. Larger files take longer to process and may use more memory.\n\n**Why use this tool**\n\n- Handles uploads or public links.\n- Creates a plain text transcript you can edit or share.\n- Works with common audio and video formats."
+      },
+      "faqs": [
+        {
+          "question": "Do my files get uploaded?",
+          "answer": "Uploads are processed locally in your browser. If you paste a public link, the server fetches the media and streams it to your browser. The model files are downloaded when needed."
+        },
+        {
+          "question": "Which file types are supported?",
+          "answer": "Common audio and video formats like MP3, WAV, M4A, AAC, FLAC, OGG, OPUS, MP4, MOV, MKV, WEBM, AVI, and M4V."
+        },
+        {
+          "question": "Can I use YouTube or SoundCloud links?",
+          "answer": "Yes for public links. Private or logged-in content is not supported yet."
+        },
+        {
+          "question": "Why is the first run slower?",
+          "answer": "The speech model downloads the first time you run the tool. After that it is cached for faster use."
+        },
+        {
+          "question": "What does the output look like?",
+          "answer": "You get a plain text transcript (.txt) that you can download or copy."
+        }
+      ],
+      "aboutSection": {
+        "title": "Audio/Video to Transcript transcription",
+        "fromFormat": {
+          "name": "Audio/Video",
+          "fullName": "Audio or video files",
+          "description": "Recordings with spoken audio, such as interviews, meetings, podcasts, and lectures."
+        },
+        "toFormat": {
+          "name": "Transcript",
+          "fullName": "Plain text transcript",
+          "description": "A simple text file that you can edit, share, and search."
+        }
+      }
+    },
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "mp3-to-transcript",
+    "name": "MP3 to Transcript",
+    "description": "Transcribe MP3 audio to a text transcript",
+    "operation": "convert",
+    "route": "/mp3-to-transcript",
+    "from": "mp3",
+    "to": "txt",
+    "isActive": true,
+    "tags": [
+      "mp3",
+      "audio",
+      "transcript",
+      "text",
+      "transcribe",
+      "speech"
+    ],
+    "content": {
+      "tool": {
+        "title": "MP3 to Transcript",
+        "subtitle": "Transcribe MP3 audio to a text transcript from uploads or public links.",
+        "from": "MP3",
+        "to": "transcript",
+        "accept": ".mp3,.wav,.m4a,.aac,.flac,.ogg,.opus,.mp4,.mov,.mkv,.webm,.avi,.m4v"
+      },
+      "howTo": {
+        "title": "How to transcribe MP3 to a transcript",
+        "intro": "Follow these steps to turn MP3 audio into a readable transcript.",
+        "steps": [
+          "Upload an audio or video file, or paste a public link.",
+          "Wait while we extract the audio and transcribe it.",
+          "Download the transcript or copy the text."
+        ]
+      },
+      "infoArticle": {
+        "title": "About MP3 transcription",
+        "markdown": "MP3 to Transcript transcribes speech from audio or video files. Uploaded files are processed in your browser. If you paste a public link, the server fetches the media and streams it to your browser for transcription. The speech model downloads on first use and runs locally.\n\nThis tool is best for interviews, meetings, lectures, and voice notes. Larger files take longer to process and may use more memory.\n\n**Why use this tool**\n\n- Handles uploads or public links.\n- Creates a plain text transcript you can edit or share.\n- Works with common audio and video formats."
+      },
+      "faqs": [
+        {
+          "question": "Do my files get uploaded?",
+          "answer": "Uploads are processed locally in your browser. If you paste a public link, the server fetches the media and streams it to your browser. The model files are downloaded when needed."
+        },
+        {
+          "question": "Which file types are supported?",
+          "answer": "Common audio and video formats like MP3, WAV, M4A, AAC, FLAC, OGG, OPUS, MP4, MOV, MKV, WEBM, AVI, and M4V."
+        },
+        {
+          "question": "Can I use YouTube or SoundCloud links?",
+          "answer": "Yes for public links. Private or logged-in content is not supported yet."
+        },
+        {
+          "question": "Why is the first run slower?",
+          "answer": "The speech model downloads the first time you run the tool. After that it is cached for faster use."
+        },
+        {
+          "question": "What does the output look like?",
+          "answer": "You get a plain text transcript (.txt) that you can download or copy."
+        }
+      ],
+      "aboutSection": {
+        "title": "Audio/Video to Transcript transcription",
+        "fromFormat": {
+          "name": "Audio/Video",
+          "fullName": "Audio or video files",
+          "description": "Recordings with spoken audio, such as interviews, meetings, podcasts, and lectures."
+        },
+        "toFormat": {
+          "name": "Transcript",
+          "fullName": "Plain text transcript",
+          "description": "A simple text file that you can edit, share, and search."
+        }
+      }
+    },
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "mp4-to-transcript",
+    "name": "MP4 to Transcript",
+    "description": "Transcribe MP4 video to a text transcript",
+    "operation": "convert",
+    "route": "/mp4-to-transcript",
+    "from": "mp4",
+    "to": "txt",
+    "isActive": true,
+    "tags": [
+      "mp4",
+      "video",
+      "transcript",
+      "text",
+      "transcribe",
+      "speech"
+    ],
+    "content": {
+      "tool": {
+        "title": "MP4 to Transcript",
+        "subtitle": "Transcribe MP4 video to a text transcript from uploads or public links.",
+        "from": "MP4",
+        "to": "transcript",
+        "accept": ".mp3,.wav,.m4a,.aac,.flac,.ogg,.opus,.mp4,.mov,.mkv,.webm,.avi,.m4v"
+      },
+      "howTo": {
+        "title": "How to transcribe MP4 to a transcript",
+        "intro": "Follow these steps to turn MP4 video into a readable transcript.",
+        "steps": [
+          "Upload an audio or video file, or paste a public link.",
+          "Wait while we extract the audio and transcribe it.",
+          "Download the transcript or copy the text."
+        ]
+      },
+      "infoArticle": {
+        "title": "About MP4 transcription",
+        "markdown": "MP4 to Transcript transcribes speech from audio or video files. Uploaded files are processed in your browser. If you paste a public link, the server fetches the media and streams it to your browser for transcription. The speech model downloads on first use and runs locally.\n\nThis tool is best for interviews, meetings, lectures, and voice notes. Larger files take longer to process and may use more memory.\n\n**Why use this tool**\n\n- Handles uploads or public links.\n- Creates a plain text transcript you can edit or share.\n- Works with common audio and video formats."
+      },
+      "faqs": [
+        {
+          "question": "Do my files get uploaded?",
+          "answer": "Uploads are processed locally in your browser. If you paste a public link, the server fetches the media and streams it to your browser. The model files are downloaded when needed."
+        },
+        {
+          "question": "Which file types are supported?",
+          "answer": "Common audio and video formats like MP3, WAV, M4A, AAC, FLAC, OGG, OPUS, MP4, MOV, MKV, WEBM, AVI, and M4V."
+        },
+        {
+          "question": "Can I use YouTube or SoundCloud links?",
+          "answer": "Yes for public links. Private or logged-in content is not supported yet."
+        },
+        {
+          "question": "Why is the first run slower?",
+          "answer": "The speech model downloads the first time you run the tool. After that it is cached for faster use."
+        },
+        {
+          "question": "What does the output look like?",
+          "answer": "You get a plain text transcript (.txt) that you can download or copy."
+        }
+      ],
+      "aboutSection": {
+        "title": "Audio/Video to Transcript transcription",
+        "fromFormat": {
+          "name": "Audio/Video",
+          "fullName": "Audio or video files",
+          "description": "Recordings with spoken audio, such as interviews, meetings, podcasts, and lectures."
+        },
+        "toFormat": {
+          "name": "Transcript",
+          "fullName": "Plain text transcript",
+          "description": "A simple text file that you can edit, share, and search."
+        }
+      }
+    },
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "video-to-transcript",
+    "name": "Video to Transcript",
+    "description": "Transcribe video files to a text transcript",
+    "operation": "convert",
+    "route": "/video-to-transcript",
+    "from": "mp4",
+    "to": "txt",
+    "isActive": true,
+    "tags": [
+      "video",
+      "transcript",
+      "text",
+      "transcribe",
+      "speech",
+      "mp4"
+    ],
+    "content": {
+      "tool": {
+        "title": "Video to Transcript",
+        "subtitle": "Transcribe video files to a text transcript from uploads or public links.",
+        "from": "video",
+        "to": "transcript",
+        "accept": ".mp3,.wav,.m4a,.aac,.flac,.ogg,.opus,.mp4,.mov,.mkv,.webm,.avi,.m4v"
+      },
+      "howTo": {
+        "title": "How to transcribe video to a transcript",
+        "intro": "Follow these steps to turn video into a readable transcript.",
+        "steps": [
+          "Upload an audio or video file, or paste a public link.",
+          "Wait while we extract the audio and transcribe it.",
+          "Download the transcript or copy the text."
+        ]
+      },
+      "infoArticle": {
+        "title": "About video transcription",
+        "markdown": "Video to Transcript transcribes speech from audio or video files. Uploaded files are processed in your browser. If you paste a public link, the server fetches the media and streams it to your browser for transcription. The speech model downloads on first use and runs locally.\n\nThis tool is best for interviews, meetings, lectures, and voice notes. Larger files take longer to process and may use more memory.\n\n**Why use this tool**\n\n- Handles uploads or public links.\n- Creates a plain text transcript you can edit or share.\n- Works with common audio and video formats."
+      },
+      "faqs": [
+        {
+          "question": "Do my files get uploaded?",
+          "answer": "Uploads are processed locally in your browser. If you paste a public link, the server fetches the media and streams it to your browser. The model files are downloaded when needed."
+        },
+        {
+          "question": "Which file types are supported?",
+          "answer": "Common audio and video formats like MP3, WAV, M4A, AAC, FLAC, OGG, OPUS, MP4, MOV, MKV, WEBM, AVI, and M4V."
+        },
+        {
+          "question": "Can I use YouTube or SoundCloud links?",
+          "answer": "Yes for public links. Private or logged-in content is not supported yet."
+        },
+        {
+          "question": "Why is the first run slower?",
+          "answer": "The speech model downloads the first time you run the tool. After that it is cached for faster use."
+        },
+        {
+          "question": "What does the output look like?",
+          "answer": "You get a plain text transcript (.txt) that you can download or copy."
+        }
+      ],
+      "aboutSection": {
+        "title": "Audio/Video to Transcript transcription",
+        "fromFormat": {
+          "name": "Audio/Video",
+          "fullName": "Audio or video files",
+          "description": "Recordings with spoken audio, such as interviews, meetings, podcasts, and lectures."
+        },
+        "toFormat": {
+          "name": "Transcript",
+          "fullName": "Plain text transcript",
+          "description": "A simple text file that you can edit, share, and search."
+        }
+      }
+    },
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "tiktok-to-transcript",
+    "name": "TikTok to Transcript",
+    "description": "Transcribe TikTok videos to a text transcript",
+    "operation": "convert",
+    "route": "/tiktok-to-transcript",
+    "from": "mp4",
+    "to": "txt",
+    "isActive": true,
+    "tags": [
+      "tiktok",
+      "video",
+      "transcript",
+      "text",
+      "transcribe",
+      "speech",
+      "mp4"
+    ],
+    "content": {
+      "tool": {
+        "title": "TikTok to Transcript",
+        "subtitle": "Transcribe TikTok videos to a text transcript from public links or uploads.",
+        "from": "TikTok",
+        "to": "transcript",
+        "accept": ".mp3,.wav,.m4a,.aac,.flac,.ogg,.opus,.mp4,.mov,.mkv,.webm,.avi,.m4v"
+      },
+      "howTo": {
+        "title": "How to transcribe TikTok videos to a transcript",
+        "intro": "Follow these steps to turn a TikTok video into a readable transcript.",
+        "steps": [
+          "Upload an audio or video file, or paste a public link.",
+          "Wait while we extract the audio and transcribe it.",
+          "Download the transcript or copy the text."
+        ]
+      },
+      "infoArticle": {
+        "title": "About TikTok transcription",
+        "markdown": "TikTok to Transcript transcribes speech from audio or video files. Uploaded files are processed in your browser. If you paste a public link, the server fetches the media and streams it to your browser for transcription. The speech model downloads on first use and runs locally.\n\nThis tool is best for interviews, meetings, lectures, and voice notes. Larger files take longer to process and may use more memory.\n\n**Why use this tool**\n\n- Handles uploads or public links.\n- Creates a plain text transcript you can edit or share.\n- Works with common audio and video formats."
+      },
+      "faqs": [
+        {
+          "question": "Do my files get uploaded?",
+          "answer": "Uploads are processed locally in your browser. If you paste a public link, the server fetches the media and streams it to your browser. The model files are downloaded when needed."
+        },
+        {
+          "question": "Which file types are supported?",
+          "answer": "Common audio and video formats like MP3, WAV, M4A, AAC, FLAC, OGG, OPUS, MP4, MOV, MKV, WEBM, AVI, and M4V."
+        },
+        {
+          "question": "Can I use YouTube or SoundCloud links?",
+          "answer": "Yes for public links. Private or logged-in content is not supported yet."
+        },
+        {
+          "question": "Why is the first run slower?",
+          "answer": "The speech model downloads the first time you run the tool. After that it is cached for faster use."
+        },
+        {
+          "question": "What does the output look like?",
+          "answer": "You get a plain text transcript (.txt) that you can download or copy."
+        }
+      ],
+      "aboutSection": {
+        "title": "Audio/Video to Transcript transcription",
+        "fromFormat": {
+          "name": "Audio/Video",
+          "fullName": "Audio or video files",
+          "description": "Recordings with spoken audio, such as interviews, meetings, podcasts, and lectures."
+        },
+        "toFormat": {
+          "name": "Transcript",
+          "fullName": "Plain text transcript",
+          "description": "A simple text file that you can edit, share, and search."
+        }
+      }
+    },
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "youtube-to-transcript",
+    "name": "YouTube to Transcript",
+    "description": "Transcribe YouTube videos to a text transcript",
+    "operation": "convert",
+    "route": "/youtube-to-transcript",
+    "from": "mp4",
+    "to": "txt",
+    "isActive": true,
+    "tags": [
+      "youtube",
+      "video",
+      "transcript",
+      "text",
+      "transcribe",
+      "speech",
+      "mp4"
+    ],
+    "content": {
+      "tool": {
+        "title": "YouTube to Transcript",
+        "subtitle": "Transcribe YouTube videos to a text transcript from public links or uploads.",
+        "from": "YouTube",
+        "to": "transcript",
+        "accept": ".mp3,.wav,.m4a,.aac,.flac,.ogg,.opus,.mp4,.mov,.mkv,.webm,.avi,.m4v"
+      },
+      "howTo": {
+        "title": "How to transcribe YouTube videos to a transcript",
+        "intro": "Follow these steps to turn a YouTube video into a readable transcript.",
+        "steps": [
+          "Upload an audio or video file, or paste a public link.",
+          "Wait while we extract the audio and transcribe it.",
+          "Download the transcript or copy the text."
+        ]
+      },
+      "infoArticle": {
+        "title": "About YouTube transcription",
+        "markdown": "YouTube to Transcript transcribes speech from audio or video files. Uploaded files are processed in your browser. If you paste a public link, the server fetches the media and streams it to your browser for transcription. The speech model downloads on first use and runs locally.\n\nThis tool is best for interviews, meetings, lectures, and voice notes. Larger files take longer to process and may use more memory.\n\n**Why use this tool**\n\n- Handles uploads or public links.\n- Creates a plain text transcript you can edit or share.\n- Works with common audio and video formats."
+      },
+      "faqs": [
+        {
+          "question": "Do my files get uploaded?",
+          "answer": "Uploads are processed locally in your browser. If you paste a public link, the server fetches the media and streams it to your browser. The model files are downloaded when needed."
+        },
+        {
+          "question": "Which file types are supported?",
+          "answer": "Common audio and video formats like MP3, WAV, M4A, AAC, FLAC, OGG, OPUS, MP4, MOV, MKV, WEBM, AVI, and M4V."
+        },
+        {
+          "question": "Can I use YouTube or SoundCloud links?",
+          "answer": "Yes for public links. Private or logged-in content is not supported yet."
+        },
+        {
+          "question": "Why is the first run slower?",
+          "answer": "The speech model downloads the first time you run the tool. After that it is cached for faster use."
+        },
+        {
+          "question": "What does the output look like?",
+          "answer": "You get a plain text transcript (.txt) that you can download or copy."
+        }
+      ],
+      "aboutSection": {
+        "title": "Audio/Video to Transcript transcription",
+        "fromFormat": {
+          "name": "Audio/Video",
+          "fullName": "Audio or video files",
+          "description": "Recordings with spoken audio, such as interviews, meetings, podcasts, and lectures."
+        },
+        "toFormat": {
+          "name": "Transcript",
+          "fullName": "Plain text transcript",
+          "description": "A simple text file that you can edit, share, and search."
+        }
+      }
+    },
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "youtube-to-transcript-generator",
+    "name": "YouTube Transcript Generator",
+    "description": "Generate transcripts from YouTube videos",
+    "operation": "convert",
+    "route": "/youtube-to-transcript-generator",
+    "from": "mp4",
+    "to": "txt",
+    "isActive": true,
+    "tags": [
+      "youtube",
+      "transcript",
+      "generator",
+      "video",
+      "text",
+      "transcribe",
+      "speech",
+      "mp4"
+    ],
+    "content": {
+      "tool": {
+        "title": "YouTube Transcript Generator",
+        "subtitle": "Generate a text transcript from YouTube videos using public links or uploads.",
+        "from": "YouTube",
+        "to": "transcript",
+        "accept": ".mp3,.wav,.m4a,.aac,.flac,.ogg,.opus,.mp4,.mov,.mkv,.webm,.avi,.m4v"
+      },
+      "howTo": {
+        "title": "How to generate a YouTube transcript",
+        "intro": "Follow these steps to generate a readable transcript from a YouTube video.",
+        "steps": [
+          "Upload an audio or video file, or paste a public link.",
+          "Wait while we extract the audio and transcribe it.",
+          "Download the transcript or copy the text."
+        ]
+      },
+      "infoArticle": {
+        "title": "About YouTube transcript generation",
+        "markdown": "YouTube Transcript Generator transcribes speech from audio or video files. Uploaded files are processed in your browser. If you paste a public link, the server fetches the media and streams it to your browser for transcription. The speech model downloads on first use and runs locally.\n\nThis tool is best for interviews, meetings, lectures, and voice notes. Larger files take longer to process and may use more memory.\n\n**Why use this tool**\n\n- Handles uploads or public links.\n- Creates a plain text transcript you can edit or share.\n- Works with common audio and video formats."
+      },
+      "faqs": [
+        {
+          "question": "Do my files get uploaded?",
+          "answer": "Uploads are processed locally in your browser. If you paste a public link, the server fetches the media and streams it to your browser. The model files are downloaded when needed."
+        },
+        {
+          "question": "Which file types are supported?",
+          "answer": "Common audio and video formats like MP3, WAV, M4A, AAC, FLAC, OGG, OPUS, MP4, MOV, MKV, WEBM, AVI, and M4V."
+        },
+        {
+          "question": "Can I use YouTube or SoundCloud links?",
+          "answer": "Yes for public links. Private or logged-in content is not supported yet."
+        },
+        {
+          "question": "Why is the first run slower?",
+          "answer": "The speech model downloads the first time you run the tool. After that it is cached for faster use."
+        },
+        {
+          "question": "What does the output look like?",
+          "answer": "You get a plain text transcript (.txt) that you can download or copy."
+        }
+      ],
+      "aboutSection": {
+        "title": "Audio/Video to Transcript transcription",
+        "fromFormat": {
+          "name": "Audio/Video",
+          "fullName": "Audio or video files",
+          "description": "Recordings with spoken audio, such as interviews, meetings, podcasts, and lectures."
+        },
+        "toFormat": {
+          "name": "Transcript",
+          "fullName": "Plain text transcript",
+          "description": "A simple text file that you can edit, share, and search."
+        }
+      }
+    },
+    "requiresFFmpeg": true
+  },
+  {
     "id": "av1-to-mp4",
     "name": "AV1 to MP4",
     "description": "Convert AV1 files to MP4 format",

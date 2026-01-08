@@ -100,6 +100,7 @@ const MIME_MAP = {
   avchd: "video/mp2t",
   m4p: "audio/mp4",
   mpv: "video/mp4",
+  txt: "text/plain",
 };
 
 function getExpectedMimeType(format) {

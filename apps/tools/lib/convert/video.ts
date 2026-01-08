@@ -396,6 +396,91 @@ export async function convertVideo(
   return buffer;
 }
 
+export async function extractAudioForTranscription(
+  inputBuffer: ArrayBuffer,
+  fromFormat: string,
+  options: {
+    onProgress?: (progress: { ratio: number; time: number }) => void;
+  } = {}
+): Promise<ArrayBuffer> {
+  const ff = await loadFFmpeg();
+
+  const progressHandler = options.onProgress
+    ? ({ progress, time }: { progress: number; time: number }) => {
+        options.onProgress?.({
+          ratio: progress || 0,
+          time: time || 0,
+        });
+      }
+    : null;
+
+  if (progressHandler) {
+    ff.on('progress', progressHandler);
+  }
+
+  const inputName = `input.${fromFormat}`;
+  const outputName = "output.f32";
+
+  await ff.writeFile(inputName, new Uint8Array(inputBuffer));
+
+  const args = [
+    "-y",
+    "-nostdin",
+    "-i",
+    inputName,
+    "-ac",
+    "1",
+    "-ar",
+    "16000",
+    "-f",
+    "f32le",
+    outputName,
+  ];
+
+  let data: Uint8Array | string;
+
+  try {
+    try {
+      await ff.deleteFile(outputName);
+    } catch {
+      // Ignore missing output file
+    }
+
+    const exitCode = await ff.exec(args);
+    if (exitCode !== 0) {
+      throw new Error(`FFmpeg audio extraction failed with exit code ${exitCode}`);
+    }
+
+    data = await ff.readFile(outputName);
+  } finally {
+    if (progressHandler) {
+      ff.off('progress', progressHandler);
+    }
+  }
+
+  if (!(data instanceof Uint8Array)) {
+    throw new Error("Unexpected output format from FFmpeg audio extraction");
+  }
+
+  try {
+    await ff.deleteFile(inputName);
+    await ff.deleteFile(outputName);
+  } catch (cleanupErr) {
+    console.warn("Cleanup error:", cleanupErr);
+  }
+
+  const buffer = data.buffer.slice(data.byteOffset, data.byteOffset + data.byteLength);
+
+  if (buffer instanceof SharedArrayBuffer) {
+    const ab = new ArrayBuffer(buffer.byteLength);
+    const view = new Uint8Array(ab);
+    view.set(new Uint8Array(buffer));
+    return ab;
+  }
+
+  return buffer;
+}
+
 export async function cleanupFFmpeg() {
   if (ffmpeg) {
     ffmpeg.terminate();

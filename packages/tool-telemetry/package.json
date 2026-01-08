@@ -1,0 +1,25 @@
+{
+  "name": "@serp-tools/tool-telemetry",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "lint": "eslint . --max-warnings 0"
+  },
+  "dependencies": {
+    "@serp-tools/app-core": "workspace:*",
+    "drizzle-orm": "^0.45.1"
+  },
+  "devDependencies": {
+    "@serp-tools/eslint-config": "workspace:^",
+    "@serp-tools/typescript-config": "workspace:*",
+    "@types/node": "^20.19.9",
+    "typescript": "^5.9.2"
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./client": "./src/client.ts",
+    "./metrics": "./src/metrics.ts",
+    "./server": "./src/server.ts"
+  }
+}
