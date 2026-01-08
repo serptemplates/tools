@@ -1423,6 +1423,77 @@
     "requiresFFmpeg": true
   },
   {
+    "id": "video-downloader",
+    "name": "Video Downloader",
+    "description": "Download videos from public links",
+    "operation": "download",
+    "route": "/video-downloader",
+    "from": "video",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "video",
+      "download",
+      "downloader",
+      "youtube",
+      "vimeo",
+      "loom"
+    ],
+    "content": {
+      "tool": {
+        "title": "Video Downloader",
+        "subtitle": "Download videos from public links like YouTube, Vimeo, Loom, or direct files.",
+        "from": "Video link",
+        "to": "Video file"
+      },
+      "howTo": {
+        "title": "How to download a video",
+        "intro": "Follow these steps to save a public video link.",
+        "steps": [
+          "Paste a public video link.",
+          "Wait while we fetch the media.",
+          "Download the video file to your device."
+        ]
+      },
+      "infoArticle": {
+        "title": "About video downloads",
+        "markdown": "Video Downloader fetches media from public links and prepares a downloadable file. It works for direct video files and many public video pages.\n\nFor private or logged-in content, downloads are not supported yet. If a link fails, try a different public source or direct file URL.\n\n**Why use this tool**\n\n- Quick downloads for public links.\n- Works on desktop and mobile browsers.\n- Saves a video file you can keep or share."
+      },
+      "faqs": [
+        {
+          "question": "Which links work?",
+          "answer": "Public links from services like YouTube, Vimeo, Loom, or direct video file URLs. Private or logged-in content is not supported yet."
+        },
+        {
+          "question": "What file type do I get?",
+          "answer": "Most downloads are MP4 or WebM, depending on what the source provides."
+        },
+        {
+          "question": "Do you store my videos?",
+          "answer": "No. We fetch the media and stream it to you; files are not stored after download."
+        },
+        {
+          "question": "Why did my link fail?",
+          "answer": "Some links require login or block downloads. Try a public link or a direct video file URL."
+        }
+      ],
+      "aboutSection": {
+        "title": "Video download",
+        "fromFormat": {
+          "name": "Video link",
+          "fullName": "Public video link",
+          "description": "A public URL to a video hosted online."
+        },
+        "toFormat": {
+          "name": "Video file",
+          "fullName": "Downloadable video file",
+          "description": "A saved video file you can watch, keep, or share."
+        }
+      }
+    },
+    "requiresFFmpeg": false
+  },
+  {
     "id": "av1-to-mp4",
     "name": "AV1 to MP4",
     "description": "Convert AV1 files to MP4 format",

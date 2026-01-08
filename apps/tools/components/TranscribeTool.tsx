@@ -231,7 +231,7 @@ export default function TranscribeTool({ toolId, title, subtitle }: Props) {
     const response = await fetch("/api/media-fetch", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ url: url.toString() }),
+      body: JSON.stringify({ url: url.toString(), mode: "audio" }),
     });
 
     if (!response.ok) {

@@ -30,6 +30,7 @@ function getYtDlpInstance() {
 
 type UrlPayload = {
   url?: string;
+  mode?: "audio" | "video";
 };
 
 function normalizeContentType(value: string | null) {
@@ -216,16 +217,18 @@ async function streamDownloadedFile(
   return new Response(body, { status: 200, headers });
 }
 
-async function fetchViaYtDlp(targetUrl: URL) {
+async function fetchViaYtDlp(targetUrl: URL, mode: "audio" | "video") {
   const runId = randomUUID();
   const workDir = await fs.mkdtemp(path.join(tmpdir(), `serp-media-${runId}-`));
   const outputTemplate = path.join(workDir, "download.%(ext)s");
   const youtubedl = getYtDlpInstance();
+  const isVideo = mode === "video";
+  const format = isVideo ? "best" : "bestaudio/best";
 
   try {
     await youtubedl(targetUrl.toString(), {
       output: outputTemplate,
-      format: "bestaudio/best",
+      format,
       noPlaylist: true,
       noWarnings: true,
     });
@@ -265,6 +268,10 @@ export async function POST(request: Request) {
     return new Response(JSON.stringify({ error: "Missing url." }), { status: 400 });
   }
 
+  if (payload.mode && payload.mode !== "audio" && payload.mode !== "video") {
+    return new Response(JSON.stringify({ error: "Invalid mode." }), { status: 400 });
+  }
+
   let targetUrl: URL;
   try {
     targetUrl = new URL(payload.url);
@@ -285,12 +292,14 @@ export async function POST(request: Request) {
     return new Response(JSON.stringify({ error: message }), { status: 400 });
   }
 
+  const mode = payload.mode ?? "audio";
+
   try {
     const directResponse = await tryDirectFetch(targetUrl);
     if (directResponse) {
       return directResponse;
     }
-    return await fetchViaYtDlp(targetUrl);
+    return await fetchViaYtDlp(targetUrl, mode);
   } catch (err) {
     const errMessage = err instanceof Error ? err.message : "";
     const stderr =

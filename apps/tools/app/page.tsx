@@ -113,6 +113,7 @@ const iconMap: Record<string, LucideIcon> = {
   'tiktok-to-transcript': Mic,
   'youtube-to-transcript': Mic,
   'youtube-to-transcript-generator': Mic,
+  'video-downloader': Video,
 };
 
 // Process tools from JSON data

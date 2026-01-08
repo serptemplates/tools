@@ -27,6 +27,9 @@ Internal related tools must reference `toolId` (not `href`); resolve routes from
 - New custom tools require an explicit `handler=custom` and a listed custom page.
 - JPG/JPEG are the same format. Use `jpg` as the canonical route/format and accept `.jpg,.jpeg` in the tool config. Do not create separate `*-to-jpeg` routes unless we explicitly add SEO alias routes.
 
+## Tool groupings
+See `docs/tool-groupings.md` for how tools are grouped by operation, UI template, and processing location.
+
 ## Shared code rules (do not bypass)
 - Use `apps/tools/lib/convert/workerClient.ts` for all worker conversions.
 - Use `getOutputMimeType()` for output blobs.
