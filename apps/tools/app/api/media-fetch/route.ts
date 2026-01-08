@@ -34,11 +34,14 @@ async function downloadYtDlpBinary(targetPath: string) {
   const contentType = response.headers.get("content-type") ?? "";
 
   if (!contentType.includes("application/octet-stream")) {
-    const payload = await response.json();
+    const payload = (await response.json()) as {
+      assets?: Array<{ name?: string; browser_download_url?: string }>;
+    };
     if (!response.ok) {
       throw new Error(JSON.stringify(payload));
     }
-    const assets = Array.isArray(payload?.assets) ? payload.assets : [];
+    const assets: Array<{ name?: string; browser_download_url?: string }> =
+      Array.isArray(payload?.assets) ? payload.assets : [];
     const match = assets.find((asset) => asset?.name === runtimeBinaryName);
     if (!match?.browser_download_url) {
       throw new Error("Unable to locate yt-dlp binary in release assets.");
