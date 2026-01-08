@@ -12,17 +12,71 @@ import { AUDIO_FORMATS, VIDEO_FORMATS } from "../../../lib/capabilities";
 export const runtime = "nodejs";
 
 const SUPPORTED_EXTENSIONS = new Set([...AUDIO_FORMATS, ...VIDEO_FORMATS]);
+const runtimeBinaryName = process.platform === "win32" ? "yt-dlp.exe" : "yt-dlp";
+const runtimeBinaryPath = path.join(tmpdir(), "serp-yt-dlp", runtimeBinaryName);
 const YTDLP_CANDIDATES = [
-  path.resolve(process.cwd(), "node_modules/youtube-dl-exec/bin/yt-dlp"),
-  path.resolve(process.cwd(), "apps/tools/node_modules/youtube-dl-exec/bin/yt-dlp"),
+  runtimeBinaryPath,
+  path.resolve(process.cwd(), "node_modules/youtube-dl-exec/bin", runtimeBinaryName),
+  path.resolve(process.cwd(), "apps/tools/node_modules/youtube-dl-exec/bin", runtimeBinaryName),
 ];
 let youtubedlInstance: ReturnType<typeof createYtDlp> | null = null;
+let ytdlpDownloadPromise: Promise<string> | null = null;
 
-function getYtDlpInstance() {
+async function downloadYtDlpBinary(targetPath: string) {
+  const downloadHost =
+    process.env.YTDLP_BINARY_URL ??
+    process.env.YOUTUBE_DL_HOST ??
+    "https://api.github.com/repos/yt-dlp/yt-dlp/releases/latest";
+  const token = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
+  const headers = token ? { Authorization: `Bearer ${token}` } : undefined;
+
+  let response = await fetch(downloadHost, { headers });
+  const contentType = response.headers.get("content-type") ?? "";
+
+  if (!contentType.includes("application/octet-stream")) {
+    const payload = await response.json();
+    if (!response.ok) {
+      throw new Error(JSON.stringify(payload));
+    }
+    const assets = Array.isArray(payload?.assets) ? payload.assets : [];
+    const match = assets.find((asset) => asset?.name === runtimeBinaryName);
+    if (!match?.browser_download_url) {
+      throw new Error("Unable to locate yt-dlp binary in release assets.");
+    }
+    response = await fetch(match.browser_download_url, { headers });
+  }
+
+  if (!response.ok) {
+    throw new Error("Failed to download yt-dlp binary.");
+  }
+
+  await fs.mkdir(path.dirname(targetPath), { recursive: true });
+  const buffer = Buffer.from(await response.arrayBuffer());
+  await fs.writeFile(targetPath, buffer);
+  await fs.chmod(targetPath, 0o755);
+  return targetPath;
+}
+
+async function resolveYtDlpBinaryPath() {
+  const candidate = YTDLP_CANDIDATES.find((pathToCheck) => existsSync(pathToCheck));
+  if (candidate) return candidate;
+
+  if (!ytdlpDownloadPromise) {
+    ytdlpDownloadPromise = downloadYtDlpBinary(runtimeBinaryPath);
+  }
+
+  try {
+    return await ytdlpDownloadPromise;
+  } finally {
+    ytdlpDownloadPromise = null;
+  }
+}
+
+async function getYtDlpInstance() {
   if (youtubedlInstance) return youtubedlInstance;
-  const binaryPath = YTDLP_CANDIDATES.find((candidate) => existsSync(candidate));
+  const binaryPath = await resolveYtDlpBinaryPath();
   if (!binaryPath) {
-    throw new Error("yt-dlp binary not found. Install dependencies with scripts enabled.");
+    throw new Error("yt-dlp binary not found and could not be downloaded.");
   }
   youtubedlInstance = createYtDlp(binaryPath);
   return youtubedlInstance;
@@ -221,7 +275,7 @@ async function fetchViaYtDlp(targetUrl: URL, mode: "audio" | "video") {
   const runId = randomUUID();
   const workDir = await fs.mkdtemp(path.join(tmpdir(), `serp-media-${runId}-`));
   const outputTemplate = path.join(workDir, "download.%(ext)s");
-  const youtubedl = getYtDlpInstance();
+  const youtubedl = await getYtDlpInstance();
   const isVideo = mode === "video";
   const format = isVideo ? "best" : "bestaudio/best";
 
