@@ -12,13 +12,31 @@ import { AUDIO_FORMATS, VIDEO_FORMATS } from "../../../lib/capabilities";
 export const runtime = "nodejs";
 
 const SUPPORTED_EXTENSIONS = new Set([...AUDIO_FORMATS, ...VIDEO_FORMATS]);
-const runtimeBinaryName = process.platform === "win32" ? "yt-dlp.exe" : "yt-dlp";
+function resolvePlatformBinaryName() {
+  if (process.platform === "win32") {
+    if (process.arch === "arm64") return "yt-dlp_arm64.exe";
+    if (process.arch === "ia32") return "yt-dlp_x86.exe";
+    return "yt-dlp.exe";
+  }
+  if (process.platform === "darwin") {
+    return "yt-dlp_macos";
+  }
+  if (process.platform === "linux") {
+    if (process.arch === "arm64") return "yt-dlp_linux_aarch64";
+    return "yt-dlp_linux";
+  }
+  return "yt-dlp";
+}
+
+const runtimeBinaryName = resolvePlatformBinaryName();
 const runtimeBinaryPath = path.join(tmpdir(), "serp-yt-dlp", runtimeBinaryName);
-const YTDLP_CANDIDATES = [
-  runtimeBinaryPath,
-  path.resolve(process.cwd(), "node_modules/youtube-dl-exec/bin", runtimeBinaryName),
-  path.resolve(process.cwd(), "apps/tools/node_modules/youtube-dl-exec/bin", runtimeBinaryName),
-];
+const YTDLP_CANDIDATES = [runtimeBinaryPath];
+if (runtimeBinaryName === "yt-dlp" || runtimeBinaryName.endsWith(".exe")) {
+  YTDLP_CANDIDATES.push(
+    path.resolve(process.cwd(), "node_modules/youtube-dl-exec/bin", runtimeBinaryName),
+    path.resolve(process.cwd(), "apps/tools/node_modules/youtube-dl-exec/bin", runtimeBinaryName)
+  );
+}
 let youtubedlInstance: ReturnType<typeof createYtDlp> | null = null;
 let ytdlpDownloadPromise: Promise<string> | null = null;
 
