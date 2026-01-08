@@ -47,11 +47,16 @@ See `docs/tool-groupings.md` for how tools are grouped by operation, UI template
 - Status: derived from last 24h runs (live/degraded/broken).
 
 ## Runtime compatibility (video + WASM)
-- Always serve COOP/COEP headers for SharedArrayBuffer: `Cross-Origin-Opener-Policy: same-origin` and `Cross-Origin-Embedder-Policy: require-corp`.
+- Serve COOP/COEP headers only on routes that require SharedArrayBuffer (FFmpeg/transcription). Avoid COEP on other routes so third-party embeds (ex: YouTube) can load.
 - Set `BUILD_MODE=server` and `SUPPORTS_VIDEO_CONVERSION=true` in Next config for FFmpeg support.
 - Use the multi-threaded FFmpeg core from the CDN only when COOP/COEP is enabled.
 - For image formats that are not reliably decodable in browsers (ex: TIFF), route conversion through the server API (`/api/image-convert`) instead of client raster decode.
 - Server conversion routes must use `runtime = "nodejs"` and use `ffmpeg-static` (packaged binary) for deploy portability.
+
+## Media fetcher (URL ingest)
+- `/api/media-fetch` uses `youtube-dl-exec` and requires the `yt-dlp` binary in `node_modules/youtube-dl-exec/bin`.
+- On Vercel/serverless, ensure output file tracing includes `youtube-dl-exec/bin/**` or allow install scripts to download the binary at build time.
+- Missing binary returns 500 with "yt-dlp binary not found."
 
 ## Vendor assets (public)
 - PDF worker must be available at `/vendor/pdfjs/pdf.worker.min.js`.

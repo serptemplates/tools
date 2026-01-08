@@ -20,6 +20,7 @@ Tools render with one of these patterns:
 - Standard renderer (shared template)
   - Uses `ToolPageRenderer` with `ToolPageTemplate` + `HeroConverter`.
   - Most `convert` and `compress` tools use this path.
+- YouTube hero layouts are used only when COOP/COEP is not required; COEP pages fall back to the standard hero to avoid broken embeds.
 - Custom tools
   - Transcription: `audio-to-text` and transcript variants use `TranscribeTool`.
   - Downloader: `video-downloader` uses `VideoDownloaderTool`.
@@ -32,7 +33,7 @@ Tools render with one of these patterns:
   - Workers in `apps/tools/workers/*.js`.
 - Server APIs (for limits or remote fetch):
   - `/api/video-convert` and `/api/image-convert` for server-side processing.
-  - `/api/media-fetch` for public URL fetching (used by transcription and downloader).
+  - `/api/media-fetch` for public URL fetching (used by transcription and downloader); requires the `yt-dlp` binary to be packaged with the serverless runtime.
 
 ## Grouping by input source
 - Local uploads: default for most tools.
