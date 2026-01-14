@@ -39,25 +39,31 @@ type ToolAdRailProps = {
 };
 
 export function ToolAdRail({ visible, slotPrefix, children, className }: ToolAdRailProps) {
-  if (!visible) {
-    return <div className={className}>{children}</div>;
-  }
+  const railPlaceholderClass = "hidden h-[600px] w-full xl:block";
 
   return (
     <div
-      className={`grid grid-cols-1 gap-6 xl:grid-cols-[220px,minmax(0,1fr),220px] ${className ?? ""}`}
+      className={`grid grid-cols-1 gap-6 xl:grid-cols-[160px_minmax(0,1fr)_160px] ${className ?? ""}`}
     >
-      <ToolAdSlot
-        slotId={`${slotPrefix}-left`}
-        size="300x600"
-        className="hidden h-[600px] xl:flex"
-      />
+      {visible ? (
+        <ToolAdSlot
+          slotId={`${slotPrefix}-left`}
+          size="160x600"
+          className="hidden h-[600px] w-full xl:flex"
+        />
+      ) : (
+        <div className={railPlaceholderClass} aria-hidden="true" />
+      )}
       <div className="min-w-0">{children}</div>
-      <ToolAdSlot
-        slotId={`${slotPrefix}-right`}
-        size="300x600"
-        className="hidden h-[600px] xl:flex"
-      />
+      {visible ? (
+        <ToolAdSlot
+          slotId={`${slotPrefix}-right`}
+          size="160x600"
+          className="hidden h-[600px] w-full xl:flex"
+        />
+      ) : (
+        <div className={railPlaceholderClass} aria-hidden="true" />
+      )}
     </div>
   );
 }
