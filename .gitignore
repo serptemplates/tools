@@ -38,3 +38,4 @@ npm-debug.log*
 next-env.d.ts
 
 tmp/
+.env*.local

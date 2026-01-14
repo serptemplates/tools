@@ -44,6 +44,7 @@ See `docs/tool-groupings.md` for how tools are grouped by operation, UI template
 - Events: `tool_run_started`, `tool_run_succeeded`, `tool_run_failed`.
 - Required fields: `toolId`, `from`, `to`, `input_bytes`, `output_bytes`, `duration_ms`, `error_code`.
 - Ingestion: POST to `/api/telemetry` (uses `DATABASE_URL`; when unset, events are accepted but not stored).
+- Set `DATABASE_URL` in the tools app server environment (the Next.js process serving `/api/telemetry` and `/internal/tools`) to persist telemetry.
 - Status: derived from last 24h runs (live/degraded/broken).
 
 ## Runtime compatibility (video + WASM)

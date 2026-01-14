@@ -147,21 +147,22 @@ export async function recordToolRun(payload: unknown): Promise<RecordToolRunResu
   }
 
   const status = toStatus(payload);
+  const insert = db.insert(toolRuns).values({
+    id: payload.runId,
+    toolId: payload.toolId,
+    status,
+    startedAt,
+    durationMs: payload.durationMs ?? null,
+    inputBytes: payload.inputBytes ?? null,
+    outputBytes: payload.outputBytes ?? null,
+    errorCode: payload.errorCode ?? null,
+    metadata: payload.metadata ?? null,
+  });
 
-  await db
-    .insert(toolRuns)
-    .values({
-      id: payload.runId,
-      toolId: payload.toolId,
-      status,
-      startedAt,
-      durationMs: payload.durationMs ?? null,
-      inputBytes: payload.inputBytes ?? null,
-      outputBytes: payload.outputBytes ?? null,
-      errorCode: payload.errorCode ?? null,
-      metadata: payload.metadata ?? null,
-    })
-    .onConflictDoUpdate({
+  if (status === "started") {
+    await insert.onConflictDoNothing({ target: toolRuns.id });
+  } else {
+    await insert.onConflictDoUpdate({
       target: toolRuns.id,
       set: {
         status,
@@ -172,6 +173,7 @@ export async function recordToolRun(payload: unknown): Promise<RecordToolRunResu
         metadata: payload.metadata ?? null,
       },
     });
+  }
 
   await updateToolStatus(db, payload.toolId);
 
