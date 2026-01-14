@@ -72,6 +72,12 @@ See `docs/tool-groupings.md` for how tools are grouped by operation, UI template
 - If category pages exist, add a `categories-index.xml` + paginated sitemap and keep rewrites up to date.
 - Keep `/sitemap-:page.xml` as a compatibility alias for the combined list.
 
+## Ads
+- Ad slots are defined in `apps/tools/components/ToolAds.tsx` and wrapped around tool UIs (hero + inline).
+- Slots are hidden until first user interaction (upload/drop/submit) via `adsVisible`.
+- `ads.txt` is served from `apps/tools/app/ads.txt/route.ts`; for tools.serp.co, publish:
+  `google.com, pub-2343633734899216, DIRECT, f08c47fec0942fa0`
+
 ## Output semantics
 - `*-to-pdf` uses rasterized PDF output via `pdf-lib`.
 - `jpg-to-svg` is raster-in-SVG (not true vectorization); document this on tool pages.
