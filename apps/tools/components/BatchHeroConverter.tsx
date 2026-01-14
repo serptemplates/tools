@@ -199,12 +199,6 @@ export default function BatchHeroConverter({
               </p>
             </div>
 
-            {videoEmbedId && (
-              <div className="mb-12">
-                <ToolVideoPanel embedId={videoEmbedId} autoplay={videoPlaying} />
-              </div>
-            )}
-
             <div
               ref={dropRef}
               className={`relative bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-12 transition-all duration-300 ${dropEffect}`}
@@ -375,6 +369,12 @@ export default function BatchHeroConverter({
               <p>✓ No files are uploaded to any server</p>
               <p>✓ Batch compress multiple PNG files at once</p>
             </div>
+
+            {videoEmbedId && (
+              <div className="mt-10">
+                <ToolVideoPanel embedId={videoEmbedId} autoplay={videoPlaying} />
+              </div>
+            )}
           </div>
         </ToolAdRail>
         <ToolAdInline visible={adsVisible} slotId={`${adSlotPrefix}-inline`} className="mt-8" />

@@ -221,12 +221,6 @@ export default function CsvCombiner({ toolId, videoEmbedId }: Props) {
               </p>
             </div>
 
-            {videoEmbedId && (
-              <div className="mb-10">
-                <ToolVideoPanel embedId={videoEmbedId} autoplay={videoPlaying} />
-              </div>
-            )}
-
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <Card className="p-6">
                 <div className="flex items-center justify-between mb-4">
@@ -317,6 +311,12 @@ export default function CsvCombiner({ toolId, videoEmbedId }: Props) {
                 </div>
               </Card>
             </div>
+
+            {videoEmbedId && (
+              <div className="mt-10">
+                <ToolVideoPanel embedId={videoEmbedId} autoplay={videoPlaying} />
+              </div>
+            )}
           </div>
         </ToolAdRail>
         <ToolAdInline visible={adsVisible} slotId={`${adSlotPrefix}-inline`} className="mt-6" />

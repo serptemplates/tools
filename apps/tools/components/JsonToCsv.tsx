@@ -130,12 +130,6 @@ export default function JsonToCsv({ toolId, videoEmbedId }: Props) {
               </p>
             </div>
 
-            {videoEmbedId && (
-              <div className="mb-10">
-                <ToolVideoPanel embedId={videoEmbedId} autoplay={videoPlaying} />
-              </div>
-            )}
-
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* JSON Input */}
               <div>
@@ -222,6 +216,12 @@ export default function JsonToCsv({ toolId, videoEmbedId }: Props) {
                 Convert JSON to CSV
               </Button>
             </div>
+
+            {videoEmbedId && (
+              <div className="mt-10">
+                <ToolVideoPanel embedId={videoEmbedId} autoplay={videoPlaying} />
+              </div>
+            )}
 
             {/* Features */}
             <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
