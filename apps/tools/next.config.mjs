@@ -11,6 +11,8 @@ const toolsPath = path.resolve(tracingRoot, "packages/app-core/src/data/tools.js
 const appDir = path.resolve(appRoot, "app");
 let ffmpegRoutes = [];
 const transcribeRoutes = new Set();
+const singleThreadEnv = process.env.NEXT_PUBLIC_FFMPEG_SINGLE_THREAD ?? "true";
+const useSingleThread = singleThreadEnv === "true";
 
 function normalizeRoute(route) {
   if (!route) return null;
@@ -64,8 +66,14 @@ try {
       })
       .filter(Boolean)
   );
+  const includeFfmpegRoutes = !useSingleThread;
   ffmpegRoutes = toolsJson
-    .filter((tool) => tool?.isActive && tool?.route && (tool?.requiresFFmpeg || transcribeRouteSet.has(normalizeRoute(tool.route))))
+    .filter((tool) => {
+      if (!tool?.isActive || !tool?.route) return false;
+      const normalizedRoute = normalizeRoute(tool.route);
+      if (!normalizedRoute) return false;
+      return transcribeRouteSet.has(normalizedRoute) || (includeFfmpegRoutes && tool?.requiresFFmpeg);
+    })
     .map((tool) => normalizeRoute(tool.route))
     .filter((route) => {
       if (!route || seenRoutes.has(route)) return false;
@@ -119,7 +127,7 @@ const nextConfig = {
   env: {
     BUILD_MODE: "server",
     SUPPORTS_VIDEO_CONVERSION: "true",
-    NEXT_PUBLIC_FFMPEG_SINGLE_THREAD: "true",
+    NEXT_PUBLIC_FFMPEG_SINGLE_THREAD: singleThreadEnv,
     NEXT_PUBLIC_VIDEO_CONVERSION_PREFER_SERVER: "true",
   },
   outputFileTracingRoot: tracingRoot,

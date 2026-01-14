@@ -1,129 +1,367 @@
 {
   "baseUrl": "http://localhost:3000",
-  "ranAt": "2026-01-07T14:10:49.570Z",
+  "ranAt": "2026-01-14T12:09:14.284Z",
   "summary": {
-    "pass": 7,
+    "pass": 21,
     "warn": 0,
     "fail": 0,
     "missingFixtures": 0
   },
   "results": [
     {
-      "id": "cdda-to-flac",
-      "route": "/cdda-to-flac",
+      "id": "wma-to-ogg",
+      "route": "/wma-to-ogg",
       "status": "pass",
-      "loadMs": 2479,
-      "detail": "output 395739",
+      "loadMs": 345,
+      "detail": "output 6252",
       "metrics": {
-        "outputBytes": 395739,
-        "outputType": "audio/flac"
+        "outputBytes": 6252,
+        "outputType": "audio/ogg"
       },
       "fixture": {
-        "format": "cdda",
+        "format": "wma",
         "status": "ready",
-        "fixture": "fixtures/sample.cdda"
+        "fixture": "fixtures/sample.wma"
       },
       "errors": []
     },
     {
-      "id": "cdda-to-mp3",
-      "route": "/cdda-to-mp3",
+      "id": "wma-to-opus",
+      "route": "/wma-to-opus",
       "status": "pass",
-      "loadMs": 335,
-      "detail": "output 78380",
+      "loadMs": 346,
+      "detail": "output 16949",
       "metrics": {
-        "outputBytes": 78380,
-        "outputType": "audio/mpeg"
+        "outputBytes": 16949,
+        "outputType": "audio/opus"
       },
       "fixture": {
-        "format": "cdda",
+        "format": "wma",
         "status": "ready",
-        "fixture": "fixtures/sample.cdda"
+        "fixture": "fixtures/sample.wma"
       },
       "errors": []
     },
     {
-      "id": "cdda-to-wav",
-      "route": "/cdda-to-wav",
+      "id": "wmv-to-3gp",
+      "route": "/wmv-to-3gp",
       "status": "pass",
-      "loadMs": 184,
-      "detail": "output 617422",
+      "loadMs": 332,
+      "detail": "output 10559",
       "metrics": {
-        "outputBytes": 617422,
-        "outputType": "audio/wav"
+        "outputBytes": 10559,
+        "outputType": "video/3gpp"
       },
       "fixture": {
-        "format": "cdda",
+        "format": "wmv",
         "status": "ready",
-        "fixture": "fixtures/sample.cdda"
+        "fixture": "fixtures/sample.wmv"
       },
       "errors": []
     },
     {
-      "id": "mp4-to-cdda",
-      "route": "/mp4-to-cdda",
+      "id": "wmv-to-asf",
+      "route": "/wmv-to-asf",
       "status": "pass",
-      "loadMs": 191,
-      "detail": "output 180224",
+      "loadMs": 353,
+      "detail": "output 20257",
       "metrics": {
-        "outputBytes": 180224,
-        "outputType": "audio/x-cdda"
+        "outputBytes": 20257,
+        "outputType": "video/x-ms-asf"
       },
       "fixture": {
-        "format": "mp4",
+        "format": "wmv",
         "status": "ready",
-        "fixture": "fixtures/sample.mp4"
+        "fixture": "fixtures/sample.wmv"
       },
       "errors": []
     },
     {
-      "id": "mpeg2-to-mp3",
-      "route": "/mpeg2-to-mp3",
+      "id": "wmv-to-av1",
+      "route": "/wmv-to-av1",
       "status": "pass",
-      "loadMs": 184,
-      "detail": "output 25747",
+      "loadMs": 358,
+      "detail": "output 14709",
       "metrics": {
-        "outputBytes": 25747,
-        "outputType": "audio/mpeg"
+        "outputBytes": 14709,
+        "outputType": "video/mp4"
       },
       "fixture": {
-        "format": "mpeg2",
+        "format": "wmv",
         "status": "ready",
-        "fixture": "fixtures/sample.mpeg2"
+        "fixture": "fixtures/sample.wmv"
       },
       "errors": []
     },
     {
-      "id": "mpeg2-to-wav",
-      "route": "/mpeg2-to-wav",
+      "id": "wmv-to-avchd",
+      "route": "/wmv-to-avchd",
       "status": "pass",
-      "loadMs": 182,
-      "detail": "output 89934",
+      "loadMs": 340,
+      "detail": "output 24576",
       "metrics": {
-        "outputBytes": 89934,
-        "outputType": "audio/wav"
+        "outputBytes": 24576,
+        "outputType": "video/mp2t"
       },
       "fixture": {
-        "format": "mpeg2",
+        "format": "wmv",
         "status": "ready",
-        "fixture": "fixtures/sample.mpeg2"
+        "fixture": "fixtures/sample.wmv"
       },
       "errors": []
     },
     {
-      "id": "wav-to-cdda",
-      "route": "/wav-to-cdda",
+      "id": "wmv-to-divx",
+      "route": "/wmv-to-divx",
       "status": "pass",
-      "loadMs": 184,
-      "detail": "output 176400",
+      "loadMs": 332,
+      "detail": "output 37738",
       "metrics": {
-        "outputBytes": 176400,
-        "outputType": "audio/x-cdda"
+        "outputBytes": 37738,
+        "outputType": "video/avi"
       },
       "fixture": {
-        "format": "wav",
+        "format": "wmv",
         "status": "ready",
-        "fixture": "fixtures/sample.wav"
+        "fixture": "fixtures/sample.wmv"
+      },
+      "errors": []
+    },
+    {
+      "id": "wmv-to-f4v",
+      "route": "/wmv-to-f4v",
+      "status": "pass",
+      "loadMs": 329,
+      "detail": "output 15729",
+      "metrics": {
+        "outputBytes": 15729,
+        "outputType": "video/x-f4v"
+      },
+      "fixture": {
+        "format": "wmv",
+        "status": "ready",
+        "fixture": "fixtures/sample.wmv"
+      },
+      "errors": []
+    },
+    {
+      "id": "wmv-to-flv",
+      "route": "/wmv-to-flv",
+      "status": "pass",
+      "loadMs": 307,
+      "detail": "output 15422",
+      "metrics": {
+        "outputBytes": 15422,
+        "outputType": "video/x-flv"
+      },
+      "fixture": {
+        "format": "wmv",
+        "status": "ready",
+        "fixture": "fixtures/sample.wmv"
+      },
+      "errors": []
+    },
+    {
+      "id": "wmv-to-hevc",
+      "route": "/wmv-to-hevc",
+      "status": "pass",
+      "loadMs": 308,
+      "detail": "output 17423",
+      "metrics": {
+        "outputBytes": 17423,
+        "outputType": "video/mp4"
+      },
+      "fixture": {
+        "format": "wmv",
+        "status": "ready",
+        "fixture": "fixtures/sample.wmv"
+      },
+      "errors": []
+    },
+    {
+      "id": "wmv-to-m2ts",
+      "route": "/wmv-to-m2ts",
+      "status": "pass",
+      "loadMs": 328,
+      "detail": "output 24576",
+      "metrics": {
+        "outputBytes": 24576,
+        "outputType": "video/mp2t"
+      },
+      "fixture": {
+        "format": "wmv",
+        "status": "ready",
+        "fixture": "fixtures/sample.wmv"
+      },
+      "errors": []
+    },
+    {
+      "id": "wmv-to-m4v",
+      "route": "/wmv-to-m4v",
+      "status": "pass",
+      "loadMs": 309,
+      "detail": "output 16216",
+      "metrics": {
+        "outputBytes": 16216,
+        "outputType": "video/x-m4v"
+      },
+      "fixture": {
+        "format": "wmv",
+        "status": "ready",
+        "fixture": "fixtures/sample.wmv"
+      },
+      "errors": []
+    },
+    {
+      "id": "wmv-to-mjpeg",
+      "route": "/wmv-to-mjpeg",
+      "status": "pass",
+      "loadMs": 309,
+      "detail": "output 109534",
+      "metrics": {
+        "outputBytes": 109534,
+        "outputType": "video/x-motion-jpeg"
+      },
+      "fixture": {
+        "format": "wmv",
+        "status": "ready",
+        "fixture": "fixtures/sample.wmv"
+      },
+      "errors": []
+    },
+    {
+      "id": "wmv-to-mpeg2",
+      "route": "/wmv-to-mpeg2",
+      "status": "pass",
+      "loadMs": 310,
+      "detail": "output 18432",
+      "metrics": {
+        "outputBytes": 18432,
+        "outputType": "video/mpeg"
+      },
+      "fixture": {
+        "format": "wmv",
+        "status": "ready",
+        "fixture": "fixtures/sample.wmv"
+      },
+      "errors": []
+    },
+    {
+      "id": "wmv-to-mts",
+      "route": "/wmv-to-mts",
+      "status": "pass",
+      "loadMs": 330,
+      "detail": "output 20116",
+      "metrics": {
+        "outputBytes": 20116,
+        "outputType": "video/mp2t"
+      },
+      "fixture": {
+        "format": "wmv",
+        "status": "ready",
+        "fixture": "fixtures/sample.wmv"
+      },
+      "errors": []
+    },
+    {
+      "id": "wmv-to-mxf",
+      "route": "/wmv-to-mxf",
+      "status": "pass",
+      "loadMs": 331,
+      "detail": "output 243257",
+      "metrics": {
+        "outputBytes": 243257,
+        "outputType": "application/mxf"
+      },
+      "fixture": {
+        "format": "wmv",
+        "status": "ready",
+        "fixture": "fixtures/sample.wmv"
+      },
+      "errors": []
+    },
+    {
+      "id": "wmv-to-rm",
+      "route": "/wmv-to-rm",
+      "status": "pass",
+      "loadMs": 332,
+      "detail": "output 11868",
+      "metrics": {
+        "outputBytes": 11868,
+        "outputType": "application/vnd.rn-realmedia"
+      },
+      "fixture": {
+        "format": "wmv",
+        "status": "ready",
+        "fixture": "fixtures/sample.wmv"
+      },
+      "errors": []
+    },
+    {
+      "id": "wmv-to-rmvb",
+      "route": "/wmv-to-rmvb",
+      "status": "pass",
+      "loadMs": 338,
+      "detail": "output 11868",
+      "metrics": {
+        "outputBytes": 11868,
+        "outputType": "application/vnd.rn-realmedia-vbr"
+      },
+      "fixture": {
+        "format": "wmv",
+        "status": "ready",
+        "fixture": "fixtures/sample.wmv"
+      },
+      "errors": []
+    },
+    {
+      "id": "wmv-to-ts",
+      "route": "/wmv-to-ts",
+      "status": "pass",
+      "loadMs": 353,
+      "detail": "output 20116",
+      "metrics": {
+        "outputBytes": 20116,
+        "outputType": "video/mp2t"
+      },
+      "fixture": {
+        "format": "wmv",
+        "status": "ready",
+        "fixture": "fixtures/sample.wmv"
+      },
+      "errors": []
+    },
+    {
+      "id": "wmv-to-vob",
+      "route": "/wmv-to-vob",
+      "status": "pass",
+      "loadMs": 332,
+      "detail": "output 20480",
+      "metrics": {
+        "outputBytes": 20480,
+        "outputType": "video/dvd"
+      },
+      "fixture": {
+        "format": "wmv",
+        "status": "ready",
+        "fixture": "fixtures/sample.wmv"
+      },
+      "errors": []
+    },
+    {
+      "id": "wmv-to-webm",
+      "route": "/wmv-to-webm",
+      "status": "pass",
+      "loadMs": 331,
+      "detail": "output 7201",
+      "metrics": {
+        "outputBytes": 7201,
+        "outputType": "video/webm"
+      },
+      "fixture": {
+        "format": "wmv",
+        "status": "ready",
+        "fixture": "fixtures/sample.wmv"
       },
       "errors": []
     }

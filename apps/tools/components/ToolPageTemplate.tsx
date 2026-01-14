@@ -102,7 +102,7 @@ export default function ToolPageTemplate({
             />
           )}
           {howTo && <HowToSection title={howTo.title} intro={howTo.intro} steps={howTo.steps} />}
-          {/* NO VIDEO for FFmpeg tools - they can't support YouTube embeds anyway */}
+          {/* No YouTube embed when COEP is required */}
         </>
       )}
 
