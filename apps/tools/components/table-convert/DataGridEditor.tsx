@@ -195,7 +195,7 @@ export default function DataGridEditor({ tableData, onChange }: DataGridEditorPr
     const values = tableData.rows.map((row) =>
       tableData.headers.map((_, index) => row[index] ?? "")
     );
-    if (values.length && values[0].length) {
+    if (values.length > 0 && values[0]?.length) {
       grid.setCellValues({ x: 0, y: 0 }, values, true);
     }
     syncingRef.current = false;

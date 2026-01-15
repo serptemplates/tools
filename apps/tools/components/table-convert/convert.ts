@@ -61,10 +61,11 @@ function parseCsv(text: string) {
     return { table: null, error: parsed.errors[0]?.message ?? "CSV parse error" };
   }
   const data = parsed.data as string[][];
-  if (!data.length) {
+  const headerRow = data[0];
+  if (!headerRow) {
     return { table: null, error: "CSV is empty." };
   }
-  const [headerRow, ...rows] = data;
+  const rows = data.slice(1);
   return { table: normalizeTable(headerRow, rows), error: null };
 }
 
@@ -115,8 +116,13 @@ function parseMarkdown(text: string) {
   if (lines.length < 2) {
     return { table: null, error: "Markdown table needs a header and separator line." };
   }
-  const headerRow = splitMarkdownRow(lines[0]);
-  const dividerIndex = isMarkdownDivider(lines[1]) ? 2 : 1;
+  const headerLine = lines[0];
+  const dividerLine = lines[1];
+  if (!headerLine || !dividerLine) {
+    return { table: null, error: "Markdown table needs a header and separator line." };
+  }
+  const headerRow = splitMarkdownRow(headerLine);
+  const dividerIndex = isMarkdownDivider(dividerLine) ? 2 : 1;
   const rows = lines.slice(dividerIndex).map(splitMarkdownRow);
   return { table: normalizeTable(headerRow, rows), error: null };
 }
@@ -133,10 +139,11 @@ function parseHtml(text: string) {
       (cell.textContent ?? "").trim()
     )
   );
-  if (!rows.length) {
+  const headerRow = rows[0];
+  if (!headerRow) {
     return { table: null, error: "HTML table is empty." };
   }
-  const [headerRow, ...bodyRows] = rows;
+  const bodyRows = rows.slice(1);
   return { table: normalizeTable(headerRow, bodyRows), error: null };
 }
 
