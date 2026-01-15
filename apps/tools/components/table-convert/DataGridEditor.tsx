@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 import { objectsToTableData, tableDataToObjects } from "./convert";
 import { SAMPLE_TABLE } from "./formats";
 import { TableData } from "./types";
@@ -18,6 +18,9 @@ type DataGridXLEvents = {
 type DataGridXLInstance = {
   destroy?: () => void;
   getData?: () => Array<Record<string, unknown>>;
+  setCellValues?: (coords: { x: number; y: number }, values: string[][], expand?: boolean) => void;
+  deleteRows?: (range: [number, number]) => void;
+  deleteCols?: (range: [number, number]) => void;
   events?: DataGridXLEvents;
 };
 
@@ -37,6 +40,20 @@ declare global {
 const SCRIPT_SRC = "https://code.datagridxl.com/datagridxl2.js";
 const SCRIPT_MARKER = "data-dgxl-script";
 
+const areArraysEqual = (left: string[], right: string[]) =>
+  left.length === right.length && left.every((value, index) => value === right[index]);
+
+const areTablesEqual = (left: TableData, right: TableData) => {
+  if (!areArraysEqual(left.headers, right.headers)) return false;
+  if (left.rows.length !== right.rows.length) return false;
+  for (let rowIndex = 0; rowIndex < left.rows.length; rowIndex += 1) {
+    const leftRow = left.rows[rowIndex] ?? [];
+    const rightRow = right.rows[rowIndex] ?? [];
+    if (!areArraysEqual(leftRow, rightRow)) return false;
+  }
+  return true;
+};
+
 export default function DataGridEditor({ tableData, onChange }: DataGridEditorProps) {
   const reactId = useId();
   const containerId = useMemo(
@@ -44,8 +61,10 @@ export default function DataGridEditor({ tableData, onChange }: DataGridEditorPr
     [reactId]
   );
   const gridRef = useRef<DataGridXLInstance | null>(null);
-  const initialDataRef = useRef<TableData>(tableData ?? SAMPLE_TABLE);
+  const latestTableDataRef = useRef<TableData>(tableData ?? SAMPLE_TABLE);
   const onChangeRef = useRef<DataGridEditorProps["onChange"]>(onChange);
+  const changeHandlerRef = useRef<((event: unknown) => void) | null>(null);
+  const syncingRef = useRef(false);
   const [status, setStatus] = useState("Loading editor...");
 
   useEffect(() => {
@@ -53,12 +72,13 @@ export default function DataGridEditor({ tableData, onChange }: DataGridEditorPr
   }, [onChange]);
 
   useEffect(() => {
-    let isMounted = true;
-    let activeGrid: DataGridXLInstance | null = null;
-    let handleGridChange: ((event: unknown) => void) | null = null;
+    if (tableData) {
+      latestTableDataRef.current = tableData;
+    }
+  }, [tableData]);
 
-    const initializeGrid = () => {
-      if (!isMounted) return;
+  const initializeGrid = useCallback(
+    (nextData: TableData) => {
       const DataGridXL = window.DataGridXL;
       if (!DataGridXL) {
         setStatus("Editor failed to load.");
@@ -69,28 +89,42 @@ export default function DataGridEditor({ tableData, onChange }: DataGridEditorPr
         setStatus("Editor container missing.");
         return;
       }
+      if (changeHandlerRef.current) {
+        gridRef.current?.events?.off?.("change", changeHandlerRef.current);
+      }
       gridRef.current?.destroy?.();
-      activeGrid = new DataGridXL(containerId, {
-        data: tableDataToObjects(initialDataRef.current),
+      syncingRef.current = true;
+      const grid = new DataGridXL(containerId, {
+        data: tableDataToObjects(nextData),
       });
-      gridRef.current = activeGrid;
-      handleGridChange = () => {
+      gridRef.current = grid;
+      const handleGridChange = () => {
+        if (syncingRef.current) return;
         const handler = onChangeRef.current;
-        if (!handler || !activeGrid?.getData) return;
-        const data = activeGrid.getData();
+        if (!handler || !grid.getData) return;
+        const data = grid.getData();
         if (!Array.isArray(data)) return;
         handler(objectsToTableData(data as Array<Record<string, unknown>>));
       };
-      activeGrid.events?.on?.("change", handleGridChange);
+      changeHandlerRef.current = handleGridChange;
+      grid.events?.on?.("change", handleGridChange);
+      syncingRef.current = false;
       setStatus("Editor ready.");
-    };
+    },
+    [containerId]
+  );
+
+  useEffect(() => {
+    let isMounted = true;
 
     if (window.DataGridXL) {
-      initializeGrid();
+      if (isMounted) {
+        initializeGrid(latestTableDataRef.current);
+      }
       return () => {
         isMounted = false;
-        if (handleGridChange) {
-          activeGrid?.events?.off?.("change", handleGridChange);
+        if (changeHandlerRef.current) {
+          gridRef.current?.events?.off?.("change", changeHandlerRef.current);
         }
         gridRef.current?.destroy?.();
         gridRef.current = null;
@@ -106,7 +140,10 @@ export default function DataGridEditor({ tableData, onChange }: DataGridEditorPr
       document.body.appendChild(script);
     }
 
-    const handleLoad = () => initializeGrid();
+    const handleLoad = () => {
+      if (!isMounted) return;
+      initializeGrid(latestTableDataRef.current);
+    };
     const handleError = () => {
       if (!isMounted) return;
       setStatus("Editor failed to load.");
@@ -119,13 +156,50 @@ export default function DataGridEditor({ tableData, onChange }: DataGridEditorPr
       isMounted = false;
       script?.removeEventListener("load", handleLoad);
       script?.removeEventListener("error", handleError);
-      if (handleGridChange) {
-        activeGrid?.events?.off?.("change", handleGridChange);
+      if (changeHandlerRef.current) {
+        gridRef.current?.events?.off?.("change", changeHandlerRef.current);
       }
       gridRef.current?.destroy?.();
       gridRef.current = null;
     };
-  }, [containerId]);
+  }, [containerId, initializeGrid]);
+
+  useEffect(() => {
+    if (!tableData) return;
+    const grid = gridRef.current;
+    if (!grid?.getData || !grid.setCellValues) return;
+    const currentData = grid.getData();
+    if (!Array.isArray(currentData)) return;
+
+    const currentTable = objectsToTableData(currentData as Array<Record<string, unknown>>);
+    if (areTablesEqual(currentTable, tableData)) return;
+
+    if (!areArraysEqual(currentTable.headers, tableData.headers)) {
+      initializeGrid(tableData);
+      return;
+    }
+
+    syncingRef.current = true;
+    const currentRows = currentTable.rows.length;
+    const currentCols = currentTable.headers.length;
+    const nextRows = tableData.rows.length;
+    const nextCols = tableData.headers.length;
+
+    if (grid.deleteCols && nextCols < currentCols) {
+      grid.deleteCols([nextCols, currentCols - 1]);
+    }
+    if (grid.deleteRows && nextRows < currentRows) {
+      grid.deleteRows([nextRows, currentRows - 1]);
+    }
+
+    const values = tableData.rows.map((row) =>
+      tableData.headers.map((_, index) => row[index] ?? "")
+    );
+    if (values.length && values[0].length) {
+      grid.setCellValues({ x: 0, y: 0 }, values, true);
+    }
+    syncingRef.current = false;
+  }, [initializeGrid, tableData]);
 
   return (
     <div className="space-y-3">
@@ -136,14 +210,6 @@ export default function DataGridEditor({ tableData, onChange }: DataGridEditorPr
       />
       <div className="flex flex-wrap items-center justify-between gap-2">
         <span className="text-xs text-muted-foreground">{status}</span>
-        <a
-          className="text-sm text-blue-600 underline"
-          href="https://datagridxl.com"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Data grid by DataGridXL
-        </a>
       </div>
     </div>
   );

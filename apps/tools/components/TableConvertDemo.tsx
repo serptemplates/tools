@@ -255,10 +255,7 @@ export default function TableConvertDemo({
               </CardAction>
             </CardHeader>
             <CardContent className="space-y-4">
-              <DataGridEditor
-                tableData={tableData ?? SAMPLE_TABLE}
-                onChange={handleEditorChange}
-              />
+              <DataGridEditor tableData={tableData} onChange={handleEditorChange} />
             </CardContent>
           </Card>
 
