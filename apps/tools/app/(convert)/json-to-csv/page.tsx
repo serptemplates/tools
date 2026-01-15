@@ -4,6 +4,7 @@ import { BlogSection } from "@/components/sections/BlogSection";
 import { ChangelogSection } from "@/components/sections/ChangelogSection";
 import { HowToSection } from "@/components/sections/HowToSection";
 import { InfoArticleSection } from "@/components/sections/InfoArticleSection";
+import { TableConvertLinksSection } from "@/components/sections/TableConvertLinksSection";
 import { ToolsLinkHub } from "@/components/sections/ToolsLinkHub";
 import { buildToolMetadata } from "@/lib/metadata";
 import { toolContent } from '@/lib/tool-content';
@@ -32,6 +33,8 @@ export default function Page() {
       {content.howTo && (
         <HowToSection title={content.howTo.title} intro={content.howTo.intro} steps={content.howTo.steps} />
       )}
+
+      <TableConvertLinksSection currentSlug="json-to-csv" />
 
       {content.infoArticle && (
         <InfoArticleSection

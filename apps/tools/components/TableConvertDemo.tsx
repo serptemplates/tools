@@ -27,17 +27,29 @@ import {
 import { parseInput, serializeOutput } from "@/components/table-convert/convert";
 import { InputFormat, OutputFormat, TableData, ViewMode } from "@/components/table-convert/types";
 
-export default function TableConvertDemo() {
+type TableConvertDemoProps = {
+  initialInputFormat?: InputFormat;
+  initialOutputFormat?: OutputFormat;
+  title?: string;
+  subtitle?: string;
+};
+
+export default function TableConvertDemo({
+  initialInputFormat = "csv",
+  initialOutputFormat = "json",
+  title = "Dual Viewer Converter Demo",
+  subtitle = "Paste or upload on the left, convert to a target format, and preview on the right.",
+}: TableConvertDemoProps) {
   const fileRef = useRef<HTMLInputElement | null>(null);
-  const [inputFormat, setInputFormat] = useState<InputFormat>("csv");
-  const [outputFormat, setOutputFormat] = useState<OutputFormat>("json");
+  const [inputFormat, setInputFormat] = useState<InputFormat>(initialInputFormat);
+  const [outputFormat, setOutputFormat] = useState<OutputFormat>(initialOutputFormat);
   const [inputView, setInputView] = useState<ViewMode>("raw");
   const [outputView, setOutputView] = useState<ViewMode>("raw");
   const [inputText, setInputText] = useState(
-    () => serializeOutput("csv", SAMPLE_TABLE).text
+    () => serializeOutput(initialInputFormat, SAMPLE_TABLE).text
   );
   const [outputText, setOutputText] = useState(
-    () => serializeOutput("json", SAMPLE_TABLE).text
+    () => serializeOutput(initialOutputFormat, SAMPLE_TABLE).text
   );
   const [outputNotice, setOutputNotice] = useState<string | null>(null);
   const [tableData, setTableData] = useState<TableData | null>(SAMPLE_TABLE);
@@ -160,10 +172,8 @@ export default function TableConvertDemo() {
     <section className="w-full bg-gradient-to-b from-gray-50 to-white py-16">
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold tracking-tight mb-4">Dual Viewer Converter Demo</h1>
-          <p className="text-lg text-gray-600">
-            Paste or upload on the left, convert to a target format, and preview on the right.
-          </p>
+          <h1 className="text-4xl font-bold tracking-tight mb-4">{title}</h1>
+          <p className="text-lg text-gray-600">{subtitle}</p>
         </div>
 
         <div className="grid grid-cols-1 gap-6 items-start">
