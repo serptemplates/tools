@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@serp-tools/ui/components/button";
 import { Card } from "@serp-tools/ui/components/card";
 import { saveBlob } from "@/components/saveAs";
-import { VideoProgress } from "@/components/VideoProgress";
-import { ToolAdInline, ToolAdRail } from "@/components/ToolAds";
+import { ToolHeroLayout } from "@/components/ToolHeroLayout";
+import type { ToolProgressFile } from "@/components/ToolProgressIndicator";
 import { beginToolRun } from "@/lib/telemetry";
 import { extractAudioForTranscription } from "@/lib/convert/video";
 import { AUDIO_FORMATS, VIDEO_FORMATS } from "@/lib/capabilities";
@@ -129,12 +129,7 @@ export default function TranscribeTool({ toolId, title, subtitle }: Props) {
   const [busy, setBusy] = useState(false);
   const [hint, setHint] = useState("or drop files here");
   const [dropEffect, setDropEffect] = useState<string>("");
-  const [currentFile, setCurrentFile] = useState<{
-    name: string;
-    progress: number;
-    status: "loading" | "processing" | "completed" | "error";
-    message?: string;
-  } | null>(null);
+  const [currentFile, setCurrentFile] = useState<ToolProgressFile | null>(null);
   const [transcript, setTranscript] = useState("");
   const [transcriptName, setTranscriptName] = useState("transcript.txt");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -571,169 +566,160 @@ export default function TranscribeTool({ toolId, title, subtitle }: Props) {
   const adSlotPrefix = toolId;
 
   return (
-    <section className="w-full bg-white">
-      <div className="mx-auto max-w-7xl px-6 py-8">
-        <ToolAdRail visible={adsVisible} slotPrefix={adSlotPrefix} className="items-start">
-          <div className="text-center">
-            {currentFile && (
-              <div className="mb-6 max-w-2xl mx-auto">
-                <VideoProgress
-                  fileName={currentFile.name}
-                  progress={currentFile.progress}
-                  status={currentFile.status}
-                  message={currentFile.message}
-                />
-              </div>
-            )}
+    <ToolHeroLayout
+      adsVisible={adsVisible}
+      adSlotPrefix={adSlotPrefix}
+      currentFile={currentFile}
+      contentClassName="text-center"
+      hero={
+        <div
+          ref={dropRef}
+          onDragEnter={onDrag}
+          onDragOver={onDrag}
+          onDragLeave={onDrag}
+          onDrop={onDrop}
+          data-testid="tool-dropzone"
+          className={`mt-8 mx-auto max-w-6xl border-2 border-dashed rounded-2xl p-12 hover:border-opacity-80 transition-colors cursor-pointer ${
+            dropEffect ? `animate-${dropEffect}` : ""
+          }`}
+          style={{
+            backgroundColor: randomColor + "15",
+            borderColor: randomColor,
+          }}
+          onClick={onPick}
+        >
+          <div className="flex flex-col items-center space-y-6">
+            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">{title}</h1>
+            <p className="text-sm text-muted-foreground">{subtitle}</p>
 
-            <div
-              ref={dropRef}
-              onDragEnter={onDrag}
-              onDragOver={onDrag}
-              onDragLeave={onDrag}
-              onDrop={onDrop}
-              data-testid="tool-dropzone"
-              className={`mt-8 mx-auto max-w-6xl border-2 border-dashed rounded-2xl p-12 hover:border-opacity-80 transition-colors cursor-pointer ${
-                dropEffect ? `animate-${dropEffect}` : ""
-              }`}
+            <svg
+              className="w-12 h-12"
+              fill="none"
+              stroke="currentColor"
+              style={{ color: randomColor }}
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+              />
+            </svg>
+
+            <Button
+              size="lg"
+              className="h-12 px-8 rounded-xl text-white shadow-lg"
               style={{
-                backgroundColor: randomColor + "15",
+                backgroundColor: randomColor,
                 borderColor: randomColor,
               }}
-              onClick={onPick}
+              onClick={(e) => {
+                e.stopPropagation();
+                onPick();
+              }}
+              disabled={busy}
             >
-              <div className="flex flex-col items-center space-y-6">
-                <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">{title}</h1>
-                <p className="text-sm text-muted-foreground">{subtitle}</p>
+              {busy ? "Working..." : "CHOOSE FILES"}
+            </Button>
 
-                <svg
-                  className="w-12 h-12"
-                  fill="none"
-                  stroke="currentColor"
-                  style={{ color: randomColor }}
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                  />
-                </svg>
+            <div className="text-sm" style={{ color: randomColor }}>
+              <p className="font-medium">{hint}</p>
+            </div>
 
+            <div
+              className="mt-4 w-full max-w-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex flex-col sm:flex-row gap-2">
+                <input
+                  type="url"
+                  inputMode="url"
+                  placeholder="Paste a public link (YouTube, SoundCloud, or direct file)"
+                  value={urlInput}
+                  onChange={(e) => setUrlInput(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      handleUrlSubmit();
+                    }
+                  }}
+                  className="w-full h-12 px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  disabled={busy}
+                  data-testid="tool-url-input"
+                />
                 <Button
                   size="lg"
-                  className="h-12 px-8 rounded-xl text-white shadow-lg"
+                  className="h-12 px-6 rounded-xl text-white shadow-lg"
                   style={{
                     backgroundColor: randomColor,
                     borderColor: randomColor,
                   }}
                   onClick={(e) => {
                     e.stopPropagation();
-                    onPick();
+                    handleUrlSubmit();
                   }}
-                  disabled={busy}
+                  disabled={busy || !urlInput.trim()}
+                  data-testid="tool-url-submit"
                 >
-                  {busy ? "Working..." : "CHOOSE FILES"}
+                  {busy ? "Working..." : "TRANSCRIBE URL"}
                 </Button>
+              </div>
+              <p className="mt-2 text-xs text-muted-foreground">
+                Supports public links. Private or logged-in content is not supported yet.
+              </p>
+            </div>
+          </div>
 
-                <div className="text-sm" style={{ color: randomColor }}>
-                  <p className="font-medium">{hint}</p>
-                </div>
+          <input
+            ref={inputRef}
+            type="file"
+            multiple
+            accept={ACCEPT_ATTR}
+            className="hidden"
+            data-testid="tool-file-input"
+            onChange={(e) => handleFiles(e.target.files)}
+          />
+        </div>
+      }
+      below={
+        <>
+          {errorMessage && (
+            <div className="mt-4 text-sm text-red-600">{errorMessage}</div>
+          )}
 
-                <div
-                  className="mt-4 w-full max-w-2xl"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <div className="flex flex-col sm:flex-row gap-2">
-                    <input
-                      type="url"
-                      inputMode="url"
-                      placeholder="Paste a public link (YouTube, SoundCloud, or direct file)"
-                      value={urlInput}
-                      onChange={(e) => setUrlInput(e.target.value)}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                          e.preventDefault();
-                          handleUrlSubmit();
-                        }
-                      }}
-                      className="w-full h-12 px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      disabled={busy}
-                      data-testid="tool-url-input"
-                    />
+          {transcript && (
+            <div className="mt-8 max-w-4xl mx-auto text-left">
+              <Card className="p-6">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <h3 className="text-lg font-semibold text-gray-900">Transcript</h3>
+                  <div className="flex gap-2">
                     <Button
-                      size="lg"
-                      className="h-12 px-6 rounded-xl text-white shadow-lg"
-                      style={{
-                        backgroundColor: randomColor,
-                        borderColor: randomColor,
-                      }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleUrlSubmit();
-                      }}
-                      disabled={busy || !urlInput.trim()}
-                      data-testid="tool-url-submit"
+                      variant="secondary"
+                      onClick={() => navigator.clipboard?.writeText(transcript).catch(() => {})}
                     >
-                      {busy ? "Working..." : "TRANSCRIBE URL"}
+                      Copy
+                    </Button>
+                    <Button
+                      onClick={() =>
+                        saveBlob(new Blob([transcript], { type: "text/plain" }), transcriptName)
+                      }
+                    >
+                      Download
                     </Button>
                   </div>
-                  <p className="mt-2 text-xs text-muted-foreground">
-                    Supports public links. Private or logged-in content is not supported yet.
-                  </p>
                 </div>
-              </div>
-
-              <input
-                ref={inputRef}
-                type="file"
-                multiple
-                accept={ACCEPT_ATTR}
-                className="hidden"
-                data-testid="tool-file-input"
-                onChange={(e) => handleFiles(e.target.files)}
-              />
+                <textarea
+                  value={transcript}
+                  readOnly
+                  className="mt-4 w-full h-64 p-4 border rounded-lg resize-none bg-gray-50 font-mono text-sm"
+                  placeholder="Transcript will appear here..."
+                />
+              </Card>
             </div>
-
-            {errorMessage && (
-              <div className="mt-4 text-sm text-red-600">{errorMessage}</div>
-            )}
-
-            {transcript && (
-              <div className="mt-8 max-w-4xl mx-auto text-left">
-                <Card className="p-6">
-                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                    <h3 className="text-lg font-semibold text-gray-900">Transcript</h3>
-                    <div className="flex gap-2">
-                      <Button
-                        variant="secondary"
-                        onClick={() => navigator.clipboard?.writeText(transcript).catch(() => {})}
-                      >
-                        Copy
-                      </Button>
-                      <Button
-                        onClick={() =>
-                          saveBlob(new Blob([transcript], { type: "text/plain" }), transcriptName)
-                        }
-                      >
-                        Download
-                      </Button>
-                    </div>
-                  </div>
-                  <textarea
-                    value={transcript}
-                    readOnly
-                    className="mt-4 w-full h-64 p-4 border rounded-lg resize-none bg-gray-50 font-mono text-sm"
-                    placeholder="Transcript will appear here..."
-                  />
-                </Card>
-              </div>
-            )}
-          </div>
-        </ToolAdRail>
-        <ToolAdInline visible={adsVisible} slotId={`${adSlotPrefix}-inline`} className="mt-6" />
-      </div>
-    </section>
+          )}
+        </>
+      }
+    />
   );
 }

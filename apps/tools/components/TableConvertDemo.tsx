@@ -12,6 +12,7 @@ import {
 } from "@serp-tools/ui/components/card";
 import { Badge } from "@serp-tools/ui/components/badge";
 import { saveBlob } from "@/components/saveAs";
+import { ToolHeroLayout } from "@/components/ToolHeroLayout";
 import DataGridEditor from "@/components/table-convert/DataGridEditor";
 import FormatTabs from "@/components/table-convert/FormatTabs";
 import TablePreview from "@/components/table-convert/TablePreview";
@@ -169,145 +170,153 @@ export default function TableConvertDemo({
   }
 
   return (
-    <section className="w-full bg-gradient-to-b from-gray-50 to-white py-16">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold tracking-tight mb-4">{title}</h1>
-          <p className="text-lg text-gray-600">{subtitle}</p>
-        </div>
+    <ToolHeroLayout
+      adsVisible={false}
+      adSlotPrefix="table-convert"
+      showAdRail={false}
+      showInlineAd={false}
+      sectionClassName="bg-gradient-to-b from-gray-50 to-white"
+      containerClassName="max-w-7xl px-6 py-16"
+      hero={
+        <div>
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold tracking-tight mb-4">{title}</h1>
+            <p className="text-lg text-gray-600">{subtitle}</p>
+          </div>
 
-        <div className="grid grid-cols-1 gap-6 items-start">
-          <Card
-            className={`min-h-[540px] ${dragActive ? "border-blue-500 ring-2 ring-blue-200" : ""}`}
-            onDragOver={(event) => {
-              event.preventDefault();
-              setDragActive(true);
-            }}
-            onDragLeave={() => setDragActive(false)}
-            onDrop={handleDrop}
-          >
-            <CardHeader className="border-b">
-              <CardTitle>Source</CardTitle>
-              <CardDescription>Paste or upload, then switch the input format tab.</CardDescription>
-              <CardAction>
-                <Badge variant="secondary">Input</Badge>
-              </CardAction>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <FormatTabs
-                label="Input format"
-                badgeLabel={inputLabel}
-                options={INPUT_FORMATS}
-                value={inputFormat}
-                onChange={(value) => handleInputFormatChange(value as InputFormat)}
-              />
-
-              <div className="flex flex-wrap items-center gap-2">
-                <Button size="sm" variant="outline" onClick={handleUploadClick}>
-                  Upload file
-                </Button>
-                <Button size="sm" variant="ghost" onClick={handleClear}>
-                  Clear view
-                </Button>
-                <input ref={fileRef} type="file" onChange={handleFileChange} className="hidden" />
-                {fileName && (
-                  <span className="text-xs text-muted-foreground">Selected: {fileName}</span>
-                )}
-              </div>
-              <p className="text-xs text-muted-foreground">
-                Drag and drop a file anywhere in this panel to load it.
-              </p>
-
-              <ViewToggle value={inputView} onChange={setInputView} />
-
-              {inputView === "raw" ? (
-                <textarea
-                  value={inputText}
-                  onChange={(event) => setInputText(event.target.value)}
-                  placeholder={getPlaceholder(inputFormat)}
-                  className={`min-h-[280px] w-full resize-none rounded-lg border bg-background px-4 py-3 font-mono text-sm shadow-sm focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 ${
-                    error ? "border-red-400" : ""
-                  }`}
-                  spellCheck={false}
+          <div className="grid grid-cols-1 gap-6 items-start">
+            <Card
+              className={`min-h-[540px] ${dragActive ? "border-blue-500 ring-2 ring-blue-200" : ""}`}
+              onDragOver={(event) => {
+                event.preventDefault();
+                setDragActive(true);
+              }}
+              onDragLeave={() => setDragActive(false)}
+              onDrop={handleDrop}
+            >
+              <CardHeader className="border-b">
+                <CardTitle>Source</CardTitle>
+                <CardDescription>Paste or upload, then switch the input format tab.</CardDescription>
+                <CardAction>
+                  <Badge variant="secondary">Input</Badge>
+                </CardAction>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <FormatTabs
+                  label="Input format"
+                  badgeLabel={inputLabel}
+                  options={INPUT_FORMATS}
+                  value={inputFormat}
+                  onChange={(value) => handleInputFormatChange(value as InputFormat)}
                 />
-              ) : (
-                <TablePreview
-                  table={tableData}
-                  emptyMessage={inputPreviewMessage}
-                  format={inputFormat}
-                  text={inputText}
-                />
-              )}
-              {error && (
-                <div className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
-                  {error}
+
+                <div className="flex flex-wrap items-center gap-2">
+                  <Button size="sm" variant="outline" onClick={handleUploadClick}>
+                    Upload file
+                  </Button>
+                  <Button size="sm" variant="ghost" onClick={handleClear}>
+                    Clear view
+                  </Button>
+                  <input ref={fileRef} type="file" onChange={handleFileChange} className="hidden" />
+                  {fileName && (
+                    <span className="text-xs text-muted-foreground">Selected: {fileName}</span>
+                  )}
                 </div>
-              )}
-            </CardContent>
-          </Card>
+                <p className="text-xs text-muted-foreground">
+                  Drag and drop a file anywhere in this panel to load it.
+                </p>
 
-          <Card className="min-h-[540px]">
-            <CardHeader className="border-b">
-              <CardTitle>Online table editor</CardTitle>
-              <CardDescription>Work directly in a spreadsheet-style grid.</CardDescription>
-              <CardAction>
-                <Badge variant="secondary">Editor</Badge>
-              </CardAction>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <DataGridEditor tableData={tableData} onChange={handleEditorChange} />
-            </CardContent>
-          </Card>
+                <ViewToggle value={inputView} onChange={setInputView} />
 
-          <Card className="min-h-[540px]">
-            <CardHeader className="border-b">
-              <CardTitle>Output</CardTitle>
-              <CardDescription>Auto-converts as you type or drop a file.</CardDescription>
-              <CardAction>
-                <Badge variant="secondary">Output</Badge>
-              </CardAction>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <FormatTabs
-                label="Output format"
-                badgeLabel={outputLabel}
-                options={OUTPUT_FORMATS}
-                value={outputFormat}
-                onChange={(value) => setOutputFormat(value as OutputFormat)}
-              />
+                {inputView === "raw" ? (
+                  <textarea
+                    value={inputText}
+                    onChange={(event) => setInputText(event.target.value)}
+                    placeholder={getPlaceholder(inputFormat)}
+                    className={`min-h-[280px] w-full resize-none rounded-lg border bg-background px-4 py-3 font-mono text-sm shadow-sm focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 ${
+                      error ? "border-red-400" : ""
+                    }`}
+                    spellCheck={false}
+                  />
+                ) : (
+                  <TablePreview
+                    table={tableData}
+                    emptyMessage={inputPreviewMessage}
+                    format={inputFormat}
+                    text={inputText}
+                  />
+                )}
+                {error && (
+                  <div className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
+                    {error}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
 
-              <div className="flex flex-wrap items-center gap-2">
-                <Button size="sm" variant="outline" onClick={handleCopyOutput}>
-                  Copy
-                </Button>
-                <Button size="sm" variant="outline" onClick={handleDownload}>
-                  Download
-                </Button>
-              </div>
-              {outputNotice && <p className="text-xs text-muted-foreground">{outputNotice}</p>}
-              <div className="text-xs text-muted-foreground">{status}</div>
+            <Card className="min-h-[540px]">
+              <CardHeader className="border-b">
+                <CardTitle>Online table editor</CardTitle>
+                <CardDescription>Work directly in a spreadsheet-style grid.</CardDescription>
+                <CardAction>
+                  <Badge variant="secondary">Editor</Badge>
+                </CardAction>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <DataGridEditor tableData={tableData} onChange={handleEditorChange} />
+              </CardContent>
+            </Card>
 
-              <ViewToggle value={outputView} onChange={setOutputView} />
-
-              {outputView === "raw" ? (
-                <textarea
-                  readOnly
-                  value={outputText}
-                  className="min-h-[280px] w-full resize-none rounded-lg border bg-muted/20 px-4 py-3 font-mono text-sm shadow-sm"
-                  spellCheck={false}
+            <Card className="min-h-[540px]">
+              <CardHeader className="border-b">
+                <CardTitle>Output</CardTitle>
+                <CardDescription>Auto-converts as you type or drop a file.</CardDescription>
+                <CardAction>
+                  <Badge variant="secondary">Output</Badge>
+                </CardAction>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <FormatTabs
+                  label="Output format"
+                  badgeLabel={outputLabel}
+                  options={OUTPUT_FORMATS}
+                  value={outputFormat}
+                  onChange={(value) => setOutputFormat(value as OutputFormat)}
                 />
-              ) : (
-                <TablePreview
-                  table={tableData}
-                  emptyMessage={outputPreviewMessage}
-                  format={outputFormat}
-                  text={outputText}
-                />
-              )}
-            </CardContent>
-          </Card>
+
+                <div className="flex flex-wrap items-center gap-2">
+                  <Button size="sm" variant="outline" onClick={handleCopyOutput}>
+                    Copy
+                  </Button>
+                  <Button size="sm" variant="outline" onClick={handleDownload}>
+                    Download
+                  </Button>
+                </div>
+                {outputNotice && <p className="text-xs text-muted-foreground">{outputNotice}</p>}
+                <div className="text-xs text-muted-foreground">{status}</div>
+
+                <ViewToggle value={outputView} onChange={setOutputView} />
+
+                {outputView === "raw" ? (
+                  <textarea
+                    readOnly
+                    value={outputText}
+                    className="min-h-[280px] w-full resize-none rounded-lg border bg-muted/20 px-4 py-3 font-mono text-sm shadow-sm"
+                    spellCheck={false}
+                  />
+                ) : (
+                  <TablePreview
+                    table={tableData}
+                    emptyMessage={outputPreviewMessage}
+                    format={outputFormat}
+                    text={outputText}
+                  />
+                )}
+              </CardContent>
+            </Card>
+          </div>
         </div>
-      </div>
-    </section>
+      }
+    />
   );
 }

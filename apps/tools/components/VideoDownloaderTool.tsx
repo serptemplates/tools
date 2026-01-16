@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { Button } from "@serp-tools/ui/components/button";
-import { VideoProgress } from "@/components/VideoProgress";
 import { saveBlob } from "@/components/saveAs";
-import { ToolAdInline, ToolAdRail } from "@/components/ToolAds";
+import { ToolHeroLayout } from "@/components/ToolHeroLayout";
+import type { ToolProgressFile } from "@/components/ToolProgressIndicator";
 import { beginToolRun } from "@/lib/telemetry";
 import { AUDIO_FORMATS, VIDEO_FORMATS } from "@/lib/capabilities";
 
@@ -220,12 +220,7 @@ export default function VideoDownloaderTool({
   mode = "video",
 }: Props) {
   const [busy, setBusy] = useState(false);
-  const [currentFile, setCurrentFile] = useState<{
-    name: string;
-    progress: number;
-    status: "loading" | "processing" | "completed" | "error";
-    message?: string;
-  } | null>(null);
+  const [currentFile, setCurrentFile] = useState<ToolProgressFile | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [urlInput, setUrlInput] = useState("");
   const [adsVisible, setAdsVisible] = useState(false);
@@ -317,67 +312,57 @@ export default function VideoDownloaderTool({
   const adSlotPrefix = toolId;
 
   return (
-    <section className="w-full bg-white">
-      <div className="mx-auto max-w-6xl px-6 py-10">
-        <ToolAdRail visible={adsVisible} slotPrefix={adSlotPrefix} className="items-start">
-          <div className="text-center">
-            {currentFile && (
-              <div className="mb-6 max-w-2xl mx-auto">
-                <VideoProgress
-                  fileName={currentFile.name}
-                  progress={currentFile.progress}
-                  status={currentFile.status}
-                  message={currentFile.message}
-                  completedLabel="Download complete!"
-                />
-              </div>
-            )}
+    <ToolHeroLayout
+      adsVisible={adsVisible}
+      adSlotPrefix={adSlotPrefix}
+      currentFile={currentFile}
+      progressCompletedLabel="Download complete!"
+      contentClassName="text-center"
+      containerClassName="max-w-6xl px-6 py-10"
+      hero={
+        <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-8 shadow-sm">
+          <div className="mx-auto max-w-2xl space-y-4">
+            <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">{title}</h1>
+            {subtitle && <p className="text-sm text-muted-foreground">{subtitle}</p>}
 
-            <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-8 shadow-sm">
-              <div className="mx-auto max-w-2xl space-y-4">
-                <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">{title}</h1>
-                {subtitle && <p className="text-sm text-muted-foreground">{subtitle}</p>}
-
-                <div className="flex flex-col gap-3 sm:flex-row">
-                  <input
-                    type="url"
-                    inputMode="url"
-                    placeholder="Paste a public link (YouTube, Vimeo, Loom, or direct file)"
-                    value={urlInput}
-                    onChange={(e) => setUrlInput(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") {
-                        e.preventDefault();
-                        handleUrlSubmit();
-                      }
-                    }}
-                    className="h-12 w-full rounded-lg border border-gray-200 bg-white px-4 py-3 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    disabled={busy}
-                    data-testid="tool-url-input"
-                  />
-                  <Button
-                    size="lg"
-                    className="h-12 px-6"
-                    onClick={handleUrlSubmit}
-                    disabled={busy || !urlInput.trim()}
-                    data-testid="tool-url-submit"
-                  >
-                    {busy ? "Working..." : "DOWNLOAD"}
-                  </Button>
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  Public links only. Private or logged-in content is not supported yet.
-                </p>
-              </div>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <input
+                type="url"
+                inputMode="url"
+                placeholder="Paste a public link (YouTube, Vimeo, Loom, or direct file)"
+                value={urlInput}
+                onChange={(e) => setUrlInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    handleUrlSubmit();
+                  }
+                }}
+                className="h-12 w-full rounded-lg border border-gray-200 bg-white px-4 py-3 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
+                disabled={busy}
+                data-testid="tool-url-input"
+              />
+              <Button
+                size="lg"
+                className="h-12 px-6"
+                onClick={handleUrlSubmit}
+                disabled={busy || !urlInput.trim()}
+                data-testid="tool-url-submit"
+              >
+                {busy ? "Working..." : "DOWNLOAD"}
+              </Button>
             </div>
-
-            {errorMessage && (
-              <div className="mt-4 text-sm text-red-600">{errorMessage}</div>
-            )}
+            <p className="text-xs text-muted-foreground">
+              Public links only. Private or logged-in content is not supported yet.
+            </p>
           </div>
-        </ToolAdRail>
-        <ToolAdInline visible={adsVisible} slotId={`${adSlotPrefix}-inline`} className="mt-6" />
-      </div>
-    </section>
+        </div>
+      }
+      below={
+        errorMessage ? (
+          <div className="mt-4 text-sm text-red-600">{errorMessage}</div>
+        ) : null
+      }
+    />
   );
 }

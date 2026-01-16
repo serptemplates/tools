@@ -5,7 +5,7 @@ import { Card } from "@serp-tools/ui/components/card";
 import { Button } from "@serp-tools/ui/components/button";
 import { Badge } from "@serp-tools/ui/components/badge";
 import { saveBlob } from "@/components/saveAs";
-import { ToolAdInline, ToolAdRail } from "@/components/ToolAds";
+import { ToolHeroLayout } from "@/components/ToolHeroLayout";
 import { ToolVideoPanel } from "@/components/ToolVideoPanel";
 import { beginToolRun } from "@/lib/telemetry";
 
@@ -210,117 +210,118 @@ export default function CsvCombiner({ toolId, videoEmbedId }: Props) {
   const adSlotPrefix = toolId ?? "csv-combiner";
 
   return (
-    <section className="w-full bg-gradient-to-b from-gray-50 to-white py-16">
-      <div className="mx-auto max-w-7xl px-6">
-        <ToolAdRail visible={adsVisible} slotPrefix={adSlotPrefix} className="items-start">
-          <div>
-            <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold tracking-tight mb-4">CSV Combiner</h1>
-              <p className="text-lg text-gray-600">
-                Merge multiple CSV files into one clean dataset without uploads.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <Card className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-semibold text-gray-900">CSV Files</h3>
-                  {files.length > 0 && (
-                    <Badge variant="secondary">{files.length} files</Badge>
-                  )}
-                </div>
-                <div
-                  className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:border-gray-400 transition-colors"
-                  onClick={onPick}
-                  onDragOver={(e) => e.preventDefault()}
-                  onDrop={(e) => {
-                    e.preventDefault();
-                    handleFiles(e.dataTransfer.files);
-                  }}
-                  data-testid="csv-combiner-dropzone"
-                >
-                  <p className="text-sm text-gray-600">Drop CSV files here or click to select</p>
-                </div>
-                <input
-                  ref={inputRef}
-                  type="file"
-                  multiple
-                  accept=".csv,text/csv"
-                  className="hidden"
-                  onChange={(e) => handleFiles(e.target.files)}
-                  data-testid="csv-combiner-input"
-                />
-
-                {files.length > 0 && (
-                  <ul className="mt-4 space-y-2 text-sm text-gray-600">
-                    {files.map((file) => (
-                      <li key={file.name} className="flex justify-between">
-                        <span>{file.name}</span>
-                        <span>{Math.round(file.size / 1024)} KB</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-
-                {error && (
-                  <div className="mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-600">
-                    {error}
-                  </div>
-                )}
-
-                <div className="mt-6 flex items-center gap-3">
-                  <Button onClick={combineCsv} disabled={busy} data-testid="csv-combiner-run">
-                    {busy ? "Combining..." : "Combine CSV Files"}
-                  </Button>
-                  <Button variant="outline" onClick={() => {
-                    setFiles([]);
-                    setSelectedFiles([]);
-                    setOutput("");
-                    setStats({ rows: 0, columns: 0 });
-                    setError("");
-                    if (inputRef.current) inputRef.current.value = "";
-                  }}>
-                    Clear
-                  </Button>
-                </div>
-              </Card>
-
-              <Card className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-semibold text-gray-900">Combined Output</h3>
-                  {stats.rows > 0 && (
-                    <Badge variant="secondary">{stats.rows} rows × {stats.columns} columns</Badge>
-                  )}
-                </div>
-                <textarea
-                  value={output}
-                  readOnly
-                  placeholder="Combined CSV output will appear here..."
-                  className="w-full h-96 p-4 border rounded-lg resize-none bg-gray-50 font-mono text-sm"
-                  data-testid="csv-combiner-output"
-                />
-                <div className="mt-4">
-                  <Button
-                    onClick={downloadCsv}
-                    disabled={!output}
-                    variant="secondary"
-                    data-testid="csv-combiner-download"
-                  >
-                    Download Combined CSV
-                  </Button>
-                </div>
-              </Card>
-            </div>
-
-            {videoEmbedId && (
-              <div className="mt-10">
-                <ToolVideoPanel embedId={videoEmbedId} autoplay={videoPlaying} />
-              </div>
-            )}
+    <ToolHeroLayout
+      adsVisible={adsVisible}
+      adSlotPrefix={adSlotPrefix}
+      sectionClassName="bg-gradient-to-b from-gray-50 to-white"
+      containerClassName="max-w-7xl px-6 py-16"
+      hero={
+        <div>
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold tracking-tight mb-4">CSV Combiner</h1>
+            <p className="text-lg text-gray-600">
+              Merge multiple CSV files into one clean dataset without uploads.
+            </p>
           </div>
-        </ToolAdRail>
-        <ToolAdInline visible={adsVisible} slotId={`${adSlotPrefix}-inline`} className="mt-6" />
-      </div>
-    </section>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <Card className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-semibold text-gray-900">CSV Files</h3>
+                {files.length > 0 && (
+                  <Badge variant="secondary">{files.length} files</Badge>
+                )}
+              </div>
+              <div
+                className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:border-gray-400 transition-colors"
+                onClick={onPick}
+                onDragOver={(e) => e.preventDefault()}
+                onDrop={(e) => {
+                  e.preventDefault();
+                  handleFiles(e.dataTransfer.files);
+                }}
+                data-testid="csv-combiner-dropzone"
+              >
+                <p className="text-sm text-gray-600">Drop CSV files here or click to select</p>
+              </div>
+              <input
+                ref={inputRef}
+                type="file"
+                multiple
+                accept=".csv,text/csv"
+                className="hidden"
+                onChange={(e) => handleFiles(e.target.files)}
+                data-testid="csv-combiner-input"
+              />
+
+              {files.length > 0 && (
+                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                  {files.map((file) => (
+                    <li key={file.name} className="flex justify-between">
+                      <span>{file.name}</span>
+                      <span>{Math.round(file.size / 1024)} KB</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {error && (
+                <div className="mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-600">
+                  {error}
+                </div>
+              )}
+
+              <div className="mt-6 flex items-center gap-3">
+                <Button onClick={combineCsv} disabled={busy} data-testid="csv-combiner-run">
+                  {busy ? "Combining..." : "Combine CSV Files"}
+                </Button>
+                <Button variant="outline" onClick={() => {
+                  setFiles([]);
+                  setSelectedFiles([]);
+                  setOutput("");
+                  setStats({ rows: 0, columns: 0 });
+                  setError("");
+                  if (inputRef.current) inputRef.current.value = "";
+                }}>
+                  Clear
+                </Button>
+              </div>
+            </Card>
+
+            <Card className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-semibold text-gray-900">Combined Output</h3>
+                {stats.rows > 0 && (
+                  <Badge variant="secondary">{stats.rows} rows × {stats.columns} columns</Badge>
+                )}
+              </div>
+              <textarea
+                value={output}
+                readOnly
+                placeholder="Combined CSV output will appear here..."
+                className="w-full h-96 p-4 border rounded-lg resize-none bg-gray-50 font-mono text-sm"
+                data-testid="csv-combiner-output"
+              />
+              <div className="mt-4">
+                <Button
+                  onClick={downloadCsv}
+                  disabled={!output}
+                  variant="secondary"
+                  data-testid="csv-combiner-download"
+                >
+                  Download Combined CSV
+                </Button>
+              </div>
+            </Card>
+          </div>
+
+          {videoEmbedId && (
+            <div className="mt-10">
+              <ToolVideoPanel embedId={videoEmbedId} autoplay={videoPlaying} />
+            </div>
+          )}
+        </div>
+      }
+    />
   );
 }
