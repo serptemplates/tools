@@ -23,7 +23,8 @@
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "lint": {
-      "dependsOn": ["^lint"]
+      "dependsOn": ["^lint"],
+      "env": ["ADSENSE_PUBLISHER_ID"]
     },
     "check-types": {
       "dependsOn": ["^check-types"]
