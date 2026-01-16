@@ -5,6 +5,7 @@ const turboEnvAllowList = [
   "^YOUTUBE_DL_HOST$",
   "^GITHUB_TOKEN$",
   "^GH_TOKEN$",
+  "^ADSENSE_PUBLISHER_ID$",
 ];
 
 /** @type {import("eslint").Linter.Config} */
