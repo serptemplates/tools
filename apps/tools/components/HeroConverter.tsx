@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import { Button } from "@serp-tools/ui/components/button";
 import { saveBlob } from "@/components/saveAs";
-import { VideoProgress } from "@/components/VideoProgress";
+import { ToolProgressIndicator, type ToolProgressFile } from "@/components/ToolProgressIndicator";
 import { ToolAdInline, ToolAdRail } from "@/components/ToolAds";
 import { beginToolRun } from "@/lib/telemetry";
 import { compressPngWithWorker, convertWithWorker, getOutputMimeType } from "@/lib/convert/workerClient";
@@ -35,12 +35,7 @@ export default function HeroConverter({
   const [hint, setHint] = useState("or drop files here");
   const [dropEffect, setDropEffect] = useState<string>("");
   const [adsVisible, setAdsVisible] = useState(false);
-  const [currentFile, setCurrentFile] = useState<{
-    name: string;
-    progress: number;
-    status: 'loading' | 'processing' | 'completed' | 'error';
-    message?: string;
-  } | null>(null);
+  const [currentFile, setCurrentFile] = useState<ToolProgressFile | null>(null);
   // Generate stable color based on tool properties
   const colors = [
     "#ef4444", // red-500
@@ -258,17 +253,6 @@ export default function HeroConverter({
       <div className="mx-auto max-w-7xl px-6 py-8">
         <ToolAdRail visible={adsVisible} slotPrefix={adSlotPrefix} className="items-start">
           <div className="text-center">
-            {/* Show progress when converting */}
-            {currentFile && (
-              <div className="mb-6 max-w-2xl mx-auto">
-                <VideoProgress
-                  fileName={currentFile.name}
-                  progress={currentFile.progress}
-                  status={currentFile.status}
-                  message={currentFile.message}
-                />
-              </div>
-            )}
             <div
               ref={dropRef}
               onDragEnter={onDrag}
@@ -334,6 +318,10 @@ export default function HeroConverter({
                 onChange={(e) => handleFiles(e.target.files)}
               />
             </div>
+            <ToolProgressIndicator
+              currentFile={currentFile}
+              className="mt-6 max-w-2xl mx-auto"
+            />
           </div>
         </ToolAdRail>
         <ToolAdInline visible={adsVisible} slotId={`${adSlotPrefix}-inline`} className="mt-6" />

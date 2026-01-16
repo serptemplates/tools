@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import { Button } from "@serp-tools/ui/components/button";
 import { saveBlob } from "@/components/saveAs";
-import { VideoProgress } from "@/components/VideoProgress";
+import { ToolProgressIndicator, type ToolProgressFile } from "@/components/ToolProgressIndicator";
 import { ToolAdInline, ToolAdRail } from "@/components/ToolAds";
 import { detectCapabilities, type Capabilities } from "@/lib/capabilities";
 import { beginToolRun } from "@/lib/telemetry";
@@ -40,12 +40,7 @@ export default function LanderHeroTwoColumn({
   const [capabilities, setCapabilities] = useState<Capabilities | null>(null);
   const [videoPlaying, setVideoPlaying] = useState(false);
   const [adsVisible, setAdsVisible] = useState(false);
-  const [currentFile, setCurrentFile] = useState<{
-    name: string;
-    progress: number;
-    status: "loading" | "processing" | "completed" | "error";
-    message?: string;
-  } | null>(null);
+  const [currentFile, setCurrentFile] = useState<ToolProgressFile | null>(null);
   // Generate stable color based on tool properties
   const colors = [
     "#ef4444", // red-500
@@ -258,17 +253,6 @@ export default function LanderHeroTwoColumn({
             <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-center">{title}</h1>
             <p className="text-sm text-muted-foreground text-center mb-10">{subtitle}</p>
 
-            {currentFile && (
-              <div className="mb-8 max-w-3xl mx-auto">
-                <VideoProgress
-                  fileName={currentFile.name}
-                  progress={currentFile.progress}
-                  status={currentFile.status}
-                  message={currentFile.message}
-                />
-              </div>
-            )}
-
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
               {/* Video Column */}
               <div className="order-2 lg:order-1">
@@ -395,6 +379,10 @@ export default function LanderHeroTwoColumn({
                 </div>
               </div>
             </div>
+            <ToolProgressIndicator
+              currentFile={currentFile}
+              className="mt-8 max-w-3xl mx-auto"
+            />
           </div>
         </ToolAdRail>
         <ToolAdInline visible={adsVisible} slotId={`${adSlotPrefix}-inline`} className="mt-6" />
