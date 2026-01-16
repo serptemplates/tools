@@ -76,6 +76,11 @@ See `docs/tool-groupings.md` for how tools are grouped by operation, UI template
 ## Ads
 - Ad slots are defined in `apps/tools/components/ToolAds.tsx` and wrapped around tool UIs (hero + inline).
 - Slots are hidden until first user interaction (upload/drop/submit) via `adsVisible`.
+- Default AdSense client/slots live in `apps/tools/lib/adsense.ts`. Env overrides are supported via `NEXT_PUBLIC_ADSENSE_CLIENT` and slot IDs (`NEXT_PUBLIC_ADSENSE_SLOT_LEFT`/`RIGHT`/`INLINE` or `NEXT_PUBLIC_ADSENSE_SLOT_RAIL` for both rails).
+- Tool-specific slot overrides live in `apps/tools/lib/adsense.ts` (keyed by toolId; same suffixes: left/right/inline).
+- Responsive ads are enabled by default; set `NEXT_PUBLIC_ADSENSE_RESPONSIVE=false` for fixed-size units.
+- Use `NEXT_PUBLIC_ADSENSE_TEST_MODE=true` to load the script in dev and request AdSense test ads.
+- `ADSENSE_PUBLISHER_ID` overrides the ads.txt publisher (defaults to `NEXT_PUBLIC_ADSENSE_CLIENT` without the `ca-` prefix).
 - `ads.txt` is served from `apps/tools/app/ads.txt/route.ts`; for tools.serp.co, publish:
   `google.com, pub-2343633734899216, DIRECT, f08c47fec0942fa0`
 
