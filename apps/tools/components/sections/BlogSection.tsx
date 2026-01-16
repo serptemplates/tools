@@ -14,7 +14,15 @@ type BlogSectionProps = {
 };
 
 export function BlogSection({ blogPosts }: BlogSectionProps) {
-  if (!blogPosts || blogPosts.length === 0) return null;
+  const visiblePosts =
+    blogPosts?.filter((post) => {
+      const href = post.href?.trim();
+      if (!href) return false;
+      if (href === "#" || href.startsWith("#")) return false;
+      return true;
+    }) ?? [];
+
+  if (visiblePosts.length === 0) return null;
 
   const renderLink = (
     href: string,
@@ -47,7 +55,7 @@ export function BlogSection({ blogPosts }: BlogSectionProps) {
           </p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post, idx) => (
+          {visiblePosts.map((post, idx) => (
             <div key={idx}>
               {renderLink(
                 post.href,
