@@ -13,7 +13,8 @@
     "SITE_URL",
     "YTDLP_BINARY_URL",
     "YOUTUBE_DL_HOST",
-    "VERCEL_URL"
+    "VERCEL_URL",
+    "ADSENSE_PUBLISHER_ID"
   ],
   "tasks": {
     "build": {
