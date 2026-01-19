@@ -28,7 +28,7 @@ const IMAGE_OUTPUTS = new Set([
   "ai",
 ]);
 const RAW_INPUTS = new Set(["cr2", "cr3", "dng", "arw"]);
-const MAGICK_ONLY_INPUTS = new Set(["psd", "tga", "dds", "xcf", "ai", "apng"]);
+const MAGICK_ONLY_INPUTS = new Set(["psd", "tga", "dds", "xcf", "ai"]);
 const MAGICK_ONLY_OUTPUTS = new Set(["tga", "dds", "cur"]);
 const FFMPEG_BINARY = ffmpegPath && existsSync(ffmpegPath) ? ffmpegPath : "ffmpeg";
 const OUTPUT_MIME_MAP: Record<string, string> = {

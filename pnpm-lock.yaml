@@ -120,6 +120,9 @@ importers:
       '@serp-tools/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
+      '@tailwindcss/postcss':
+        specifier: ^4.1.12
+        version: 4.1.16
       '@types/mime-types':
         specifier: ^3.0.1
         version: 3.0.1

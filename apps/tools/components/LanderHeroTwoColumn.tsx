@@ -6,7 +6,7 @@ import { saveBlob } from "@/components/saveAs";
 import { ToolHeroLayout } from "@/components/ToolHeroLayout";
 import type { ToolProgressFile } from "@/components/ToolProgressIndicator";
 import { detectCapabilities, type Capabilities } from "@/lib/capabilities";
-import { beginToolRun } from "@/lib/telemetry";
+import { beginToolRun, getTelemetryFailure } from "@/lib/telemetry";
 import { compressPngWithWorker, convertWithWorker, getOutputMimeType } from "@/lib/convert/workerClient";
 import type { OperationType } from "@/types";
 
@@ -180,8 +180,9 @@ export default function LanderHeroTwoColumn({
           });
         }
       } catch (err: unknown) {
-        const message = err instanceof Error ? err.message : "Convert failed";
-        run.finishFailure({ errorCode: message || "convert_failed" });
+        const failure = getTelemetryFailure(err, "convert_failed");
+        const message = failure.message || "Convert failed";
+        run.finishFailure({ errorCode: failure.errorCode, metadata: failure.metadata });
         console.error(`Conversion failed for ${file.name}:`, err);
         setCurrentFile({
           name: file.name,

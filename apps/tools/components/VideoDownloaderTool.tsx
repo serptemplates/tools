@@ -5,7 +5,7 @@ import { Button } from "@serp-tools/ui/components/button";
 import { saveBlob } from "@/components/saveAs";
 import { ToolHeroLayout } from "@/components/ToolHeroLayout";
 import type { ToolProgressFile } from "@/components/ToolProgressIndicator";
-import { beginToolRun } from "@/lib/telemetry";
+import { beginToolRun, getTelemetryFailure } from "@/lib/telemetry";
 import { AUDIO_FORMATS, VIDEO_FORMATS } from "@/lib/capabilities";
 
 type ProgressUpdate = {
@@ -296,14 +296,15 @@ export default function VideoDownloaderTool({
         message: "Download ready!",
       });
     } catch (err) {
-      const message = err instanceof Error ? err.message : "Download failed";
+      const failure = getTelemetryFailure(err, "download_failed");
+      const message = failure.message || "Download failed";
       setCurrentFile({
         name: nameHint,
         progress: 0,
         status: "error",
         message,
       });
-      run.finishFailure({ errorCode: message || "download_failed" });
+      run.finishFailure({ errorCode: failure.errorCode, metadata: failure.metadata });
     } finally {
       setBusy(false);
     }

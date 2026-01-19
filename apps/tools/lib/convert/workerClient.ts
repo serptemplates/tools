@@ -131,6 +131,28 @@ type WorkerMessage = {
   blobs?: ArrayBuffer[];
 };
 
+type TelemetryError = Error & {
+  telemetryCode?: string;
+  telemetryMetadata?: Record<string, unknown>;
+};
+
+function createTelemetryError(
+  code: string,
+  message: string,
+  metadata?: Record<string, unknown>
+): TelemetryError {
+  const error = new Error(message) as TelemetryError;
+  error.telemetryCode = code;
+  if (metadata) {
+    error.telemetryMetadata = metadata;
+  }
+  return error;
+}
+
+function toErrorMessage(error: unknown) {
+  return error instanceof Error ? error.message : String(error);
+}
+
 export async function convertWithWorker(args: {
   worker: Worker;
   from: string;
@@ -221,7 +243,13 @@ async function convertWithWorkerInner(args: {
       }
 
       if (!ev.data?.ok) {
-        return reject(new Error(ev.data?.error || "Convert failed"));
+        return reject(
+          createTelemetryError(
+            "worker_convert_failed",
+            ev.data?.error || "Convert failed",
+            { op: args.op, from: args.from, to: args.to, engine: "worker" }
+          )
+        );
       }
 
       if (ev.data.blobs) {
@@ -244,7 +272,19 @@ async function convertWithWorkerInner(args: {
         (error as ErrorEvent).error instanceof Error ? (error as ErrorEvent).error.message : null,
       ].filter(Boolean);
       const detail = detailParts.length ? detailParts.join(" | ") : String(error);
-      reject(new Error(`Worker error: ${detail}`));
+      reject(
+        createTelemetryError(
+          "worker_error",
+          `Worker error: ${detail}`,
+          {
+            op: args.op,
+            from: args.from,
+            to: args.to,
+            engine: "worker",
+            detail,
+          }
+        )
+      );
     };
 
     if (args.op === "pdf-pages") {
@@ -340,24 +380,46 @@ async function convertImageViaApi(args: {
   buf: ArrayBuffer;
   onProgress?: (update: ProgressUpdate) => void;
 }): Promise<ConversionResult> {
+  const route = "/api/image-convert";
+  const baseMetadata = {
+    route,
+    from: args.from,
+    to: args.to,
+    engine: "server-image",
+  };
   args.onProgress?.({ status: "processing", progress: 5 });
-  const response = await fetch(`/api/image-convert?from=${args.from}&to=${args.to}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/octet-stream",
-    },
-    body: args.buf,
-  });
+  let response: Response;
+  try {
+    response = await fetch(`${route}?from=${args.from}&to=${args.to}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/octet-stream",
+      },
+      body: args.buf,
+    });
+  } catch (error) {
+    throw createTelemetryError(
+      "network_error",
+      "Server conversion request failed",
+      { ...baseMetadata, detail: toErrorMessage(error) }
+    );
+  }
 
   if (!response.ok) {
     let detail = "";
+    let serverError: string | null = null;
     try {
       const data = await response.json();
-      detail = data?.error ? `: ${data.error}` : "";
+      serverError = data?.error ? String(data.error) : null;
+      detail = serverError ? `: ${serverError}` : "";
     } catch {
       detail = "";
     }
-    throw new Error(`Server conversion failed (${response.status})${detail}`);
+    throw createTelemetryError(
+      "server_convert_failed",
+      `Server conversion failed (${response.status})${detail}`,
+      { ...baseMetadata, status: response.status, detail: serverError }
+    );
   }
 
   const buffer = await response.arrayBuffer();

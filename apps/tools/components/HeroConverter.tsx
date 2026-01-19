@@ -5,7 +5,7 @@ import { Button } from "@serp-tools/ui/components/button";
 import { saveBlob } from "@/components/saveAs";
 import { ToolHeroLayout } from "@/components/ToolHeroLayout";
 import type { ToolProgressFile } from "@/components/ToolProgressIndicator";
-import { beginToolRun } from "@/lib/telemetry";
+import { beginToolRun, getTelemetryFailure } from "@/lib/telemetry";
 import { compressPngWithWorker, convertWithWorker, getOutputMimeType } from "@/lib/convert/workerClient";
 import type { OperationType } from "@/types";
 
@@ -176,7 +176,8 @@ export default function HeroConverter({
           run.finishSuccess({ outputBytes: result.buffer.byteLength });
         }
       } catch (err: unknown) {
-        const message = err instanceof Error ? err.message : "Convert failed";
+        const failure = getTelemetryFailure(err, "convert_failed");
+        const message = failure.message || "Convert failed";
         console.error(`Conversion failed for ${file.name}:`, err);
         setCurrentFile({
           name: file.name,
@@ -184,7 +185,7 @@ export default function HeroConverter({
           status: 'error',
           message
         });
-        run.finishFailure({ errorCode: message || "convert_failed" });
+        run.finishFailure({ errorCode: failure.errorCode, metadata: failure.metadata });
       }
     }
     setBusy(false);

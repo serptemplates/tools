@@ -6,7 +6,7 @@ import { Card } from "@serp-tools/ui/components/card";
 import { saveBlob } from "@/components/saveAs";
 import { ToolHeroLayout } from "@/components/ToolHeroLayout";
 import type { ToolProgressFile } from "@/components/ToolProgressIndicator";
-import { beginToolRun } from "@/lib/telemetry";
+import { beginToolRun, getTelemetryFailure } from "@/lib/telemetry";
 import { extractAudioForTranscription } from "@/lib/convert/video";
 import { AUDIO_FORMATS, VIDEO_FORMATS } from "@/lib/capabilities";
 
@@ -426,14 +426,15 @@ export default function TranscribeTool({ toolId, title, subtitle }: Props) {
         message: "Transcription complete!",
       });
     } catch (err) {
-      const message = err instanceof Error ? err.message : "Transcription failed";
+      const failure = getTelemetryFailure(err, "transcribe_failed");
+      const message = failure.message || "Transcription failed";
       setCurrentFile({
         name: file.name,
         progress: 0,
         status: "error",
         message,
       });
-      run.finishFailure({ errorCode: message || "transcribe_failed" });
+      run.finishFailure({ errorCode: failure.errorCode, metadata: failure.metadata });
     }
   }
 

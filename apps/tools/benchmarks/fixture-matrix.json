@@ -1,6 +1,13 @@
 {
   "formats": [
     {
+      "format": "3g2",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.3g2",
+      "notes": "3GPP2 sample."
+    },
+    {
       "format": "3gp",
       "status": "ready",
       "input": "file",
@@ -15,6 +22,13 @@
       "notes": "Auto-generated fixture."
     },
     {
+      "format": "ai",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.ai",
+      "notes": "AI fixture is a PDF-based Illustrator file."
+    },
+    {
       "format": "aif",
       "status": "ready",
       "input": "file",
@@ -22,11 +36,39 @@
       "notes": "Add a real fixture for this format."
     },
     {
+      "format": "aifc",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.aifc",
+      "notes": "AIFF-C fixture (copied from sample.aiff)."
+    },
+    {
       "format": "aiff",
       "status": "ready",
       "input": "file",
       "fixture": "fixtures/sample.aiff",
       "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "alac",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.alac",
+      "notes": "Auto-generated fixture."
+    },
+    {
+      "format": "amr",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.amr",
+      "notes": "Auto-generated fixture."
+    },
+    {
+      "format": "apng",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.apng",
+      "notes": "Generated via FFmpeg testsrc."
     },
     {
       "format": "arw",
@@ -41,6 +83,27 @@
       "input": "file",
       "fixture": "fixtures/sample.asf",
       "notes": "Auto-generated fixture."
+    },
+    {
+      "format": "au",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.au",
+      "notes": "Auto-generated fixture."
+    },
+    {
+      "format": "av1",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.av1",
+      "notes": "Auto-generated fixture."
+    },
+    {
+      "format": "avchd",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.avchd",
+      "notes": "MPEG-TS sample with .avchd extension."
     },
     {
       "format": "avi",
@@ -62,6 +125,20 @@
       "input": "file",
       "fixture": "fixtures/sample.bmp",
       "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "caf",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.caf",
+      "notes": "Auto-generated fixture."
+    },
+    {
+      "format": "cdda",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.cdda",
+      "notes": "Auto-generated fixture."
     },
     {
       "format": "cr2",
@@ -88,6 +165,20 @@
       ]
     },
     {
+      "format": "cur",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.cur",
+      "notes": "Generated with magick-wasm."
+    },
+    {
+      "format": "dds",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.dds",
+      "notes": "Generated with magick-wasm."
+    },
+    {
       "format": "divx",
       "status": "ready",
       "input": "file",
@@ -100,6 +191,48 @@
       "input": "file",
       "fixture": "fixtures/sample.dng",
       "notes": "CC0 sample from raw.pixls.us."
+    },
+    {
+      "format": "doc",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.doc",
+      "notes": "Generated via textutil from sample.docx."
+    },
+    {
+      "format": "docx",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.docx",
+      "notes": "Generated via pandoc from markdown."
+    },
+    {
+      "format": "dss",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.dss",
+      "notes": "DSS sample from FFmpeg samples."
+    },
+    {
+      "format": "dv",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.dv",
+      "notes": "DV sample from FFmpeg samples."
+    },
+    {
+      "format": "dxf",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.dxf",
+      "notes": "Minimal DXF line entity fixture."
+    },
+    {
+      "format": "eps",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.eps",
+      "notes": "Generated with magick-wasm."
     },
     {
       "format": "f4v",
@@ -130,6 +263,13 @@
       "notes": "Add a real fixture for this format."
     },
     {
+      "format": "gsm",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.gsm",
+      "notes": "GSM audio sample from FFmpeg samples."
+    },
+    {
       "format": "heic",
       "status": "ready",
       "input": "file",
@@ -149,6 +289,13 @@
       "input": "file",
       "fixture": "fixtures/sample.hevc",
       "notes": "Auto-generated fixture."
+    },
+    {
+      "format": "html",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.html",
+      "notes": "Simple HTML document fixture."
     },
     {
       "format": "ico",
@@ -193,11 +340,39 @@
       "notes": "Auto-generated fixture."
     },
     {
+      "format": "m2v",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.m2v",
+      "notes": "MPEG-2 video elementary stream sample."
+    },
+    {
       "format": "m4a",
       "status": "ready",
       "input": "file",
       "fixture": "fixtures/sample.m4a",
       "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "m4b",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.m4b",
+      "notes": "M4B audiobook container (copied from sample.m4a)."
+    },
+    {
+      "format": "m4p",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.m4p",
+      "notes": "Sample m4a container with .m4p extension."
+    },
+    {
+      "format": "m4r",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.m4r",
+      "notes": "Auto-generated fixture."
     },
     {
       "format": "m4v",
@@ -270,6 +445,13 @@
       "notes": "Auto-generated fixture."
     },
     {
+      "format": "mpv",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.mpv",
+      "notes": "MPEG-1 video sample."
+    },
+    {
       "format": "mts",
       "status": "ready",
       "input": "file",
@@ -282,6 +464,13 @@
       "input": "file",
       "fixture": "fixtures/sample.mxf",
       "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "oga",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.oga",
+      "notes": "Auto-generated fixture."
     },
     {
       "format": "ogg",
@@ -322,6 +511,34 @@
       ]
     },
     {
+      "format": "ppt",
+      "status": "missing",
+      "input": "file",
+      "fixture": null,
+      "notes": "Needs a real .ppt sample (LibreOffice not available for conversion)."
+    },
+    {
+      "format": "psd",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.psd",
+      "notes": "Generated with magick-wasm."
+    },
+    {
+      "format": "qt",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.qt",
+      "notes": "QuickTime fixture (copied from sample.mov)."
+    },
+    {
+      "format": "ra",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.ra",
+      "notes": "RealAudio sample from FFmpeg samples."
+    },
+    {
       "format": "rm",
       "status": "ready",
       "input": "file",
@@ -348,6 +565,20 @@
       "input": "file",
       "fixture": "fixtures/sample.swf",
       "notes": "Add a real fixture for this format."
+    },
+    {
+      "format": "tga",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.tga",
+      "notes": "Generated with magick-wasm."
+    },
+    {
+      "format": "tif",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.tif",
+      "notes": "Alias of TIFF fixture."
     },
     {
       "format": "tiff",
@@ -392,6 +623,13 @@
       "notes": "Add a real fixture for this format."
     },
     {
+      "format": "webpage",
+      "status": "ready",
+      "input": "file",
+      "fixture": "fixtures/sample.webpage",
+      "notes": "URL text fixture placeholder."
+    },
+    {
       "format": "wma",
       "status": "ready",
       "input": "file",
@@ -406,153 +644,6 @@
       "notes": "Placeholder fixture (mp4 container) because WMV encoder is unavailable."
     },
     {
-      "format": "alac",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.alac",
-      "notes": "Auto-generated fixture."
-    },
-    {
-      "format": "amr",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.amr",
-      "notes": "Auto-generated fixture."
-    },
-    {
-      "format": "au",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.au",
-      "notes": "Auto-generated fixture."
-    },
-    {
-      "format": "av1",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.av1",
-      "notes": "Auto-generated fixture."
-    },
-    {
-      "format": "avchd",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.avchd",
-      "notes": "MPEG-TS sample with .avchd extension."
-    },
-    {
-      "format": "caf",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.caf",
-      "notes": "Auto-generated fixture."
-    },
-    {
-      "format": "cdda",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.cdda",
-      "notes": "Auto-generated fixture."
-    },
-    {
-      "format": "m4p",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.m4p",
-      "notes": "Sample m4a container with .m4p extension."
-    },
-    {
-      "format": "m4r",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.m4r",
-      "notes": "Auto-generated fixture."
-    },
-    {
-      "format": "mpv",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.mpv",
-      "notes": "MPEG-1 video sample."
-    },
-    {
-      "format": "oga",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.oga",
-      "notes": "Auto-generated fixture."
-    },
-    {
-      "format": "ai",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.ai",
-      "notes": "AI fixture is a PDF-based Illustrator file."
-    },
-    {
-      "format": "m4b",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.m4b",
-      "notes": "M4B audiobook container (copied from sample.m4a)."
-    },
-    {
-      "format": "aifc",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.aifc",
-      "notes": "AIFF-C fixture (copied from sample.aiff)."
-    },
-    {
-      "format": "qt",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.qt",
-      "notes": "QuickTime fixture (copied from sample.mov)."
-    },
-    {
-      "format": "3g2",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.3g2",
-      "notes": "3GPP2 sample."
-    },
-    {
-      "format": "gsm",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.gsm",
-      "notes": "GSM audio sample from FFmpeg samples."
-    },
-    {
-      "format": "dv",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.dv",
-      "notes": "DV sample from FFmpeg samples."
-    },
-    {
-      "format": "m2v",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.m2v",
-      "notes": "MPEG-2 video elementary stream sample."
-    },
-    {
-      "format": "dss",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.dss",
-      "notes": "DSS sample from FFmpeg samples."
-    },
-    {
-      "format": "ra",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.ra",
-      "notes": "RealAudio sample from FFmpeg samples."
-    },
-    {
       "format": "wtv",
       "status": "ready",
       "input": "file",
@@ -560,46 +651,11 @@
       "notes": "WTV sample from FFmpeg samples."
     },
     {
-      "format": "tif",
-      "status": "ready",
+      "format": "xcf",
+      "status": "missing",
       "input": "file",
-      "fixture": "fixtures/sample.tif",
-      "notes": "Alias of TIFF fixture."
-    },
-    {
-      "format": "dds",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.dds",
-      "notes": "Generated with magick-wasm."
-    },
-    {
-      "format": "psd",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.psd",
-      "notes": "Generated with magick-wasm."
-    },
-    {
-      "format": "eps",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.eps",
-      "notes": "Generated with magick-wasm."
-    },
-    {
-      "format": "tga",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.tga",
-      "notes": "Generated with magick-wasm."
-    },
-    {
-      "format": "cur",
-      "status": "ready",
-      "input": "file",
-      "fixture": "fixtures/sample.cur",
-      "notes": "Generated with magick-wasm."
+      "fixture": null,
+      "notes": "Needs a CC0 sample fixture."
     }
   ],
   "toolFixtures": {
