@@ -42,6 +42,7 @@
   "devDependencies": {
     "@serp-tools/eslint-config": "workspace:^",
     "@serp-tools/typescript-config": "workspace:*",
+    "@tailwindcss/postcss": "^4.1.12",
     "@types/mime-types": "^3.0.1",
     "@types/node": "^20.19.9",
     "@types/papaparse": "^5.5.2",

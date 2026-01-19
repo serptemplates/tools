@@ -7,6 +7,34 @@ type ToolRunHandle = {
 };
 
 const TELEMETRY_ENDPOINT = "/api/telemetry";
+const DEVICE_ID_KEY = "serp_tools_device_id";
+
+function getDeviceId(): string | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const existing = window.localStorage.getItem(DEVICE_ID_KEY);
+    if (existing) return existing;
+
+    const id = typeof crypto.randomUUID === "function"
+      ? crypto.randomUUID()
+      : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+    window.localStorage.setItem(DEVICE_ID_KEY, id);
+    return id;
+  } catch {
+    return null;
+  }
+}
+
+function mergeMetadata(
+  base?: Record<string, unknown>,
+  extra?: Record<string, unknown>
+): Record<string, unknown> | undefined {
+  if (!base && !extra) return undefined;
+  return {
+    ...(base ?? {}),
+    ...(extra ?? {}),
+  };
+}
 
 function sendTelemetry(event: ToolRunEvent) {
   if (typeof window === "undefined") return;
@@ -42,6 +70,8 @@ export function beginToolRun(args: {
   const runId = crypto.randomUUID();
   const startedAt = new Date().toISOString();
   const startTime = performance.now();
+  const deviceId = getDeviceId();
+  const baseMetadata = mergeMetadata(args.metadata, deviceId ? { deviceId } : undefined);
 
   sendTelemetry({
     event: "tool_run_started",
@@ -51,7 +81,7 @@ export function beginToolRun(args: {
     to: args.to,
     startedAt,
     inputBytes: args.inputBytes,
-    metadata: args.metadata,
+    metadata: baseMetadata,
   });
 
   return {
@@ -68,7 +98,7 @@ export function beginToolRun(args: {
         durationMs,
         inputBytes: args.inputBytes,
         outputBytes,
-        metadata,
+        metadata: mergeMetadata(baseMetadata, metadata),
       });
     },
     finishFailure: ({ errorCode, metadata }) => {
@@ -83,7 +113,7 @@ export function beginToolRun(args: {
         durationMs,
         inputBytes: args.inputBytes,
         errorCode,
-        metadata,
+        metadata: mergeMetadata(baseMetadata, metadata),
       });
     },
   };

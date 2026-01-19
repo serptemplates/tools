@@ -7,6 +7,28 @@ let loaded = false;
 const FAST_VIDEO_FILTER = "fps=12,scale=320:-2:flags=fast_bilinear";
 const FAST_GIF_FILTER = "fps=10,scale=320:-1:flags=fast_bilinear";
 
+type TelemetryError = Error & {
+  telemetryCode?: string;
+  telemetryMetadata?: Record<string, unknown>;
+};
+
+function createTelemetryError(
+  code: string,
+  message: string,
+  metadata?: Record<string, unknown>
+): TelemetryError {
+  const error = new Error(message) as TelemetryError;
+  error.telemetryCode = code;
+  if (metadata) {
+    error.telemetryMetadata = metadata;
+  }
+  return error;
+}
+
+function toErrorMessage(error: unknown) {
+  return error instanceof Error ? error.message : String(error);
+}
+
 function canRemux(fromFormat: string, toFormat: string) {
   const from = fromFormat.toLowerCase();
   const to = toFormat.toLowerCase();
@@ -33,23 +55,45 @@ export async function convertVideoViaApi(
   fromFormat: string,
   toFormat: string
 ): Promise<ArrayBuffer> {
-  const response = await fetch(`/api/video-convert?from=${fromFormat}&to=${toFormat}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/octet-stream",
-    },
-    body: inputBuffer,
-  });
+  const route = "/api/video-convert";
+  const baseMetadata = {
+    route,
+    from: fromFormat,
+    to: toFormat,
+    engine: "server-video",
+  };
+  let response: Response;
+  try {
+    response = await fetch(`${route}?from=${fromFormat}&to=${toFormat}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/octet-stream",
+      },
+      body: inputBuffer,
+    });
+  } catch (error) {
+    throw createTelemetryError(
+      "network_error",
+      "Server conversion request failed",
+      { ...baseMetadata, detail: toErrorMessage(error) }
+    );
+  }
 
   if (!response.ok) {
     let detail = "";
+    let serverError: string | null = null;
     try {
       const data = await response.json();
-      detail = data?.error ? `: ${data.error}` : "";
+      serverError = data?.error ? String(data.error) : null;
+      detail = serverError ? `: ${serverError}` : "";
     } catch {
       detail = "";
     }
-    throw new Error(`Server conversion failed (${response.status})${detail}`);
+    throw createTelemetryError(
+      "server_convert_failed",
+      `Server conversion failed (${response.status})${detail}`,
+      { ...baseMetadata, status: response.status, detail: serverError }
+    );
   }
 
   return await response.arrayBuffer();
