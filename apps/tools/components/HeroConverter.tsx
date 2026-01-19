@@ -3,8 +3,9 @@
 import { useRef, useState, useEffect } from "react";
 import { Button } from "@serp-tools/ui/components/button";
 import { saveBlob } from "@/components/saveAs";
-import { VideoProgress } from "@/components/VideoProgress";
-import { beginToolRun } from "@/lib/telemetry";
+import { ToolHeroLayout } from "@/components/ToolHeroLayout";
+import type { ToolProgressFile } from "@/components/ToolProgressIndicator";
+import { beginToolRun, getTelemetryFailure } from "@/lib/telemetry";
 import { compressPngWithWorker, convertWithWorker, getOutputMimeType } from "@/lib/convert/workerClient";
 import type { OperationType } from "@/types";
 
@@ -33,12 +34,8 @@ export default function HeroConverter({
   const [busy, setBusy] = useState(false);
   const [hint, setHint] = useState("or drop files here");
   const [dropEffect, setDropEffect] = useState<string>("");
-  const [currentFile, setCurrentFile] = useState<{
-    name: string;
-    progress: number;
-    status: 'loading' | 'processing' | 'completed' | 'error';
-    message?: string;
-  } | null>(null);
+  const [adsVisible, setAdsVisible] = useState(false);
+  const [currentFile, setCurrentFile] = useState<ToolProgressFile | null>(null);
   // Generate stable color based on tool properties
   const colors = [
     "#ef4444", // red-500
@@ -82,6 +79,7 @@ export default function HeroConverter({
 
   async function handleFiles(files: FileList | null) {
     if (!files || !files.length) return;
+    if (!adsVisible) setAdsVisible(true);
     const w = ensureWorker();
     setBusy(true);
 
@@ -178,7 +176,8 @@ export default function HeroConverter({
           run.finishSuccess({ outputBytes: result.buffer.byteLength });
         }
       } catch (err: unknown) {
-        const message = err instanceof Error ? err.message : "Convert failed";
+        const failure = getTelemetryFailure(err, "convert_failed");
+        const message = failure.message || "Convert failed";
         console.error(`Conversion failed for ${file.name}:`, err);
         setCurrentFile({
           name: file.name,
@@ -186,7 +185,7 @@ export default function HeroConverter({
           status: 'error',
           message
         });
-        run.finishFailure({ errorCode: message || "convert_failed" });
+        run.finishFailure({ errorCode: failure.errorCode, metadata: failure.metadata });
       }
     }
     setBusy(false);
@@ -240,28 +239,23 @@ export default function HeroConverter({
     (from === "pdf" ? ".pdf"
       : from === "jpg" ? ".jpg,.jpeg"
         : from === "jpeg" ? ".jpeg,.jpg"
-          : from === "mkv" ? ".mkv"
-            : from === "mp4" ? ".mp4"
-              : from === "webm" ? ".webm"
+          : from === "tiff" ? ".tif,.tiff"
+            : from === "mkv" ? ".mkv"
+              : from === "mp4" ? ".mp4"
+                : from === "webm" ? ".webm"
                 : from === "avi" ? ".avi"
                   : from === "mov" ? ".mov"
                     : `.${from}`);
 
-  return (
-    <section className="w-full bg-white">
-      <div className="mx-auto max-w-7xl px-6 py-8 text-center">
+  const adSlotPrefix = toolId ?? `${from}-to-${to}`;
 
-        {/* Show progress when converting */}
-        {currentFile && (
-          <div className="mb-6 max-w-2xl mx-auto">
-            <VideoProgress
-              fileName={currentFile.name}
-              progress={currentFile.progress}
-              status={currentFile.status}
-              message={currentFile.message}
-            />
-          </div>
-        )}
+  return (
+    <ToolHeroLayout
+      adsVisible={adsVisible}
+      adSlotPrefix={adSlotPrefix}
+      currentFile={currentFile}
+      contentClassName="text-center"
+      hero={
         <div
           ref={dropRef}
           onDragEnter={onDrag}
@@ -327,7 +321,7 @@ export default function HeroConverter({
             onChange={(e) => handleFiles(e.target.files)}
           />
         </div>
-      </div>
-    </section>
+      }
+    />
   );
 }

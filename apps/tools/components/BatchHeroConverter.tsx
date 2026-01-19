@@ -5,6 +5,8 @@ import { Button } from "@serp-tools/ui/components/button";
 import { Alert, AlertDescription } from "@serp-tools/ui/components/alert";
 import { AlertTriangle, Download, FileImage, Loader2 } from "lucide-react";
 import { saveBlob } from "@/components/saveAs";
+import { ToolHeroLayout } from "@/components/ToolHeroLayout";
+import { ToolVideoPanel } from "@/components/ToolVideoPanel";
 import { beginToolRun } from "@/lib/telemetry";
 import { compressPngWithWorker, getOutputMimeType } from "@/lib/convert/workerClient";
 
@@ -15,6 +17,7 @@ type Props = {
   from: string;
   to: string;
   accept?: string;
+  videoEmbedId?: string;
 };
 
 export default function BatchHeroConverter({
@@ -24,6 +27,7 @@ export default function BatchHeroConverter({
   from,
   to,
   accept,
+  videoEmbedId,
 }: Props) {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const dropRef = useRef<HTMLDivElement | null>(null);
@@ -36,6 +40,8 @@ export default function BatchHeroConverter({
   const [currentFileIndex, setCurrentFileIndex] = useState(0);
   const [error, setError] = useState<string | null>(null);
   const [compressionLevel, setCompressionLevel] = useState<'low' | 'medium' | 'high' | 'extreme'>('high');
+  const [adsVisible, setAdsVisible] = useState(false);
+  const [videoPlaying, setVideoPlaying] = useState(false);
 
   const colors = [
     "#ef4444", "#f59e0b", "#22c55e", "#3b82f6", "#a855f7", "#ec4899",
@@ -73,6 +79,8 @@ export default function BatchHeroConverter({
       return;
     }
 
+    if (!adsVisible) setAdsVisible(true);
+    if (!videoPlaying) setVideoPlaying(true);
     setFiles(pngFiles);
     setProcessedFiles(new Map());
     setCurrentFileIndex(0);
@@ -173,192 +181,210 @@ export default function BatchHeroConverter({
   const compressionRate = files.length > 0 && processedFiles.size > 0
     ? Math.round((processedFiles.size / files.length) * 100)
     : 0;
+  const adSlotPrefix = toolId ?? `${from}-to-${to}`;
 
   return (
-    <section className="relative flex items-center justify-center min-h-[60vh] px-6 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800" />
-
-      <div className="relative w-full max-w-4xl mx-auto py-16">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-400 bg-clip-text text-transparent">
-            {title}
-          </h1>
-          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300">
-            {subtitle}
-          </p>
-        </div>
-
+    <ToolHeroLayout
+      adsVisible={adsVisible}
+      adSlotPrefix={adSlotPrefix}
+      sectionClassName="relative flex items-center justify-center min-h-[60vh] overflow-hidden"
+      containerClassName="relative w-full max-w-7xl mx-auto py-16"
+      inlineAdClassName="mt-8"
+      background={(
         <div
-          ref={dropRef}
-          className={`relative bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-12 transition-all duration-300 ${dropEffect}`}
-          onDragEnter={onDrag}
-          onDragLeave={onDrag}
-          onDragOver={onDrag}
-          onDrop={onDrop}
-          data-testid="batch-compress-dropzone"
-          style={{
-            borderImage: `linear-gradient(135deg, ${randomColor}, transparent) 1`,
-            borderWidth: "3px",
-            borderStyle: "solid",
-          }}
-        >
-          <input
-            ref={inputRef}
-            type="file"
-            accept={accept || ".png,image/png"}
-            multiple
-            className="hidden"
-            onChange={(e) => handleFiles(e.target.files)}
-            data-testid="batch-compress-input"
-          />
+          className="absolute inset-0 -z-10 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800"
+          aria-hidden
+        />
+      )}
+      hero={
+        <div>
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-400 bg-clip-text text-transparent">
+              {title}
+            </h1>
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300">
+              {subtitle}
+            </p>
+          </div>
 
-          <div className="text-center">
-            <FileImage className="w-16 h-16 mx-auto mb-6 text-gray-400" />
+          <div
+            ref={dropRef}
+            className={`relative bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-12 transition-all duration-300 ${dropEffect}`}
+            onDragEnter={onDrag}
+            onDragLeave={onDrag}
+            onDragOver={onDrag}
+            onDrop={onDrop}
+            data-testid="batch-compress-dropzone"
+            style={{
+              borderImage: `linear-gradient(135deg, ${randomColor}, transparent) 1`,
+              borderWidth: "3px",
+              borderStyle: "solid",
+            }}
+          >
+            <input
+              ref={inputRef}
+              type="file"
+              accept={accept || ".png,image/png"}
+              multiple
+              className="hidden"
+              onChange={(e) => handleFiles(e.target.files)}
+              data-testid="batch-compress-input"
+            />
 
-            {!busy && files.length === 0 && (
-              <>
-                <div className="mb-6">
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Compression Level
-                  </label>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                    <button
-                      onClick={() => setCompressionLevel('low')}
-                      className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${compressionLevel === 'low'
-                        ? 'bg-blue-500 text-white'
-                        : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-                        }`}
-                    >
-                      Low
-                      <div className="text-xs opacity-75">~15% reduction</div>
-                    </button>
-                    <button
-                      onClick={() => setCompressionLevel('medium')}
-                      className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${compressionLevel === 'medium'
-                        ? 'bg-blue-500 text-white'
-                        : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-                        }`}
-                    >
-                      Medium
-                      <div className="text-xs opacity-75">~30% reduction</div>
-                    </button>
-                    <button
-                      onClick={() => setCompressionLevel('high')}
-                      className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${compressionLevel === 'high'
-                        ? 'bg-blue-500 text-white'
-                        : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-                        }`}
-                    >
-                      High
-                      <div className="text-xs opacity-75">~50% reduction</div>
-                    </button>
-                    <button
-                      onClick={() => setCompressionLevel('extreme')}
-                      className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${compressionLevel === 'extreme'
-                        ? 'bg-blue-500 text-white'
-                        : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-                        }`}
-                    >
-                      Extreme
-                      <div className="text-xs opacity-75">~70% reduction</div>
-                    </button>
+            <div className="text-center">
+              <FileImage className="w-16 h-16 mx-auto mb-6 text-gray-400" />
+
+              {!busy && files.length === 0 && (
+                <>
+                  <div className="mb-6">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      Compression Level
+                    </label>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                      <button
+                        onClick={() => setCompressionLevel('low')}
+                        className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${compressionLevel === 'low'
+                          ? 'bg-blue-500 text-white'
+                          : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                          }`}
+                      >
+                        Low
+                        <div className="text-xs opacity-75">~15% reduction</div>
+                      </button>
+                      <button
+                        onClick={() => setCompressionLevel('medium')}
+                        className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${compressionLevel === 'medium'
+                          ? 'bg-blue-500 text-white'
+                          : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                          }`}
+                      >
+                        Medium
+                        <div className="text-xs opacity-75">~30% reduction</div>
+                      </button>
+                      <button
+                        onClick={() => setCompressionLevel('high')}
+                        className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${compressionLevel === 'high'
+                          ? 'bg-blue-500 text-white'
+                          : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                          }`}
+                      >
+                        High
+                        <div className="text-xs opacity-75">~50% reduction</div>
+                      </button>
+                      <button
+                        onClick={() => setCompressionLevel('extreme')}
+                        className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${compressionLevel === 'extreme'
+                          ? 'bg-blue-500 text-white'
+                          : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                          }`}
+                      >
+                        Extreme
+                        <div className="text-xs opacity-75">~70% reduction</div>
+                      </button>
+                    </div>
+                    {compressionLevel === 'extreme' && (
+                      <p className="text-xs text-amber-600 dark:text-amber-400 mt-2">
+                        ⚠️ Extreme compression may significantly reduce image quality
+                      </p>
+                    )}
                   </div>
-                  {compressionLevel === 'extreme' && (
-                    <p className="text-xs text-amber-600 dark:text-amber-400 mt-2">
-                      ⚠️ Extreme compression may significantly reduce image quality
-                    </p>
-                  )}
-                </div>
-
-                <Button
-                  onClick={onPick}
-                  size="lg"
-                  className="mb-4"
-                  style={{ backgroundColor: randomColor }}
-                >
-                  Select PNG Files
-                </Button>
-                <p className="text-gray-500 dark:text-gray-400">{hint}</p>
-              </>
-            )}
-
-            {busy && (
-              <div className="space-y-4">
-                <Loader2 className="w-8 h-8 mx-auto animate-spin text-blue-500" />
-                <p className="text-gray-600 dark:text-gray-300">
-                  Compressing file {currentFileIndex + 1} of {files.length}...
-                </p>
-                <div
-                  className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700"
-                  data-testid="batch-progress"
-                >
-                  <div
-                    className="bg-blue-600 h-2.5 rounded-full transition-all duration-300"
-                    style={{ width: `${compressionRate}%` }}
-                  />
-                </div>
-              </div>
-            )}
-
-            {!busy && processedFiles.size > 0 && (() => {
-              let totalOriginal = 0;
-              let totalCompressed = 0;
-              processedFiles.forEach(value => {
-                totalOriginal += value.originalSize;
-                totalCompressed += value.compressedSize;
-              });
-              const reduction = Math.round((1 - totalCompressed / totalOriginal) * 100);
-
-              return (
-                <div className="space-y-4">
-                  <div className="text-green-600 dark:text-green-400">
-                    ✓ Compressed {processedFiles.size} files successfully!
-                  </div>
-
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
-                    <p>Original size: {(totalOriginal / 1024 / 1024).toFixed(2)} MB</p>
-                    <p>Compressed size: {(totalCompressed / 1024 / 1024).toFixed(2)} MB</p>
-                    <p className="font-semibold text-green-600">Size reduction: {reduction}%</p>
-                  </div>
-
-                  <Button
-                    onClick={downloadZip}
-                    size="lg"
-                    className="gap-2"
-                    style={{ backgroundColor: randomColor }}
-                    data-testid="batch-compress-download"
-                  >
-                    <Download className="w-4 h-4" />
-                    Download ZIP ({(totalCompressed / 1024 / 1024).toFixed(2)} MB)
-                  </Button>
 
                   <Button
                     onClick={onPick}
-                    variant="outline"
-                    size="sm"
-                    className="ml-4"
+                    size="lg"
+                    className="mb-4"
+                    style={{ backgroundColor: randomColor }}
                   >
-                    Compress More Files
+                    Select PNG Files
                   </Button>
+                  <p className="text-gray-500 dark:text-gray-400">{hint}</p>
+                </>
+              )}
+
+              {busy && (
+                <div className="space-y-4">
+                  <Loader2 className="w-8 h-8 mx-auto animate-spin text-blue-500" />
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Compressing file {currentFileIndex + 1} of {files.length}...
+                  </p>
+                  <div
+                    className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700"
+                    data-testid="batch-progress"
+                  >
+                    <div
+                      className="bg-blue-600 h-2.5 rounded-full transition-all duration-300"
+                      style={{ width: `${compressionRate}%` }}
+                    />
+                  </div>
                 </div>
-              );
-            })()}
+              )}
 
-            {error && (
-              <Alert className="mt-4" variant="destructive">
-                <AlertTriangle className="h-4 w-4" />
-                <AlertDescription>{error}</AlertDescription>
-              </Alert>
-            )}
+              {!busy && processedFiles.size > 0 && (() => {
+                let totalOriginal = 0;
+                let totalCompressed = 0;
+                processedFiles.forEach(value => {
+                  totalOriginal += value.originalSize;
+                  totalCompressed += value.compressedSize;
+                });
+                const reduction = Math.round((1 - totalCompressed / totalOriginal) * 100);
+
+                return (
+                  <div className="space-y-4">
+                    <div className="text-green-600 dark:text-green-400">
+                      ✓ Compressed {processedFiles.size} files successfully!
+                    </div>
+
+                    <div className="text-sm text-gray-600 dark:text-gray-400">
+                      <p>Original size: {(totalOriginal / 1024 / 1024).toFixed(2)} MB</p>
+                      <p>Compressed size: {(totalCompressed / 1024 / 1024).toFixed(2)} MB</p>
+                      <p className="font-semibold text-green-600">Size reduction: {reduction}%</p>
+                    </div>
+
+                    <Button
+                      onClick={downloadZip}
+                      size="lg"
+                      className="gap-2"
+                      style={{ backgroundColor: randomColor }}
+                      data-testid="batch-compress-download"
+                    >
+                      <Download className="w-4 h-4" />
+                      Download ZIP ({(totalCompressed / 1024 / 1024).toFixed(2)} MB)
+                    </Button>
+
+                    <Button
+                      onClick={onPick}
+                      variant="outline"
+                      size="sm"
+                      className="ml-4"
+                    >
+                      Compress More Files
+                    </Button>
+                  </div>
+                );
+              })()}
+
+              {error && (
+                <Alert className="mt-4" variant="destructive">
+                  <AlertTriangle className="h-4 w-4" />
+                  <AlertDescription>{error}</AlertDescription>
+                </Alert>
+              )}
+            </div>
           </div>
-        </div>
 
-        <div className="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">
-          <p>✓ All processing happens in your browser</p>
-          <p>✓ No files are uploaded to any server</p>
-          <p>✓ Batch compress multiple PNG files at once</p>
+          <div className="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">
+            <p>✓ All processing happens in your browser</p>
+            <p>✓ No files are uploaded to any server</p>
+            <p>✓ Batch compress multiple PNG files at once</p>
+          </div>
+
+          {videoEmbedId && (
+            <div className="mt-10">
+              <ToolVideoPanel embedId={videoEmbedId} autoplay={videoPlaying} />
+            </div>
+          )}
         </div>
-      </div>
-    </section>
+      }
+    />
   );
 }

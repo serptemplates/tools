@@ -69,6 +69,19 @@ export interface AboutFormatsSection {
   toFormat: FormatInfo;
 }
 
+// How-to section
+export interface HowToSectionData {
+  title: string;
+  intro?: string;
+  steps: string[];
+}
+
+// Info article section
+export interface InfoArticleSectionData {
+  title: string;
+  markdown: string;
+}
+
 // Changelog entry
 export interface ChangelogEntry {
   date: string;
@@ -90,6 +103,8 @@ export interface ToolContent {
   videoSection?: VideoSectionData;
   faqs: FAQ[];
   aboutSection: AboutFormatsSection;
+  howTo?: HowToSectionData;
+  infoArticle?: InfoArticleSectionData;
   changelog?: ChangelogEntry[];
   relatedTools?: RelatedTool[];
   blogPosts?: BlogPost[];

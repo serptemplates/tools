@@ -1,33 +1,10 @@
-"use client";
+import { ToolPageRenderer } from "@/components/ToolPageRenderer";
+import { buildToolMetadata } from "@/lib/metadata";
 
-import ToolPageTemplate from "@/components/ToolPageTemplate";
-import HeroConverter from "@/components/HeroConverter";
-import { toolContent } from '@/lib/tool-content';
+const toolId = "png-to-jpg";
+
+export const generateMetadata = () => buildToolMetadata(toolId);
 
 export default function Page() {
-  const content = toolContent["png-to-jpg"];
-  
-  if (!content) {
-    // Fallback to HeroConverter for tools without content
-    return (
-      <HeroConverter
-        title="PNG to JPG"
-        subtitle="Convert PNG images to JPG format"
-        from="png"
-        to="jpg"
-      />
-    );
-  }
-  
-  return (
-    <ToolPageTemplate
-      tool={content.tool}
-      videoSection={content.videoSection}
-      faqs={content.faqs}
-      aboutSection={content.aboutSection}
-      changelog={content.changelog}
-      relatedTools={content.relatedTools}
-      blogPosts={content.blogPosts}
-    />
-  );
+  return <ToolPageRenderer toolId={toolId} />;
 }

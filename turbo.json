@@ -5,10 +5,16 @@
     "NODE_ENV",
     "BUILD_MODE",
     "SUPPORTS_VIDEO_CONVERSION",
+    "DATABASE_URL",
+    "GITHUB_TOKEN",
+    "GH_TOKEN",
     "INTERNAL_DASHBOARD_TOKEN",
     "NEXT_PUBLIC_SITE_URL",
     "SITE_URL",
-    "VERCEL_URL"
+    "YTDLP_BINARY_URL",
+    "YOUTUBE_DL_HOST",
+    "VERCEL_URL",
+    "ADSENSE_PUBLISHER_ID"
   ],
   "tasks": {
     "build": {

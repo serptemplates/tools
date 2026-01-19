@@ -7,7 +7,18 @@ const fixturesDir = path.join(process.cwd(), "apps/tools/benchmarks");
 const fixtureMatrixPath = path.join(fixturesDir, "fixture-matrix.json");
 
 const toolsRaw = await fs.readFile(toolsPath, "utf8");
-const tools = JSON.parse(toolsRaw).filter((tool) => tool.isActive);
+let tools = JSON.parse(toolsRaw).filter((tool) => tool.isActive);
+const toolFilter = process.env.TOOLS_ONLY
+  ? process.env.TOOLS_ONLY.split(",").map((id) => id.trim()).filter(Boolean)
+  : null;
+if (toolFilter?.length) {
+  const filterSet = new Set(toolFilter);
+  tools = tools.filter((tool) => filterSet.has(tool.id));
+}
+const toolLimit = process.env.TOOLS_LIMIT ? Number(process.env.TOOLS_LIMIT) : null;
+if (toolLimit && Number.isFinite(toolLimit)) {
+  tools = tools.slice(0, Math.max(0, toolLimit));
+}
 const fixtureMatrix = JSON.parse(await fs.readFile(fixtureMatrixPath, "utf8"));
 const formatFixtures = new Map(
   (fixtureMatrix.formats ?? []).map((entry) => [entry.format, entry])
@@ -22,6 +33,7 @@ const MIME_MAP = {
   png: "image/png",
   jpg: "image/jpeg",
   jpeg: "image/jpeg",
+  ai: "application/pdf",
   webp: "image/webp",
   gif: "image/gif",
   bmp: "image/bmp",
@@ -30,16 +42,23 @@ const MIME_MAP = {
   heic: "image/heic",
   heif: "image/heif",
   ico: "image/x-icon",
+  cur: "image/x-icon",
   avif: "image/avif",
   tiff: "image/tiff",
+  tif: "image/tiff",
+  tga: "image/x-tga",
+  dds: "image/vnd-ms.dds",
+  psd: "image/vnd.adobe.photoshop",
   mp4: "video/mp4",
   webm: "video/webm",
   avi: "video/x-msvideo",
   mov: "video/quicktime",
   mkv: "video/x-matroska",
+  qt: "video/quicktime",
   m4v: "video/x-m4v",
   mpeg: "video/mpeg",
   mpg: "video/mpeg",
+  m2v: "video/mpeg",
   ts: "video/mp2t",
   mts: "video/mp2t",
   m2ts: "video/mp2t",
@@ -47,6 +66,10 @@ const MIME_MAP = {
   f4v: "video/x-f4v",
   vob: "video/dvd",
   "3gp": "video/3gpp",
+  "3g2": "video/3gpp2",
+  dv: "video/dv",
+  mxf: "application/mxf",
+  wtv: "video/x-ms-wtv",
   hevc: "video/mp4",
   divx: "video/avi",
   mjpeg: "video/x-motion-jpeg",
@@ -54,13 +77,30 @@ const MIME_MAP = {
   mp3: "audio/mpeg",
   wav: "audio/wav",
   ogg: "audio/ogg",
+  oga: "audio/ogg",
   aac: "audio/aac",
   m4a: "audio/mp4",
+  m4r: "audio/mp4",
+  m4b: "audio/mp4",
   opus: "audio/opus",
   flac: "audio/flac",
   wma: "audio/x-ms-wma",
   aiff: "audio/aiff",
+  aifc: "audio/aiff",
   mp2: "audio/mpeg",
+  alac: "audio/mp4",
+  amr: "audio/amr",
+  gsm: "audio/gsm",
+  dss: "audio/x-dss",
+  ra: "audio/x-realaudio",
+  au: "audio/basic",
+  caf: "audio/x-caf",
+  cdda: "audio/x-cdda",
+  av1: "video/mp4",
+  avchd: "video/mp2t",
+  m4p: "audio/mp4",
+  mpv: "video/mp4",
+  txt: "text/plain",
 };
 
 function getExpectedMimeType(format) {

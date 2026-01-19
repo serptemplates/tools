@@ -1,33 +1,10 @@
-"use client";
+import { ToolPageRenderer } from "@/components/ToolPageRenderer";
+import { buildToolMetadata } from "@/lib/metadata";
 
-import ToolPageTemplate from "@/components/ToolPageTemplate";
-import HeroConverter from "@/components/HeroConverter";
-import { toolContent } from '@/lib/tool-content';
+const toolId = "bmp-to-jpg";
+
+export const generateMetadata = () => buildToolMetadata(toolId);
 
 export default function Page() {
-  const content = toolContent["bmp-to-jpg"];
-  
-  if (!content) {
-    // Fallback to HeroConverter for tools without content
-    return (
-      <HeroConverter
-        title="BMP to JPG"
-        subtitle="Convert BMP images to JPG"
-        from="bmp"
-        to="jpg"
-      />
-    );
-  }
-  
-  return (
-    <ToolPageTemplate
-      tool={content.tool}
-      videoSection={content.videoSection}
-      faqs={content.faqs}
-      aboutSection={content.aboutSection}
-      changelog={content.changelog}
-      relatedTools={content.relatedTools}
-      blogPosts={content.blogPosts}
-    />
-  );
+  return <ToolPageRenderer toolId={toolId} />;
 }

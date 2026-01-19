@@ -18,12 +18,17 @@ Required fields for each tool:
 
 Content is stored in the `tool_content` table (JSONB).
 Internal related tools must reference `toolId` (not `href`); resolve routes from the registry. External links must use full `http(s)` URLs.
+- `howTo` and `infoArticle` are optional; when omitted, templated sections are generated automatically.
+- `infoArticle` content is Markdown (rendered with `react-markdown`), so write it as markdown strings.
 
 ## Tool types
 - Standard convert tools use shared UI (`HeroConverter` or `LanderHeroTwoColumn`) and shared worker API.
 - Custom UI tools remain custom: `character-counter`, `json-to-csv`, `batch-compress-png`, `ai-to-png`, `csv-combiner`.
 - New custom tools require an explicit `handler=custom` and a listed custom page.
 - JPG/JPEG are the same format. Use `jpg` as the canonical route/format and accept `.jpg,.jpeg` in the tool config. Do not create separate `*-to-jpeg` routes unless we explicitly add SEO alias routes.
+
+## Tool groupings
+See `docs/tool-groupings.md` for how tools are grouped by operation, UI template, and processing location.
 
 ## Shared code rules (do not bypass)
 - Use `apps/tools/lib/convert/workerClient.ts` for all worker conversions.
@@ -39,19 +44,45 @@ Internal related tools must reference `toolId` (not `href`); resolve routes from
 - Events: `tool_run_started`, `tool_run_succeeded`, `tool_run_failed`.
 - Required fields: `toolId`, `from`, `to`, `input_bytes`, `output_bytes`, `duration_ms`, `error_code`.
 - Ingestion: POST to `/api/telemetry` (uses `DATABASE_URL`; when unset, events are accepted but not stored).
+- Set `DATABASE_URL` in the tools app server environment (the Next.js process serving `/api/telemetry` and `/internal/tools`) to persist telemetry.
 - Status: derived from last 24h runs (live/degraded/broken).
 
 ## Runtime compatibility (video + WASM)
-- Always serve COOP/COEP headers for SharedArrayBuffer: `Cross-Origin-Opener-Policy: same-origin` and `Cross-Origin-Embedder-Policy: require-corp`.
+- Serve COOP/COEP headers only on routes that require SharedArrayBuffer (FFmpeg/transcription). Avoid COEP on other routes so third-party embeds (ex: YouTube) can load.
 - Set `BUILD_MODE=server` and `SUPPORTS_VIDEO_CONVERSION=true` in Next config for FFmpeg support.
 - Use the multi-threaded FFmpeg core from the CDN only when COOP/COEP is enabled.
 - For image formats that are not reliably decodable in browsers (ex: TIFF), route conversion through the server API (`/api/image-convert`) instead of client raster decode.
-- Server conversion routes must use `runtime = "nodejs"` and rely on system FFmpeg.
+- Server conversion routes must use `runtime = "nodejs"` and use `ffmpeg-static` (packaged binary) for deploy portability.
+
+## Media fetcher (URL ingest)
+- `/api/media-fetch` uses `youtube-dl-exec` and requires the `yt-dlp` binary in `node_modules/youtube-dl-exec/bin`.
+- On Vercel/serverless, ensure output file tracing includes `youtube-dl-exec/bin/**` or allow install scripts to download the binary at build time.
+- Missing binary returns 500 with "yt-dlp binary not found."
 
 ## Vendor assets (public)
 - PDF worker must be available at `/vendor/pdfjs/pdf.worker.min.js`.
 - HEIF bundle + wasm must be available at `/vendor/libheif/libheif-bundle.js` and `/vendor/libheif/libheif.wasm`.
+- FFmpeg cores must be available at `/vendor/ffmpeg/ffmpeg-core.js`, `/vendor/ffmpeg/ffmpeg-core.wasm`, and `/vendor/ffmpeg/ffmpeg-core.worker.js`.
+- Single-thread FFmpeg cores must be available at `/vendor/ffmpeg-st/ffmpeg-core.js` and `/vendor/ffmpeg-st/ffmpeg-core.wasm`.
 - Keep these file paths stable across releases.
+
+## Sitemaps & indexing
+- `/sitemap-index.xml` must include `pages-index.xml` and `tools-index.xml` (and `categories-index.xml` only if category routes exist).
+- `pages-index.xml` includes only static pages (`/`, legal, contact, etc.). Do not mix tool routes here.
+- `tools-index.xml` is generated from the tool registry (active tools only).
+- If category pages exist, add a `categories-index.xml` + paginated sitemap and keep rewrites up to date.
+- Keep `/sitemap-:page.xml` as a compatibility alias for the combined list.
+
+## Ads
+- Ad slots are defined in `apps/tools/components/ToolAds.tsx` and wrapped around tool UIs (hero + inline).
+- Slots are hidden until first user interaction (upload/drop/submit) via `adsVisible`.
+- Default AdSense client/slots live in `apps/tools/lib/adsense.ts`. Env overrides are supported via `NEXT_PUBLIC_ADSENSE_CLIENT` and slot IDs (`NEXT_PUBLIC_ADSENSE_SLOT_LEFT`/`RIGHT`/`INLINE` or `NEXT_PUBLIC_ADSENSE_SLOT_RAIL` for both rails).
+- Tool-specific slot overrides live in `apps/tools/lib/adsense.ts` (keyed by toolId; same suffixes: left/right/inline).
+- Responsive ads are enabled by default; set `NEXT_PUBLIC_ADSENSE_RESPONSIVE=false` for fixed-size units.
+- Use `NEXT_PUBLIC_ADSENSE_TEST_MODE=true` to load the script in dev and request AdSense test ads.
+- `ADSENSE_PUBLISHER_ID` overrides the ads.txt publisher (defaults to `NEXT_PUBLIC_ADSENSE_CLIENT` without the `ca-` prefix).
+- `ads.txt` is served from `apps/tools/app/ads.txt/route.ts`; for tools.serp.co, publish:
+  `google.com, pub-2343633734899216, DIRECT, f08c47fec0942fa0`
 
 ## Output semantics
 - `*-to-pdf` uses rasterized PDF output via `pdf-lib`.
@@ -79,6 +110,7 @@ Internal related tools must reference `toolId` (not `href`); resolve routes from
    - Manual sanity check on one representative file.
    - Verify: dropzone upload, progress update, successful operation, download works, output matches intent.
    - Run benchmark smoke tests (`node scripts/benchmark-tools.mjs`).
+   - If you add dependencies for a tool, run `pnpm install` and commit `pnpm-lock.yaml` (CI uses frozen lockfile).
 
 ## QA checklist (per tool)
 - Dropzone accepts drag/drop and click-to-upload.
@@ -100,6 +132,7 @@ Internal related tools must reference `toolId` (not `href`); resolve routes from
 ## Lint gate
 - `pnpm lint:tools` runs `scripts/validate-tools.mjs` in CI.
 - Gate enforces required `data-testid` hooks for dropzones, progress, and download buttons so QA automation can validate flows.
+- Gate enforces sitemap structure (pages vs tools, rewrites) and FFmpeg asset availability.
 
 ## Migration helpers
 - Seed DB: `node scripts/seed-tools.mjs`

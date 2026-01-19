@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { buildUrl, escapeXml, getSitemapPaths, PAGE_SIZE, resolveSiteBase } from "@/lib/sitemap";
+import { buildUrl, escapeXml, getPagePaths, PAGE_SIZE, resolveSiteBase } from "@/lib/sitemap";
 
 export const dynamic = "force-dynamic";
 
@@ -20,7 +20,7 @@ export async function GET(request: Request, { params }: RouteContext) {
     return new NextResponse("Not found", { status: 404 });
   }
 
-  const paths = getSitemapPaths();
+  const paths = getPagePaths();
   const totalPages = Math.max(1, Math.ceil(paths.length / PAGE_SIZE));
   if (pageNumber >= totalPages) {
     return new NextResponse("Not found", { status: 404 });

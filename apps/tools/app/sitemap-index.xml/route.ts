@@ -1,12 +1,15 @@
 import { NextResponse } from "next/server";
 
-import { escapeXml, resolveSiteBase } from "@/lib/sitemap";
+import { escapeXml, getCategoryPaths, resolveSiteBase } from "@/lib/sitemap";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
   const base = resolveSiteBase(request);
-  const sitemapUrls = [`${base}/pages-index.xml`];
+  const sitemapUrls = [`${base}/pages-index.xml`, `${base}/tools-index.xml`];
+  if (getCategoryPaths().length > 0) {
+    sitemapUrls.push(`${base}/categories-index.xml`);
+  }
 
   const xml = [
     `<?xml version="1.0" encoding="UTF-8"?>`,

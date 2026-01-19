@@ -13,7 +13,8 @@ import {
   Table,
   Type,
   Video,
-  Music
+  Music,
+  Mic
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import toolsData from '@serp-tools/app-core/data/tools.json';
@@ -104,6 +105,15 @@ const iconMap: Record<string, LucideIcon> = {
   'mkv-to-wav': Music,
   'mkv-to-ogg': Music,
   'batch-compress-png': Image,
+  'audio-to-text': Mic,
+  'audio-to-transcript': Mic,
+  'mp3-to-transcript': Mic,
+  'mp4-to-transcript': Mic,
+  'video-to-transcript': Mic,
+  'tiktok-to-transcript': Mic,
+  'youtube-to-transcript': Mic,
+  'youtube-to-transcript-generator': Mic,
+  'video-downloader': Video,
 };
 
 // Process tools from JSON data

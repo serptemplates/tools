@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type BlogPost = {
   title: string;
   subtitle?: string;
@@ -12,7 +14,34 @@ type BlogSectionProps = {
 };
 
 export function BlogSection({ blogPosts }: BlogSectionProps) {
-  if (!blogPosts || blogPosts.length === 0) return null;
+  const visiblePosts =
+    blogPosts?.filter((post) => {
+      const href = post.href?.trim();
+      if (!href) return false;
+      if (href === "#" || href.startsWith("#")) return false;
+      return true;
+    }) ?? [];
+
+  if (visiblePosts.length === 0) return null;
+
+  const renderLink = (
+    href: string,
+    className: string,
+    children: React.ReactNode
+  ) => {
+    if (href.startsWith("/")) {
+      return (
+        <Link href={href} className={className}>
+          {children}
+        </Link>
+      );
+    }
+    return (
+      <a href={href} className={className} rel="noreferrer">
+        {children}
+      </a>
+    );
+  };
 
   return (
     <section className="py-20 bg-gray-50">
@@ -26,12 +55,12 @@ export function BlogSection({ blogPosts }: BlogSectionProps) {
           </p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post, idx) => (
-            <a
-              key={idx}
-              href={post.href}
-              className="group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-            >
+          {visiblePosts.map((post, idx) => (
+            <div key={idx}>
+              {renderLink(
+                post.href,
+                "group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1",
+                <>
               {post.image ? (
                 <div className="aspect-[16/10] bg-gray-100">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -92,11 +121,13 @@ export function BlogSection({ blogPosts }: BlogSectionProps) {
                   </svg>
                 </div>
               </div>
-            </a>
+                </>
+              )}
+            </div>
           ))}
         </div>
         <div className="mt-12 text-center">
-          <a
+          <Link
             href="/blog"
             className="inline-flex items-center px-6 py-3 border border-gray-300 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
           >
@@ -114,7 +145,7 @@ export function BlogSection({ blogPosts }: BlogSectionProps) {
                 d="M9 5l7 7-7 7"
               />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

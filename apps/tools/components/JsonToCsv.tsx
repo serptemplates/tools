@@ -5,17 +5,22 @@ import { Card } from "@serp-tools/ui/components/card";
 import { Button } from "@serp-tools/ui/components/button";
 import { Badge } from "@serp-tools/ui/components/badge";
 import { saveBlob } from "@/components/saveAs";
+import { ToolHeroLayout } from "@/components/ToolHeroLayout";
+import { ToolVideoPanel } from "@/components/ToolVideoPanel";
 import { beginToolRun } from "@/lib/telemetry";
 
 type Props = {
   toolId?: string;
+  videoEmbedId?: string;
 };
 
-export default function JsonToCsv({ toolId }: Props) {
+export default function JsonToCsv({ toolId, videoEmbedId }: Props) {
   const [jsonInput, setJsonInput] = useState("");
   const [csvOutput, setCsvOutput] = useState("");
   const [error, setError] = useState("");
   const [stats, setStats] = useState({ rows: 0, columns: 0 });
+  const [adsVisible, setAdsVisible] = useState(false);
+  const [videoPlaying, setVideoPlaying] = useState(false);
 
   const convertJsonToCsv = () => {
     setError("");
@@ -26,6 +31,8 @@ export default function JsonToCsv({ toolId }: Props) {
       return;
     }
 
+    if (!adsVisible) setAdsVisible(true);
+    if (!videoPlaying) setVideoPlaying(true);
     const inputBytes = new Blob([jsonInput]).size;
     const run = beginToolRun({
       toolId: toolId ?? "json-to-csv",
@@ -106,122 +113,142 @@ export default function JsonToCsv({ toolId }: Props) {
       { id: 4, name: "Alice Brown", email: "alice@example.com", age: 28, city: "Houston" }
     ];
     setJsonInput(JSON.stringify(sample, null, 2));
+    if (!videoPlaying) setVideoPlaying(true);
   };
 
+  const adSlotPrefix = toolId ?? "json-to-csv";
+
   return (
-    <section className="w-full bg-gradient-to-b from-gray-50 to-white py-16">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold tracking-tight mb-4">JSON to CSV Converter</h1>
-          <p className="text-lg text-gray-600">
-            Convert JSON data to CSV format for spreadsheets and data analysis
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* JSON Input */}
-          <div>
-            <Card className="p-6">
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="font-semibold text-gray-900">JSON Input</h3>
-                <div className="flex gap-2">
-                  <button
-                    onClick={loadSampleData}
-                    className="px-3 py-1 text-sm bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-lg transition-colors"
-                  >
-                    Load Sample
-                  </button>
-                  <button
-                    onClick={() => setJsonInput("")}
-                    className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
-                  >
-                    Clear
-                  </button>
-                </div>
-              </div>
-              <textarea
-                value={jsonInput}
-                onChange={(e) => setJsonInput(e.target.value)}
-                placeholder='[{"name": "John", "age": 30}, {"name": "Jane", "age": 25}]'
-                className="w-full h-96 p-4 border rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono text-sm"
-                spellCheck={false}
-                data-testid="json-input"
-              />
-              {error && (
-                <div className="mt-2 p-2 bg-red-50 border border-red-200 rounded text-red-600 text-sm">
-                  {error}
-                </div>
-              )}
-            </Card>
+    <ToolHeroLayout
+      adsVisible={adsVisible}
+      adSlotPrefix={adSlotPrefix}
+      sectionClassName="bg-gradient-to-b from-gray-50 to-white"
+      containerClassName="max-w-7xl px-6 py-16"
+      hero={
+        <div>
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold tracking-tight mb-4">JSON to CSV Converter</h1>
+            <p className="text-lg text-gray-600">
+              Convert JSON data to CSV format for spreadsheets and data analysis
+            </p>
           </div>
 
-          {/* CSV Output */}
-          <div>
-            <Card className="p-6">
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="font-semibold text-gray-900">CSV Output</h3>
-                <div className="flex gap-2">
-                  {stats.rows > 0 && (
-                    <>
-                      <Badge variant="secondary">
-                        {stats.rows} rows × {stats.columns} columns
-                      </Badge>
-                      <button
-                        onClick={downloadCSV}
-                        className="px-3 py-1 text-sm bg-green-100 hover:bg-green-200 text-green-700 rounded-lg transition-colors"
-                        data-testid="json-to-csv-download"
-                      >
-                        Download CSV
-                      </button>
-                    </>
-                  )}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* JSON Input */}
+            <div>
+              <Card className="p-6">
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="font-semibold text-gray-900">JSON Input</h3>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={loadSampleData}
+                      className="px-3 py-1 text-sm bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-lg transition-colors"
+                    >
+                      Load Sample
+                    </button>
+                    <button
+                      onClick={() => setJsonInput("")}
+                      className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+                    >
+                      Clear
+                    </button>
+                  </div>
                 </div>
-              </div>
-              <textarea
-                value={csvOutput}
-                readOnly
-                placeholder="CSV output will appear here..."
-                className="w-full h-96 p-4 border rounded-lg resize-none bg-gray-50 font-mono text-sm"
-                data-testid="csv-output"
-              />
+                <textarea
+                  value={jsonInput}
+                  onChange={(e) => {
+                    if (!videoPlaying && e.target.value.trim()) {
+                      setVideoPlaying(true);
+                    }
+                    setJsonInput(e.target.value);
+                  }}
+                  placeholder='[{"name": "John", "age": 30}, {"name": "Jane", "age": 25}]'
+                  className="w-full h-96 p-4 border rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono text-sm"
+                  spellCheck={false}
+                  data-testid="json-input"
+                />
+                {error && (
+                  <div className="mt-2 p-2 bg-red-50 border border-red-200 rounded text-red-600 text-sm">
+                    {error}
+                  </div>
+                )}
+              </Card>
+            </div>
+
+            {/* CSV Output */}
+            <div>
+              <Card className="p-6">
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="font-semibold text-gray-900">CSV Output</h3>
+                  <div className="flex gap-2">
+                    {stats.rows > 0 && (
+                      <>
+                        <Badge variant="secondary">
+                          {stats.rows} rows × {stats.columns} columns
+                        </Badge>
+                        <button
+                          onClick={downloadCSV}
+                          className="px-3 py-1 text-sm bg-green-100 hover:bg-green-200 text-green-700 rounded-lg transition-colors"
+                          data-testid="json-to-csv-download"
+                        >
+                          Download CSV
+                        </button>
+                      </>
+                    )}
+                  </div>
+                </div>
+                <textarea
+                  value={csvOutput}
+                  readOnly
+                  placeholder="CSV output will appear here..."
+                  className="w-full h-96 p-4 border rounded-lg resize-none bg-gray-50 font-mono text-sm"
+                  data-testid="csv-output"
+                />
+              </Card>
+            </div>
+          </div>
+
+          {/* Convert Button */}
+          <div className="mt-8 text-center">
+            <Button
+              onClick={convertJsonToCsv}
+              size="lg"
+              className="px-8"
+              data-testid="json-convert"
+            >
+              Convert JSON to CSV
+            </Button>
+          </div>
+
+          {videoEmbedId && (
+            <div className="mt-10">
+              <ToolVideoPanel embedId={videoEmbedId} autoplay={videoPlaying} />
+            </div>
+          )}
+
+          {/* Features */}
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card className="p-6">
+              <h3 className="font-semibold mb-2">Automatic Detection</h3>
+              <p className="text-sm text-gray-600">
+                Automatically detects all fields in your JSON objects and creates appropriate CSV columns
+              </p>
+            </Card>
+            <Card className="p-6">
+              <h3 className="font-semibold mb-2">Handles Missing Data</h3>
+              <p className="text-sm text-gray-600">
+                Gracefully handles missing fields and null values in your JSON data
+              </p>
+            </Card>
+            <Card className="p-6">
+              <h3 className="font-semibold mb-2">Privacy First</h3>
+              <p className="text-sm text-gray-600">
+                All conversion happens in your browser. Your data never leaves your device
+              </p>
             </Card>
           </div>
         </div>
-
-        {/* Convert Button */}
-        <div className="mt-8 text-center">
-          <Button
-            onClick={convertJsonToCsv}
-            size="lg"
-            className="px-8"
-            data-testid="json-convert"
-          >
-            Convert JSON to CSV
-          </Button>
-        </div>
-
-        {/* Features */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card className="p-6">
-            <h3 className="font-semibold mb-2">Automatic Detection</h3>
-            <p className="text-sm text-gray-600">
-              Automatically detects all fields in your JSON objects and creates appropriate CSV columns
-            </p>
-          </Card>
-          <Card className="p-6">
-            <h3 className="font-semibold mb-2">Handles Missing Data</h3>
-            <p className="text-sm text-gray-600">
-              Gracefully handles missing fields and null values in your JSON data
-            </p>
-          </Card>
-          <Card className="p-6">
-            <h3 className="font-semibold mb-2">Privacy First</h3>
-            <p className="text-sm text-gray-600">
-              All conversion happens in your browser. Your data never leaves your device
-            </p>
-          </Card>
-        </div>
-      </div>
-    </section>
+      }
+    />
   );
 }

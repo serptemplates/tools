@@ -1,104 +1,33 @@
-type ToolRunEventType = "tool_run_started" | "tool_run_succeeded" | "tool_run_failed";
+export { beginToolRun } from "@serp-tools/tool-telemetry/client";
+export type { ToolRunEvent } from "@serp-tools/tool-telemetry";
 
-export type ToolRunEvent = {
-  event: ToolRunEventType;
-  runId: string;
-  toolId: string;
-  from?: string;
-  to?: string;
-  startedAt: string;
-  durationMs?: number;
-  inputBytes?: number;
-  outputBytes?: number;
-  errorCode?: string;
+export type TelemetryFailure = {
+  errorCode: string;
   metadata?: Record<string, unknown>;
+  message: string;
 };
 
-type ToolRunHandle = {
-  runId: string;
-  finishSuccess: (args: { outputBytes?: number; metadata?: Record<string, unknown> }) => void;
-  finishFailure: (args: { errorCode?: string; metadata?: Record<string, unknown> }) => void;
+type TelemetryErrorShape = {
+  telemetryCode?: string;
+  telemetryMetadata?: Record<string, unknown>;
 };
 
-const TELEMETRY_ENDPOINT = "/api/telemetry";
-
-function sendTelemetry(event: ToolRunEvent) {
-  if (typeof window === "undefined") return;
-
-  const body = JSON.stringify(event);
-  if (navigator.sendBeacon) {
-    navigator.sendBeacon(TELEMETRY_ENDPOINT, new Blob([body], { type: "application/json" }));
-    return;
-  }
-
-  fetch(TELEMETRY_ENDPOINT, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body,
-  }).catch(() => {});
+function isTelemetryError(value: unknown): value is TelemetryErrorShape {
+  return (
+    !!value &&
+    typeof value === "object" &&
+    typeof (value as TelemetryErrorShape).telemetryCode === "string"
+  );
 }
 
-export function beginToolRun(args: {
-  toolId: string;
-  from?: string;
-  to?: string;
-  inputBytes?: number;
-  metadata?: Record<string, unknown>;
-}): ToolRunHandle {
-  if (typeof window === "undefined") {
+export function getTelemetryFailure(error: unknown, fallbackCode: string): TelemetryFailure {
+  const message = error instanceof Error ? error.message : String(error);
+  if (isTelemetryError(error)) {
     return {
-      runId: "server",
-      finishSuccess: () => {},
-      finishFailure: () => {},
+      errorCode: error.telemetryCode ?? fallbackCode,
+      metadata: error.telemetryMetadata,
+      message,
     };
   }
-
-  const runId = crypto.randomUUID();
-  const startedAt = new Date().toISOString();
-  const startTime = performance.now();
-
-  sendTelemetry({
-    event: "tool_run_started",
-    runId,
-    toolId: args.toolId,
-    from: args.from,
-    to: args.to,
-    startedAt,
-    inputBytes: args.inputBytes,
-    metadata: args.metadata,
-  });
-
-  return {
-    runId,
-    finishSuccess: ({ outputBytes, metadata }) => {
-      const durationMs = Math.round(performance.now() - startTime);
-      sendTelemetry({
-        event: "tool_run_succeeded",
-        runId,
-        toolId: args.toolId,
-        from: args.from,
-        to: args.to,
-        startedAt,
-        durationMs,
-        inputBytes: args.inputBytes,
-        outputBytes,
-        metadata,
-      });
-    },
-    finishFailure: ({ errorCode, metadata }) => {
-      const durationMs = Math.round(performance.now() - startTime);
-      sendTelemetry({
-        event: "tool_run_failed",
-        runId,
-        toolId: args.toolId,
-        from: args.from,
-        to: args.to,
-        startedAt,
-        durationMs,
-        inputBytes: args.inputBytes,
-        errorCode,
-        metadata,
-      });
-    },
-  };
+  return { errorCode: fallbackCode, message };
 }

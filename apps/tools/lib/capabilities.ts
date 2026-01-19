@@ -52,14 +52,15 @@ export function getVideoConversionError(): string {
  */
 export const VIDEO_FORMATS = [
   // Video containers
-  'mp4', 'mkv', 'avi', 'webm', 'mov', 'flv', 'ts', 'mts', 'm2ts', 'm4v', 
-  'mpeg', 'mpg', 'vob', '3gp', 'f4v', 'hevc', 'divx', 'mjpeg', 'mpeg2', 
-  'asf', 'wmv', 'mxf', 'ogv', 'rm', 'rmvb', 'swf'
+  'mp4', 'mkv', 'avi', 'webm', 'mov', 'flv', 'ts', 'mts', 'm2ts', 'm4v',
+  'mpeg', 'mpg', 'vob', '3gp', 'f4v', 'hevc', 'divx', 'mjpeg', 'mpeg2',
+  'asf', 'wmv', 'mxf', 'ogv', 'rm', 'rmvb', 'swf', 'av1', 'avchd'
 ];
 
 export const AUDIO_FORMATS = [
   // Audio formats (extracted from video or converted)
-  'mp3', 'wav', 'ogg', 'aac', 'm4a', 'opus', 'flac', 'wma', 'aif', 'aiff', 'mp2'
+  'mp3', 'wav', 'ogg', 'aac', 'm4a', 'opus', 'flac', 'wma', 'aif', 'aiff', 'mp2',
+  'm4r', 'alac', 'amr', 'au', 'caf', 'cdda', 'oga'
 ];
 
 /**

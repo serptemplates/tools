@@ -1,5 +1,10 @@
-import ToolPlaceholder from "@/components/ToolPlaceholder";
+import { ToolPageRenderer } from "@/components/ToolPageRenderer";
+import { buildToolMetadata } from "@/lib/metadata";
+
+const toolId = "ai-to-svg";
+
+export const generateMetadata = () => buildToolMetadata(toolId);
 
 export default function Page() {
-  return <ToolPlaceholder title="Ai To Svg" />;
+  return <ToolPageRenderer toolId={toolId} />;
 }

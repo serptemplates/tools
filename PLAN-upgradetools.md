@@ -108,3 +108,81 @@
 ## Open questions
 - Retention policy and rollup frequency for telemetry.
 - Privacy and data handling for client-side conversions.
+
+
+## TableConvert landing TODOs (unsupported formats)
+
+Pending pages from `tableconvert.com-top-pages-subdomains-us--actu_2026-01-15_12-44-43 - Sheet1.csv` because input/output is not wired in the table converter yet:
+- csv-to-ascii
+- csv-to-avro
+- csv-to-excel
+- csv-to-jpeg
+- csv-to-jsonlines
+- csv-to-magic
+- csv-to-mediawiki
+- csv-to-pandasdataframe
+- csv-to-pdf
+- csv-to-php
+- csv-to-png
+- excel-to-ascii
+- excel-to-bbcode
+- excel-to-csv
+- excel-to-excel
+- excel-to-html
+- excel-to-jira
+- excel-to-json
+- excel-to-jsonlines
+- excel-to-latex
+- excel-to-markdown
+- excel-to-pandasdataframe
+- excel-to-php
+- excel-to-png
+- excel-to-sql
+- excel-to-xml
+- excel-to-yaml
+- html-to-bbcode
+- html-to-excel
+- html-to-jpeg
+- html-to-png
+- json-to-avro
+- json-to-excel
+- json-to-jpeg
+- json-to-magic
+- json-to-pandasdataframe
+- json-to-pdf
+- json-to-php
+- json-to-png
+- json-to-protobuf
+- latex-to-csv
+- latex-to-excel
+- latex-to-html
+- latex-to-jpeg
+- latex-to-latex
+- latex-to-markdown
+- latex-to-pdf
+- latex-to-png
+- markdown-to-excel
+- markdown-to-jira
+- markdown-to-jpeg
+- markdown-to-magic
+- markdown-to-pandasdataframe
+- markdown-to-pdf
+- markdown-to-png
+- markdown-to-restructuredtext
+- mediawiki-to-csv
+- mysql-to-csv
+- mysql-to-excel
+- mysql-to-json
+- mysql-to-sql
+- sql-to-csv
+- sql-to-excel
+- sql-to-html
+- sql-to-json
+- sql-to-pdf
+- sql-to-sql
+- sql-to-xml
+- xml-to-excel
+- xml-to-jpeg
+- xml-to-pdf
+- xml-to-png
+- xml-to-restructuredtext

@@ -9,9 +9,16 @@ interface VideoProgressProps {
   progress: number;
   status: 'loading' | 'processing' | 'completed' | 'error';
   message?: string;
+  completedLabel?: string;
 }
 
-export function VideoProgress({ fileName, progress, status, message }: VideoProgressProps) {
+export function VideoProgress({
+  fileName,
+  progress,
+  status,
+  message,
+  completedLabel,
+}: VideoProgressProps) {
   const getStatusIcon = () => {
     switch (status) {
       case 'loading':
@@ -28,11 +35,11 @@ export function VideoProgress({ fileName, progress, status, message }: VideoProg
   const getStatusText = () => {
     switch (status) {
       case 'loading':
-        return `Processing ${Math.round(progress)}%`;
+        return message || `Processing ${Math.round(progress)}%`;
       case 'processing':
         return message || `Processing ${Math.round(progress)}%`;
       case 'completed':
-        return 'Conversion complete!';
+        return completedLabel || 'Conversion complete!';
       case 'error':
         return message || 'Conversion failed';
     }

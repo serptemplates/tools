@@ -1,32 +1,10 @@
-"use client";
+import { ToolPageRenderer } from "@/components/ToolPageRenderer";
+import { buildToolMetadata } from "@/lib/metadata";
 
-import ToolPageTemplate from "@/components/ToolPageTemplate";
-import HeroConverter from "@/components/HeroConverter";
-import { toolContent } from "@/lib/tool-content";
+const toolId = "png-to-png";
+
+export const generateMetadata = () => buildToolMetadata(toolId);
 
 export default function Page() {
-  const content = toolContent["png-to-png"];
-
-  if (!content) {
-    return (
-      <HeroConverter
-        title="PNG Optimizer"
-        subtitle="Compress and optimize PNG files"
-        from="png"
-        to="png"
-      />
-    );
-  }
-
-  return (
-    <ToolPageTemplate
-      tool={content.tool}
-      videoSection={content.videoSection}
-      faqs={content.faqs}
-      aboutSection={content.aboutSection}
-      changelog={content.changelog}
-      relatedTools={content.relatedTools}
-      blogPosts={content.blogPosts}
-    />
-  );
+  return <ToolPageRenderer toolId={toolId} />;
 }

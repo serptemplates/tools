@@ -8,7 +8,7 @@ import { Slider } from "@serp-tools/ui/components/slider";
 import { Separator } from "@serp-tools/ui/components/separator";
 import { Upload, Trash2, File as FileIcon, Loader2 } from "lucide-react";
 import { saveBlob } from "./saveAs";
-import { beginToolRun } from "@/lib/telemetry";
+import { beginToolRun, getTelemetryFailure } from "@/lib/telemetry";
 import { convertWithWorker, getOutputMimeType } from "@/lib/convert/workerClient";
 
 type ConvertProps = {
@@ -152,8 +152,9 @@ export default function Converter({
           x.id === item.id ? { ...x, status: "done" as const } : x
         ));
       } catch (err) {
+        const failure = getTelemetryFailure(err, "convert_failed");
         console.error(`Error converting ${item.file.name}:`, err);
-        run.finishFailure({ errorCode: "convert_failed" });
+        run.finishFailure({ errorCode: failure.errorCode, metadata: failure.metadata });
         setItems(prev => prev.map(x =>
           x.id === item.id ? { ...x, status: "error" as const, message: "Convert failed" } : x
         ));

@@ -14,16 +14,51 @@ export type ProgressUpdate = {
   time?: number;
 };
 
-const SERVER_IMAGE_INPUTS = new Set(["tiff", "tif", "cr2", "cr3", "dng", "arw"]);
+const SERVER_IMAGE_INPUTS = new Set([
+  "tiff",
+  "tif",
+  "cr2",
+  "cr3",
+  "dng",
+  "arw",
+  "psd",
+  "tga",
+  "dds",
+  "xcf",
+  "ai",
+  "apng",
+]);
+const SERVER_IMAGE_OUTPUTS = new Set([
+  "jpg",
+  "jpeg",
+  "png",
+  "webp",
+  "gif",
+  "bmp",
+  "tiff",
+  "tif",
+  "svg",
+  "ico",
+  "cur",
+  "tga",
+  "dds",
+]);
 
 const MIME_MAP: Record<string, string> = {
   png: "image/png",
   jpg: "image/jpeg",
   jpeg: "image/jpeg",
+  avif: "image/avif",
   webp: "image/webp",
   gif: "image/gif",
+  bmp: "image/bmp",
   tiff: "image/tiff",
   tif: "image/tiff",
+  ico: "image/x-icon",
+  cur: "image/x-icon",
+  svg: "image/svg+xml",
+  tga: "image/x-tga",
+  dds: "image/vnd-ms.dds",
   mp4: "video/mp4",
   webm: "video/webm",
   avi: "video/x-msvideo",
@@ -35,13 +70,20 @@ const MIME_MAP: Record<string, string> = {
   mp3: "audio/mpeg",
   wav: "audio/wav",
   ogg: "audio/ogg",
+  oga: "audio/ogg",
   aac: "audio/aac",
   m4a: "audio/mp4",
+  m4r: "audio/mp4",
   opus: "audio/opus",
   flac: "audio/flac",
   wma: "audio/x-ms-wma",
   aiff: "audio/aiff",
   mp2: "audio/mpeg",
+  alac: "audio/mp4",
+  amr: "audio/amr",
+  au: "audio/basic",
+  caf: "audio/x-caf",
+  cdda: "audio/x-cdda",
   ts: "video/mp2t",
   mts: "video/mp2t",
   m2ts: "video/mp2t",
@@ -52,9 +94,18 @@ const MIME_MAP: Record<string, string> = {
   hevc: "video/mp4",
   divx: "video/avi",
   mjpeg: "video/x-motion-jpeg",
+  mpeg2: "video/mpeg",
   asf: "video/x-ms-asf",
+  wmv: "video/x-ms-wmv",
+  ogv: "video/ogg",
+  rm: "application/vnd.rn-realmedia",
+  rmvb: "application/vnd.rn-realmedia-vbr",
+  swf: "application/x-shockwave-flash",
+  mxf: "application/mxf",
+  av1: "video/mp4",
+  avchd: "video/mp2t",
   pdf: "application/pdf",
-  svg: "image/svg+xml",
+  txt: "text/plain",
 };
 
 export function getOutputMimeType(format: string) {
@@ -80,6 +131,28 @@ type WorkerMessage = {
   blobs?: ArrayBuffer[];
 };
 
+type TelemetryError = Error & {
+  telemetryCode?: string;
+  telemetryMetadata?: Record<string, unknown>;
+};
+
+function createTelemetryError(
+  code: string,
+  message: string,
+  metadata?: Record<string, unknown>
+): TelemetryError {
+  const error = new Error(message) as TelemetryError;
+  error.telemetryCode = code;
+  if (metadata) {
+    error.telemetryMetadata = metadata;
+  }
+  return error;
+}
+
+function toErrorMessage(error: unknown) {
+  return error instanceof Error ? error.message : String(error);
+}
+
 export async function convertWithWorker(args: {
   worker: Worker;
   from: string;
@@ -89,8 +162,37 @@ export async function convertWithWorker(args: {
   quality?: number;
 }): Promise<ConversionResult> {
   const fromExt = args.from.toLowerCase();
+  const toExt = args.to.toLowerCase();
+  if (fromExt === "ai") {
+    const { renderPdfPages } = await import("./pdf");
+    const rasterFormat = toExt === "jpg" || toExt === "jpeg" ? "jpg" : "png";
+    const buffers = await renderPdfPages(args.buf, undefined, rasterFormat);
+    if (toExt === "svg") {
+      const svgBuffers = [];
+      for (const buffer of buffers) {
+        const rgba = await decodeToRGBA("png", buffer);
+        const blob = await encodeFromRGBA("svg", rgba, args.quality ?? 0.85);
+        svgBuffers.push(await blob.arrayBuffer());
+      }
+      return { kind: "multiple", buffers: svgBuffers };
+    }
+    return { kind: "multiple", buffers };
+  }
   if (shouldUseServerImageConversion(fromExt)) {
-    return convertImageViaApi(args);
+    if (SERVER_IMAGE_OUTPUTS.has(toExt)) {
+      return convertImageViaApi(args);
+    }
+    const serverResult = await convertImageViaApi({ ...args, to: "png" });
+    if (serverResult.kind !== "single") {
+      throw new Error("Server image conversion returned multiple buffers unexpectedly.");
+    }
+    args.onProgress?.({ status: "processing", progress: 90 });
+    return convertRasterOnMainThread({
+      from: "png",
+      to: args.to,
+      buf: serverResult.buffer,
+      quality: args.quality,
+    });
   }
   if (fromExt === "heic" || fromExt === "heif") {
     return convertRasterOnMainThread(args);
@@ -141,7 +243,13 @@ async function convertWithWorkerInner(args: {
       }
 
       if (!ev.data?.ok) {
-        return reject(new Error(ev.data?.error || "Convert failed"));
+        return reject(
+          createTelemetryError(
+            "worker_convert_failed",
+            ev.data?.error || "Convert failed",
+            { op: args.op, from: args.from, to: args.to, engine: "worker" }
+          )
+        );
       }
 
       if (ev.data.blobs) {
@@ -164,7 +272,19 @@ async function convertWithWorkerInner(args: {
         (error as ErrorEvent).error instanceof Error ? (error as ErrorEvent).error.message : null,
       ].filter(Boolean);
       const detail = detailParts.length ? detailParts.join(" | ") : String(error);
-      reject(new Error(`Worker error: ${detail}`));
+      reject(
+        createTelemetryError(
+          "worker_error",
+          `Worker error: ${detail}`,
+          {
+            op: args.op,
+            from: args.from,
+            to: args.to,
+            engine: "worker",
+            detail,
+          }
+        )
+      );
     };
 
     if (args.op === "pdf-pages") {
@@ -260,24 +380,46 @@ async function convertImageViaApi(args: {
   buf: ArrayBuffer;
   onProgress?: (update: ProgressUpdate) => void;
 }): Promise<ConversionResult> {
+  const route = "/api/image-convert";
+  const baseMetadata = {
+    route,
+    from: args.from,
+    to: args.to,
+    engine: "server-image",
+  };
   args.onProgress?.({ status: "processing", progress: 5 });
-  const response = await fetch(`/api/image-convert?from=${args.from}&to=${args.to}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/octet-stream",
-    },
-    body: args.buf,
-  });
+  let response: Response;
+  try {
+    response = await fetch(`${route}?from=${args.from}&to=${args.to}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/octet-stream",
+      },
+      body: args.buf,
+    });
+  } catch (error) {
+    throw createTelemetryError(
+      "network_error",
+      "Server conversion request failed",
+      { ...baseMetadata, detail: toErrorMessage(error) }
+    );
+  }
 
   if (!response.ok) {
     let detail = "";
+    let serverError: string | null = null;
     try {
       const data = await response.json();
-      detail = data?.error ? `: ${data.error}` : "";
+      serverError = data?.error ? String(data.error) : null;
+      detail = serverError ? `: ${serverError}` : "";
     } catch {
       detail = "";
     }
-    throw new Error(`Server conversion failed (${response.status})${detail}`);
+    throw createTelemetryError(
+      "server_convert_failed",
+      `Server conversion failed (${response.status})${detail}`,
+      { ...baseMetadata, status: response.status, detail: serverError }
+    );
   }
 
   const buffer = await response.arrayBuffer();

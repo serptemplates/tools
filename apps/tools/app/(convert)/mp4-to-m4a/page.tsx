@@ -1,34 +1,10 @@
-"use client";
+import { ToolPageRenderer } from "@/components/ToolPageRenderer";
+import { buildToolMetadata } from "@/lib/metadata";
 
-import ToolPageTemplate from "@/components/ToolPageTemplate";
-import LanderHeroTwoColumn from "@/components/LanderHeroTwoColumn";
-import { toolContent } from '@/lib/tool-content';
+const toolId = "mp4-to-m4a";
+
+export const generateMetadata = () => buildToolMetadata(toolId);
 
 export default function Page() {
-  const content = toolContent["mp4-to-m4a"];
-  
-  if (!content) {
-    // Fallback to HeroConverter for tools without content
-    return (
-      <LanderHeroTwoColumn
-        title="MP4 to M4A"
-        subtitle="Convert MP4 video files to M4A format"
-        from="mp4"
-        to="m4a"
-        
-      />
-    );
-  }
-  
-  return (
-    <ToolPageTemplate
-      tool={content.tool}
-      videoSection={content.videoSection}
-      faqs={content.faqs}
-      aboutSection={content.aboutSection}
-      changelog={content.changelog}
-      relatedTools={content.relatedTools}
-      blogPosts={content.blogPosts}
-    />
-  );
+  return <ToolPageRenderer toolId={toolId} />;
 }
