@@ -12739,6 +12739,24 @@
     }
   },
   {
+    "id": "heic-to-mp4",
+    "name": "HEIC to MP4",
+    "description": "Convert HEIC files to MP4 format",
+    "operation": "convert",
+    "route": "/heic-to-mp4",
+    "from": "heic",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "heic",
+      "mp4",
+      "convert",
+      "video",
+      "image"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
     "id": "heic-to-pdf",
     "name": "HEIC to PDF",
     "description": "Convert HEIC photos to PDF documents",
@@ -14136,6 +14154,23 @@
       "convert",
       "audio",
       "extract"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "html-to-mp3",
+    "name": "HTML to MP3",
+    "description": "Convert HTML files to MP3 format",
+    "operation": "convert",
+    "route": "/html-to-mp3",
+    "from": "html",
+    "to": "mp3",
+    "isActive": true,
+    "tags": [
+      "html",
+      "mp3",
+      "convert",
+      "audio"
     ],
     "requiresFFmpeg": true
   },
@@ -36246,6 +36281,24 @@
     "requiresFFmpeg": true
   },
   {
+    "id": "video-to-gif",
+    "name": "Video to GIF",
+    "description": "Convert video files to GIF format",
+    "operation": "convert",
+    "route": "/video-to-gif",
+    "from": "mp4",
+    "to": "gif",
+    "isActive": true,
+    "tags": [
+      "mp4",
+      "gif",
+      "convert",
+      "video",
+      "image"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
     "id": "vob-to-3gp",
     "name": "VOB to 3GP",
     "description": "Convert VOB files to 3GP format",
@@ -39282,6 +39335,23 @@
     ]
   },
   {
+    "id": "youtube-to-avi",
+    "name": "YouTube to AVI",
+    "description": "Convert YouTube videos to AVI format",
+    "operation": "convert",
+    "route": "/youtube-to-avi",
+    "from": "mp4",
+    "to": "avi",
+    "isActive": true,
+    "tags": [
+      "mp4",
+      "avi",
+      "convert",
+      "video"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
     "id": "youtube-to-transcript",
     "name": "YouTube to Transcript",
     "description": "Transcribe YouTube videos to a text transcript",
@@ -39435,5 +39505,6568 @@
       }
     },
     "requiresFFmpeg": true
+  },
+  {
+    "id": "ttf-to-svg",
+    "name": "TTF to SVG",
+    "description": "Convert TTF to SVG format",
+    "operation": "convert",
+    "route": "/ttf-to-svg",
+    "from": "ttf",
+    "to": "svg",
+    "isActive": true,
+    "tags": [
+      "ttf",
+      "svg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-dxf",
+    "name": "JPEG to DXF",
+    "description": "Convert JPEG to DXF format",
+    "operation": "convert",
+    "route": "/jpeg-to-dxf",
+    "from": "jpeg",
+    "to": "dxf",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "dxf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "png-to-ai",
+    "name": "PNG to AI",
+    "description": "Convert PNG to AI format",
+    "operation": "convert",
+    "route": "/png-to-ai",
+    "from": "png",
+    "to": "ai",
+    "isActive": true,
+    "tags": [
+      "png",
+      "ai",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "doc-to-png",
+    "name": "DOC to PNG",
+    "description": "Convert DOC to PNG format",
+    "operation": "convert",
+    "route": "/doc-to-png",
+    "from": "doc",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "doc",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "png-to-epub",
+    "name": "PNG to EPUB",
+    "description": "Convert PNG to EPUB format",
+    "operation": "convert",
+    "route": "/png-to-epub",
+    "from": "png",
+    "to": "epub",
+    "isActive": true,
+    "tags": [
+      "png",
+      "epub",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "png-to-psd",
+    "name": "PNG to PSD",
+    "description": "Convert PNG to PSD format",
+    "operation": "convert",
+    "route": "/png-to-psd",
+    "from": "png",
+    "to": "psd",
+    "isActive": true,
+    "tags": [
+      "png",
+      "psd",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cdr-to-svg",
+    "name": "CDR to SVG",
+    "description": "Convert CDR to SVG format",
+    "operation": "convert",
+    "route": "/cdr-to-svg",
+    "from": "cdr",
+    "to": "svg",
+    "isActive": true,
+    "tags": [
+      "cdr",
+      "svg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-doc",
+    "name": "JPG to DOC",
+    "description": "Convert JPG to DOC format",
+    "operation": "convert",
+    "route": "/jpg-to-doc",
+    "from": "jpg",
+    "to": "doc",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "doc",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "png-to-doc",
+    "name": "PNG to DOC",
+    "description": "Convert PNG to DOC format",
+    "operation": "convert",
+    "route": "/png-to-doc",
+    "from": "png",
+    "to": "doc",
+    "isActive": true,
+    "tags": [
+      "png",
+      "doc",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "png-to-docx",
+    "name": "PNG to DOCX",
+    "description": "Convert PNG to DOCX format",
+    "operation": "convert",
+    "route": "/png-to-docx",
+    "from": "png",
+    "to": "docx",
+    "isActive": true,
+    "tags": [
+      "png",
+      "docx",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pptx-to-jpg",
+    "name": "PPTX to JPG",
+    "description": "Convert PPTX to JPG format",
+    "operation": "convert",
+    "route": "/pptx-to-jpg",
+    "from": "pptx",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "pptx",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "xcf-to-jpg",
+    "name": "XCF to JPG",
+    "description": "Convert XCF to JPG format",
+    "operation": "convert",
+    "route": "/xcf-to-jpg",
+    "from": "xcf",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "xcf",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "html-to-gif",
+    "name": "HTML to GIF",
+    "description": "Convert HTML to GIF format",
+    "operation": "convert",
+    "route": "/html-to-gif",
+    "from": "html",
+    "to": "gif",
+    "isActive": true,
+    "tags": [
+      "html",
+      "gif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pptx-to-png",
+    "name": "PPTX to PNG",
+    "description": "Convert PPTX to PNG format",
+    "operation": "convert",
+    "route": "/pptx-to-png",
+    "from": "pptx",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "pptx",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-ai",
+    "name": "SVG to AI",
+    "description": "Convert SVG to AI format",
+    "operation": "convert",
+    "route": "/svg-to-ai",
+    "from": "svg",
+    "to": "ai",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "ai",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dcm-to-jpg",
+    "name": "DCM to JPG",
+    "description": "Convert DCM to JPG format",
+    "operation": "convert",
+    "route": "/dcm-to-jpg",
+    "from": "dcm",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "dcm",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "exr-to-png",
+    "name": "EXR to PNG",
+    "description": "Convert EXR to PNG format",
+    "operation": "convert",
+    "route": "/exr-to-png",
+    "from": "exr",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "exr",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jif-to-jpg",
+    "name": "JIF to JPG",
+    "description": "Convert JIF to JPG format",
+    "operation": "convert",
+    "route": "/jif-to-jpg",
+    "from": "jif",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "jif",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-docx",
+    "name": "JPG to DOCX",
+    "description": "Convert JPG to DOCX format",
+    "operation": "convert",
+    "route": "/jpg-to-docx",
+    "from": "jpg",
+    "to": "docx",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "docx",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-psd",
+    "name": "JPG to PSD",
+    "description": "Convert JPG to PSD format",
+    "operation": "convert",
+    "route": "/jpg-to-psd",
+    "from": "jpg",
+    "to": "psd",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "psd",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-txt",
+    "name": "JPG to TXT",
+    "description": "Convert JPG to TXT format",
+    "operation": "convert",
+    "route": "/jpg-to-txt",
+    "from": "jpg",
+    "to": "txt",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "txt",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "png-to-txt",
+    "name": "PNG to TXT",
+    "description": "Convert PNG to TXT format",
+    "operation": "convert",
+    "route": "/png-to-txt",
+    "from": "png",
+    "to": "txt",
+    "isActive": true,
+    "tags": [
+      "png",
+      "txt",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ppt-to-png",
+    "name": "PPT to PNG",
+    "description": "Convert PPT to PNG format",
+    "operation": "convert",
+    "route": "/ppt-to-png",
+    "from": "ppt",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "ppt",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bin-to-png",
+    "name": "BIN to PNG",
+    "description": "Convert BIN to PNG format",
+    "operation": "convert",
+    "route": "/bin-to-png",
+    "from": "bin",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "bin",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dxf-to-png",
+    "name": "DXF to PNG",
+    "description": "Convert DXF to PNG format",
+    "operation": "convert",
+    "route": "/dxf-to-png",
+    "from": "dxf",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "dxf",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "icns-to-png",
+    "name": "ICNS to PNG",
+    "description": "Convert ICNS to PNG format",
+    "operation": "convert",
+    "route": "/icns-to-png",
+    "from": "icns",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "icns",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jp2-to-jpg",
+    "name": "JP2 to JPG",
+    "description": "Convert JP2 to JPG format",
+    "operation": "convert",
+    "route": "/jp2-to-jpg",
+    "from": "jp2",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "jp2",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-ai",
+    "name": "JPG to AI",
+    "description": "Convert JPG to AI format",
+    "operation": "convert",
+    "route": "/jpg-to-ai",
+    "from": "jpg",
+    "to": "ai",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "ai",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ppm-to-png",
+    "name": "PPM to PNG",
+    "description": "Convert PPM to PNG format",
+    "operation": "convert",
+    "route": "/ppm-to-png",
+    "from": "ppm",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "ppm",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-emf",
+    "name": "SVG to EMF",
+    "description": "Convert SVG to EMF format",
+    "operation": "convert",
+    "route": "/svg-to-emf",
+    "from": "svg",
+    "to": "emf",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "emf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cdr-to-png",
+    "name": "CDR to PNG",
+    "description": "Convert CDR to PNG format",
+    "operation": "convert",
+    "route": "/cdr-to-png",
+    "from": "cdr",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "cdr",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "docx-to-jpeg",
+    "name": "DOCX to JPEG",
+    "description": "Convert DOCX to JPEG format",
+    "operation": "convert",
+    "route": "/docx-to-jpeg",
+    "from": "docx",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "docx",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "html-to-svg",
+    "name": "HTML to SVG",
+    "description": "Convert HTML to SVG format",
+    "operation": "convert",
+    "route": "/html-to-svg",
+    "from": "html",
+    "to": "svg",
+    "isActive": true,
+    "tags": [
+      "html",
+      "svg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jif-to-png",
+    "name": "JIF to PNG",
+    "description": "Convert JIF to PNG format",
+    "operation": "convert",
+    "route": "/jif-to-png",
+    "from": "jif",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "jif",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-pdf",
+    "name": "GIF to PDF",
+    "description": "Convert GIF to PDF format",
+    "operation": "convert",
+    "route": "/gif-to-pdf",
+    "from": "gif",
+    "to": "pdf",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "pdf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "webp-to-pdf",
+    "name": "WebP to PDF",
+    "description": "Convert WebP to PDF format",
+    "operation": "convert",
+    "route": "/webp-to-pdf",
+    "from": "webp",
+    "to": "pdf",
+    "isActive": true,
+    "tags": [
+      "webp",
+      "pdf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "tiff-to-pdf",
+    "name": "TIFF to PDF",
+    "description": "Convert TIFF to PDF format",
+    "operation": "convert",
+    "route": "/tiff-to-pdf",
+    "from": "tiff",
+    "to": "pdf",
+    "isActive": true,
+    "tags": [
+      "tiff",
+      "pdf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-pdf",
+    "name": "SVG to PDF",
+    "description": "Convert SVG to PDF format",
+    "operation": "convert",
+    "route": "/svg-to-pdf",
+    "from": "svg",
+    "to": "pdf",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "pdf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ai-to-pdf",
+    "name": "AI to PDF",
+    "description": "Convert AI to PDF format",
+    "operation": "convert",
+    "route": "/ai-to-pdf",
+    "from": "ai",
+    "to": "pdf",
+    "isActive": true,
+    "tags": [
+      "ai",
+      "pdf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "eps-to-pdf",
+    "name": "EPS to PDF",
+    "description": "Convert EPS to PDF format",
+    "operation": "convert",
+    "route": "/eps-to-pdf",
+    "from": "eps",
+    "to": "pdf",
+    "isActive": true,
+    "tags": [
+      "eps",
+      "pdf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "psd-to-pdf",
+    "name": "PSD to PDF",
+    "description": "Convert PSD to PDF format",
+    "operation": "convert",
+    "route": "/psd-to-pdf",
+    "from": "psd",
+    "to": "pdf",
+    "isActive": true,
+    "tags": [
+      "psd",
+      "pdf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ico-to-pdf",
+    "name": "ICO to PDF",
+    "description": "Convert ICO to PDF format",
+    "operation": "convert",
+    "route": "/ico-to-pdf",
+    "from": "ico",
+    "to": "pdf",
+    "isActive": true,
+    "tags": [
+      "ico",
+      "pdf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-bmp",
+    "name": "SVG to BMP",
+    "description": "Convert SVG to BMP format",
+    "operation": "convert",
+    "route": "/svg-to-bmp",
+    "from": "svg",
+    "to": "bmp",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "bmp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-psd",
+    "name": "SVG to PSD",
+    "description": "Convert SVG to PSD format",
+    "operation": "convert",
+    "route": "/svg-to-psd",
+    "from": "svg",
+    "to": "psd",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "psd",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-dds",
+    "name": "SVG to DDS",
+    "description": "Convert SVG to DDS format",
+    "operation": "convert",
+    "route": "/svg-to-dds",
+    "from": "svg",
+    "to": "dds",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "dds",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-pbm",
+    "name": "SVG to PBM",
+    "description": "Convert SVG to PBM format",
+    "operation": "convert",
+    "route": "/svg-to-pbm",
+    "from": "svg",
+    "to": "pbm",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "pbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-pgm",
+    "name": "SVG to PGM",
+    "description": "Convert SVG to PGM format",
+    "operation": "convert",
+    "route": "/svg-to-pgm",
+    "from": "svg",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "pgm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-ppm",
+    "name": "SVG to PPM",
+    "description": "Convert SVG to PPM format",
+    "operation": "convert",
+    "route": "/svg-to-ppm",
+    "from": "svg",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "ppm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-xcf",
+    "name": "SVG to XCF",
+    "description": "Convert SVG to XCF format",
+    "operation": "convert",
+    "route": "/svg-to-xcf",
+    "from": "svg",
+    "to": "xcf",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "xcf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-xpm",
+    "name": "SVG to XPM",
+    "description": "Convert SVG to XPM format",
+    "operation": "convert",
+    "route": "/svg-to-xpm",
+    "from": "svg",
+    "to": "xpm",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "xpm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-avif",
+    "name": "SVG to AVIF",
+    "description": "Convert SVG to AVIF format",
+    "operation": "convert",
+    "route": "/svg-to-avif",
+    "from": "svg",
+    "to": "avif",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "avif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-heic",
+    "name": "SVG to HEIC",
+    "description": "Convert SVG to HEIC format",
+    "operation": "convert",
+    "route": "/svg-to-heic",
+    "from": "svg",
+    "to": "heic",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "heic",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-heif",
+    "name": "SVG to HEIF",
+    "description": "Convert SVG to HEIF format",
+    "operation": "convert",
+    "route": "/svg-to-heif",
+    "from": "svg",
+    "to": "heif",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "heif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-jxl",
+    "name": "SVG to JXL",
+    "description": "Convert SVG to JXL format",
+    "operation": "convert",
+    "route": "/svg-to-jxl",
+    "from": "svg",
+    "to": "jxl",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "jxl",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-jp2",
+    "name": "SVG to JP2",
+    "description": "Convert SVG to JP2 format",
+    "operation": "convert",
+    "route": "/svg-to-jp2",
+    "from": "svg",
+    "to": "jp2",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "jp2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-icns",
+    "name": "SVG to ICNS",
+    "description": "Convert SVG to ICNS format",
+    "operation": "convert",
+    "route": "/svg-to-icns",
+    "from": "svg",
+    "to": "icns",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "icns",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-cur",
+    "name": "SVG to CUR",
+    "description": "Convert SVG to CUR format",
+    "operation": "convert",
+    "route": "/svg-to-cur",
+    "from": "svg",
+    "to": "cur",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "cur",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "xpm-to-jpg",
+    "name": "XPM to JPG",
+    "description": "Convert XPM to JPG format",
+    "operation": "convert",
+    "route": "/xpm-to-jpg",
+    "from": "xpm",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "xpm",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-html",
+    "name": "SVG to HTML",
+    "description": "Convert SVG to HTML format",
+    "operation": "convert",
+    "route": "/svg-to-html",
+    "from": "svg",
+    "to": "html",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "html",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "txt-to-png",
+    "name": "TXT to PNG",
+    "description": "Convert TXT to PNG format",
+    "operation": "convert",
+    "route": "/txt-to-png",
+    "from": "txt",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "txt",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cdr-to-jpg",
+    "name": "CDR to JPG",
+    "description": "Convert CDR to JPG format",
+    "operation": "convert",
+    "route": "/cdr-to-jpg",
+    "from": "cdr",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "cdr",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "doc-to-jpeg",
+    "name": "DOC to JPEG",
+    "description": "Convert DOC to JPEG format",
+    "operation": "convert",
+    "route": "/doc-to-jpeg",
+    "from": "doc",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "doc",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dxf-to-jpg",
+    "name": "DXF to JPG",
+    "description": "Convert DXF to JPG format",
+    "operation": "convert",
+    "route": "/dxf-to-jpg",
+    "from": "dxf",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "dxf",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "emf-to-png",
+    "name": "EMF to PNG",
+    "description": "Convert EMF to PNG format",
+    "operation": "convert",
+    "route": "/emf-to-png",
+    "from": "emf",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "emf",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "otf-to-svg",
+    "name": "OTF to SVG",
+    "description": "Convert OTF to SVG format",
+    "operation": "convert",
+    "route": "/otf-to-svg",
+    "from": "otf",
+    "to": "svg",
+    "isActive": true,
+    "tags": [
+      "otf",
+      "svg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "png-to-hdr",
+    "name": "PNG to HDR",
+    "description": "Convert PNG to HDR format",
+    "operation": "convert",
+    "route": "/png-to-hdr",
+    "from": "png",
+    "to": "hdr",
+    "isActive": true,
+    "tags": [
+      "png",
+      "hdr",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ppm-to-jpg",
+    "name": "PPM to JPG",
+    "description": "Convert PPM to JPG format",
+    "operation": "convert",
+    "route": "/ppm-to-jpg",
+    "from": "ppm",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "ppm",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ttf-to-png",
+    "name": "TTF to PNG",
+    "description": "Convert TTF to PNG format",
+    "operation": "convert",
+    "route": "/ttf-to-png",
+    "from": "ttf",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "ttf",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "txt-to-jpg",
+    "name": "TXT to JPG",
+    "description": "Convert TXT to JPG format",
+    "operation": "convert",
+    "route": "/txt-to-jpg",
+    "from": "txt",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "txt",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-ai",
+    "name": "JPEG to AI",
+    "description": "Convert JPEG to AI format",
+    "operation": "convert",
+    "route": "/jpeg-to-ai",
+    "from": "jpeg",
+    "to": "ai",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "ai",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-doc",
+    "name": "JPEG to DOC",
+    "description": "Convert JPEG to DOC format",
+    "operation": "convert",
+    "route": "/jpeg-to-doc",
+    "from": "jpeg",
+    "to": "doc",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "doc",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "xlsx-to-jpg",
+    "name": "XLSX to JPG",
+    "description": "Convert XLSX to JPG format",
+    "operation": "convert",
+    "route": "/xlsx-to-jpg",
+    "from": "xlsx",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "xlsx",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bin-to-jpg",
+    "name": "BIN to JPG",
+    "description": "Convert BIN to JPG format",
+    "operation": "convert",
+    "route": "/bin-to-jpg",
+    "from": "bin",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "bin",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "csv-to-png",
+    "name": "CSV to PNG",
+    "description": "Convert CSV to PNG format",
+    "operation": "convert",
+    "route": "/csv-to-png",
+    "from": "csv",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "csv",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "icns-to-ico",
+    "name": "ICNS to ICO",
+    "description": "Convert ICNS to ICO format",
+    "operation": "convert",
+    "route": "/icns-to-ico",
+    "from": "icns",
+    "to": "ico",
+    "isActive": true,
+    "tags": [
+      "icns",
+      "ico",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-hdr",
+    "name": "JPG to HDR",
+    "description": "Convert JPG to HDR format",
+    "operation": "convert",
+    "route": "/jpg-to-hdr",
+    "from": "jpg",
+    "to": "hdr",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "hdr",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-ttf",
+    "name": "SVG to TTF",
+    "description": "Convert SVG to TTF format",
+    "operation": "convert",
+    "route": "/svg-to-ttf",
+    "from": "svg",
+    "to": "ttf",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "ttf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "xls-to-jpg",
+    "name": "XLS to JPG",
+    "description": "Convert XLS to JPG format",
+    "operation": "convert",
+    "route": "/xls-to-jpg",
+    "from": "xls",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "xls",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "xps-to-jpg",
+    "name": "XPS to JPG",
+    "description": "Convert XPS to JPG format",
+    "operation": "convert",
+    "route": "/xps-to-jpg",
+    "from": "xps",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "xps",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "exr-to-jpg",
+    "name": "EXR to JPG",
+    "description": "Convert EXR to JPG format",
+    "operation": "convert",
+    "route": "/exr-to-jpg",
+    "from": "exr",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "exr",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-psd",
+    "name": "JPEG to PSD",
+    "description": "Convert JPEG to PSD format",
+    "operation": "convert",
+    "route": "/jpeg-to-psd",
+    "from": "jpeg",
+    "to": "psd",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "psd",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jxl-to-png",
+    "name": "JXL to PNG",
+    "description": "Convert JXL to PNG format",
+    "operation": "convert",
+    "route": "/jxl-to-png",
+    "from": "jxl",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "jxl",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "png-to-rgb",
+    "name": "PNG to RGB",
+    "description": "Convert PNG to RGB format",
+    "operation": "convert",
+    "route": "/png-to-rgb",
+    "from": "png",
+    "to": "rgb",
+    "isActive": true,
+    "tags": [
+      "png",
+      "rgb",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "csv-to-jpg",
+    "name": "CSV to JPG",
+    "description": "Convert CSV to JPG format",
+    "operation": "convert",
+    "route": "/csv-to-jpg",
+    "from": "csv",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "csv",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dcm-to-jpeg",
+    "name": "DCM to JPEG",
+    "description": "Convert DCM to JPEG format",
+    "operation": "convert",
+    "route": "/dcm-to-jpeg",
+    "from": "dcm",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "dcm",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jfif-to-ico",
+    "name": "JFIF to ICO",
+    "description": "Convert JFIF to ICO format",
+    "operation": "convert",
+    "route": "/jfif-to-ico",
+    "from": "jfif",
+    "to": "ico",
+    "isActive": true,
+    "tags": [
+      "jfif",
+      "ico",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "odt-to-jpg",
+    "name": "ODT to JPG",
+    "description": "Convert ODT to JPG format",
+    "operation": "convert",
+    "route": "/odt-to-jpg",
+    "from": "odt",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "odt",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pptx-to-jpeg",
+    "name": "PPTX to JPEG",
+    "description": "Convert PPTX to JPEG format",
+    "operation": "convert",
+    "route": "/pptx-to-jpeg",
+    "from": "pptx",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "pptx",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-ico",
+    "name": "AVIF to ICO",
+    "description": "Convert AVIF to ICO format",
+    "operation": "convert",
+    "route": "/avif-to-ico",
+    "from": "avif",
+    "to": "ico",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "ico",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "doc-to-tiff",
+    "name": "DOC to TIFF",
+    "description": "Convert DOC to TIFF format",
+    "operation": "convert",
+    "route": "/doc-to-tiff",
+    "from": "doc",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "doc",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dst-to-jpg",
+    "name": "DST to JPG",
+    "description": "Convert DST to JPG format",
+    "operation": "convert",
+    "route": "/dst-to-jpg",
+    "from": "dst",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "dst",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-ppm",
+    "name": "JPG to PPM",
+    "description": "Convert JPG to PPM format",
+    "operation": "convert",
+    "route": "/jpg-to-ppm",
+    "from": "jpg",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "ppm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "png-to-ppm",
+    "name": "PNG to PPM",
+    "description": "Convert PNG to PPM format",
+    "operation": "convert",
+    "route": "/png-to-ppm",
+    "from": "png",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "png",
+      "ppm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ps-to-jpg",
+    "name": "PS to JPG",
+    "description": "Convert PS to JPG format",
+    "operation": "convert",
+    "route": "/ps-to-jpg",
+    "from": "ps",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "ps",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "xlsx-to-png",
+    "name": "XLSX to PNG",
+    "description": "Convert XLSX to PNG format",
+    "operation": "convert",
+    "route": "/xlsx-to-png",
+    "from": "xlsx",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "xlsx",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-dxf",
+    "name": "BMP to DXF",
+    "description": "Convert BMP to DXF format",
+    "operation": "convert",
+    "route": "/bmp-to-dxf",
+    "from": "bmp",
+    "to": "dxf",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "dxf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "hdr-to-jpg",
+    "name": "HDR to JPG",
+    "description": "Convert HDR to JPG format",
+    "operation": "convert",
+    "route": "/hdr-to-jpg",
+    "from": "hdr",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "hdr",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pcx-to-png",
+    "name": "PCX to PNG",
+    "description": "Convert PCX to PNG format",
+    "operation": "convert",
+    "route": "/pcx-to-png",
+    "from": "pcx",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "pcx",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pgm-to-png",
+    "name": "PGM to PNG",
+    "description": "Convert PGM to PNG format",
+    "operation": "convert",
+    "route": "/pgm-to-png",
+    "from": "pgm",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "pgm",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-tiff",
+    "name": "AVIF to TIFF",
+    "description": "Convert AVIF to TIFF format",
+    "operation": "convert",
+    "route": "/avif-to-tiff",
+    "from": "avif",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dot-to-png",
+    "name": "DOT to PNG",
+    "description": "Convert DOT to PNG format",
+    "operation": "convert",
+    "route": "/dot-to-png",
+    "from": "dot",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "dot",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dst-to-png",
+    "name": "DST to PNG",
+    "description": "Convert DST to PNG format",
+    "operation": "convert",
+    "route": "/dst-to-png",
+    "from": "dst",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "dst",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "html-to-webp",
+    "name": "HTML to WebP",
+    "description": "Convert HTML to WebP format",
+    "operation": "convert",
+    "route": "/html-to-webp",
+    "from": "html",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "html",
+      "webp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jif-to-jpeg",
+    "name": "JIF to JPEG",
+    "description": "Convert JIF to JPEG format",
+    "operation": "convert",
+    "route": "/jif-to-jpeg",
+    "from": "jif",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "jif",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-jfif",
+    "name": "JPG to JFIF",
+    "description": "Convert JPG to JFIF format",
+    "operation": "convert",
+    "route": "/jpg-to-jfif",
+    "from": "jpg",
+    "to": "jfif",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "jfif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-jxl",
+    "name": "JPG to JXL",
+    "description": "Convert JPG to JXL format",
+    "operation": "convert",
+    "route": "/jpg-to-jxl",
+    "from": "jpg",
+    "to": "jxl",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "jxl",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "otf-to-png",
+    "name": "OTF to PNG",
+    "description": "Convert OTF to PNG format",
+    "operation": "convert",
+    "route": "/otf-to-png",
+    "from": "otf",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "otf",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ppt-to-jpeg",
+    "name": "PPT to JPEG",
+    "description": "Convert PPT to JPEG format",
+    "operation": "convert",
+    "route": "/ppt-to-jpeg",
+    "from": "ppt",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "ppt",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ps-to-png",
+    "name": "PS to PNG",
+    "description": "Convert PS to PNG format",
+    "operation": "convert",
+    "route": "/ps-to-png",
+    "from": "ps",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "ps",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "txt-to-jpeg",
+    "name": "TXT to JPEG",
+    "description": "Convert TXT to JPEG format",
+    "operation": "convert",
+    "route": "/txt-to-jpeg",
+    "from": "txt",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "txt",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "txt-to-svg",
+    "name": "TXT to SVG",
+    "description": "Convert TXT to SVG format",
+    "operation": "convert",
+    "route": "/txt-to-svg",
+    "from": "txt",
+    "to": "svg",
+    "isActive": true,
+    "tags": [
+      "txt",
+      "svg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "wpg-to-jpg",
+    "name": "WPG to JPG",
+    "description": "Convert WPG to JPG format",
+    "operation": "convert",
+    "route": "/wpg-to-jpg",
+    "from": "wpg",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "wpg",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "xcf-to-svg",
+    "name": "XCF to SVG",
+    "description": "Convert XCF to SVG format",
+    "operation": "convert",
+    "route": "/xcf-to-svg",
+    "from": "xcf",
+    "to": "svg",
+    "isActive": true,
+    "tags": [
+      "xcf",
+      "svg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-bmp",
+    "name": "AVIF to BMP",
+    "description": "Convert AVIF to BMP format",
+    "operation": "convert",
+    "route": "/avif-to-bmp",
+    "from": "avif",
+    "to": "bmp",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "bmp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bin-to-jpeg",
+    "name": "BIN to JPEG",
+    "description": "Convert BIN to JPEG format",
+    "operation": "convert",
+    "route": "/bin-to-jpeg",
+    "from": "bin",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "bin",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cdr-to-jpeg",
+    "name": "CDR to JPEG",
+    "description": "Convert CDR to JPEG format",
+    "operation": "convert",
+    "route": "/cdr-to-jpeg",
+    "from": "cdr",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "cdr",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dst-to-svg",
+    "name": "DST to SVG",
+    "description": "Convert DST to SVG format",
+    "operation": "convert",
+    "route": "/dst-to-svg",
+    "from": "dst",
+    "to": "svg",
+    "isActive": true,
+    "tags": [
+      "dst",
+      "svg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-psd",
+    "name": "GIF to PSD",
+    "description": "Convert GIF to PSD format",
+    "operation": "convert",
+    "route": "/gif-to-psd",
+    "from": "gif",
+    "to": "psd",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "psd",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jp2-to-jpeg",
+    "name": "JP2 to JPEG",
+    "description": "Convert JP2 to JPEG format",
+    "operation": "convert",
+    "route": "/jp2-to-jpeg",
+    "from": "jp2",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "jp2",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-plt",
+    "name": "JPG to PLT",
+    "description": "Convert JPG to PLT format",
+    "operation": "convert",
+    "route": "/jpg-to-plt",
+    "from": "jpg",
+    "to": "plt",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "plt",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-rgb",
+    "name": "JPG to RGB",
+    "description": "Convert JPG to RGB format",
+    "operation": "convert",
+    "route": "/jpg-to-rgb",
+    "from": "jpg",
+    "to": "rgb",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "rgb",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ktx-to-png",
+    "name": "KTX to PNG",
+    "description": "Convert KTX to PNG format",
+    "operation": "convert",
+    "route": "/ktx-to-png",
+    "from": "ktx",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "ktx",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "mac-to-png",
+    "name": "MAC to PNG",
+    "description": "Convert MAC to PNG format",
+    "operation": "convert",
+    "route": "/mac-to-png",
+    "from": "mac",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "mac",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pcd-to-jpg",
+    "name": "PCD to JPG",
+    "description": "Convert PCD to JPG format",
+    "operation": "convert",
+    "route": "/pcd-to-jpg",
+    "from": "pcd",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "pcd",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "tiff-to-doc",
+    "name": "TIFF to DOC",
+    "description": "Convert TIFF to DOC format",
+    "operation": "convert",
+    "route": "/tiff-to-doc",
+    "from": "tiff",
+    "to": "doc",
+    "isActive": true,
+    "tags": [
+      "tiff",
+      "doc",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "webp-to-psd",
+    "name": "WebP to PSD",
+    "description": "Convert WebP to PSD format",
+    "operation": "convert",
+    "route": "/webp-to-psd",
+    "from": "webp",
+    "to": "psd",
+    "isActive": true,
+    "tags": [
+      "webp",
+      "psd",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "xcf-to-jpeg",
+    "name": "XCF to JPEG",
+    "description": "Convert XCF to JPEG format",
+    "operation": "convert",
+    "route": "/xcf-to-jpeg",
+    "from": "xcf",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "xcf",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-eps",
+    "name": "AVIF to EPS",
+    "description": "Convert AVIF to EPS format",
+    "operation": "convert",
+    "route": "/avif-to-eps",
+    "from": "avif",
+    "to": "eps",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "eps",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-xbm",
+    "name": "BMP to XBM",
+    "description": "Convert BMP to XBM format",
+    "operation": "convert",
+    "route": "/bmp-to-xbm",
+    "from": "bmp",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "xbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "crw-to-jpg",
+    "name": "CRW to JPG",
+    "description": "Convert CRW to JPG format",
+    "operation": "convert",
+    "route": "/crw-to-jpg",
+    "from": "crw",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "crw",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "doc-to-svg",
+    "name": "DOC to SVG",
+    "description": "Convert DOC to SVG format",
+    "operation": "convert",
+    "route": "/doc-to-svg",
+    "from": "doc",
+    "to": "svg",
+    "isActive": true,
+    "tags": [
+      "doc",
+      "svg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "docx-to-svg",
+    "name": "DOCX to SVG",
+    "description": "Convert DOCX to SVG format",
+    "operation": "convert",
+    "route": "/docx-to-svg",
+    "from": "docx",
+    "to": "svg",
+    "isActive": true,
+    "tags": [
+      "docx",
+      "svg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "docx-to-tiff",
+    "name": "DOCX to TIFF",
+    "description": "Convert DOCX to TIFF format",
+    "operation": "convert",
+    "route": "/docx-to-tiff",
+    "from": "docx",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "docx",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dst-to-jpeg",
+    "name": "DST to JPEG",
+    "description": "Convert DST to JPEG format",
+    "operation": "convert",
+    "route": "/dst-to-jpeg",
+    "from": "dst",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "dst",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "exr-to-jpeg",
+    "name": "EXR to JPEG",
+    "description": "Convert EXR to JPEG format",
+    "operation": "convert",
+    "route": "/exr-to-jpeg",
+    "from": "exr",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "exr",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-jxl",
+    "name": "GIF to JXL",
+    "description": "Convert GIF to JXL format",
+    "operation": "convert",
+    "route": "/gif-to-jxl",
+    "from": "gif",
+    "to": "jxl",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "jxl",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "hdr-to-jpeg",
+    "name": "HDR to JPEG",
+    "description": "Convert HDR to JPEG format",
+    "operation": "convert",
+    "route": "/hdr-to-jpeg",
+    "from": "hdr",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "hdr",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "icns-to-svg",
+    "name": "ICNS to SVG",
+    "description": "Convert ICNS to SVG format",
+    "operation": "convert",
+    "route": "/icns-to-svg",
+    "from": "icns",
+    "to": "svg",
+    "isActive": true,
+    "tags": [
+      "icns",
+      "svg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-hdr",
+    "name": "JPEG to HDR",
+    "description": "Convert JPEG to HDR format",
+    "operation": "convert",
+    "route": "/jpeg-to-hdr",
+    "from": "jpeg",
+    "to": "hdr",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "hdr",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-jxl",
+    "name": "JPEG to JXL",
+    "description": "Convert JPEG to JXL format",
+    "operation": "convert",
+    "route": "/jpeg-to-jxl",
+    "from": "jpeg",
+    "to": "jxl",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "jxl",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-ppm",
+    "name": "JPEG to PPM",
+    "description": "Convert JPEG to PPM format",
+    "operation": "convert",
+    "route": "/jpeg-to-ppm",
+    "from": "jpeg",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "ppm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-rgb",
+    "name": "JPEG to RGB",
+    "description": "Convert JPEG to RGB format",
+    "operation": "convert",
+    "route": "/jpeg-to-rgb",
+    "from": "jpeg",
+    "to": "rgb",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "rgb",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-pbm",
+    "name": "JPG to PBM",
+    "description": "Convert JPG to PBM format",
+    "operation": "convert",
+    "route": "/jpg-to-pbm",
+    "from": "jpg",
+    "to": "pbm",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "pbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-pcx",
+    "name": "JPG to PCX",
+    "description": "Convert JPG to PCX format",
+    "operation": "convert",
+    "route": "/jpg-to-pcx",
+    "from": "jpg",
+    "to": "pcx",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "pcx",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-pgm",
+    "name": "JPG to PGM",
+    "description": "Convert JPG to PGM format",
+    "operation": "convert",
+    "route": "/jpg-to-pgm",
+    "from": "jpg",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "pgm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ktx2-to-png",
+    "name": "KTX2 to PNG",
+    "description": "Convert KTX2 to PNG format",
+    "operation": "convert",
+    "route": "/ktx2-to-png",
+    "from": "ktx2",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "ktx2",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pbm-to-png",
+    "name": "PBM to PNG",
+    "description": "Convert PBM to PNG format",
+    "operation": "convert",
+    "route": "/pbm-to-png",
+    "from": "pbm",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "pbm",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pcx-to-jpg",
+    "name": "PCX to JPG",
+    "description": "Convert PCX to JPG format",
+    "operation": "convert",
+    "route": "/pcx-to-jpg",
+    "from": "pcx",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "pcx",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pes-to-jpg",
+    "name": "PES to JPG",
+    "description": "Convert PES to JPG format",
+    "operation": "convert",
+    "route": "/pes-to-jpg",
+    "from": "pes",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "pes",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pes-to-png",
+    "name": "PES to PNG",
+    "description": "Convert PES to PNG format",
+    "operation": "convert",
+    "route": "/pes-to-png",
+    "from": "pes",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "pes",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pes-to-svg",
+    "name": "PES to SVG",
+    "description": "Convert PES to SVG format",
+    "operation": "convert",
+    "route": "/pes-to-svg",
+    "from": "pes",
+    "to": "svg",
+    "isActive": true,
+    "tags": [
+      "pes",
+      "svg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "png-to-xbm",
+    "name": "PNG to XBM",
+    "description": "Convert PNG to XBM format",
+    "operation": "convert",
+    "route": "/png-to-xbm",
+    "from": "png",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "png",
+      "xbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "svg-to-otf",
+    "name": "SVG to OTF",
+    "description": "Convert SVG to OTF format",
+    "operation": "convert",
+    "route": "/svg-to-otf",
+    "from": "svg",
+    "to": "otf",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "otf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "wpg-to-jpeg",
+    "name": "WPG to JPEG",
+    "description": "Convert WPG to JPEG format",
+    "operation": "convert",
+    "route": "/wpg-to-jpeg",
+    "from": "wpg",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "wpg",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "xls-to-png",
+    "name": "XLS to PNG",
+    "description": "Convert XLS to PNG format",
+    "operation": "convert",
+    "route": "/xls-to-png",
+    "from": "xls",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "xls",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "xps-to-jpeg",
+    "name": "XPS to JPEG",
+    "description": "Convert XPS to JPEG format",
+    "operation": "convert",
+    "route": "/xps-to-jpeg",
+    "from": "xps",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "xps",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-avif",
+    "name": "AVIF to AVIF",
+    "description": "Convert AVIF to AVIF format",
+    "operation": "convert",
+    "route": "/avif-to-avif",
+    "from": "avif",
+    "to": "avif",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-cur",
+    "name": "AVIF to CUR",
+    "description": "Convert AVIF to CUR format",
+    "operation": "convert",
+    "route": "/avif-to-cur",
+    "from": "avif",
+    "to": "cur",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "cur",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-dds",
+    "name": "AVIF to DDS",
+    "description": "Convert AVIF to DDS format",
+    "operation": "convert",
+    "route": "/avif-to-dds",
+    "from": "avif",
+    "to": "dds",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "dds",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-icns",
+    "name": "AVIF to ICNS",
+    "description": "Convert AVIF to ICNS format",
+    "operation": "convert",
+    "route": "/avif-to-icns",
+    "from": "avif",
+    "to": "icns",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "icns",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-jfif",
+    "name": "AVIF to JFIF",
+    "description": "Convert AVIF to JFIF format",
+    "operation": "convert",
+    "route": "/avif-to-jfif",
+    "from": "avif",
+    "to": "jfif",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "jfif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-jif",
+    "name": "AVIF to JIF",
+    "description": "Convert AVIF to JIF format",
+    "operation": "convert",
+    "route": "/avif-to-jif",
+    "from": "avif",
+    "to": "jif",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "jif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-jxl",
+    "name": "AVIF to JXL",
+    "description": "Convert AVIF to JXL format",
+    "operation": "convert",
+    "route": "/avif-to-jxl",
+    "from": "avif",
+    "to": "jxl",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "jxl",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-ktx",
+    "name": "AVIF to KTX",
+    "description": "Convert AVIF to KTX format",
+    "operation": "convert",
+    "route": "/avif-to-ktx",
+    "from": "avif",
+    "to": "ktx",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "ktx",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-ktx2",
+    "name": "AVIF to KTX2",
+    "description": "Convert AVIF to KTX2 format",
+    "operation": "convert",
+    "route": "/avif-to-ktx2",
+    "from": "avif",
+    "to": "ktx2",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "ktx2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-pam",
+    "name": "AVIF to PAM",
+    "description": "Convert AVIF to PAM format",
+    "operation": "convert",
+    "route": "/avif-to-pam",
+    "from": "avif",
+    "to": "pam",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "pam",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-pbm",
+    "name": "AVIF to PBM",
+    "description": "Convert AVIF to PBM format",
+    "operation": "convert",
+    "route": "/avif-to-pbm",
+    "from": "avif",
+    "to": "pbm",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "pbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-pcx",
+    "name": "AVIF to PCX",
+    "description": "Convert AVIF to PCX format",
+    "operation": "convert",
+    "route": "/avif-to-pcx",
+    "from": "avif",
+    "to": "pcx",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "pcx",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-pgm",
+    "name": "AVIF to PGM",
+    "description": "Convert AVIF to PGM format",
+    "operation": "convert",
+    "route": "/avif-to-pgm",
+    "from": "avif",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "pgm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-ppm",
+    "name": "AVIF to PPM",
+    "description": "Convert AVIF to PPM format",
+    "operation": "convert",
+    "route": "/avif-to-ppm",
+    "from": "avif",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "ppm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-rw2",
+    "name": "AVIF to RW2",
+    "description": "Convert AVIF to RW2 format",
+    "operation": "convert",
+    "route": "/avif-to-rw2",
+    "from": "avif",
+    "to": "rw2",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "rw2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-tga",
+    "name": "AVIF to TGA",
+    "description": "Convert AVIF to TGA format",
+    "operation": "convert",
+    "route": "/avif-to-tga",
+    "from": "avif",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-tif",
+    "name": "AVIF to TIF",
+    "description": "Convert AVIF to TIF format",
+    "operation": "convert",
+    "route": "/avif-to-tif",
+    "from": "avif",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "tif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-xbm",
+    "name": "AVIF to XBM",
+    "description": "Convert AVIF to XBM format",
+    "operation": "convert",
+    "route": "/avif-to-xbm",
+    "from": "avif",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "xbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-heic",
+    "name": "BMP to HEIC",
+    "description": "Convert BMP to HEIC format",
+    "operation": "convert",
+    "route": "/bmp-to-heic",
+    "from": "bmp",
+    "to": "heic",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "heic",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-heif",
+    "name": "BMP to HEIF",
+    "description": "Convert BMP to HEIF format",
+    "operation": "convert",
+    "route": "/bmp-to-heif",
+    "from": "bmp",
+    "to": "heif",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "heif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-icns",
+    "name": "BMP to ICNS",
+    "description": "Convert BMP to ICNS format",
+    "operation": "convert",
+    "route": "/bmp-to-icns",
+    "from": "bmp",
+    "to": "icns",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "icns",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-jfif",
+    "name": "BMP to JFIF",
+    "description": "Convert BMP to JFIF format",
+    "operation": "convert",
+    "route": "/bmp-to-jfif",
+    "from": "bmp",
+    "to": "jfif",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "jfif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-jif",
+    "name": "BMP to JIF",
+    "description": "Convert BMP to JIF format",
+    "operation": "convert",
+    "route": "/bmp-to-jif",
+    "from": "bmp",
+    "to": "jif",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "jif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-jxl",
+    "name": "BMP to JXL",
+    "description": "Convert BMP to JXL format",
+    "operation": "convert",
+    "route": "/bmp-to-jxl",
+    "from": "bmp",
+    "to": "jxl",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "jxl",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-ktx",
+    "name": "BMP to KTX",
+    "description": "Convert BMP to KTX format",
+    "operation": "convert",
+    "route": "/bmp-to-ktx",
+    "from": "bmp",
+    "to": "ktx",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "ktx",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-ktx2",
+    "name": "BMP to KTX2",
+    "description": "Convert BMP to KTX2 format",
+    "operation": "convert",
+    "route": "/bmp-to-ktx2",
+    "from": "bmp",
+    "to": "ktx2",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "ktx2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-pam",
+    "name": "BMP to PAM",
+    "description": "Convert BMP to PAM format",
+    "operation": "convert",
+    "route": "/bmp-to-pam",
+    "from": "bmp",
+    "to": "pam",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "pam",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-pbm",
+    "name": "BMP to PBM",
+    "description": "Convert BMP to PBM format",
+    "operation": "convert",
+    "route": "/bmp-to-pbm",
+    "from": "bmp",
+    "to": "pbm",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "pbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-pcx",
+    "name": "BMP to PCX",
+    "description": "Convert BMP to PCX format",
+    "operation": "convert",
+    "route": "/bmp-to-pcx",
+    "from": "bmp",
+    "to": "pcx",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "pcx",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-pgm",
+    "name": "BMP to PGM",
+    "description": "Convert BMP to PGM format",
+    "operation": "convert",
+    "route": "/bmp-to-pgm",
+    "from": "bmp",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "pgm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-ppm",
+    "name": "BMP to PPM",
+    "description": "Convert BMP to PPM format",
+    "operation": "convert",
+    "route": "/bmp-to-ppm",
+    "from": "bmp",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "ppm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-rw2",
+    "name": "BMP to RW2",
+    "description": "Convert BMP to RW2 format",
+    "operation": "convert",
+    "route": "/bmp-to-rw2",
+    "from": "bmp",
+    "to": "rw2",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "rw2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "crw-to-jpeg",
+    "name": "CRW to JPEG",
+    "description": "Convert CRW to JPEG format",
+    "operation": "convert",
+    "route": "/crw-to-jpeg",
+    "from": "crw",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "crw",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-heic",
+    "name": "CUR to HEIC",
+    "description": "Convert CUR to HEIC format",
+    "operation": "convert",
+    "route": "/cur-to-heic",
+    "from": "cur",
+    "to": "heic",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "heic",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-heif",
+    "name": "CUR to HEIF",
+    "description": "Convert CUR to HEIF format",
+    "operation": "convert",
+    "route": "/cur-to-heif",
+    "from": "cur",
+    "to": "heif",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "heif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-icns",
+    "name": "CUR to ICNS",
+    "description": "Convert CUR to ICNS format",
+    "operation": "convert",
+    "route": "/cur-to-icns",
+    "from": "cur",
+    "to": "icns",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "icns",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-jfif",
+    "name": "CUR to JFIF",
+    "description": "Convert CUR to JFIF format",
+    "operation": "convert",
+    "route": "/cur-to-jfif",
+    "from": "cur",
+    "to": "jfif",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "jfif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-jif",
+    "name": "CUR to JIF",
+    "description": "Convert CUR to JIF format",
+    "operation": "convert",
+    "route": "/cur-to-jif",
+    "from": "cur",
+    "to": "jif",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "jif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-jxl",
+    "name": "CUR to JXL",
+    "description": "Convert CUR to JXL format",
+    "operation": "convert",
+    "route": "/cur-to-jxl",
+    "from": "cur",
+    "to": "jxl",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "jxl",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-ktx",
+    "name": "CUR to KTX",
+    "description": "Convert CUR to KTX format",
+    "operation": "convert",
+    "route": "/cur-to-ktx",
+    "from": "cur",
+    "to": "ktx",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "ktx",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-ktx2",
+    "name": "CUR to KTX2",
+    "description": "Convert CUR to KTX2 format",
+    "operation": "convert",
+    "route": "/cur-to-ktx2",
+    "from": "cur",
+    "to": "ktx2",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "ktx2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-pam",
+    "name": "CUR to PAM",
+    "description": "Convert CUR to PAM format",
+    "operation": "convert",
+    "route": "/cur-to-pam",
+    "from": "cur",
+    "to": "pam",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "pam",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-pbm",
+    "name": "CUR to PBM",
+    "description": "Convert CUR to PBM format",
+    "operation": "convert",
+    "route": "/cur-to-pbm",
+    "from": "cur",
+    "to": "pbm",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "pbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-pcx",
+    "name": "CUR to PCX",
+    "description": "Convert CUR to PCX format",
+    "operation": "convert",
+    "route": "/cur-to-pcx",
+    "from": "cur",
+    "to": "pcx",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "pcx",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-pgm",
+    "name": "CUR to PGM",
+    "description": "Convert CUR to PGM format",
+    "operation": "convert",
+    "route": "/cur-to-pgm",
+    "from": "cur",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "pgm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-ppm",
+    "name": "CUR to PPM",
+    "description": "Convert CUR to PPM format",
+    "operation": "convert",
+    "route": "/cur-to-ppm",
+    "from": "cur",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "ppm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-rw2",
+    "name": "CUR to RW2",
+    "description": "Convert CUR to RW2 format",
+    "operation": "convert",
+    "route": "/cur-to-rw2",
+    "from": "cur",
+    "to": "rw2",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "rw2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-xbm",
+    "name": "CUR to XBM",
+    "description": "Convert CUR to XBM format",
+    "operation": "convert",
+    "route": "/cur-to-xbm",
+    "from": "cur",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "xbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-heic",
+    "name": "DDS to HEIC",
+    "description": "Convert DDS to HEIC format",
+    "operation": "convert",
+    "route": "/dds-to-heic",
+    "from": "dds",
+    "to": "heic",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "heic",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-heif",
+    "name": "DDS to HEIF",
+    "description": "Convert DDS to HEIF format",
+    "operation": "convert",
+    "route": "/dds-to-heif",
+    "from": "dds",
+    "to": "heif",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "heif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-icns",
+    "name": "DDS to ICNS",
+    "description": "Convert DDS to ICNS format",
+    "operation": "convert",
+    "route": "/dds-to-icns",
+    "from": "dds",
+    "to": "icns",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "icns",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-jfif",
+    "name": "DDS to JFIF",
+    "description": "Convert DDS to JFIF format",
+    "operation": "convert",
+    "route": "/dds-to-jfif",
+    "from": "dds",
+    "to": "jfif",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "jfif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-jif",
+    "name": "DDS to JIF",
+    "description": "Convert DDS to JIF format",
+    "operation": "convert",
+    "route": "/dds-to-jif",
+    "from": "dds",
+    "to": "jif",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "jif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-jxl",
+    "name": "DDS to JXL",
+    "description": "Convert DDS to JXL format",
+    "operation": "convert",
+    "route": "/dds-to-jxl",
+    "from": "dds",
+    "to": "jxl",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "jxl",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-ktx",
+    "name": "DDS to KTX",
+    "description": "Convert DDS to KTX format",
+    "operation": "convert",
+    "route": "/dds-to-ktx",
+    "from": "dds",
+    "to": "ktx",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "ktx",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-ktx2",
+    "name": "DDS to KTX2",
+    "description": "Convert DDS to KTX2 format",
+    "operation": "convert",
+    "route": "/dds-to-ktx2",
+    "from": "dds",
+    "to": "ktx2",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "ktx2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-pam",
+    "name": "DDS to PAM",
+    "description": "Convert DDS to PAM format",
+    "operation": "convert",
+    "route": "/dds-to-pam",
+    "from": "dds",
+    "to": "pam",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "pam",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-pbm",
+    "name": "DDS to PBM",
+    "description": "Convert DDS to PBM format",
+    "operation": "convert",
+    "route": "/dds-to-pbm",
+    "from": "dds",
+    "to": "pbm",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "pbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-pcx",
+    "name": "DDS to PCX",
+    "description": "Convert DDS to PCX format",
+    "operation": "convert",
+    "route": "/dds-to-pcx",
+    "from": "dds",
+    "to": "pcx",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "pcx",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-pgm",
+    "name": "DDS to PGM",
+    "description": "Convert DDS to PGM format",
+    "operation": "convert",
+    "route": "/dds-to-pgm",
+    "from": "dds",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "pgm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-ppm",
+    "name": "DDS to PPM",
+    "description": "Convert DDS to PPM format",
+    "operation": "convert",
+    "route": "/dds-to-ppm",
+    "from": "dds",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "ppm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-rw2",
+    "name": "DDS to RW2",
+    "description": "Convert DDS to RW2 format",
+    "operation": "convert",
+    "route": "/dds-to-rw2",
+    "from": "dds",
+    "to": "rw2",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "rw2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-xbm",
+    "name": "DDS to XBM",
+    "description": "Convert DDS to XBM format",
+    "operation": "convert",
+    "route": "/dds-to-xbm",
+    "from": "dds",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "xbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dot-to-jpg",
+    "name": "DOT to JPG",
+    "description": "Convert DOT to JPG format",
+    "operation": "convert",
+    "route": "/dot-to-jpg",
+    "from": "dot",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "dot",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dst-to-psd",
+    "name": "DST to PSD",
+    "description": "Convert DST to PSD format",
+    "operation": "convert",
+    "route": "/dst-to-psd",
+    "from": "dst",
+    "to": "psd",
+    "isActive": true,
+    "tags": [
+      "dst",
+      "psd",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "fig-to-tiff",
+    "name": "FIG to TIFF",
+    "description": "Convert FIG to TIFF format",
+    "operation": "convert",
+    "route": "/fig-to-tiff",
+    "from": "fig",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "fig",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-hdr",
+    "name": "GIF to HDR",
+    "description": "Convert GIF to HDR format",
+    "operation": "convert",
+    "route": "/gif-to-hdr",
+    "from": "gif",
+    "to": "hdr",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "hdr",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-icns",
+    "name": "GIF to ICNS",
+    "description": "Convert GIF to ICNS format",
+    "operation": "convert",
+    "route": "/gif-to-icns",
+    "from": "gif",
+    "to": "icns",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "icns",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-jfif",
+    "name": "GIF to JFIF",
+    "description": "Convert GIF to JFIF format",
+    "operation": "convert",
+    "route": "/gif-to-jfif",
+    "from": "gif",
+    "to": "jfif",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "jfif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-jif",
+    "name": "GIF to JIF",
+    "description": "Convert GIF to JIF format",
+    "operation": "convert",
+    "route": "/gif-to-jif",
+    "from": "gif",
+    "to": "jif",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "jif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-ktx",
+    "name": "GIF to KTX",
+    "description": "Convert GIF to KTX format",
+    "operation": "convert",
+    "route": "/gif-to-ktx",
+    "from": "gif",
+    "to": "ktx",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "ktx",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-ktx2",
+    "name": "GIF to KTX2",
+    "description": "Convert GIF to KTX2 format",
+    "operation": "convert",
+    "route": "/gif-to-ktx2",
+    "from": "gif",
+    "to": "ktx2",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "ktx2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-pam",
+    "name": "GIF to PAM",
+    "description": "Convert GIF to PAM format",
+    "operation": "convert",
+    "route": "/gif-to-pam",
+    "from": "gif",
+    "to": "pam",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "pam",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-pbm",
+    "name": "GIF to PBM",
+    "description": "Convert GIF to PBM format",
+    "operation": "convert",
+    "route": "/gif-to-pbm",
+    "from": "gif",
+    "to": "pbm",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "pbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-pcx",
+    "name": "GIF to PCX",
+    "description": "Convert GIF to PCX format",
+    "operation": "convert",
+    "route": "/gif-to-pcx",
+    "from": "gif",
+    "to": "pcx",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "pcx",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-pgm",
+    "name": "GIF to PGM",
+    "description": "Convert GIF to PGM format",
+    "operation": "convert",
+    "route": "/gif-to-pgm",
+    "from": "gif",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "pgm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-ppm",
+    "name": "GIF to PPM",
+    "description": "Convert GIF to PPM format",
+    "operation": "convert",
+    "route": "/gif-to-ppm",
+    "from": "gif",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "ppm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-rw2",
+    "name": "GIF to RW2",
+    "description": "Convert GIF to RW2 format",
+    "operation": "convert",
+    "route": "/gif-to-rw2",
+    "from": "gif",
+    "to": "rw2",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "rw2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-xbm",
+    "name": "GIF to XBM",
+    "description": "Convert GIF to XBM format",
+    "operation": "convert",
+    "route": "/gif-to-xbm",
+    "from": "gif",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "xbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heic-to-heic",
+    "name": "HEIC to HEIC",
+    "description": "Convert HEIC to HEIC format",
+    "operation": "convert",
+    "route": "/heic-to-heic",
+    "from": "heic",
+    "to": "heic",
+    "isActive": true,
+    "tags": [
+      "heic",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heic-to-heif",
+    "name": "HEIC to HEIF",
+    "description": "Convert HEIC to HEIF format",
+    "operation": "convert",
+    "route": "/heic-to-heif",
+    "from": "heic",
+    "to": "heif",
+    "isActive": true,
+    "tags": [
+      "heic",
+      "heif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heic-to-icns",
+    "name": "HEIC to ICNS",
+    "description": "Convert HEIC to ICNS format",
+    "operation": "convert",
+    "route": "/heic-to-icns",
+    "from": "heic",
+    "to": "icns",
+    "isActive": true,
+    "tags": [
+      "heic",
+      "icns",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heic-to-jfif",
+    "name": "HEIC to JFIF",
+    "description": "Convert HEIC to JFIF format",
+    "operation": "convert",
+    "route": "/heic-to-jfif",
+    "from": "heic",
+    "to": "jfif",
+    "isActive": true,
+    "tags": [
+      "heic",
+      "jfif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heic-to-jif",
+    "name": "HEIC to JIF",
+    "description": "Convert HEIC to JIF format",
+    "operation": "convert",
+    "route": "/heic-to-jif",
+    "from": "heic",
+    "to": "jif",
+    "isActive": true,
+    "tags": [
+      "heic",
+      "jif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heic-to-jxl",
+    "name": "HEIC to JXL",
+    "description": "Convert HEIC to JXL format",
+    "operation": "convert",
+    "route": "/heic-to-jxl",
+    "from": "heic",
+    "to": "jxl",
+    "isActive": true,
+    "tags": [
+      "heic",
+      "jxl",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heic-to-ktx",
+    "name": "HEIC to KTX",
+    "description": "Convert HEIC to KTX format",
+    "operation": "convert",
+    "route": "/heic-to-ktx",
+    "from": "heic",
+    "to": "ktx",
+    "isActive": true,
+    "tags": [
+      "heic",
+      "ktx",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heic-to-ktx2",
+    "name": "HEIC to KTX2",
+    "description": "Convert HEIC to KTX2 format",
+    "operation": "convert",
+    "route": "/heic-to-ktx2",
+    "from": "heic",
+    "to": "ktx2",
+    "isActive": true,
+    "tags": [
+      "heic",
+      "ktx2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heic-to-pam",
+    "name": "HEIC to PAM",
+    "description": "Convert HEIC to PAM format",
+    "operation": "convert",
+    "route": "/heic-to-pam",
+    "from": "heic",
+    "to": "pam",
+    "isActive": true,
+    "tags": [
+      "heic",
+      "pam",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heic-to-pbm",
+    "name": "HEIC to PBM",
+    "description": "Convert HEIC to PBM format",
+    "operation": "convert",
+    "route": "/heic-to-pbm",
+    "from": "heic",
+    "to": "pbm",
+    "isActive": true,
+    "tags": [
+      "heic",
+      "pbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heic-to-pcx",
+    "name": "HEIC to PCX",
+    "description": "Convert HEIC to PCX format",
+    "operation": "convert",
+    "route": "/heic-to-pcx",
+    "from": "heic",
+    "to": "pcx",
+    "isActive": true,
+    "tags": [
+      "heic",
+      "pcx",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heic-to-pgm",
+    "name": "HEIC to PGM",
+    "description": "Convert HEIC to PGM format",
+    "operation": "convert",
+    "route": "/heic-to-pgm",
+    "from": "heic",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "heic",
+      "pgm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heic-to-ppm",
+    "name": "HEIC to PPM",
+    "description": "Convert HEIC to PPM format",
+    "operation": "convert",
+    "route": "/heic-to-ppm",
+    "from": "heic",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "heic",
+      "ppm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heic-to-rw2",
+    "name": "HEIC to RW2",
+    "description": "Convert HEIC to RW2 format",
+    "operation": "convert",
+    "route": "/heic-to-rw2",
+    "from": "heic",
+    "to": "rw2",
+    "isActive": true,
+    "tags": [
+      "heic",
+      "rw2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heic-to-tga",
+    "name": "HEIC to TGA",
+    "description": "Convert HEIC to TGA format",
+    "operation": "convert",
+    "route": "/heic-to-tga",
+    "from": "heic",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "heic",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heic-to-xbm",
+    "name": "HEIC to XBM",
+    "description": "Convert HEIC to XBM format",
+    "operation": "convert",
+    "route": "/heic-to-xbm",
+    "from": "heic",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "heic",
+      "xbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heif-to-heif",
+    "name": "HEIF to HEIF",
+    "description": "Convert HEIF to HEIF format",
+    "operation": "convert",
+    "route": "/heif-to-heif",
+    "from": "heif",
+    "to": "heif",
+    "isActive": true,
+    "tags": [
+      "heif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heif-to-icns",
+    "name": "HEIF to ICNS",
+    "description": "Convert HEIF to ICNS format",
+    "operation": "convert",
+    "route": "/heif-to-icns",
+    "from": "heif",
+    "to": "icns",
+    "isActive": true,
+    "tags": [
+      "heif",
+      "icns",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heif-to-ico",
+    "name": "HEIF to ICO",
+    "description": "Convert HEIF to ICO format",
+    "operation": "convert",
+    "route": "/heif-to-ico",
+    "from": "heif",
+    "to": "ico",
+    "isActive": true,
+    "tags": [
+      "heif",
+      "ico",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heif-to-jfif",
+    "name": "HEIF to JFIF",
+    "description": "Convert HEIF to JFIF format",
+    "operation": "convert",
+    "route": "/heif-to-jfif",
+    "from": "heif",
+    "to": "jfif",
+    "isActive": true,
+    "tags": [
+      "heif",
+      "jfif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heif-to-jif",
+    "name": "HEIF to JIF",
+    "description": "Convert HEIF to JIF format",
+    "operation": "convert",
+    "route": "/heif-to-jif",
+    "from": "heif",
+    "to": "jif",
+    "isActive": true,
+    "tags": [
+      "heif",
+      "jif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heif-to-jxl",
+    "name": "HEIF to JXL",
+    "description": "Convert HEIF to JXL format",
+    "operation": "convert",
+    "route": "/heif-to-jxl",
+    "from": "heif",
+    "to": "jxl",
+    "isActive": true,
+    "tags": [
+      "heif",
+      "jxl",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heif-to-ktx",
+    "name": "HEIF to KTX",
+    "description": "Convert HEIF to KTX format",
+    "operation": "convert",
+    "route": "/heif-to-ktx",
+    "from": "heif",
+    "to": "ktx",
+    "isActive": true,
+    "tags": [
+      "heif",
+      "ktx",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heif-to-ktx2",
+    "name": "HEIF to KTX2",
+    "description": "Convert HEIF to KTX2 format",
+    "operation": "convert",
+    "route": "/heif-to-ktx2",
+    "from": "heif",
+    "to": "ktx2",
+    "isActive": true,
+    "tags": [
+      "heif",
+      "ktx2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heif-to-pam",
+    "name": "HEIF to PAM",
+    "description": "Convert HEIF to PAM format",
+    "operation": "convert",
+    "route": "/heif-to-pam",
+    "from": "heif",
+    "to": "pam",
+    "isActive": true,
+    "tags": [
+      "heif",
+      "pam",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heif-to-pbm",
+    "name": "HEIF to PBM",
+    "description": "Convert HEIF to PBM format",
+    "operation": "convert",
+    "route": "/heif-to-pbm",
+    "from": "heif",
+    "to": "pbm",
+    "isActive": true,
+    "tags": [
+      "heif",
+      "pbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heif-to-pcx",
+    "name": "HEIF to PCX",
+    "description": "Convert HEIF to PCX format",
+    "operation": "convert",
+    "route": "/heif-to-pcx",
+    "from": "heif",
+    "to": "pcx",
+    "isActive": true,
+    "tags": [
+      "heif",
+      "pcx",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heif-to-pgm",
+    "name": "HEIF to PGM",
+    "description": "Convert HEIF to PGM format",
+    "operation": "convert",
+    "route": "/heif-to-pgm",
+    "from": "heif",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "heif",
+      "pgm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heif-to-ppm",
+    "name": "HEIF to PPM",
+    "description": "Convert HEIF to PPM format",
+    "operation": "convert",
+    "route": "/heif-to-ppm",
+    "from": "heif",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "heif",
+      "ppm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heif-to-rw2",
+    "name": "HEIF to RW2",
+    "description": "Convert HEIF to RW2 format",
+    "operation": "convert",
+    "route": "/heif-to-rw2",
+    "from": "heif",
+    "to": "rw2",
+    "isActive": true,
+    "tags": [
+      "heif",
+      "rw2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heif-to-tga",
+    "name": "HEIF to TGA",
+    "description": "Convert HEIF to TGA format",
+    "operation": "convert",
+    "route": "/heif-to-tga",
+    "from": "heif",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "heif",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heif-to-tif",
+    "name": "HEIF to TIF",
+    "description": "Convert HEIF to TIF format",
+    "operation": "convert",
+    "route": "/heif-to-tif",
+    "from": "heif",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "heif",
+      "tif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heif-to-xbm",
+    "name": "HEIF to XBM",
+    "description": "Convert HEIF to XBM format",
+    "operation": "convert",
+    "route": "/heif-to-xbm",
+    "from": "heif",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "heif",
+      "xbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "icns-to-icns",
+    "name": "ICNS to ICNS",
+    "description": "Convert ICNS to ICNS format",
+    "operation": "convert",
+    "route": "/icns-to-icns",
+    "from": "icns",
+    "to": "icns",
+    "isActive": true,
+    "tags": [
+      "icns",
+      "convert"
+    ]
+  },
+  {
+    "id": "icns-to-jfif",
+    "name": "ICNS to JFIF",
+    "description": "Convert ICNS to JFIF format",
+    "operation": "convert",
+    "route": "/icns-to-jfif",
+    "from": "icns",
+    "to": "jfif",
+    "isActive": true,
+    "tags": [
+      "icns",
+      "jfif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "icns-to-jif",
+    "name": "ICNS to JIF",
+    "description": "Convert ICNS to JIF format",
+    "operation": "convert",
+    "route": "/icns-to-jif",
+    "from": "icns",
+    "to": "jif",
+    "isActive": true,
+    "tags": [
+      "icns",
+      "jif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "icns-to-jpeg",
+    "name": "ICNS to JPEG",
+    "description": "Convert ICNS to JPEG format",
+    "operation": "convert",
+    "route": "/icns-to-jpeg",
+    "from": "icns",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "icns",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "icns-to-jpg",
+    "name": "ICNS to JPG",
+    "description": "Convert ICNS to JPG format",
+    "operation": "convert",
+    "route": "/icns-to-jpg",
+    "from": "icns",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "icns",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "icns-to-jxl",
+    "name": "ICNS to JXL",
+    "description": "Convert ICNS to JXL format",
+    "operation": "convert",
+    "route": "/icns-to-jxl",
+    "from": "icns",
+    "to": "jxl",
+    "isActive": true,
+    "tags": [
+      "icns",
+      "jxl",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "icns-to-ktx",
+    "name": "ICNS to KTX",
+    "description": "Convert ICNS to KTX format",
+    "operation": "convert",
+    "route": "/icns-to-ktx",
+    "from": "icns",
+    "to": "ktx",
+    "isActive": true,
+    "tags": [
+      "icns",
+      "ktx",
+      "convert"
+    ]
+  },
+  {
+    "id": "icns-to-ktx2",
+    "name": "ICNS to KTX2",
+    "description": "Convert ICNS to KTX2 format",
+    "operation": "convert",
+    "route": "/icns-to-ktx2",
+    "from": "icns",
+    "to": "ktx2",
+    "isActive": true,
+    "tags": [
+      "icns",
+      "ktx2",
+      "convert"
+    ]
+  },
+  {
+    "id": "icns-to-pam",
+    "name": "ICNS to PAM",
+    "description": "Convert ICNS to PAM format",
+    "operation": "convert",
+    "route": "/icns-to-pam",
+    "from": "icns",
+    "to": "pam",
+    "isActive": true,
+    "tags": [
+      "icns",
+      "pam",
+      "convert"
+    ]
+  },
+  {
+    "id": "icns-to-pbm",
+    "name": "ICNS to PBM",
+    "description": "Convert ICNS to PBM format",
+    "operation": "convert",
+    "route": "/icns-to-pbm",
+    "from": "icns",
+    "to": "pbm",
+    "isActive": true,
+    "tags": [
+      "icns",
+      "pbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "icns-to-pcx",
+    "name": "ICNS to PCX",
+    "description": "Convert ICNS to PCX format",
+    "operation": "convert",
+    "route": "/icns-to-pcx",
+    "from": "icns",
+    "to": "pcx",
+    "isActive": true,
+    "tags": [
+      "icns",
+      "pcx",
+      "convert"
+    ]
+  },
+  {
+    "id": "icns-to-pgm",
+    "name": "ICNS to PGM",
+    "description": "Convert ICNS to PGM format",
+    "operation": "convert",
+    "route": "/icns-to-pgm",
+    "from": "icns",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "icns",
+      "pgm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "icns-to-ppm",
+    "name": "ICNS to PPM",
+    "description": "Convert ICNS to PPM format",
+    "operation": "convert",
+    "route": "/icns-to-ppm",
+    "from": "icns",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "icns",
+      "ppm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "icns-to-rw2",
+    "name": "ICNS to RW2",
+    "description": "Convert ICNS to RW2 format",
+    "operation": "convert",
+    "route": "/icns-to-rw2",
+    "from": "icns",
+    "to": "rw2",
+    "isActive": true,
+    "tags": [
+      "icns",
+      "rw2",
+      "convert"
+    ]
+  },
+  {
+    "id": "icns-to-tga",
+    "name": "ICNS to TGA",
+    "description": "Convert ICNS to TGA format",
+    "operation": "convert",
+    "route": "/icns-to-tga",
+    "from": "icns",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "icns",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "icns-to-tif",
+    "name": "ICNS to TIF",
+    "description": "Convert ICNS to TIF format",
+    "operation": "convert",
+    "route": "/icns-to-tif",
+    "from": "icns",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "icns",
+      "tif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "icns-to-tiff",
+    "name": "ICNS to TIFF",
+    "description": "Convert ICNS to TIFF format",
+    "operation": "convert",
+    "route": "/icns-to-tiff",
+    "from": "icns",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "icns",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "icns-to-webp",
+    "name": "ICNS to WebP",
+    "description": "Convert ICNS to WebP format",
+    "operation": "convert",
+    "route": "/icns-to-webp",
+    "from": "icns",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "icns",
+      "webp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "icns-to-xbm",
+    "name": "ICNS to XBM",
+    "description": "Convert ICNS to XBM format",
+    "operation": "convert",
+    "route": "/icns-to-xbm",
+    "from": "icns",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "icns",
+      "xbm",
+      "convert"
+    ]
+  },
+  {
+    "id": "ico-to-jfif",
+    "name": "ICO to JFIF",
+    "description": "Convert ICO to JFIF format",
+    "operation": "convert",
+    "route": "/ico-to-jfif",
+    "from": "ico",
+    "to": "jfif",
+    "isActive": true,
+    "tags": [
+      "ico",
+      "jfif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ico-to-jif",
+    "name": "ICO to JIF",
+    "description": "Convert ICO to JIF format",
+    "operation": "convert",
+    "route": "/ico-to-jif",
+    "from": "ico",
+    "to": "jif",
+    "isActive": true,
+    "tags": [
+      "ico",
+      "jif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ico-to-jxl",
+    "name": "ICO to JXL",
+    "description": "Convert ICO to JXL format",
+    "operation": "convert",
+    "route": "/ico-to-jxl",
+    "from": "ico",
+    "to": "jxl",
+    "isActive": true,
+    "tags": [
+      "ico",
+      "jxl",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ico-to-ktx",
+    "name": "ICO to KTX",
+    "description": "Convert ICO to KTX format",
+    "operation": "convert",
+    "route": "/ico-to-ktx",
+    "from": "ico",
+    "to": "ktx",
+    "isActive": true,
+    "tags": [
+      "ico",
+      "ktx",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ico-to-ktx2",
+    "name": "ICO to KTX2",
+    "description": "Convert ICO to KTX2 format",
+    "operation": "convert",
+    "route": "/ico-to-ktx2",
+    "from": "ico",
+    "to": "ktx2",
+    "isActive": true,
+    "tags": [
+      "ico",
+      "ktx2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ico-to-pam",
+    "name": "ICO to PAM",
+    "description": "Convert ICO to PAM format",
+    "operation": "convert",
+    "route": "/ico-to-pam",
+    "from": "ico",
+    "to": "pam",
+    "isActive": true,
+    "tags": [
+      "ico",
+      "pam",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ico-to-pbm",
+    "name": "ICO to PBM",
+    "description": "Convert ICO to PBM format",
+    "operation": "convert",
+    "route": "/ico-to-pbm",
+    "from": "ico",
+    "to": "pbm",
+    "isActive": true,
+    "tags": [
+      "ico",
+      "pbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ico-to-pcx",
+    "name": "ICO to PCX",
+    "description": "Convert ICO to PCX format",
+    "operation": "convert",
+    "route": "/ico-to-pcx",
+    "from": "ico",
+    "to": "pcx",
+    "isActive": true,
+    "tags": [
+      "ico",
+      "pcx",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ico-to-pgm",
+    "name": "ICO to PGM",
+    "description": "Convert ICO to PGM format",
+    "operation": "convert",
+    "route": "/ico-to-pgm",
+    "from": "ico",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "ico",
+      "pgm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ico-to-ppm",
+    "name": "ICO to PPM",
+    "description": "Convert ICO to PPM format",
+    "operation": "convert",
+    "route": "/ico-to-ppm",
+    "from": "ico",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "ico",
+      "ppm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ico-to-rw2",
+    "name": "ICO to RW2",
+    "description": "Convert ICO to RW2 format",
+    "operation": "convert",
+    "route": "/ico-to-rw2",
+    "from": "ico",
+    "to": "rw2",
+    "isActive": true,
+    "tags": [
+      "ico",
+      "rw2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ico-to-xbm",
+    "name": "ICO to XBM",
+    "description": "Convert ICO to XBM format",
+    "operation": "convert",
+    "route": "/ico-to-xbm",
+    "from": "ico",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "ico",
+      "xbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jfif-to-pbm",
+    "name": "JFIF to PBM",
+    "description": "Convert JFIF to PBM format",
+    "operation": "convert",
+    "route": "/jfif-to-pbm",
+    "from": "jfif",
+    "to": "pbm",
+    "isActive": true,
+    "tags": [
+      "jfif",
+      "pbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jfif-to-pgm",
+    "name": "JFIF to PGM",
+    "description": "Convert JFIF to PGM format",
+    "operation": "convert",
+    "route": "/jfif-to-pgm",
+    "from": "jfif",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "jfif",
+      "pgm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jfif-to-ppm",
+    "name": "JFIF to PPM",
+    "description": "Convert JFIF to PPM format",
+    "operation": "convert",
+    "route": "/jfif-to-ppm",
+    "from": "jfif",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "jfif",
+      "ppm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jfif-to-tga",
+    "name": "JFIF to TGA",
+    "description": "Convert JFIF to TGA format",
+    "operation": "convert",
+    "route": "/jfif-to-tga",
+    "from": "jfif",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "jfif",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jfif-to-tif",
+    "name": "JFIF to TIF",
+    "description": "Convert JFIF to TIF format",
+    "operation": "convert",
+    "route": "/jfif-to-tif",
+    "from": "jfif",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "jfif",
+      "tif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jfif-to-tiff",
+    "name": "JFIF to TIFF",
+    "description": "Convert JFIF to TIFF format",
+    "operation": "convert",
+    "route": "/jfif-to-tiff",
+    "from": "jfif",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "jfif",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jif-to-pbm",
+    "name": "JIF to PBM",
+    "description": "Convert JIF to PBM format",
+    "operation": "convert",
+    "route": "/jif-to-pbm",
+    "from": "jif",
+    "to": "pbm",
+    "isActive": true,
+    "tags": [
+      "jif",
+      "pbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jif-to-pgm",
+    "name": "JIF to PGM",
+    "description": "Convert JIF to PGM format",
+    "operation": "convert",
+    "route": "/jif-to-pgm",
+    "from": "jif",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "jif",
+      "pgm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jif-to-ppm",
+    "name": "JIF to PPM",
+    "description": "Convert JIF to PPM format",
+    "operation": "convert",
+    "route": "/jif-to-ppm",
+    "from": "jif",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "jif",
+      "ppm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jif-to-tga",
+    "name": "JIF to TGA",
+    "description": "Convert JIF to TGA format",
+    "operation": "convert",
+    "route": "/jif-to-tga",
+    "from": "jif",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "jif",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jif-to-tif",
+    "name": "JIF to TIF",
+    "description": "Convert JIF to TIF format",
+    "operation": "convert",
+    "route": "/jif-to-tif",
+    "from": "jif",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "jif",
+      "tif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jif-to-tiff",
+    "name": "JIF to TIFF",
+    "description": "Convert JIF to TIFF format",
+    "operation": "convert",
+    "route": "/jif-to-tiff",
+    "from": "jif",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "jif",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jif-to-webp",
+    "name": "JIF to WebP",
+    "description": "Convert JIF to WebP format",
+    "operation": "convert",
+    "route": "/jif-to-webp",
+    "from": "jif",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "jif",
+      "webp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-ktx",
+    "name": "JPEG to KTX",
+    "description": "Convert JPEG to KTX format",
+    "operation": "convert",
+    "route": "/jpeg-to-ktx",
+    "from": "jpeg",
+    "to": "ktx",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "ktx",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-ktx2",
+    "name": "JPEG to KTX2",
+    "description": "Convert JPEG to KTX2 format",
+    "operation": "convert",
+    "route": "/jpeg-to-ktx2",
+    "from": "jpeg",
+    "to": "ktx2",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "ktx2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-pam",
+    "name": "JPEG to PAM",
+    "description": "Convert JPEG to PAM format",
+    "operation": "convert",
+    "route": "/jpeg-to-pam",
+    "from": "jpeg",
+    "to": "pam",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "pam",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-pbm",
+    "name": "JPEG to PBM",
+    "description": "Convert JPEG to PBM format",
+    "operation": "convert",
+    "route": "/jpeg-to-pbm",
+    "from": "jpeg",
+    "to": "pbm",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "pbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-pcx",
+    "name": "JPEG to PCX",
+    "description": "Convert JPEG to PCX format",
+    "operation": "convert",
+    "route": "/jpeg-to-pcx",
+    "from": "jpeg",
+    "to": "pcx",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "pcx",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-pgm",
+    "name": "JPEG to PGM",
+    "description": "Convert JPEG to PGM format",
+    "operation": "convert",
+    "route": "/jpeg-to-pgm",
+    "from": "jpeg",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "pgm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-rw2",
+    "name": "JPEG to RW2",
+    "description": "Convert JPEG to RW2 format",
+    "operation": "convert",
+    "route": "/jpeg-to-rw2",
+    "from": "jpeg",
+    "to": "rw2",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "rw2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-xbm",
+    "name": "JPEG to XBM",
+    "description": "Convert JPEG to XBM format",
+    "operation": "convert",
+    "route": "/jpeg-to-xbm",
+    "from": "jpeg",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "xbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-dot",
+    "name": "JPG to DOT",
+    "description": "Convert JPG to DOT format",
+    "operation": "convert",
+    "route": "/jpg-to-dot",
+    "from": "jpg",
+    "to": "dot",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "dot",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-ktx",
+    "name": "JPG to KTX",
+    "description": "Convert JPG to KTX format",
+    "operation": "convert",
+    "route": "/jpg-to-ktx",
+    "from": "jpg",
+    "to": "ktx",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "ktx",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-ktx2",
+    "name": "JPG to KTX2",
+    "description": "Convert JPG to KTX2 format",
+    "operation": "convert",
+    "route": "/jpg-to-ktx2",
+    "from": "jpg",
+    "to": "ktx2",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "ktx2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-pam",
+    "name": "JPG to PAM",
+    "description": "Convert JPG to PAM format",
+    "operation": "convert",
+    "route": "/jpg-to-pam",
+    "from": "jpg",
+    "to": "pam",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "pam",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-pcd",
+    "name": "JPG to PCD",
+    "description": "Convert JPG to PCD format",
+    "operation": "convert",
+    "route": "/jpg-to-pcd",
+    "from": "jpg",
+    "to": "pcd",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "pcd",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-rw2",
+    "name": "JPG to RW2",
+    "description": "Convert JPG to RW2 format",
+    "operation": "convert",
+    "route": "/jpg-to-rw2",
+    "from": "jpg",
+    "to": "rw2",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "rw2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-sk",
+    "name": "JPG to SK",
+    "description": "Convert JPG to SK format",
+    "operation": "convert",
+    "route": "/jpg-to-sk",
+    "from": "jpg",
+    "to": "sk",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "sk",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-wbmp",
+    "name": "JPG to WBMP",
+    "description": "Convert JPG to WBMP format",
+    "operation": "convert",
+    "route": "/jpg-to-wbmp",
+    "from": "jpg",
+    "to": "wbmp",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "wbmp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-xbm",
+    "name": "JPG to XBM",
+    "description": "Convert JPG to XBM format",
+    "operation": "convert",
+    "route": "/jpg-to-xbm",
+    "from": "jpg",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "xbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jxl-to-pbm",
+    "name": "JXL to PBM",
+    "description": "Convert JXL to PBM format",
+    "operation": "convert",
+    "route": "/jxl-to-pbm",
+    "from": "jxl",
+    "to": "pbm",
+    "isActive": true,
+    "tags": [
+      "jxl",
+      "pbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jxl-to-pgm",
+    "name": "JXL to PGM",
+    "description": "Convert JXL to PGM format",
+    "operation": "convert",
+    "route": "/jxl-to-pgm",
+    "from": "jxl",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "jxl",
+      "pgm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jxl-to-ppm",
+    "name": "JXL to PPM",
+    "description": "Convert JXL to PPM format",
+    "operation": "convert",
+    "route": "/jxl-to-ppm",
+    "from": "jxl",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "jxl",
+      "ppm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jxl-to-tga",
+    "name": "JXL to TGA",
+    "description": "Convert JXL to TGA format",
+    "operation": "convert",
+    "route": "/jxl-to-tga",
+    "from": "jxl",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "jxl",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jxl-to-tif",
+    "name": "JXL to TIF",
+    "description": "Convert JXL to TIF format",
+    "operation": "convert",
+    "route": "/jxl-to-tif",
+    "from": "jxl",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "jxl",
+      "tif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jxl-to-tiff",
+    "name": "JXL to TIFF",
+    "description": "Convert JXL to TIFF format",
+    "operation": "convert",
+    "route": "/jxl-to-tiff",
+    "from": "jxl",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "jxl",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jxl-to-webp",
+    "name": "JXL to WebP",
+    "description": "Convert JXL to WebP format",
+    "operation": "convert",
+    "route": "/jxl-to-webp",
+    "from": "jxl",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "jxl",
+      "webp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ktx-to-pbm",
+    "name": "KTX to PBM",
+    "description": "Convert KTX to PBM format",
+    "operation": "convert",
+    "route": "/ktx-to-pbm",
+    "from": "ktx",
+    "to": "pbm",
+    "isActive": true,
+    "tags": [
+      "ktx",
+      "pbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ktx-to-pgm",
+    "name": "KTX to PGM",
+    "description": "Convert KTX to PGM format",
+    "operation": "convert",
+    "route": "/ktx-to-pgm",
+    "from": "ktx",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "ktx",
+      "pgm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ktx-to-ppm",
+    "name": "KTX to PPM",
+    "description": "Convert KTX to PPM format",
+    "operation": "convert",
+    "route": "/ktx-to-ppm",
+    "from": "ktx",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "ktx",
+      "ppm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ktx-to-tga",
+    "name": "KTX to TGA",
+    "description": "Convert KTX to TGA format",
+    "operation": "convert",
+    "route": "/ktx-to-tga",
+    "from": "ktx",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "ktx",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ktx-to-tif",
+    "name": "KTX to TIF",
+    "description": "Convert KTX to TIF format",
+    "operation": "convert",
+    "route": "/ktx-to-tif",
+    "from": "ktx",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "ktx",
+      "tif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ktx-to-tiff",
+    "name": "KTX to TIFF",
+    "description": "Convert KTX to TIFF format",
+    "operation": "convert",
+    "route": "/ktx-to-tiff",
+    "from": "ktx",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "ktx",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ktx-to-webp",
+    "name": "KTX to WebP",
+    "description": "Convert KTX to WebP format",
+    "operation": "convert",
+    "route": "/ktx-to-webp",
+    "from": "ktx",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "ktx",
+      "webp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ktx2-to-pbm",
+    "name": "KTX2 to PBM",
+    "description": "Convert KTX2 to PBM format",
+    "operation": "convert",
+    "route": "/ktx2-to-pbm",
+    "from": "ktx2",
+    "to": "pbm",
+    "isActive": true,
+    "tags": [
+      "ktx2",
+      "pbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ktx2-to-pgm",
+    "name": "KTX2 to PGM",
+    "description": "Convert KTX2 to PGM format",
+    "operation": "convert",
+    "route": "/ktx2-to-pgm",
+    "from": "ktx2",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "ktx2",
+      "pgm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ktx2-to-ppm",
+    "name": "KTX2 to PPM",
+    "description": "Convert KTX2 to PPM format",
+    "operation": "convert",
+    "route": "/ktx2-to-ppm",
+    "from": "ktx2",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "ktx2",
+      "ppm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ktx2-to-tga",
+    "name": "KTX2 to TGA",
+    "description": "Convert KTX2 to TGA format",
+    "operation": "convert",
+    "route": "/ktx2-to-tga",
+    "from": "ktx2",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "ktx2",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ktx2-to-tif",
+    "name": "KTX2 to TIF",
+    "description": "Convert KTX2 to TIF format",
+    "operation": "convert",
+    "route": "/ktx2-to-tif",
+    "from": "ktx2",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "ktx2",
+      "tif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ktx2-to-tiff",
+    "name": "KTX2 to TIFF",
+    "description": "Convert KTX2 to TIFF format",
+    "operation": "convert",
+    "route": "/ktx2-to-tiff",
+    "from": "ktx2",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "ktx2",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ktx2-to-webp",
+    "name": "KTX2 to WebP",
+    "description": "Convert KTX2 to WebP format",
+    "operation": "convert",
+    "route": "/ktx2-to-webp",
+    "from": "ktx2",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "ktx2",
+      "webp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "mac-to-gif",
+    "name": "MAC to GIF",
+    "description": "Convert MAC to GIF format",
+    "operation": "convert",
+    "route": "/mac-to-gif",
+    "from": "mac",
+    "to": "gif",
+    "isActive": true,
+    "tags": [
+      "mac",
+      "gif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "mac-to-jpeg",
+    "name": "MAC to JPEG",
+    "description": "Convert MAC to JPEG format",
+    "operation": "convert",
+    "route": "/mac-to-jpeg",
+    "from": "mac",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "mac",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "mac-to-jpg",
+    "name": "MAC to JPG",
+    "description": "Convert MAC to JPG format",
+    "operation": "convert",
+    "route": "/mac-to-jpg",
+    "from": "mac",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "mac",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pam-to-pbm",
+    "name": "PAM to PBM",
+    "description": "Convert PAM to PBM format",
+    "operation": "convert",
+    "route": "/pam-to-pbm",
+    "from": "pam",
+    "to": "pbm",
+    "isActive": true,
+    "tags": [
+      "pam",
+      "pbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pam-to-pgm",
+    "name": "PAM to PGM",
+    "description": "Convert PAM to PGM format",
+    "operation": "convert",
+    "route": "/pam-to-pgm",
+    "from": "pam",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "pam",
+      "pgm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pam-to-png",
+    "name": "PAM to PNG",
+    "description": "Convert PAM to PNG format",
+    "operation": "convert",
+    "route": "/pam-to-png",
+    "from": "pam",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "pam",
+      "png",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pam-to-ppm",
+    "name": "PAM to PPM",
+    "description": "Convert PAM to PPM format",
+    "operation": "convert",
+    "route": "/pam-to-ppm",
+    "from": "pam",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "pam",
+      "ppm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pam-to-tga",
+    "name": "PAM to TGA",
+    "description": "Convert PAM to TGA format",
+    "operation": "convert",
+    "route": "/pam-to-tga",
+    "from": "pam",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "pam",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pam-to-tif",
+    "name": "PAM to TIF",
+    "description": "Convert PAM to TIF format",
+    "operation": "convert",
+    "route": "/pam-to-tif",
+    "from": "pam",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "pam",
+      "tif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pam-to-tiff",
+    "name": "PAM to TIFF",
+    "description": "Convert PAM to TIFF format",
+    "operation": "convert",
+    "route": "/pam-to-tiff",
+    "from": "pam",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "pam",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pam-to-webp",
+    "name": "PAM to WebP",
+    "description": "Convert PAM to WebP format",
+    "operation": "convert",
+    "route": "/pam-to-webp",
+    "from": "pam",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "pam",
+      "webp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pbm-to-pbm",
+    "name": "PBM to PBM",
+    "description": "Convert PBM to PBM format",
+    "operation": "convert",
+    "route": "/pbm-to-pbm",
+    "from": "pbm",
+    "to": "pbm",
+    "isActive": true,
+    "tags": [
+      "pbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pbm-to-pcx",
+    "name": "PBM to PCX",
+    "description": "Convert PBM to PCX format",
+    "operation": "convert",
+    "route": "/pbm-to-pcx",
+    "from": "pbm",
+    "to": "pcx",
+    "isActive": true,
+    "tags": [
+      "pbm",
+      "pcx",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pbm-to-pgm",
+    "name": "PBM to PGM",
+    "description": "Convert PBM to PGM format",
+    "operation": "convert",
+    "route": "/pbm-to-pgm",
+    "from": "pbm",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "pbm",
+      "pgm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pbm-to-ppm",
+    "name": "PBM to PPM",
+    "description": "Convert PBM to PPM format",
+    "operation": "convert",
+    "route": "/pbm-to-ppm",
+    "from": "pbm",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "pbm",
+      "ppm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pbm-to-rw2",
+    "name": "PBM to RW2",
+    "description": "Convert PBM to RW2 format",
+    "operation": "convert",
+    "route": "/pbm-to-rw2",
+    "from": "pbm",
+    "to": "rw2",
+    "isActive": true,
+    "tags": [
+      "pbm",
+      "rw2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pbm-to-tga",
+    "name": "PBM to TGA",
+    "description": "Convert PBM to TGA format",
+    "operation": "convert",
+    "route": "/pbm-to-tga",
+    "from": "pbm",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "pbm",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pbm-to-tif",
+    "name": "PBM to TIF",
+    "description": "Convert PBM to TIF format",
+    "operation": "convert",
+    "route": "/pbm-to-tif",
+    "from": "pbm",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "pbm",
+      "tif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pbm-to-tiff",
+    "name": "PBM to TIFF",
+    "description": "Convert PBM to TIFF format",
+    "operation": "convert",
+    "route": "/pbm-to-tiff",
+    "from": "pbm",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "pbm",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pbm-to-webp",
+    "name": "PBM to WebP",
+    "description": "Convert PBM to WebP format",
+    "operation": "convert",
+    "route": "/pbm-to-webp",
+    "from": "pbm",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "pbm",
+      "webp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pbm-to-xbm",
+    "name": "PBM to XBM",
+    "description": "Convert PBM to XBM format",
+    "operation": "convert",
+    "route": "/pbm-to-xbm",
+    "from": "pbm",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "pbm",
+      "xbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pcx-to-pgm",
+    "name": "PCX to PGM",
+    "description": "Convert PCX to PGM format",
+    "operation": "convert",
+    "route": "/pcx-to-pgm",
+    "from": "pcx",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "pcx",
+      "pgm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pcx-to-ppm",
+    "name": "PCX to PPM",
+    "description": "Convert PCX to PPM format",
+    "operation": "convert",
+    "route": "/pcx-to-ppm",
+    "from": "pcx",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "pcx",
+      "ppm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pcx-to-tga",
+    "name": "PCX to TGA",
+    "description": "Convert PCX to TGA format",
+    "operation": "convert",
+    "route": "/pcx-to-tga",
+    "from": "pcx",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "pcx",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pcx-to-tif",
+    "name": "PCX to TIF",
+    "description": "Convert PCX to TIF format",
+    "operation": "convert",
+    "route": "/pcx-to-tif",
+    "from": "pcx",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "pcx",
+      "tif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pcx-to-tiff",
+    "name": "PCX to TIFF",
+    "description": "Convert PCX to TIFF format",
+    "operation": "convert",
+    "route": "/pcx-to-tiff",
+    "from": "pcx",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "pcx",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pcx-to-webp",
+    "name": "PCX to WebP",
+    "description": "Convert PCX to WebP format",
+    "operation": "convert",
+    "route": "/pcx-to-webp",
+    "from": "pcx",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "pcx",
+      "webp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pes-to-jpeg",
+    "name": "PES to JPEG",
+    "description": "Convert PES to JPEG format",
+    "operation": "convert",
+    "route": "/pes-to-jpeg",
+    "from": "pes",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "pes",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pes-to-psd",
+    "name": "PES to PSD",
+    "description": "Convert PES to PSD format",
+    "operation": "convert",
+    "route": "/pes-to-psd",
+    "from": "pes",
+    "to": "psd",
+    "isActive": true,
+    "tags": [
+      "pes",
+      "psd",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pgm-to-pgm",
+    "name": "PGM to PGM",
+    "description": "Convert PGM to PGM format",
+    "operation": "convert",
+    "route": "/pgm-to-pgm",
+    "from": "pgm",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "pgm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pgm-to-ppm",
+    "name": "PGM to PPM",
+    "description": "Convert PGM to PPM format",
+    "operation": "convert",
+    "route": "/pgm-to-ppm",
+    "from": "pgm",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "pgm",
+      "ppm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pgm-to-rgb",
+    "name": "PGM to RGB",
+    "description": "Convert PGM to RGB format",
+    "operation": "convert",
+    "route": "/pgm-to-rgb",
+    "from": "pgm",
+    "to": "rgb",
+    "isActive": true,
+    "tags": [
+      "pgm",
+      "rgb",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pgm-to-rw2",
+    "name": "PGM to RW2",
+    "description": "Convert PGM to RW2 format",
+    "operation": "convert",
+    "route": "/pgm-to-rw2",
+    "from": "pgm",
+    "to": "rw2",
+    "isActive": true,
+    "tags": [
+      "pgm",
+      "rw2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pgm-to-tga",
+    "name": "PGM to TGA",
+    "description": "Convert PGM to TGA format",
+    "operation": "convert",
+    "route": "/pgm-to-tga",
+    "from": "pgm",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "pgm",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pgm-to-tif",
+    "name": "PGM to TIF",
+    "description": "Convert PGM to TIF format",
+    "operation": "convert",
+    "route": "/pgm-to-tif",
+    "from": "pgm",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "pgm",
+      "tif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pgm-to-tiff",
+    "name": "PGM to TIFF",
+    "description": "Convert PGM to TIFF format",
+    "operation": "convert",
+    "route": "/pgm-to-tiff",
+    "from": "pgm",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "pgm",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pgm-to-webp",
+    "name": "PGM to WebP",
+    "description": "Convert PGM to WebP format",
+    "operation": "convert",
+    "route": "/pgm-to-webp",
+    "from": "pgm",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "pgm",
+      "webp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pgm-to-xbm",
+    "name": "PGM to XBM",
+    "description": "Convert PGM to XBM format",
+    "operation": "convert",
+    "route": "/pgm-to-xbm",
+    "from": "pgm",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "pgm",
+      "xbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "png-to-dot",
+    "name": "PNG to DOT",
+    "description": "Convert PNG to DOT format",
+    "operation": "convert",
+    "route": "/png-to-dot",
+    "from": "png",
+    "to": "dot",
+    "isActive": true,
+    "tags": [
+      "png",
+      "dot",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "png-to-rw2",
+    "name": "PNG to RW2",
+    "description": "Convert PNG to RW2 format",
+    "operation": "convert",
+    "route": "/png-to-rw2",
+    "from": "png",
+    "to": "rw2",
+    "isActive": true,
+    "tags": [
+      "png",
+      "rw2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ppm-to-rw2",
+    "name": "PPM to RW2",
+    "description": "Convert PPM to RW2 format",
+    "operation": "convert",
+    "route": "/ppm-to-rw2",
+    "from": "ppm",
+    "to": "rw2",
+    "isActive": true,
+    "tags": [
+      "ppm",
+      "rw2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ppm-to-tga",
+    "name": "PPM to TGA",
+    "description": "Convert PPM to TGA format",
+    "operation": "convert",
+    "route": "/ppm-to-tga",
+    "from": "ppm",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "ppm",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ppm-to-tif",
+    "name": "PPM to TIF",
+    "description": "Convert PPM to TIF format",
+    "operation": "convert",
+    "route": "/ppm-to-tif",
+    "from": "ppm",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "ppm",
+      "tif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ppm-to-tiff",
+    "name": "PPM to TIFF",
+    "description": "Convert PPM to TIFF format",
+    "operation": "convert",
+    "route": "/ppm-to-tiff",
+    "from": "ppm",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "ppm",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ppm-to-webp",
+    "name": "PPM to WebP",
+    "description": "Convert PPM to WebP format",
+    "operation": "convert",
+    "route": "/ppm-to-webp",
+    "from": "ppm",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "ppm",
+      "webp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ppm-to-xbm",
+    "name": "PPM to XBM",
+    "description": "Convert PPM to XBM format",
+    "operation": "convert",
+    "route": "/ppm-to-xbm",
+    "from": "ppm",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "ppm",
+      "xbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "psd-to-fig",
+    "name": "PSD to FIG",
+    "description": "Convert PSD to FIG format",
+    "operation": "convert",
+    "route": "/psd-to-fig",
+    "from": "psd",
+    "to": "fig",
+    "isActive": true,
+    "tags": [
+      "psd",
+      "fig",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "psd-to-rgb",
+    "name": "PSD to RGB",
+    "description": "Convert PSD to RGB format",
+    "operation": "convert",
+    "route": "/psd-to-rgb",
+    "from": "psd",
+    "to": "rgb",
+    "isActive": true,
+    "tags": [
+      "psd",
+      "rgb",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "rw2-to-tga",
+    "name": "RW2 to TGA",
+    "description": "Convert RW2 to TGA format",
+    "operation": "convert",
+    "route": "/rw2-to-tga",
+    "from": "rw2",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "rw2",
+      "tga",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "rw2-to-tif",
+    "name": "RW2 to TIF",
+    "description": "Convert RW2 to TIF format",
+    "operation": "convert",
+    "route": "/rw2-to-tif",
+    "from": "rw2",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "rw2",
+      "tif",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "rw2-to-tiff",
+    "name": "RW2 to TIFF",
+    "description": "Convert RW2 to TIFF format",
+    "operation": "convert",
+    "route": "/rw2-to-tiff",
+    "from": "rw2",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "rw2",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "rw2-to-webp",
+    "name": "RW2 to WebP",
+    "description": "Convert RW2 to WebP format",
+    "operation": "convert",
+    "route": "/rw2-to-webp",
+    "from": "rw2",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "rw2",
+      "webp",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "sfw-to-jpeg",
+    "name": "SFW to JPEG",
+    "description": "Convert SFW to JPEG format",
+    "operation": "convert",
+    "route": "/sfw-to-jpeg",
+    "from": "sfw",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "sfw",
+      "jpeg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "sfw-to-jpg",
+    "name": "SFW to JPG",
+    "description": "Convert SFW to JPG format",
+    "operation": "convert",
+    "route": "/sfw-to-jpg",
+    "from": "sfw",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "sfw",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "sk-to-jpg",
+    "name": "SK to JPG",
+    "description": "Convert SK to JPG format",
+    "operation": "convert",
+    "route": "/sk-to-jpg",
+    "from": "sk",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "sk",
+      "jpg",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "tga-to-xbm",
+    "name": "TGA to XBM",
+    "description": "Convert TGA to XBM format",
+    "operation": "convert",
+    "route": "/tga-to-xbm",
+    "from": "tga",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "tga",
+      "xbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "tif-to-xbm",
+    "name": "TIF to XBM",
+    "description": "Convert TIF to XBM format",
+    "operation": "convert",
+    "route": "/tif-to-xbm",
+    "from": "tif",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "tif",
+      "xbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "tiff-to-xbm",
+    "name": "TIFF to XBM",
+    "description": "Convert TIFF to XBM format",
+    "operation": "convert",
+    "route": "/tiff-to-xbm",
+    "from": "tiff",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "tiff",
+      "xbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ttf-to-tiff",
+    "name": "TTF to TIFF",
+    "description": "Convert TTF to TIFF format",
+    "operation": "convert",
+    "route": "/ttf-to-tiff",
+    "from": "ttf",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "ttf",
+      "tiff",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "webp-to-xbm",
+    "name": "WebP to XBM",
+    "description": "Convert WebP to XBM format",
+    "operation": "convert",
+    "route": "/webp-to-xbm",
+    "from": "webp",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "webp",
+      "xbm",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "xpm-to-jpeg",
+    "name": "XPM to JPEG",
+    "description": "Convert XPM to JPEG format",
+    "operation": "convert",
+    "route": "/xpm-to-jpeg",
+    "from": "xpm",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "xpm",
+      "jpeg",
+      "convert",
+      "image"
+    ]
   }
 ]
