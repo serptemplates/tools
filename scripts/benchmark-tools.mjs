@@ -396,6 +396,26 @@ async function runFunctionalTest(page, tool) {
     return { detail: `chars ${stats.characters}, words ${stats.words}`, metrics: stats };
   }
 
+  if (tool.id === "audio-to-text" || tool.id === "audio-to-transcript") {
+    const fixtureEntry = getFormatFixture("mp3");
+    if (!fixtureEntry) {
+      return { skipped: true, reason: "missing mp3 fixture" };
+    }
+    await dropFilesOnDropzone(page, "[data-testid=\"tool-dropzone\"]", [fixtureEntry.path]);
+    await page.waitForFunction(() => {
+      const area = document.querySelector("textarea");
+      return area && area.value && area.value.trim().length > 0;
+    }, null, { timeout: 600000 });
+    const transcript = await page.evaluate(() => {
+      const area = document.querySelector("textarea");
+      return area?.value ?? "";
+    });
+    if (!transcript.trim()) {
+      throw new Error("Transcription returned empty output.");
+    }
+    return { detail: `transcript ${transcript.trim().length} chars` };
+  }
+
   if (tool.from) {
     const fixture = getFormatFixture(tool.from);
     if (!fixture) {

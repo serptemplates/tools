@@ -1,201 +1,201 @@
 tool,operation,pattern,status,file formats,website_url,github_repo,notes,vendor_group,vendor_libs
-3g2 to mp4,convert,"x to y, convert x to y",onsite-unverified,".3g2,.mp4",,,,,
+3g2 to mp4,convert,"x to y, convert x to y",onsite-verified,".3g2,.mp4",,,,,
 3gp to aac,convert,"x to y, convert x to y",onsite-verified,".3gp,.aac",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
 3gp to aiff,convert,"x to y, convert x to y",onsite-verified,".3gp,.aiff",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
 3gp to alac,convert,"x to y, convert x to y",onsite-verified,".3gp,.alac",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
 3gp to amr,convert,"x to y, convert x to y",onsite-verified,".3gp,.amr",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
-3gp to asf,convert,"x to y, convert x to y",onsite-unverified,".3gp,.asf",,,,,
+3gp to asf,convert,"x to y, convert x to y",onsite-verified,".3gp,.asf",,,,,
 3gp to au,convert,"x to y, convert x to y",onsite-verified,".3gp,.au",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
-3gp to av1,convert,"x to y, convert x to y",onsite-unverified,".3gp,.av1",,,,,
-3gp to avchd,convert,"x to y, convert x to y",onsite-unverified,".3gp,.avchd",,,,,
-3gp to avi,convert,"x to y, convert x to y",onsite-unverified,".3gp,.avi",,,,,
+3gp to av1,convert,"x to y, convert x to y",onsite-verified,".3gp,.av1",,,,,
+3gp to avchd,convert,"x to y, convert x to y",onsite-verified,".3gp,.avchd",,,,,
+3gp to avi,convert,"x to y, convert x to y",onsite-verified,".3gp,.avi",,,,,
 3gp to caf,convert,"x to y, convert x to y",onsite-verified,".3gp,.caf",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
 3gp to cdda,convert,"x to y, convert x to y",onsite-verified,".3gp,.cdda",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
-3gp to divx,convert,"x to y, convert x to y",onsite-unverified,".3gp,.divx",,,,,
-3gp to f4v,convert,"x to y, convert x to y",onsite-unverified,".3gp,.f4v",,,,,
+3gp to divx,convert,"x to y, convert x to y",onsite-verified,".3gp,.divx",,,,,
+3gp to f4v,convert,"x to y, convert x to y",onsite-verified,".3gp,.f4v",,,,,
 3gp to flac,convert,"x to y, convert x to y",onsite-verified,".3gp,.flac",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
-3gp to flv,convert,"x to y, convert x to y",onsite-unverified,".3gp,.flv",,,,,
-3gp to gif,convert,"x to y, convert x to y",onsite-unverified,".3gp,.gif",,,,,
-3gp to hevc,convert,"x to y, convert x to y",onsite-unverified,".3gp,.hevc",,,,,
-3gp to m2ts,convert,"x to y, convert x to y",onsite-unverified,".3gp,.m2ts",,,,,
+3gp to flv,convert,"x to y, convert x to y",onsite-verified,".3gp,.flv",,,,,
+3gp to gif,convert,"x to y, convert x to y",onsite-verified,".3gp,.gif",,,,,
+3gp to hevc,convert,"x to y, convert x to y",onsite-verified,".3gp,.hevc",,,,,
+3gp to m2ts,convert,"x to y, convert x to y",onsite-verified,".3gp,.m2ts",,,,,
 3gp to m4a,convert,"x to y, convert x to y",onsite-verified,".3gp,.m4a",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
 3gp to m4r,convert,"x to y, convert x to y",onsite-verified,".3gp,.m4r",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
-3gp to m4v,convert,"x to y, convert x to y",onsite-unverified,".3gp,.m4v",,,,,
-3gp to mjpeg,convert,"x to y, convert x to y",onsite-unverified,".3gp,.mjpeg",,,,,
-3gp to mkv,convert,"x to y, convert x to y",onsite-unverified,".3gp,.mkv",,,,,
-3gp to mov,convert,"x to y, convert x to y",onsite-unverified,".3gp,.mov",,,,,
+3gp to m4v,convert,"x to y, convert x to y",onsite-verified,".3gp,.m4v",,,,,
+3gp to mjpeg,convert,"x to y, convert x to y",onsite-verified,".3gp,.mjpeg",,,,,
+3gp to mkv,convert,"x to y, convert x to y",onsite-verified,".3gp,.mkv",,,,,
+3gp to mov,convert,"x to y, convert x to y",onsite-verified,".3gp,.mov",,,,,
 3gp to mp2,convert,"x to y, convert x to y",onsite-verified,".3gp,.mp2",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
-3gp to mp3,convert,"x to y, convert x to y",onsite-unverified,".3gp,.mp3",,,,,
-3gp to mp4,convert,"x to y, convert x to y",onsite-unverified,".3gp,.mp4",,,,,
-3gp to mpeg,convert,"x to y, convert x to y",onsite-unverified,".3gp,.mpeg",,,,,
-3gp to mpeg2,convert,"x to y, convert x to y",onsite-unverified,".3gp,.mpeg2",,,,,
-3gp to mpg,convert,"x to y, convert x to y",onsite-unverified,".3gp,.mpg",,,,,
-3gp to mts,convert,"x to y, convert x to y",onsite-unverified,".3gp,.mts",,,,,
-3gp to mxf,convert,"x to y, convert x to y",onsite-unverified,".3gp,.mxf",,,,,
+3gp to mp3,convert,"x to y, convert x to y",onsite-verified,".3gp,.mp3",,,,,
+3gp to mp4,convert,"x to y, convert x to y",onsite-verified,".3gp,.mp4",,,,,
+3gp to mpeg,convert,"x to y, convert x to y",onsite-verified,".3gp,.mpeg",,,,,
+3gp to mpeg2,convert,"x to y, convert x to y",onsite-verified,".3gp,.mpeg2",,,,,
+3gp to mpg,convert,"x to y, convert x to y",onsite-verified,".3gp,.mpg",,,,,
+3gp to mts,convert,"x to y, convert x to y",onsite-verified,".3gp,.mts",,,,,
+3gp to mxf,convert,"x to y, convert x to y",onsite-verified,".3gp,.mxf",,,,,
 3gp to oga,convert,"x to y, convert x to y",onsite-verified,".3gp,.oga",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
 3gp to ogg,convert,"x to y, convert x to y",onsite-verified,".3gp,.ogg",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
 3gp to opus,convert,"x to y, convert x to y",onsite-verified,".3gp,.opus",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
-3gp to rm,convert,"x to y, convert x to y",onsite-unverified,".3gp,.rm",,,,,
-3gp to rmvb,convert,"x to y, convert x to y",onsite-unverified,".3gp,.rmvb",,,,,
-3gp to ts,convert,"x to y, convert x to y",onsite-unverified,".3gp,.ts",,,,,
-3gp to vob,convert,"x to y, convert x to y",onsite-unverified,".3gp,.vob",,,,,
+3gp to rm,convert,"x to y, convert x to y",onsite-verified,".3gp,.rm",,,,,
+3gp to rmvb,convert,"x to y, convert x to y",onsite-verified,".3gp,.rmvb",,,,,
+3gp to ts,convert,"x to y, convert x to y",onsite-verified,".3gp,.ts",,,,,
+3gp to vob,convert,"x to y, convert x to y",onsite-verified,".3gp,.vob",,,,,
 3gp to wav,convert,"x to y, convert x to y",onsite-verified,".3gp,.wav",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
-3gp to webm,convert,"x to y, convert x to y",onsite-unverified,".3gp,.webm",,,,,
+3gp to webm,convert,"x to y, convert x to y",onsite-verified,".3gp,.webm",,,,,
 3gp to wma,convert,"x to y, convert x to y",onsite-verified,".3gp,.wma",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
-aac to aiff,convert,"x to y, convert x to y",onsite-unverified,".aac,.aiff",,,,,
-aac to alac,convert,"x to y, convert x to y",onsite-unverified,".aac,.alac",,,,,
-aac to amr,convert,"x to y, convert x to y",onsite-unverified,".aac,.amr",,,,,
-aac to au,convert,"x to y, convert x to y",onsite-unverified,".aac,.au",,,,,
-aac to caf,convert,"x to y, convert x to y",onsite-unverified,".aac,.caf",,,,,
-aac to cdda,convert,"x to y, convert x to y",onsite-unverified,".aac,.cdda",,,,,
-aac to flac,convert,"x to y, convert x to y",onsite-unverified,".aac,.flac",,,,,
-aac to m4a,convert,"x to y, convert x to y",onsite-unverified,".aac,.m4a",,,,,
-aac to m4r,convert,"x to y, convert x to y",onsite-unverified,".aac,.m4r",,,,,
-aac to mp2,convert,"x to y, convert x to y",onsite-unverified,".aac,.mp2",,,,,
-aac to mp3,convert,"x to y, convert x to y",onsite-unverified,".aac,.mp3",,,,,
-aac to mp4,convert,"x to y, convert x to y",onsite-unverified,".aac,.mp4",,,,,
-aac to oga,convert,"x to y, convert x to y",onsite-unverified,".aac,.oga",,,,,
-aac to ogg,convert,"x to y, convert x to y",onsite-unverified,".aac,.ogg",,,,,
-aac to opus,convert,"x to y, convert x to y",onsite-unverified,".aac,.opus",,,,,
-aac to wav,convert,"x to y, convert x to y",onsite-unverified,".aac,.wav",,,,,
-aac to wma,convert,"x to y, convert x to y",onsite-unverified,".aac,.wma",,,,,
-ai to bmp,convert,ai-to-bmp,in-progress,".ai,.bmp",,,,,
-ai to cur,convert,ai-to-cur,in-progress,".ai,.cur",,,,,
-ai to dds,convert,ai-to-dds,in-progress,".ai,.dds",,,,,
+aac to aiff,convert,"x to y, convert x to y",onsite-verified,".aac,.aiff",,,,,
+aac to alac,convert,"x to y, convert x to y",onsite-verified,".aac,.alac",,,,,
+aac to amr,convert,"x to y, convert x to y",onsite-verified,".aac,.amr",,,,,
+aac to au,convert,"x to y, convert x to y",onsite-verified,".aac,.au",,,,,
+aac to caf,convert,"x to y, convert x to y",onsite-verified,".aac,.caf",,,,,
+aac to cdda,convert,"x to y, convert x to y",onsite-verified,".aac,.cdda",,,,,
+aac to flac,convert,"x to y, convert x to y",onsite-verified,".aac,.flac",,,,,
+aac to m4a,convert,"x to y, convert x to y",onsite-verified,".aac,.m4a",,,,,
+aac to m4r,convert,"x to y, convert x to y",onsite-verified,".aac,.m4r",,,,,
+aac to mp2,convert,"x to y, convert x to y",onsite-verified,".aac,.mp2",,,,,
+aac to mp3,convert,"x to y, convert x to y",onsite-verified,".aac,.mp3",,,,,
+aac to mp4,convert,"x to y, convert x to y",onsite-verified,".aac,.mp4",,,,,
+aac to oga,convert,"x to y, convert x to y",onsite-verified,".aac,.oga",,,,,
+aac to ogg,convert,"x to y, convert x to y",onsite-verified,".aac,.ogg",,,,,
+aac to opus,convert,"x to y, convert x to y",onsite-verified,".aac,.opus",,,,,
+aac to wav,convert,"x to y, convert x to y",onsite-verified,".aac,.wav",,,,,
+aac to wma,convert,"x to y, convert x to y",onsite-verified,".aac,.wma",,,,,
+ai to bmp,convert,ai-to-bmp,onsite-verified,".ai,.bmp",,,,,
+ai to cur,convert,ai-to-cur,onsite-verified,".ai,.cur",,,,,
+ai to dds,convert,ai-to-dds,onsite-verified,".ai,.dds",,,,,
 ai to gif,convert,ai-to-gif,onsite-verified,".ai,.gif",,,,server-image-convert,imagemagick-wasm + ffmpeg-static (server)
-ai to ico,convert,ai-to-ico,in-progress,".ai,.ico",,,,,
+ai to ico,convert,ai-to-ico,onsite-verified,".ai,.ico",,,,,
 ai to jpeg,convert,ai-to-jpeg,onsite-verified,".ai,.jpeg",,,,server-image-convert,imagemagick-wasm + ffmpeg-static (server)
 ai to jpg,convert,ai-to-jpg,onsite-verified,".ai,.jpg",,,,server-image-convert,imagemagick-wasm + ffmpeg-static (server)
 ai to png,convert,"x to y, convert x to y",onsite-verified,".ai,.png",,,,server-image-convert,imagemagick-wasm + ffmpeg-static (server)
 ai to svg,convert,"x to y, convert x to y",onsite-verified,".ai,.svg",,,,server-image-convert,imagemagick-wasm + ffmpeg-static (server)
-ai to tga,convert,ai-to-tga,in-progress,".ai,.tga",,,,,
-ai to tif,convert,ai-to-tif,in-progress,".ai,.tif",,,,,
+ai to tga,convert,ai-to-tga,onsite-verified,".ai,.tga",,,,,
+ai to tif,convert,ai-to-tif,onsite-verified,".ai,.tif",,,,,
 ai to tiff,convert,ai-to-tiff,onsite-verified,".ai,.tiff",,,,server-image-convert,imagemagick-wasm + ffmpeg-static (server)
-ai to webp,convert,ai-to-webp,in-progress,".ai,.webp",,,,,
-aif to aac,convert,"x to y, convert x to y",onsite-unverified,".aif,.aac",,,,,
-aif to aiff,convert,"x to y, convert x to y",onsite-unverified,".aif,.aiff",,,,,
-aif to alac,convert,"x to y, convert x to y",onsite-unverified,".aif,.alac",,,,,
-aif to amr,convert,"x to y, convert x to y",onsite-unverified,".aif,.amr",,,,,
-aif to au,convert,"x to y, convert x to y",onsite-unverified,".aif,.au",,,,,
-aif to caf,convert,"x to y, convert x to y",onsite-unverified,".aif,.caf",,,,,
-aif to cdda,convert,"x to y, convert x to y",onsite-unverified,".aif,.cdda",,,,,
-aif to flac,convert,"x to y, convert x to y",onsite-unverified,".aif,.flac",,,,,
-aif to m4a,convert,"x to y, convert x to y",onsite-unverified,".aif,.m4a",,,,,
-aif to m4r,convert,"x to y, convert x to y",onsite-unverified,".aif,.m4r",,,,,
-aif to mp2,convert,"x to y, convert x to y",onsite-unverified,".aif,.mp2",,,,,
-aif to mp3,convert,"x to y, convert x to y",onsite-unverified,".aif,.mp3",,,,,
-aif to oga,convert,"x to y, convert x to y",onsite-unverified,".aif,.oga",,,,,
-aif to ogg,convert,"x to y, convert x to y",onsite-unverified,".aif,.ogg",,,,,
-aif to opus,convert,"x to y, convert x to y",onsite-unverified,".aif,.opus",,,,,
-aif to wav,convert,"x to y, convert x to y",onsite-unverified,".aif,.wav",,,,,
-aif to wma,convert,"x to y, convert x to y",onsite-unverified,".aif,.wma",,,,,
-aifc to mp3,convert,"x to y, convert x to y",onsite-unverified,".aifc,.mp3",,,,,
-aiff to aac,convert,"x to y, convert x to y",onsite-unverified,".aiff,.aac",,,,,
-aiff to alac,convert,"x to y, convert x to y",onsite-unverified,".aiff,.alac",,,,,
-aiff to amr,convert,"x to y, convert x to y",onsite-unverified,".aiff,.amr",,,,,
-aiff to au,convert,"x to y, convert x to y",onsite-unverified,".aiff,.au",,,,,
-aiff to caf,convert,"x to y, convert x to y",onsite-unverified,".aiff,.caf",,,,,
-aiff to cdda,convert,"x to y, convert x to y",onsite-unverified,".aiff,.cdda",,,,,
-aiff to flac,convert,"x to y, convert x to y",onsite-unverified,".aiff,.flac",,,,,
-aiff to m4a,convert,"x to y, convert x to y",onsite-unverified,".aiff,.m4a",,,,,
-aiff to m4r,convert,"x to y, convert x to y",onsite-unverified,".aiff,.m4r",,,,,
-aiff to mp2,convert,"x to y, convert x to y",onsite-unverified,".aiff,.mp2",,,,,
-aiff to mp3,convert,"x to y, convert x to y",onsite-unverified,".aiff,.mp3",,,,,
-aiff to oga,convert,"x to y, convert x to y",onsite-unverified,".aiff,.oga",,,,,
-aiff to ogg,convert,"x to y, convert x to y",onsite-unverified,".aiff,.ogg",,,,,
-aiff to opus,convert,"x to y, convert x to y",onsite-unverified,".aiff,.opus",,,,,
-aiff to wav,convert,"x to y, convert x to y",onsite-unverified,".aiff,.wav",,,,,
-aiff to wma,convert,"x to y, convert x to y",onsite-unverified,".aiff,.wma",,,,,
-alac to aac,convert,"x to y, convert x to y",onsite-unverified,".alac,.aac",,,,,
-alac to aiff,convert,"x to y, convert x to y",onsite-unverified,".alac,.aiff",,,,,
-alac to amr,convert,"x to y, convert x to y",onsite-unverified,".alac,.amr",,,,,
-alac to au,convert,"x to y, convert x to y",onsite-unverified,".alac,.au",,,,,
-alac to caf,convert,"x to y, convert x to y",onsite-unverified,".alac,.caf",,,,,
-alac to cdda,convert,"x to y, convert x to y",onsite-unverified,".alac,.cdda",,,,,
-alac to flac,convert,"x to y, convert x to y",onsite-unverified,".alac,.flac",,,,,
-alac to m4a,convert,"x to y, convert x to y",onsite-unverified,".alac,.m4a",,,,,
-alac to m4r,convert,"x to y, convert x to y",onsite-unverified,".alac,.m4r",,,,,
-alac to mp2,convert,"x to y, convert x to y",onsite-unverified,".alac,.mp2",,,,,
-alac to mp3,convert,"x to y, convert x to y",onsite-unverified,".alac,.mp3",,,,,
-alac to oga,convert,"x to y, convert x to y",onsite-unverified,".alac,.oga",,,,,
-alac to ogg,convert,"x to y, convert x to y",onsite-unverified,".alac,.ogg",,,,,
-alac to opus,convert,"x to y, convert x to y",onsite-unverified,".alac,.opus",,,,,
-alac to wav,convert,"x to y, convert x to y",onsite-unverified,".alac,.wav",,,,,
-alac to wma,convert,"x to y, convert x to y",onsite-unverified,".alac,.wma",,,,,
-amr to aac,convert,"x to y, convert x to y",onsite-unverified,".amr,.aac",,,,,
-amr to aiff,convert,"x to y, convert x to y",onsite-unverified,".amr,.aiff",,,,,
-amr to alac,convert,"x to y, convert x to y",onsite-unverified,".amr,.alac",,,,,
-amr to au,convert,"x to y, convert x to y",onsite-unverified,".amr,.au",,,,,
-amr to caf,convert,"x to y, convert x to y",onsite-unverified,".amr,.caf",,,,,
-amr to cdda,convert,"x to y, convert x to y",onsite-unverified,".amr,.cdda",,,,,
-amr to flac,convert,"x to y, convert x to y",onsite-unverified,".amr,.flac",,,,,
-amr to m4a,convert,"x to y, convert x to y",onsite-unverified,".amr,.m4a",,,,,
-amr to m4r,convert,"x to y, convert x to y",onsite-unverified,".amr,.m4r",,,,,
+ai to webp,convert,ai-to-webp,onsite-verified,".ai,.webp",,,,,
+aif to aac,convert,"x to y, convert x to y",onsite-verified,".aif,.aac",,,,,
+aif to aiff,convert,"x to y, convert x to y",onsite-verified,".aif,.aiff",,,,,
+aif to alac,convert,"x to y, convert x to y",onsite-verified,".aif,.alac",,,,,
+aif to amr,convert,"x to y, convert x to y",onsite-verified,".aif,.amr",,,,,
+aif to au,convert,"x to y, convert x to y",onsite-verified,".aif,.au",,,,,
+aif to caf,convert,"x to y, convert x to y",onsite-verified,".aif,.caf",,,,,
+aif to cdda,convert,"x to y, convert x to y",onsite-verified,".aif,.cdda",,,,,
+aif to flac,convert,"x to y, convert x to y",onsite-verified,".aif,.flac",,,,,
+aif to m4a,convert,"x to y, convert x to y",onsite-verified,".aif,.m4a",,,,,
+aif to m4r,convert,"x to y, convert x to y",onsite-verified,".aif,.m4r",,,,,
+aif to mp2,convert,"x to y, convert x to y",onsite-verified,".aif,.mp2",,,,,
+aif to mp3,convert,"x to y, convert x to y",onsite-verified,".aif,.mp3",,,,,
+aif to oga,convert,"x to y, convert x to y",onsite-verified,".aif,.oga",,,,,
+aif to ogg,convert,"x to y, convert x to y",onsite-verified,".aif,.ogg",,,,,
+aif to opus,convert,"x to y, convert x to y",onsite-verified,".aif,.opus",,,,,
+aif to wav,convert,"x to y, convert x to y",onsite-verified,".aif,.wav",,,,,
+aif to wma,convert,"x to y, convert x to y",onsite-verified,".aif,.wma",,,,,
+aifc to mp3,convert,"x to y, convert x to y",onsite-verified,".aifc,.mp3",,,,,
+aiff to aac,convert,"x to y, convert x to y",onsite-verified,".aiff,.aac",,,,,
+aiff to alac,convert,"x to y, convert x to y",onsite-verified,".aiff,.alac",,,,,
+aiff to amr,convert,"x to y, convert x to y",onsite-verified,".aiff,.amr",,,,,
+aiff to au,convert,"x to y, convert x to y",onsite-verified,".aiff,.au",,,,,
+aiff to caf,convert,"x to y, convert x to y",onsite-verified,".aiff,.caf",,,,,
+aiff to cdda,convert,"x to y, convert x to y",onsite-verified,".aiff,.cdda",,,,,
+aiff to flac,convert,"x to y, convert x to y",onsite-verified,".aiff,.flac",,,,,
+aiff to m4a,convert,"x to y, convert x to y",onsite-verified,".aiff,.m4a",,,,,
+aiff to m4r,convert,"x to y, convert x to y",onsite-verified,".aiff,.m4r",,,,,
+aiff to mp2,convert,"x to y, convert x to y",onsite-verified,".aiff,.mp2",,,,,
+aiff to mp3,convert,"x to y, convert x to y",onsite-verified,".aiff,.mp3",,,,,
+aiff to oga,convert,"x to y, convert x to y",onsite-verified,".aiff,.oga",,,,,
+aiff to ogg,convert,"x to y, convert x to y",onsite-verified,".aiff,.ogg",,,,,
+aiff to opus,convert,"x to y, convert x to y",onsite-verified,".aiff,.opus",,,,,
+aiff to wav,convert,"x to y, convert x to y",onsite-verified,".aiff,.wav",,,,,
+aiff to wma,convert,"x to y, convert x to y",onsite-verified,".aiff,.wma",,,,,
+alac to aac,convert,"x to y, convert x to y",onsite-verified,".alac,.aac",,,,,
+alac to aiff,convert,"x to y, convert x to y",onsite-verified,".alac,.aiff",,,,,
+alac to amr,convert,"x to y, convert x to y",onsite-verified,".alac,.amr",,,,,
+alac to au,convert,"x to y, convert x to y",onsite-verified,".alac,.au",,,,,
+alac to caf,convert,"x to y, convert x to y",onsite-verified,".alac,.caf",,,,,
+alac to cdda,convert,"x to y, convert x to y",onsite-verified,".alac,.cdda",,,,,
+alac to flac,convert,"x to y, convert x to y",onsite-verified,".alac,.flac",,,,,
+alac to m4a,convert,"x to y, convert x to y",onsite-verified,".alac,.m4a",,,,,
+alac to m4r,convert,"x to y, convert x to y",onsite-verified,".alac,.m4r",,,,,
+alac to mp2,convert,"x to y, convert x to y",onsite-verified,".alac,.mp2",,,,,
+alac to mp3,convert,"x to y, convert x to y",onsite-verified,".alac,.mp3",,,,,
+alac to oga,convert,"x to y, convert x to y",onsite-verified,".alac,.oga",,,,,
+alac to ogg,convert,"x to y, convert x to y",onsite-verified,".alac,.ogg",,,,,
+alac to opus,convert,"x to y, convert x to y",onsite-verified,".alac,.opus",,,,,
+alac to wav,convert,"x to y, convert x to y",onsite-verified,".alac,.wav",,,,,
+alac to wma,convert,"x to y, convert x to y",onsite-verified,".alac,.wma",,,,,
+amr to aac,convert,"x to y, convert x to y",onsite-verified,".amr,.aac",,,,,
+amr to aiff,convert,"x to y, convert x to y",onsite-verified,".amr,.aiff",,,,,
+amr to alac,convert,"x to y, convert x to y",onsite-verified,".amr,.alac",,,,,
+amr to au,convert,"x to y, convert x to y",onsite-verified,".amr,.au",,,,,
+amr to caf,convert,"x to y, convert x to y",onsite-verified,".amr,.caf",,,,,
+amr to cdda,convert,"x to y, convert x to y",onsite-verified,".amr,.cdda",,,,,
+amr to flac,convert,"x to y, convert x to y",onsite-verified,".amr,.flac",,,,,
+amr to m4a,convert,"x to y, convert x to y",onsite-verified,".amr,.m4a",,,,,
+amr to m4r,convert,"x to y, convert x to y",onsite-verified,".amr,.m4r",,,,,
 amr to mp2,convert,"x to y, convert x to y",in-progress,".amr,.mp2",,,Engine: ffmpeg. Benchmark: fail - page.waitForFunction: Timeout 60000ms exceeded. Skip: low SV.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
-amr to mp3,convert,"x to y, convert x to y",onsite-unverified,".amr,.mp3",,,,,
+amr to mp3,convert,"x to y, convert x to y",onsite-verified,".amr,.mp3",,,,,
 amr to oga,convert,"x to y, convert x to y",in-progress,".amr,.oga",,,Engine: ffmpeg. Benchmark: fail - page.waitForFunction: Timeout 60000ms exceeded. Skip: low SV.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
 amr to ogg,convert,"x to y, convert x to y",in-progress,".amr,.ogg",,,Engine: ffmpeg. Benchmark: fail - page.waitForFunction: Timeout 60000ms exceeded. Skip: low SV.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
-amr to opus,convert,"x to y, convert x to y",onsite-unverified,".amr,.opus",,,,,
-amr to wav,convert,"x to y, convert x to y",onsite-unverified,".amr,.wav",,,,,
-amr to wma,convert,"x to y, convert x to y",onsite-unverified,".amr,.wma",,,,,
+amr to opus,convert,"x to y, convert x to y",onsite-verified,".amr,.opus",,,,,
+amr to wav,convert,"x to y, convert x to y",onsite-verified,".amr,.wav",,,,,
+amr to wma,convert,"x to y, convert x to y",onsite-verified,".amr,.wma",,,,,
 apng to gif,convert,apng-to-gif,onsite-verified,".apng,.gif",,,,server-image-convert,imagemagick-wasm + ffmpeg-static (server)
-arw to avif,convert,"x to y, convert x to y",onsite-unverified,".arw,.avif",,,,,
+arw to avif,convert,"x to y, convert x to y",onsite-verified,".arw,.avif",,,,,
 arw to bmp,convert,arw-to-bmp,onsite-verified,".arw,.bmp",,,,,
-arw to dds,convert,"x to y, convert x to y",onsite-unverified,".arw,.dds",,,,,
+arw to dds,convert,"x to y, convert x to y",onsite-verified,".arw,.dds",,,,,
 arw to gif,convert,arw-to-gif,onsite-verified,".arw,.gif",,,,,
 arw to jpeg,convert,arw-to-jpeg,onsite-verified,".arw,.jpeg",,,,,
-arw to jpg,convert,"x to y, convert x to y",onsite-unverified,".arw,.jpg",,,,,
-arw to pdf,convert,"x to y, convert x to y",onsite-unverified,".arw,.pdf",,,,,
+arw to jpg,convert,"x to y, convert x to y",onsite-verified,".arw,.jpg",,,,,
+arw to pdf,convert,"x to y, convert x to y",onsite-verified,".arw,.pdf",,,,,
 arw to png,convert,arw-to-png,onsite-verified,".arw,.png",,,,,
-arw to svg,convert,"x to y, convert x to y",onsite-unverified,".arw,.svg",,,,,
-arw to tga,convert,"x to y, convert x to y",onsite-unverified,".arw,.tga",,,,,
+arw to svg,convert,"x to y, convert x to y",onsite-verified,".arw,.svg",,,,,
+arw to tga,convert,"x to y, convert x to y",onsite-verified,".arw,.tga",,,,,
 arw to tif,convert,arw-to-tif,onsite-verified,".arw,.tif",,,,,
 arw to tiff,convert,arw-to-tiff,onsite-verified,".arw,.tiff",,,,,
 arw to webp,convert,arw-to-webp,onsite-verified,".arw,.webp",,,,,
-asf to 3gp,convert,"x to y, convert x to y",onsite-unverified,".asf,.3gp",,,,,
+asf to 3gp,convert,"x to y, convert x to y",onsite-verified,".asf,.3gp",,,,,
 asf to aac,convert,"x to y, convert x to y",onsite-verified,".asf,.aac",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
 asf to aiff,convert,"x to y, convert x to y",onsite-verified,".asf,.aiff",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
 asf to alac,convert,"x to y, convert x to y",onsite-verified,".asf,.alac",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
 asf to amr,convert,"x to y, convert x to y",onsite-verified,".asf,.amr",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
 asf to au,convert,"x to y, convert x to y",onsite-verified,".asf,.au",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
-asf to av1,convert,"x to y, convert x to y",onsite-unverified,".asf,.av1",,,,,
-asf to avchd,convert,"x to y, convert x to y",onsite-unverified,".asf,.avchd",,,,,
-asf to avi,convert,"x to y, convert x to y",onsite-unverified,".asf,.avi",,,,,
+asf to av1,convert,"x to y, convert x to y",onsite-verified,".asf,.av1",,,,,
+asf to avchd,convert,"x to y, convert x to y",onsite-verified,".asf,.avchd",,,,,
+asf to avi,convert,"x to y, convert x to y",onsite-verified,".asf,.avi",,,,,
 asf to caf,convert,"x to y, convert x to y",onsite-verified,".asf,.caf",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
 asf to cdda,convert,"x to y, convert x to y",onsite-verified,".asf,.cdda",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
-asf to divx,convert,"x to y, convert x to y",onsite-unverified,".asf,.divx",,,,,
-asf to f4v,convert,"x to y, convert x to y",onsite-unverified,".asf,.f4v",,,,,
+asf to divx,convert,"x to y, convert x to y",onsite-verified,".asf,.divx",,,,,
+asf to f4v,convert,"x to y, convert x to y",onsite-verified,".asf,.f4v",,,,,
 asf to flac,convert,"x to y, convert x to y",onsite-verified,".asf,.flac",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
-asf to flv,convert,"x to y, convert x to y",onsite-unverified,".asf,.flv",,,,,
-asf to gif,convert,"x to y, convert x to y",onsite-unverified,".asf,.gif",,,,,
-asf to hevc,convert,"x to y, convert x to y",onsite-unverified,".asf,.hevc",,,,,
-asf to m2ts,convert,"x to y, convert x to y",onsite-unverified,".asf,.m2ts",,,,,
+asf to flv,convert,"x to y, convert x to y",onsite-verified,".asf,.flv",,,,,
+asf to gif,convert,"x to y, convert x to y",onsite-verified,".asf,.gif",,,,,
+asf to hevc,convert,"x to y, convert x to y",onsite-verified,".asf,.hevc",,,,,
+asf to m2ts,convert,"x to y, convert x to y",onsite-verified,".asf,.m2ts",,,,,
 asf to m4a,convert,"x to y, convert x to y",onsite-verified,".asf,.m4a",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
 asf to m4r,convert,"x to y, convert x to y",onsite-verified,".asf,.m4r",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
-asf to m4v,convert,"x to y, convert x to y",onsite-unverified,".asf,.m4v",,,,,
-asf to mjpeg,convert,"x to y, convert x to y",onsite-unverified,".asf,.mjpeg",,,,,
-asf to mkv,convert,"x to y, convert x to y",onsite-unverified,".asf,.mkv",,,,,
-asf to mov,convert,"x to y, convert x to y",onsite-unverified,".asf,.mov",,,,,
+asf to m4v,convert,"x to y, convert x to y",onsite-verified,".asf,.m4v",,,,,
+asf to mjpeg,convert,"x to y, convert x to y",onsite-verified,".asf,.mjpeg",,,,,
+asf to mkv,convert,"x to y, convert x to y",onsite-verified,".asf,.mkv",,,,,
+asf to mov,convert,"x to y, convert x to y",onsite-verified,".asf,.mov",,,,,
 asf to mp2,convert,"x to y, convert x to y",onsite-verified,".asf,.mp2",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
 asf to mp3,convert,"x to y, convert x to y",onsite-verified,".asf,.mp3",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
-asf to mp4,convert,"x to y, convert x to y",onsite-unverified,".asf,.mp4",,,,,
-asf to mpeg,convert,"x to y, convert x to y",onsite-unverified,".asf,.mpeg",,,,,
-asf to mpeg2,convert,"x to y, convert x to y",onsite-unverified,".asf,.mpeg2",,,,,
-asf to mpg,convert,"x to y, convert x to y",onsite-unverified,".asf,.mpg",,,,,
-asf to mts,convert,"x to y, convert x to y",onsite-unverified,".asf,.mts",,,,,
-asf to mxf,convert,"x to y, convert x to y",onsite-unverified,".asf,.mxf",,,,,
+asf to mp4,convert,"x to y, convert x to y",onsite-verified,".asf,.mp4",,,,,
+asf to mpeg,convert,"x to y, convert x to y",onsite-verified,".asf,.mpeg",,,,,
+asf to mpeg2,convert,"x to y, convert x to y",onsite-verified,".asf,.mpeg2",,,,,
+asf to mpg,convert,"x to y, convert x to y",onsite-verified,".asf,.mpg",,,,,
+asf to mts,convert,"x to y, convert x to y",onsite-verified,".asf,.mts",,,,,
+asf to mxf,convert,"x to y, convert x to y",onsite-verified,".asf,.mxf",,,,,
 asf to oga,convert,"x to y, convert x to y",onsite-verified,".asf,.oga",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
 asf to ogg,convert,"x to y, convert x to y",onsite-verified,".asf,.ogg",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
 asf to opus,convert,"x to y, convert x to y",onsite-verified,".asf,.opus",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
-asf to rm,convert,"x to y, convert x to y",onsite-unverified,".asf,.rm",,,,,
-asf to rmvb,convert,"x to y, convert x to y",onsite-unverified,".asf,.rmvb",,,,,
-asf to ts,convert,"x to y, convert x to y",onsite-unverified,".asf,.ts",,,,,
-asf to vob,convert,"x to y, convert x to y",onsite-unverified,".asf,.vob",,,,,
+asf to rm,convert,"x to y, convert x to y",onsite-verified,".asf,.rm",,,,,
+asf to rmvb,convert,"x to y, convert x to y",onsite-verified,".asf,.rmvb",,,,,
+asf to ts,convert,"x to y, convert x to y",onsite-verified,".asf,.ts",,,,,
+asf to vob,convert,"x to y, convert x to y",onsite-verified,".asf,.vob",,,,,
 asf to wav,convert,"x to y, convert x to y",onsite-verified,".asf,.wav",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
-asf to webm,convert,"x to y, convert x to y",onsite-unverified,".asf,.webm",,,,,
+asf to webm,convert,"x to y, convert x to y",onsite-verified,".asf,.webm",,,,,
 asf to wma,convert,"x to y, convert x to y",onsite-verified,".asf,.wma",,,Engine: ffmpeg.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
-au to aac,convert,"x to y, convert x to y",onsite-unverified,".au,.aac",,,,,
-au to aiff,convert,"x to y, convert x to y",onsite-unverified,".au,.aiff",,,,,
+au to aac,convert,"x to y, convert x to y",onsite-verified,".au,.aac",,,,,
+au to aiff,convert,"x to y, convert x to y",onsite-verified,".au,.aiff",,,,,
 au to alac,convert,"x to y, convert x to y",onsite-unverified,".au,.alac",,,,,
 au to amr,convert,"x to y, convert x to y",onsite-unverified,".au,.amr",,,,,
 au to caf,convert,"x to y, convert x to y",onsite-unverified,".au,.caf",,,,,
@@ -210,8 +210,8 @@ au to ogg,convert,"x to y, convert x to y",onsite-unverified,".au,.ogg",,,,,
 au to opus,convert,"x to y, convert x to y",onsite-unverified,".au,.opus",,,,,
 au to wav,convert,"x to y, convert x to y",onsite-unverified,".au,.wav",,,,,
 au to wma,convert,"x to y, convert x to y",onsite-unverified,".au,.wma",,,,,
-audio to text,convert,"x to y, convert x to y",onsite-unverified,,,,Prod YouTube URL ingest blocked (bot check).,,
-audio to transcript,convert,"x to y, convert x to y",onsite-unverified,,,,Prod YouTube URL ingest blocked (bot check).,,
+audio to text,convert,"x to y, convert x to y",onsite-unverified,,,,Prod YouTube URL ingest blocked (bot check). | bench fail: page.waitForFunction: Timeout 180000ms exceeded.,,
+audio to transcript,convert,"x to y, convert x to y",onsite-unverified,,,,Prod YouTube URL ingest blocked (bot check). | bench fail: page.waitForFunction: Timeout 180000ms exceeded.,,
 av1 to 3gp,convert,"x to y, convert x to y",onsite-unverified,".av1,.3gp",,,,,
 av1 to aac,convert,"x to y, convert x to y",in-progress,".av1,.aac",,,Engine: ffmpeg. Benchmark: fail - page.waitForFunction: Timeout 60000ms exceeded. Skip: low SV.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
 av1 to aiff,convert,"x to y, convert x to y",in-progress,".av1,.aiff",,,Engine: ffmpeg. Benchmark: fail - page.waitForFunction: Timeout 60000ms exceeded. Skip: low SV.,ffmpeg-convert,ffmpeg.wasm + ffmpeg-static
@@ -2231,3 +2231,191 @@ ttf to tiff,convert,"x to y, convert x to y",onsite-unverified,".ttf,.tiff",/ttf
 webp to xbm,convert,"x to y, convert x to y",onsite-unverified,".webp,.xbm",/webp-to-xbm,,,canvas-only,none (browser canvas)
 xpm to jpeg,convert,"x to y, convert x to y",onsite-unverified,".xpm,.jpeg",/xpm-to-jpeg,,,canvas-only,none (browser canvas)
 xpm to jpg,convert,"x to y, convert x to y",onsite-unverified,".xpm,.jpg",/xpm-to-jpg,,,canvas-only,none (browser canvas)
+nef to jpg,convert,"x to y, convert x to y",onsite-unverified,".nef,.jpg",/nef-to-jpg,,Engine: raw image decode.,image-raw,image-decoder + canvas
+nef to png,convert,"x to y, convert x to y",onsite-unverified,".nef,.png",/nef-to-png,,Engine: raw image decode.,image-raw,image-decoder + canvas
+nef to jpeg,convert,"x to y, convert x to y",onsite-unverified,".nef,.jpeg",/nef-to-jpeg,,Engine: raw image decode.,image-raw,image-decoder + canvas
+raf to jpg,convert,"x to y, convert x to y",onsite-unverified,".raf,.jpg",/raf-to-jpg,,Engine: raw image decode.,image-raw,image-decoder + canvas
+orf to jpg,convert,"x to y, convert x to y",onsite-unverified,".orf,.jpg",/orf-to-jpg,,Engine: raw image decode.,image-raw,image-decoder + canvas
+nef to tiff,convert,"x to y, convert x to y",onsite-unverified,".nef,.tiff",/nef-to-tiff,,Engine: raw image decode.,image-raw,image-decoder + canvas
+arw to dng,convert,"x to y, convert x to y",onsite-unverified,".arw,.dng",/arw-to-dng,,Engine: raw image decode.,image-raw,image-decoder + canvas
+raf to jpeg,convert,"x to y, convert x to y",onsite-unverified,".raf,.jpeg",/raf-to-jpeg,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr2 to dng,convert,"x to y, convert x to y",onsite-unverified,".cr2,.dng",/cr2-to-dng,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr3 to dng,convert,"x to y, convert x to y",onsite-unverified,".cr3,.dng",/cr3-to-dng,,Engine: raw image decode.,image-raw,image-decoder + canvas
+orf to jpeg,convert,"x to y, convert x to y",onsite-unverified,".orf,.jpeg",/orf-to-jpeg,,Engine: raw image decode.,image-raw,image-decoder + canvas
+orf to png,convert,"x to y, convert x to y",onsite-unverified,".orf,.png",/orf-to-png,,Engine: raw image decode.,image-raw,image-decoder + canvas
+ai to arw,convert,"x to y, convert x to y",onsite-unverified,".ai,.arw",/ai-to-arw,,Engine: raw image decode.,image-raw,image-decoder + canvas
+ai to cr2,convert,"x to y, convert x to y",onsite-unverified,".ai,.cr2",/ai-to-cr2,,Engine: raw image decode.,image-raw,image-decoder + canvas
+ai to cr3,convert,"x to y, convert x to y",onsite-unverified,".ai,.cr3",/ai-to-cr3,,Engine: raw image decode.,image-raw,image-decoder + canvas
+ai to dng,convert,"x to y, convert x to y",onsite-unverified,".ai,.dng",/ai-to-dng,,Engine: raw image decode.,image-raw,image-decoder + canvas
+arw to cr2,convert,"x to y, convert x to y",onsite-unverified,".arw,.cr2",/arw-to-cr2,,Engine: raw image decode.,image-raw,image-decoder + canvas
+arw to heic,convert,"x to y, convert x to y",onsite-unverified,".arw,.heic",/arw-to-heic,,Engine: raw image decode.,image-raw,image-decoder + canvas
+arw to nef,convert,"x to y, convert x to y",onsite-unverified,".arw,.nef",/arw-to-nef,,Engine: raw image decode.,image-raw,image-decoder + canvas
+arw to pgm,convert,"x to y, convert x to y",onsite-unverified,".arw,.pgm",/arw-to-pgm,,Engine: raw image decode.,image-raw,image-decoder + canvas
+arw to xbm,convert,"x to y, convert x to y",onsite-unverified,".arw,.xbm",/arw-to-xbm,,Engine: raw image decode.,image-raw,image-decoder + canvas
+avif to cr2,convert,"x to y, convert x to y",onsite-unverified,".avif,.cr2",/avif-to-cr2,,Engine: raw image decode.,image-raw,image-decoder + canvas
+avif to cr3,convert,"x to y, convert x to y",onsite-unverified,".avif,.cr3",/avif-to-cr3,,Engine: raw image decode.,image-raw,image-decoder + canvas
+avif to dng,convert,"x to y, convert x to y",onsite-unverified,".avif,.dng",/avif-to-dng,,Engine: raw image decode.,image-raw,image-decoder + canvas
+avif to nef,convert,"x to y, convert x to y",onsite-unverified,".avif,.nef",/avif-to-nef,,Engine: raw image decode.,image-raw,image-decoder + canvas
+avif to orf,convert,"x to y, convert x to y",onsite-unverified,".avif,.orf",/avif-to-orf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+avif to raf,convert,"x to y, convert x to y",onsite-unverified,".avif,.raf",/avif-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+bmp to cr2,convert,"x to y, convert x to y",onsite-unverified,".bmp,.cr2",/bmp-to-cr2,,Engine: raw image decode.,image-raw,image-decoder + canvas
+bmp to cr3,convert,"x to y, convert x to y",onsite-unverified,".bmp,.cr3",/bmp-to-cr3,,Engine: raw image decode.,image-raw,image-decoder + canvas
+bmp to dng,convert,"x to y, convert x to y",onsite-unverified,".bmp,.dng",/bmp-to-dng,,Engine: raw image decode.,image-raw,image-decoder + canvas
+bmp to nef,convert,"x to y, convert x to y",onsite-unverified,".bmp,.nef",/bmp-to-nef,,Engine: raw image decode.,image-raw,image-decoder + canvas
+bmp to orf,convert,"x to y, convert x to y",onsite-unverified,".bmp,.orf",/bmp-to-orf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+bmp to raf,convert,"x to y, convert x to y",onsite-unverified,".bmp,.raf",/bmp-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr2 to cr2,convert,"x to y, convert x to y",onsite-unverified,".cr2,.cr2",/cr2-to-cr2,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr2 to cr3,convert,"x to y, convert x to y",onsite-unverified,".cr2,.cr3",/cr2-to-cr3,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr2 to cur,convert,"x to y, convert x to y",onsite-unverified,".cr2,.cur",/cr2-to-cur,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr2 to eps,convert,"x to y, convert x to y",onsite-unverified,".cr2,.eps",/cr2-to-eps,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr2 to heic,convert,"x to y, convert x to y",onsite-unverified,".cr2,.heic",/cr2-to-heic,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr2 to heif,convert,"x to y, convert x to y",onsite-unverified,".cr2,.heif",/cr2-to-heif,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr2 to icns,convert,"x to y, convert x to y",onsite-unverified,".cr2,.icns",/cr2-to-icns,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr2 to ico,convert,"x to y, convert x to y",onsite-unverified,".cr2,.ico",/cr2-to-ico,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr2 to jfif,convert,"x to y, convert x to y",onsite-unverified,".cr2,.jfif",/cr2-to-jfif,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr2 to jif,convert,"x to y, convert x to y",onsite-unverified,".cr2,.jif",/cr2-to-jif,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr2 to jxl,convert,"x to y, convert x to y",onsite-unverified,".cr2,.jxl",/cr2-to-jxl,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr2 to ktx,convert,"x to y, convert x to y",onsite-unverified,".cr2,.ktx",/cr2-to-ktx,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr2 to ktx2,convert,"x to y, convert x to y",onsite-unverified,".cr2,.ktx2",/cr2-to-ktx2,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr2 to nef,convert,"x to y, convert x to y",onsite-unverified,".cr2,.nef",/cr2-to-nef,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr2 to orf,convert,"x to y, convert x to y",onsite-unverified,".cr2,.orf",/cr2-to-orf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr2 to pam,convert,"x to y, convert x to y",onsite-unverified,".cr2,.pam",/cr2-to-pam,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr2 to pbm,convert,"x to y, convert x to y",onsite-unverified,".cr2,.pbm",/cr2-to-pbm,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr2 to pcx,convert,"x to y, convert x to y",onsite-unverified,".cr2,.pcx",/cr2-to-pcx,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr2 to pgm,convert,"x to y, convert x to y",onsite-unverified,".cr2,.pgm",/cr2-to-pgm,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr2 to ppm,convert,"x to y, convert x to y",onsite-unverified,".cr2,.ppm",/cr2-to-ppm,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr2 to raf,convert,"x to y, convert x to y",onsite-unverified,".cr2,.raf",/cr2-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr2 to rw2,convert,"x to y, convert x to y",onsite-unverified,".cr2,.rw2",/cr2-to-rw2,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr2 to xbm,convert,"x to y, convert x to y",onsite-unverified,".cr2,.xbm",/cr2-to-xbm,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr3 to cr3,convert,"x to y, convert x to y",onsite-unverified,".cr3,.cr3",/cr3-to-cr3,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr3 to cur,convert,"x to y, convert x to y",onsite-unverified,".cr3,.cur",/cr3-to-cur,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr3 to eps,convert,"x to y, convert x to y",onsite-unverified,".cr3,.eps",/cr3-to-eps,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr3 to heic,convert,"x to y, convert x to y",onsite-unverified,".cr3,.heic",/cr3-to-heic,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr3 to heif,convert,"x to y, convert x to y",onsite-unverified,".cr3,.heif",/cr3-to-heif,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr3 to icns,convert,"x to y, convert x to y",onsite-unverified,".cr3,.icns",/cr3-to-icns,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr3 to ico,convert,"x to y, convert x to y",onsite-unverified,".cr3,.ico",/cr3-to-ico,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr3 to jfif,convert,"x to y, convert x to y",onsite-unverified,".cr3,.jfif",/cr3-to-jfif,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr3 to jif,convert,"x to y, convert x to y",onsite-unverified,".cr3,.jif",/cr3-to-jif,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr3 to jxl,convert,"x to y, convert x to y",onsite-unverified,".cr3,.jxl",/cr3-to-jxl,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr3 to ktx,convert,"x to y, convert x to y",onsite-unverified,".cr3,.ktx",/cr3-to-ktx,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr3 to ktx2,convert,"x to y, convert x to y",onsite-unverified,".cr3,.ktx2",/cr3-to-ktx2,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr3 to nef,convert,"x to y, convert x to y",onsite-unverified,".cr3,.nef",/cr3-to-nef,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr3 to orf,convert,"x to y, convert x to y",onsite-unverified,".cr3,.orf",/cr3-to-orf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr3 to pam,convert,"x to y, convert x to y",onsite-unverified,".cr3,.pam",/cr3-to-pam,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr3 to pbm,convert,"x to y, convert x to y",onsite-unverified,".cr3,.pbm",/cr3-to-pbm,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr3 to pcx,convert,"x to y, convert x to y",onsite-unverified,".cr3,.pcx",/cr3-to-pcx,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr3 to pgm,convert,"x to y, convert x to y",onsite-unverified,".cr3,.pgm",/cr3-to-pgm,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr3 to ppm,convert,"x to y, convert x to y",onsite-unverified,".cr3,.ppm",/cr3-to-ppm,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr3 to raf,convert,"x to y, convert x to y",onsite-unverified,".cr3,.raf",/cr3-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr3 to rw2,convert,"x to y, convert x to y",onsite-unverified,".cr3,.rw2",/cr3-to-rw2,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cr3 to xbm,convert,"x to y, convert x to y",onsite-unverified,".cr3,.xbm",/cr3-to-xbm,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cur to dng,convert,"x to y, convert x to y",onsite-unverified,".cur,.dng",/cur-to-dng,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cur to nef,convert,"x to y, convert x to y",onsite-unverified,".cur,.nef",/cur-to-nef,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cur to orf,convert,"x to y, convert x to y",onsite-unverified,".cur,.orf",/cur-to-orf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+cur to raf,convert,"x to y, convert x to y",onsite-unverified,".cur,.raf",/cur-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+dds to dng,convert,"x to y, convert x to y",onsite-unverified,".dds,.dng",/dds-to-dng,,Engine: raw image decode.,image-raw,image-decoder + canvas
+dds to nef,convert,"x to y, convert x to y",onsite-unverified,".dds,.nef",/dds-to-nef,,Engine: raw image decode.,image-raw,image-decoder + canvas
+dds to orf,convert,"x to y, convert x to y",onsite-unverified,".dds,.orf",/dds-to-orf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+dds to raf,convert,"x to y, convert x to y",onsite-unverified,".dds,.raf",/dds-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+dng to dng,convert,"x to y, convert x to y",onsite-unverified,".dng,.dng",/dng-to-dng,,Engine: raw image decode.,image-raw,image-decoder + canvas
+dng to eps,convert,"x to y, convert x to y",onsite-unverified,".dng,.eps",/dng-to-eps,,Engine: raw image decode.,image-raw,image-decoder + canvas
+dng to heif,convert,"x to y, convert x to y",onsite-unverified,".dng,.heif",/dng-to-heif,,Engine: raw image decode.,image-raw,image-decoder + canvas
+dng to icns,convert,"x to y, convert x to y",onsite-unverified,".dng,.icns",/dng-to-icns,,Engine: raw image decode.,image-raw,image-decoder + canvas
+dng to ico,convert,"x to y, convert x to y",onsite-unverified,".dng,.ico",/dng-to-ico,,Engine: raw image decode.,image-raw,image-decoder + canvas
+dng to jfif,convert,"x to y, convert x to y",onsite-unverified,".dng,.jfif",/dng-to-jfif,,Engine: raw image decode.,image-raw,image-decoder + canvas
+dng to jif,convert,"x to y, convert x to y",onsite-unverified,".dng,.jif",/dng-to-jif,,Engine: raw image decode.,image-raw,image-decoder + canvas
+dng to jxl,convert,"x to y, convert x to y",onsite-unverified,".dng,.jxl",/dng-to-jxl,,Engine: raw image decode.,image-raw,image-decoder + canvas
+dng to ktx,convert,"x to y, convert x to y",onsite-unverified,".dng,.ktx",/dng-to-ktx,,Engine: raw image decode.,image-raw,image-decoder + canvas
+dng to ktx2,convert,"x to y, convert x to y",onsite-unverified,".dng,.ktx2",/dng-to-ktx2,,Engine: raw image decode.,image-raw,image-decoder + canvas
+dng to nef,convert,"x to y, convert x to y",onsite-unverified,".dng,.nef",/dng-to-nef,,Engine: raw image decode.,image-raw,image-decoder + canvas
+dng to orf,convert,"x to y, convert x to y",onsite-unverified,".dng,.orf",/dng-to-orf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+dng to pam,convert,"x to y, convert x to y",onsite-unverified,".dng,.pam",/dng-to-pam,,Engine: raw image decode.,image-raw,image-decoder + canvas
+dng to pbm,convert,"x to y, convert x to y",onsite-unverified,".dng,.pbm",/dng-to-pbm,,Engine: raw image decode.,image-raw,image-decoder + canvas
+dng to pcx,convert,"x to y, convert x to y",onsite-unverified,".dng,.pcx",/dng-to-pcx,,Engine: raw image decode.,image-raw,image-decoder + canvas
+dng to pgm,convert,"x to y, convert x to y",onsite-unverified,".dng,.pgm",/dng-to-pgm,,Engine: raw image decode.,image-raw,image-decoder + canvas
+dng to ppm,convert,"x to y, convert x to y",onsite-unverified,".dng,.ppm",/dng-to-ppm,,Engine: raw image decode.,image-raw,image-decoder + canvas
+dng to raf,convert,"x to y, convert x to y",onsite-unverified,".dng,.raf",/dng-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+dng to rw2,convert,"x to y, convert x to y",onsite-unverified,".dng,.rw2",/dng-to-rw2,,Engine: raw image decode.,image-raw,image-decoder + canvas
+dng to xbm,convert,"x to y, convert x to y",onsite-unverified,".dng,.xbm",/dng-to-xbm,,Engine: raw image decode.,image-raw,image-decoder + canvas
+dng to xpm,convert,"x to y, convert x to y",onsite-unverified,".dng,.xpm",/dng-to-xpm,,Engine: raw image decode.,image-raw,image-decoder + canvas
+eps to nef,convert,"x to y, convert x to y",onsite-unverified,".eps,.nef",/eps-to-nef,,Engine: raw image decode.,image-raw,image-decoder + canvas
+eps to orf,convert,"x to y, convert x to y",onsite-unverified,".eps,.orf",/eps-to-orf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+eps to raf,convert,"x to y, convert x to y",onsite-unverified,".eps,.raf",/eps-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+gif to nef,convert,"x to y, convert x to y",onsite-unverified,".gif,.nef",/gif-to-nef,,Engine: raw image decode.,image-raw,image-decoder + canvas
+gif to orf,convert,"x to y, convert x to y",onsite-unverified,".gif,.orf",/gif-to-orf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+gif to raf,convert,"x to y, convert x to y",onsite-unverified,".gif,.raf",/gif-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+heic to nef,convert,"x to y, convert x to y",onsite-unverified,".heic,.nef",/heic-to-nef,,Engine: raw image decode.,image-raw,image-decoder + canvas
+heic to orf,convert,"x to y, convert x to y",onsite-unverified,".heic,.orf",/heic-to-orf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+heic to raf,convert,"x to y, convert x to y",onsite-unverified,".heic,.raf",/heic-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+heif to nef,convert,"x to y, convert x to y",onsite-unverified,".heif,.nef",/heif-to-nef,,Engine: raw image decode.,image-raw,image-decoder + canvas
+heif to orf,convert,"x to y, convert x to y",onsite-unverified,".heif,.orf",/heif-to-orf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+heif to raf,convert,"x to y, convert x to y",onsite-unverified,".heif,.raf",/heif-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+icns to nef,convert,"x to y, convert x to y",onsite-unverified,".icns,.nef",/icns-to-nef,,Engine: raw image decode.,image-raw,image-decoder + canvas
+icns to orf,convert,"x to y, convert x to y",onsite-unverified,".icns,.orf",/icns-to-orf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+icns to raf,convert,"x to y, convert x to y",onsite-unverified,".icns,.raf",/icns-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+ico to nef,convert,"x to y, convert x to y",onsite-unverified,".ico,.nef",/ico-to-nef,,Engine: raw image decode.,image-raw,image-decoder + canvas
+ico to orf,convert,"x to y, convert x to y",onsite-unverified,".ico,.orf",/ico-to-orf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+ico to raf,convert,"x to y, convert x to y",onsite-unverified,".ico,.raf",/ico-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+jfif to nef,convert,"x to y, convert x to y",onsite-unverified,".jfif,.nef",/jfif-to-nef,,Engine: raw image decode.,image-raw,image-decoder + canvas
+jfif to orf,convert,"x to y, convert x to y",onsite-unverified,".jfif,.orf",/jfif-to-orf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+jfif to raf,convert,"x to y, convert x to y",onsite-unverified,".jfif,.raf",/jfif-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+jif to nef,convert,"x to y, convert x to y",onsite-unverified,".jif,.nef",/jif-to-nef,,Engine: raw image decode.,image-raw,image-decoder + canvas
+jif to orf,convert,"x to y, convert x to y",onsite-unverified,".jif,.orf",/jif-to-orf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+jif to raf,convert,"x to y, convert x to y",onsite-unverified,".jif,.raf",/jif-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+jpeg to nef,convert,"x to y, convert x to y",onsite-unverified,".jpeg,.nef",/jpeg-to-nef,,Engine: raw image decode.,image-raw,image-decoder + canvas
+jpeg to orf,convert,"x to y, convert x to y",onsite-unverified,".jpeg,.orf",/jpeg-to-orf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+jpeg to raf,convert,"x to y, convert x to y",onsite-unverified,".jpeg,.raf",/jpeg-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+jpg to orf,convert,"x to y, convert x to y",onsite-unverified,".jpg,.orf",/jpg-to-orf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+jpg to raf,convert,"x to y, convert x to y",onsite-unverified,".jpg,.raf",/jpg-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+jxl to nef,convert,"x to y, convert x to y",onsite-unverified,".jxl,.nef",/jxl-to-nef,,Engine: raw image decode.,image-raw,image-decoder + canvas
+jxl to orf,convert,"x to y, convert x to y",onsite-unverified,".jxl,.orf",/jxl-to-orf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+jxl to raf,convert,"x to y, convert x to y",onsite-unverified,".jxl,.raf",/jxl-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+ktx to nef,convert,"x to y, convert x to y",onsite-unverified,".ktx,.nef",/ktx-to-nef,,Engine: raw image decode.,image-raw,image-decoder + canvas
+ktx to orf,convert,"x to y, convert x to y",onsite-unverified,".ktx,.orf",/ktx-to-orf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+ktx to raf,convert,"x to y, convert x to y",onsite-unverified,".ktx,.raf",/ktx-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+ktx2 to nef,convert,"x to y, convert x to y",onsite-unverified,".ktx2,.nef",/ktx2-to-nef,,Engine: raw image decode.,image-raw,image-decoder + canvas
+ktx2 to orf,convert,"x to y, convert x to y",onsite-unverified,".ktx2,.orf",/ktx2-to-orf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+ktx2 to raf,convert,"x to y, convert x to y",onsite-unverified,".ktx2,.raf",/ktx2-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+nef to nef,convert,"x to y, convert x to y",onsite-unverified,".nef,.nef",/nef-to-nef,,Engine: raw image decode.,image-raw,image-decoder + canvas
+nef to orf,convert,"x to y, convert x to y",onsite-unverified,".nef,.orf",/nef-to-orf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+nef to pam,convert,"x to y, convert x to y",onsite-unverified,".nef,.pam",/nef-to-pam,,Engine: raw image decode.,image-raw,image-decoder + canvas
+nef to pbm,convert,"x to y, convert x to y",onsite-unverified,".nef,.pbm",/nef-to-pbm,,Engine: raw image decode.,image-raw,image-decoder + canvas
+nef to pcx,convert,"x to y, convert x to y",onsite-unverified,".nef,.pcx",/nef-to-pcx,,Engine: raw image decode.,image-raw,image-decoder + canvas
+nef to pgm,convert,"x to y, convert x to y",onsite-unverified,".nef,.pgm",/nef-to-pgm,,Engine: raw image decode.,image-raw,image-decoder + canvas
+nef to ppm,convert,"x to y, convert x to y",onsite-unverified,".nef,.ppm",/nef-to-ppm,,Engine: raw image decode.,image-raw,image-decoder + canvas
+nef to psd,convert,"x to y, convert x to y",onsite-unverified,".nef,.psd",/nef-to-psd,,Engine: raw image decode.,image-raw,image-decoder + canvas
+nef to raf,convert,"x to y, convert x to y",onsite-unverified,".nef,.raf",/nef-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+nef to rw2,convert,"x to y, convert x to y",onsite-unverified,".nef,.rw2",/nef-to-rw2,,Engine: raw image decode.,image-raw,image-decoder + canvas
+nef to svg,convert,"x to y, convert x to y",onsite-unverified,".nef,.svg",/nef-to-svg,,Engine: raw image decode.,image-raw,image-decoder + canvas
+nef to tga,convert,"x to y, convert x to y",onsite-unverified,".nef,.tga",/nef-to-tga,,Engine: raw image decode.,image-raw,image-decoder + canvas
+nef to tif,convert,"x to y, convert x to y",onsite-unverified,".nef,.tif",/nef-to-tif,,Engine: raw image decode.,image-raw,image-decoder + canvas
+nef to webp,convert,"x to y, convert x to y",onsite-unverified,".nef,.webp",/nef-to-webp,,Engine: raw image decode.,image-raw,image-decoder + canvas
+nef to xbm,convert,"x to y, convert x to y",onsite-unverified,".nef,.xbm",/nef-to-xbm,,Engine: raw image decode.,image-raw,image-decoder + canvas
+orf to orf,convert,"x to y, convert x to y",onsite-unverified,".orf,.orf",/orf-to-orf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+orf to pam,convert,"x to y, convert x to y",onsite-unverified,".orf,.pam",/orf-to-pam,,Engine: raw image decode.,image-raw,image-decoder + canvas
+orf to pbm,convert,"x to y, convert x to y",onsite-unverified,".orf,.pbm",/orf-to-pbm,,Engine: raw image decode.,image-raw,image-decoder + canvas
+orf to pcx,convert,"x to y, convert x to y",onsite-unverified,".orf,.pcx",/orf-to-pcx,,Engine: raw image decode.,image-raw,image-decoder + canvas
+orf to pgm,convert,"x to y, convert x to y",onsite-unverified,".orf,.pgm",/orf-to-pgm,,Engine: raw image decode.,image-raw,image-decoder + canvas
+orf to ppm,convert,"x to y, convert x to y",onsite-unverified,".orf,.ppm",/orf-to-ppm,,Engine: raw image decode.,image-raw,image-decoder + canvas
+orf to raf,convert,"x to y, convert x to y",onsite-unverified,".orf,.raf",/orf-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+orf to rw2,convert,"x to y, convert x to y",onsite-unverified,".orf,.rw2",/orf-to-rw2,,Engine: raw image decode.,image-raw,image-decoder + canvas
+orf to svg,convert,"x to y, convert x to y",onsite-unverified,".orf,.svg",/orf-to-svg,,Engine: raw image decode.,image-raw,image-decoder + canvas
+orf to tga,convert,"x to y, convert x to y",onsite-unverified,".orf,.tga",/orf-to-tga,,Engine: raw image decode.,image-raw,image-decoder + canvas
+orf to tif,convert,"x to y, convert x to y",onsite-unverified,".orf,.tif",/orf-to-tif,,Engine: raw image decode.,image-raw,image-decoder + canvas
+orf to tiff,convert,"x to y, convert x to y",onsite-unverified,".orf,.tiff",/orf-to-tiff,,Engine: raw image decode.,image-raw,image-decoder + canvas
+orf to webp,convert,"x to y, convert x to y",onsite-unverified,".orf,.webp",/orf-to-webp,,Engine: raw image decode.,image-raw,image-decoder + canvas
+orf to xbm,convert,"x to y, convert x to y",onsite-unverified,".orf,.xbm",/orf-to-xbm,,Engine: raw image decode.,image-raw,image-decoder + canvas
+pam to raf,convert,"x to y, convert x to y",onsite-unverified,".pam,.raf",/pam-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+pbm to raf,convert,"x to y, convert x to y",onsite-unverified,".pbm,.raf",/pbm-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+pcx to raf,convert,"x to y, convert x to y",onsite-unverified,".pcx,.raf",/pcx-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+pgm to raf,convert,"x to y, convert x to y",onsite-unverified,".pgm,.raf",/pgm-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+png to raf,convert,"x to y, convert x to y",onsite-unverified,".png,.raf",/png-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+ppm to raf,convert,"x to y, convert x to y",onsite-unverified,".ppm,.raf",/ppm-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+raf to raf,convert,"x to y, convert x to y",onsite-unverified,".raf,.raf",/raf-to-raf,,Engine: raw image decode.,image-raw,image-decoder + canvas
+raf to rw2,convert,"x to y, convert x to y",onsite-unverified,".raf,.rw2",/raf-to-rw2,,Engine: raw image decode.,image-raw,image-decoder + canvas
+raf to svg,convert,"x to y, convert x to y",onsite-unverified,".raf,.svg",/raf-to-svg,,Engine: raw image decode.,image-raw,image-decoder + canvas
+raf to tga,convert,"x to y, convert x to y",onsite-unverified,".raf,.tga",/raf-to-tga,,Engine: raw image decode.,image-raw,image-decoder + canvas
+raf to tif,convert,"x to y, convert x to y",onsite-unverified,".raf,.tif",/raf-to-tif,,Engine: raw image decode.,image-raw,image-decoder + canvas
+raf to tiff,convert,"x to y, convert x to y",onsite-unverified,".raf,.tiff",/raf-to-tiff,,Engine: raw image decode.,image-raw,image-decoder + canvas
+raf to webp,convert,"x to y, convert x to y",onsite-unverified,".raf,.webp",/raf-to-webp,,Engine: raw image decode.,image-raw,image-decoder + canvas
+raf to xbm,convert,"x to y, convert x to y",onsite-unverified,".raf,.xbm",/raf-to-xbm,,Engine: raw image decode.,image-raw,image-decoder + canvas

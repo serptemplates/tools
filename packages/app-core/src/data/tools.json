@@ -46068,5 +46068,3127 @@
       "convert",
       "image"
     ]
+  },
+  {
+    "id": "nef-to-jpg",
+    "name": "NEF to JPG",
+    "description": "Convert NEF to JPG format",
+    "operation": "convert",
+    "route": "/nef-to-jpg",
+    "from": "nef",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "nef",
+      "jpg",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "nef-to-png",
+    "name": "NEF to PNG",
+    "description": "Convert NEF to PNG format",
+    "operation": "convert",
+    "route": "/nef-to-png",
+    "from": "nef",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "nef",
+      "png",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "nef-to-jpeg",
+    "name": "NEF to JPEG",
+    "description": "Convert NEF to JPEG format",
+    "operation": "convert",
+    "route": "/nef-to-jpeg",
+    "from": "nef",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "nef",
+      "jpeg",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "raf-to-jpg",
+    "name": "RAF to JPG",
+    "description": "Convert RAF to JPG format",
+    "operation": "convert",
+    "route": "/raf-to-jpg",
+    "from": "raf",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "raf",
+      "jpg",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "orf-to-jpg",
+    "name": "ORF to JPG",
+    "description": "Convert ORF to JPG format",
+    "operation": "convert",
+    "route": "/orf-to-jpg",
+    "from": "orf",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "orf",
+      "jpg",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "nef-to-tiff",
+    "name": "NEF to TIFF",
+    "description": "Convert NEF to TIFF format",
+    "operation": "convert",
+    "route": "/nef-to-tiff",
+    "from": "nef",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "nef",
+      "tiff",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "arw-to-dng",
+    "name": "ARW to DNG",
+    "description": "Convert ARW to DNG format",
+    "operation": "convert",
+    "route": "/arw-to-dng",
+    "from": "arw",
+    "to": "dng",
+    "isActive": true,
+    "tags": [
+      "arw",
+      "dng",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "raf-to-jpeg",
+    "name": "RAF to JPEG",
+    "description": "Convert RAF to JPEG format",
+    "operation": "convert",
+    "route": "/raf-to-jpeg",
+    "from": "raf",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "raf",
+      "jpeg",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-dng",
+    "name": "CR2 to DNG",
+    "description": "Convert CR2 to DNG format",
+    "operation": "convert",
+    "route": "/cr2-to-dng",
+    "from": "cr2",
+    "to": "dng",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "dng",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-dng",
+    "name": "CR3 to DNG",
+    "description": "Convert CR3 to DNG format",
+    "operation": "convert",
+    "route": "/cr3-to-dng",
+    "from": "cr3",
+    "to": "dng",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "dng",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "orf-to-jpeg",
+    "name": "ORF to JPEG",
+    "description": "Convert ORF to JPEG format",
+    "operation": "convert",
+    "route": "/orf-to-jpeg",
+    "from": "orf",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "orf",
+      "jpeg",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "orf-to-png",
+    "name": "ORF to PNG",
+    "description": "Convert ORF to PNG format",
+    "operation": "convert",
+    "route": "/orf-to-png",
+    "from": "orf",
+    "to": "png",
+    "isActive": true,
+    "tags": [
+      "orf",
+      "png",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "ai-to-arw",
+    "name": "AI to ARW",
+    "description": "Convert AI to ARW format",
+    "operation": "convert",
+    "route": "/ai-to-arw",
+    "from": "ai",
+    "to": "arw",
+    "isActive": true,
+    "tags": [
+      "ai",
+      "arw",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ai-to-cr2",
+    "name": "AI to CR2",
+    "description": "Convert AI to CR2 format",
+    "operation": "convert",
+    "route": "/ai-to-cr2",
+    "from": "ai",
+    "to": "cr2",
+    "isActive": true,
+    "tags": [
+      "ai",
+      "cr2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ai-to-cr3",
+    "name": "AI to CR3",
+    "description": "Convert AI to CR3 format",
+    "operation": "convert",
+    "route": "/ai-to-cr3",
+    "from": "ai",
+    "to": "cr3",
+    "isActive": true,
+    "tags": [
+      "ai",
+      "cr3",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ai-to-dng",
+    "name": "AI to DNG",
+    "description": "Convert AI to DNG format",
+    "operation": "convert",
+    "route": "/ai-to-dng",
+    "from": "ai",
+    "to": "dng",
+    "isActive": true,
+    "tags": [
+      "ai",
+      "dng",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "arw-to-cr2",
+    "name": "ARW to CR2",
+    "description": "Convert ARW to CR2 format",
+    "operation": "convert",
+    "route": "/arw-to-cr2",
+    "from": "arw",
+    "to": "cr2",
+    "isActive": true,
+    "tags": [
+      "arw",
+      "cr2",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "arw-to-heic",
+    "name": "ARW to HEIC",
+    "description": "Convert ARW to HEIC format",
+    "operation": "convert",
+    "route": "/arw-to-heic",
+    "from": "arw",
+    "to": "heic",
+    "isActive": true,
+    "tags": [
+      "arw",
+      "heic",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "arw-to-nef",
+    "name": "ARW to NEF",
+    "description": "Convert ARW to NEF format",
+    "operation": "convert",
+    "route": "/arw-to-nef",
+    "from": "arw",
+    "to": "nef",
+    "isActive": true,
+    "tags": [
+      "arw",
+      "nef",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "arw-to-pgm",
+    "name": "ARW to PGM",
+    "description": "Convert ARW to PGM format",
+    "operation": "convert",
+    "route": "/arw-to-pgm",
+    "from": "arw",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "arw",
+      "pgm",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "arw-to-xbm",
+    "name": "ARW to XBM",
+    "description": "Convert ARW to XBM format",
+    "operation": "convert",
+    "route": "/arw-to-xbm",
+    "from": "arw",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "arw",
+      "xbm",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "avif-to-cr2",
+    "name": "AVIF to CR2",
+    "description": "Convert AVIF to CR2 format",
+    "operation": "convert",
+    "route": "/avif-to-cr2",
+    "from": "avif",
+    "to": "cr2",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "cr2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-cr3",
+    "name": "AVIF to CR3",
+    "description": "Convert AVIF to CR3 format",
+    "operation": "convert",
+    "route": "/avif-to-cr3",
+    "from": "avif",
+    "to": "cr3",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "cr3",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-dng",
+    "name": "AVIF to DNG",
+    "description": "Convert AVIF to DNG format",
+    "operation": "convert",
+    "route": "/avif-to-dng",
+    "from": "avif",
+    "to": "dng",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "dng",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-nef",
+    "name": "AVIF to NEF",
+    "description": "Convert AVIF to NEF format",
+    "operation": "convert",
+    "route": "/avif-to-nef",
+    "from": "avif",
+    "to": "nef",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "nef",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-orf",
+    "name": "AVIF to ORF",
+    "description": "Convert AVIF to ORF format",
+    "operation": "convert",
+    "route": "/avif-to-orf",
+    "from": "avif",
+    "to": "orf",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "orf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "avif-to-raf",
+    "name": "AVIF to RAF",
+    "description": "Convert AVIF to RAF format",
+    "operation": "convert",
+    "route": "/avif-to-raf",
+    "from": "avif",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "raf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-cr2",
+    "name": "BMP to CR2",
+    "description": "Convert BMP to CR2 format",
+    "operation": "convert",
+    "route": "/bmp-to-cr2",
+    "from": "bmp",
+    "to": "cr2",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "cr2",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-cr3",
+    "name": "BMP to CR3",
+    "description": "Convert BMP to CR3 format",
+    "operation": "convert",
+    "route": "/bmp-to-cr3",
+    "from": "bmp",
+    "to": "cr3",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "cr3",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-dng",
+    "name": "BMP to DNG",
+    "description": "Convert BMP to DNG format",
+    "operation": "convert",
+    "route": "/bmp-to-dng",
+    "from": "bmp",
+    "to": "dng",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "dng",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-nef",
+    "name": "BMP to NEF",
+    "description": "Convert BMP to NEF format",
+    "operation": "convert",
+    "route": "/bmp-to-nef",
+    "from": "bmp",
+    "to": "nef",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "nef",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-orf",
+    "name": "BMP to ORF",
+    "description": "Convert BMP to ORF format",
+    "operation": "convert",
+    "route": "/bmp-to-orf",
+    "from": "bmp",
+    "to": "orf",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "orf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "bmp-to-raf",
+    "name": "BMP to RAF",
+    "description": "Convert BMP to RAF format",
+    "operation": "convert",
+    "route": "/bmp-to-raf",
+    "from": "bmp",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "raf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cr2-to-cr2",
+    "name": "CR2 to CR2",
+    "description": "Convert CR2 to CR2 format",
+    "operation": "convert",
+    "route": "/cr2-to-cr2",
+    "from": "cr2",
+    "to": "cr2",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-cr3",
+    "name": "CR2 to CR3",
+    "description": "Convert CR2 to CR3 format",
+    "operation": "convert",
+    "route": "/cr2-to-cr3",
+    "from": "cr2",
+    "to": "cr3",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "cr3",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-cur",
+    "name": "CR2 to CUR",
+    "description": "Convert CR2 to CUR format",
+    "operation": "convert",
+    "route": "/cr2-to-cur",
+    "from": "cr2",
+    "to": "cur",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "cur",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-eps",
+    "name": "CR2 to EPS",
+    "description": "Convert CR2 to EPS format",
+    "operation": "convert",
+    "route": "/cr2-to-eps",
+    "from": "cr2",
+    "to": "eps",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "eps",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-heic",
+    "name": "CR2 to HEIC",
+    "description": "Convert CR2 to HEIC format",
+    "operation": "convert",
+    "route": "/cr2-to-heic",
+    "from": "cr2",
+    "to": "heic",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "heic",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-heif",
+    "name": "CR2 to HEIF",
+    "description": "Convert CR2 to HEIF format",
+    "operation": "convert",
+    "route": "/cr2-to-heif",
+    "from": "cr2",
+    "to": "heif",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "heif",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-icns",
+    "name": "CR2 to ICNS",
+    "description": "Convert CR2 to ICNS format",
+    "operation": "convert",
+    "route": "/cr2-to-icns",
+    "from": "cr2",
+    "to": "icns",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "icns",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-ico",
+    "name": "CR2 to ICO",
+    "description": "Convert CR2 to ICO format",
+    "operation": "convert",
+    "route": "/cr2-to-ico",
+    "from": "cr2",
+    "to": "ico",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "ico",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-jfif",
+    "name": "CR2 to JFIF",
+    "description": "Convert CR2 to JFIF format",
+    "operation": "convert",
+    "route": "/cr2-to-jfif",
+    "from": "cr2",
+    "to": "jfif",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "jfif",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-jif",
+    "name": "CR2 to JIF",
+    "description": "Convert CR2 to JIF format",
+    "operation": "convert",
+    "route": "/cr2-to-jif",
+    "from": "cr2",
+    "to": "jif",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "jif",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-jxl",
+    "name": "CR2 to JXL",
+    "description": "Convert CR2 to JXL format",
+    "operation": "convert",
+    "route": "/cr2-to-jxl",
+    "from": "cr2",
+    "to": "jxl",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "jxl",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-ktx",
+    "name": "CR2 to KTX",
+    "description": "Convert CR2 to KTX format",
+    "operation": "convert",
+    "route": "/cr2-to-ktx",
+    "from": "cr2",
+    "to": "ktx",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "ktx",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-ktx2",
+    "name": "CR2 to KTX2",
+    "description": "Convert CR2 to KTX2 format",
+    "operation": "convert",
+    "route": "/cr2-to-ktx2",
+    "from": "cr2",
+    "to": "ktx2",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "ktx2",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-nef",
+    "name": "CR2 to NEF",
+    "description": "Convert CR2 to NEF format",
+    "operation": "convert",
+    "route": "/cr2-to-nef",
+    "from": "cr2",
+    "to": "nef",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "nef",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-orf",
+    "name": "CR2 to ORF",
+    "description": "Convert CR2 to ORF format",
+    "operation": "convert",
+    "route": "/cr2-to-orf",
+    "from": "cr2",
+    "to": "orf",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "orf",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-pam",
+    "name": "CR2 to PAM",
+    "description": "Convert CR2 to PAM format",
+    "operation": "convert",
+    "route": "/cr2-to-pam",
+    "from": "cr2",
+    "to": "pam",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "pam",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-pbm",
+    "name": "CR2 to PBM",
+    "description": "Convert CR2 to PBM format",
+    "operation": "convert",
+    "route": "/cr2-to-pbm",
+    "from": "cr2",
+    "to": "pbm",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "pbm",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-pcx",
+    "name": "CR2 to PCX",
+    "description": "Convert CR2 to PCX format",
+    "operation": "convert",
+    "route": "/cr2-to-pcx",
+    "from": "cr2",
+    "to": "pcx",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "pcx",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-pgm",
+    "name": "CR2 to PGM",
+    "description": "Convert CR2 to PGM format",
+    "operation": "convert",
+    "route": "/cr2-to-pgm",
+    "from": "cr2",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "pgm",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-ppm",
+    "name": "CR2 to PPM",
+    "description": "Convert CR2 to PPM format",
+    "operation": "convert",
+    "route": "/cr2-to-ppm",
+    "from": "cr2",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "ppm",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-raf",
+    "name": "CR2 to RAF",
+    "description": "Convert CR2 to RAF format",
+    "operation": "convert",
+    "route": "/cr2-to-raf",
+    "from": "cr2",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "raf",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-rw2",
+    "name": "CR2 to RW2",
+    "description": "Convert CR2 to RW2 format",
+    "operation": "convert",
+    "route": "/cr2-to-rw2",
+    "from": "cr2",
+    "to": "rw2",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "rw2",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr2-to-xbm",
+    "name": "CR2 to XBM",
+    "description": "Convert CR2 to XBM format",
+    "operation": "convert",
+    "route": "/cr2-to-xbm",
+    "from": "cr2",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "cr2",
+      "xbm",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-cr3",
+    "name": "CR3 to CR3",
+    "description": "Convert CR3 to CR3 format",
+    "operation": "convert",
+    "route": "/cr3-to-cr3",
+    "from": "cr3",
+    "to": "cr3",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-cur",
+    "name": "CR3 to CUR",
+    "description": "Convert CR3 to CUR format",
+    "operation": "convert",
+    "route": "/cr3-to-cur",
+    "from": "cr3",
+    "to": "cur",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "cur",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-eps",
+    "name": "CR3 to EPS",
+    "description": "Convert CR3 to EPS format",
+    "operation": "convert",
+    "route": "/cr3-to-eps",
+    "from": "cr3",
+    "to": "eps",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "eps",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-heic",
+    "name": "CR3 to HEIC",
+    "description": "Convert CR3 to HEIC format",
+    "operation": "convert",
+    "route": "/cr3-to-heic",
+    "from": "cr3",
+    "to": "heic",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "heic",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-heif",
+    "name": "CR3 to HEIF",
+    "description": "Convert CR3 to HEIF format",
+    "operation": "convert",
+    "route": "/cr3-to-heif",
+    "from": "cr3",
+    "to": "heif",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "heif",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-icns",
+    "name": "CR3 to ICNS",
+    "description": "Convert CR3 to ICNS format",
+    "operation": "convert",
+    "route": "/cr3-to-icns",
+    "from": "cr3",
+    "to": "icns",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "icns",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-ico",
+    "name": "CR3 to ICO",
+    "description": "Convert CR3 to ICO format",
+    "operation": "convert",
+    "route": "/cr3-to-ico",
+    "from": "cr3",
+    "to": "ico",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "ico",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-jfif",
+    "name": "CR3 to JFIF",
+    "description": "Convert CR3 to JFIF format",
+    "operation": "convert",
+    "route": "/cr3-to-jfif",
+    "from": "cr3",
+    "to": "jfif",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "jfif",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-jif",
+    "name": "CR3 to JIF",
+    "description": "Convert CR3 to JIF format",
+    "operation": "convert",
+    "route": "/cr3-to-jif",
+    "from": "cr3",
+    "to": "jif",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "jif",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-jxl",
+    "name": "CR3 to JXL",
+    "description": "Convert CR3 to JXL format",
+    "operation": "convert",
+    "route": "/cr3-to-jxl",
+    "from": "cr3",
+    "to": "jxl",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "jxl",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-ktx",
+    "name": "CR3 to KTX",
+    "description": "Convert CR3 to KTX format",
+    "operation": "convert",
+    "route": "/cr3-to-ktx",
+    "from": "cr3",
+    "to": "ktx",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "ktx",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-ktx2",
+    "name": "CR3 to KTX2",
+    "description": "Convert CR3 to KTX2 format",
+    "operation": "convert",
+    "route": "/cr3-to-ktx2",
+    "from": "cr3",
+    "to": "ktx2",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "ktx2",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-nef",
+    "name": "CR3 to NEF",
+    "description": "Convert CR3 to NEF format",
+    "operation": "convert",
+    "route": "/cr3-to-nef",
+    "from": "cr3",
+    "to": "nef",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "nef",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-orf",
+    "name": "CR3 to ORF",
+    "description": "Convert CR3 to ORF format",
+    "operation": "convert",
+    "route": "/cr3-to-orf",
+    "from": "cr3",
+    "to": "orf",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "orf",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-pam",
+    "name": "CR3 to PAM",
+    "description": "Convert CR3 to PAM format",
+    "operation": "convert",
+    "route": "/cr3-to-pam",
+    "from": "cr3",
+    "to": "pam",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "pam",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-pbm",
+    "name": "CR3 to PBM",
+    "description": "Convert CR3 to PBM format",
+    "operation": "convert",
+    "route": "/cr3-to-pbm",
+    "from": "cr3",
+    "to": "pbm",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "pbm",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-pcx",
+    "name": "CR3 to PCX",
+    "description": "Convert CR3 to PCX format",
+    "operation": "convert",
+    "route": "/cr3-to-pcx",
+    "from": "cr3",
+    "to": "pcx",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "pcx",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-pgm",
+    "name": "CR3 to PGM",
+    "description": "Convert CR3 to PGM format",
+    "operation": "convert",
+    "route": "/cr3-to-pgm",
+    "from": "cr3",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "pgm",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-ppm",
+    "name": "CR3 to PPM",
+    "description": "Convert CR3 to PPM format",
+    "operation": "convert",
+    "route": "/cr3-to-ppm",
+    "from": "cr3",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "ppm",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-raf",
+    "name": "CR3 to RAF",
+    "description": "Convert CR3 to RAF format",
+    "operation": "convert",
+    "route": "/cr3-to-raf",
+    "from": "cr3",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "raf",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-rw2",
+    "name": "CR3 to RW2",
+    "description": "Convert CR3 to RW2 format",
+    "operation": "convert",
+    "route": "/cr3-to-rw2",
+    "from": "cr3",
+    "to": "rw2",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "rw2",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cr3-to-xbm",
+    "name": "CR3 to XBM",
+    "description": "Convert CR3 to XBM format",
+    "operation": "convert",
+    "route": "/cr3-to-xbm",
+    "from": "cr3",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "cr3",
+      "xbm",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "cur-to-dng",
+    "name": "CUR to DNG",
+    "description": "Convert CUR to DNG format",
+    "operation": "convert",
+    "route": "/cur-to-dng",
+    "from": "cur",
+    "to": "dng",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "dng",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-nef",
+    "name": "CUR to NEF",
+    "description": "Convert CUR to NEF format",
+    "operation": "convert",
+    "route": "/cur-to-nef",
+    "from": "cur",
+    "to": "nef",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "nef",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-orf",
+    "name": "CUR to ORF",
+    "description": "Convert CUR to ORF format",
+    "operation": "convert",
+    "route": "/cur-to-orf",
+    "from": "cur",
+    "to": "orf",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "orf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "cur-to-raf",
+    "name": "CUR to RAF",
+    "description": "Convert CUR to RAF format",
+    "operation": "convert",
+    "route": "/cur-to-raf",
+    "from": "cur",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "cur",
+      "raf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-dng",
+    "name": "DDS to DNG",
+    "description": "Convert DDS to DNG format",
+    "operation": "convert",
+    "route": "/dds-to-dng",
+    "from": "dds",
+    "to": "dng",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "dng",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-nef",
+    "name": "DDS to NEF",
+    "description": "Convert DDS to NEF format",
+    "operation": "convert",
+    "route": "/dds-to-nef",
+    "from": "dds",
+    "to": "nef",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "nef",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-orf",
+    "name": "DDS to ORF",
+    "description": "Convert DDS to ORF format",
+    "operation": "convert",
+    "route": "/dds-to-orf",
+    "from": "dds",
+    "to": "orf",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "orf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dds-to-raf",
+    "name": "DDS to RAF",
+    "description": "Convert DDS to RAF format",
+    "operation": "convert",
+    "route": "/dds-to-raf",
+    "from": "dds",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "dds",
+      "raf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "dng-to-dng",
+    "name": "DNG to DNG",
+    "description": "Convert DNG to DNG format",
+    "operation": "convert",
+    "route": "/dng-to-dng",
+    "from": "dng",
+    "to": "dng",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "dng-to-eps",
+    "name": "DNG to EPS",
+    "description": "Convert DNG to EPS format",
+    "operation": "convert",
+    "route": "/dng-to-eps",
+    "from": "dng",
+    "to": "eps",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "eps",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "dng-to-heif",
+    "name": "DNG to HEIF",
+    "description": "Convert DNG to HEIF format",
+    "operation": "convert",
+    "route": "/dng-to-heif",
+    "from": "dng",
+    "to": "heif",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "heif",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "dng-to-icns",
+    "name": "DNG to ICNS",
+    "description": "Convert DNG to ICNS format",
+    "operation": "convert",
+    "route": "/dng-to-icns",
+    "from": "dng",
+    "to": "icns",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "icns",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "dng-to-ico",
+    "name": "DNG to ICO",
+    "description": "Convert DNG to ICO format",
+    "operation": "convert",
+    "route": "/dng-to-ico",
+    "from": "dng",
+    "to": "ico",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "ico",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "dng-to-jfif",
+    "name": "DNG to JFIF",
+    "description": "Convert DNG to JFIF format",
+    "operation": "convert",
+    "route": "/dng-to-jfif",
+    "from": "dng",
+    "to": "jfif",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "jfif",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "dng-to-jif",
+    "name": "DNG to JIF",
+    "description": "Convert DNG to JIF format",
+    "operation": "convert",
+    "route": "/dng-to-jif",
+    "from": "dng",
+    "to": "jif",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "jif",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "dng-to-jxl",
+    "name": "DNG to JXL",
+    "description": "Convert DNG to JXL format",
+    "operation": "convert",
+    "route": "/dng-to-jxl",
+    "from": "dng",
+    "to": "jxl",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "jxl",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "dng-to-ktx",
+    "name": "DNG to KTX",
+    "description": "Convert DNG to KTX format",
+    "operation": "convert",
+    "route": "/dng-to-ktx",
+    "from": "dng",
+    "to": "ktx",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "ktx",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "dng-to-ktx2",
+    "name": "DNG to KTX2",
+    "description": "Convert DNG to KTX2 format",
+    "operation": "convert",
+    "route": "/dng-to-ktx2",
+    "from": "dng",
+    "to": "ktx2",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "ktx2",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "dng-to-nef",
+    "name": "DNG to NEF",
+    "description": "Convert DNG to NEF format",
+    "operation": "convert",
+    "route": "/dng-to-nef",
+    "from": "dng",
+    "to": "nef",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "nef",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "dng-to-orf",
+    "name": "DNG to ORF",
+    "description": "Convert DNG to ORF format",
+    "operation": "convert",
+    "route": "/dng-to-orf",
+    "from": "dng",
+    "to": "orf",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "orf",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "dng-to-pam",
+    "name": "DNG to PAM",
+    "description": "Convert DNG to PAM format",
+    "operation": "convert",
+    "route": "/dng-to-pam",
+    "from": "dng",
+    "to": "pam",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "pam",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "dng-to-pbm",
+    "name": "DNG to PBM",
+    "description": "Convert DNG to PBM format",
+    "operation": "convert",
+    "route": "/dng-to-pbm",
+    "from": "dng",
+    "to": "pbm",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "pbm",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "dng-to-pcx",
+    "name": "DNG to PCX",
+    "description": "Convert DNG to PCX format",
+    "operation": "convert",
+    "route": "/dng-to-pcx",
+    "from": "dng",
+    "to": "pcx",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "pcx",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "dng-to-pgm",
+    "name": "DNG to PGM",
+    "description": "Convert DNG to PGM format",
+    "operation": "convert",
+    "route": "/dng-to-pgm",
+    "from": "dng",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "pgm",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "dng-to-ppm",
+    "name": "DNG to PPM",
+    "description": "Convert DNG to PPM format",
+    "operation": "convert",
+    "route": "/dng-to-ppm",
+    "from": "dng",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "ppm",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "dng-to-raf",
+    "name": "DNG to RAF",
+    "description": "Convert DNG to RAF format",
+    "operation": "convert",
+    "route": "/dng-to-raf",
+    "from": "dng",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "raf",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "dng-to-rw2",
+    "name": "DNG to RW2",
+    "description": "Convert DNG to RW2 format",
+    "operation": "convert",
+    "route": "/dng-to-rw2",
+    "from": "dng",
+    "to": "rw2",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "rw2",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "dng-to-xbm",
+    "name": "DNG to XBM",
+    "description": "Convert DNG to XBM format",
+    "operation": "convert",
+    "route": "/dng-to-xbm",
+    "from": "dng",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "xbm",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "dng-to-xpm",
+    "name": "DNG to XPM",
+    "description": "Convert DNG to XPM format",
+    "operation": "convert",
+    "route": "/dng-to-xpm",
+    "from": "dng",
+    "to": "xpm",
+    "isActive": true,
+    "tags": [
+      "dng",
+      "xpm",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "eps-to-nef",
+    "name": "EPS to NEF",
+    "description": "Convert EPS to NEF format",
+    "operation": "convert",
+    "route": "/eps-to-nef",
+    "from": "eps",
+    "to": "nef",
+    "isActive": true,
+    "tags": [
+      "eps",
+      "nef",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "eps-to-orf",
+    "name": "EPS to ORF",
+    "description": "Convert EPS to ORF format",
+    "operation": "convert",
+    "route": "/eps-to-orf",
+    "from": "eps",
+    "to": "orf",
+    "isActive": true,
+    "tags": [
+      "eps",
+      "orf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "eps-to-raf",
+    "name": "EPS to RAF",
+    "description": "Convert EPS to RAF format",
+    "operation": "convert",
+    "route": "/eps-to-raf",
+    "from": "eps",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "eps",
+      "raf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-nef",
+    "name": "GIF to NEF",
+    "description": "Convert GIF to NEF format",
+    "operation": "convert",
+    "route": "/gif-to-nef",
+    "from": "gif",
+    "to": "nef",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "nef",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-orf",
+    "name": "GIF to ORF",
+    "description": "Convert GIF to ORF format",
+    "operation": "convert",
+    "route": "/gif-to-orf",
+    "from": "gif",
+    "to": "orf",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "orf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "gif-to-raf",
+    "name": "GIF to RAF",
+    "description": "Convert GIF to RAF format",
+    "operation": "convert",
+    "route": "/gif-to-raf",
+    "from": "gif",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "raf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heic-to-nef",
+    "name": "HEIC to NEF",
+    "description": "Convert HEIC to NEF format",
+    "operation": "convert",
+    "route": "/heic-to-nef",
+    "from": "heic",
+    "to": "nef",
+    "isActive": true,
+    "tags": [
+      "heic",
+      "nef",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heic-to-orf",
+    "name": "HEIC to ORF",
+    "description": "Convert HEIC to ORF format",
+    "operation": "convert",
+    "route": "/heic-to-orf",
+    "from": "heic",
+    "to": "orf",
+    "isActive": true,
+    "tags": [
+      "heic",
+      "orf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heic-to-raf",
+    "name": "HEIC to RAF",
+    "description": "Convert HEIC to RAF format",
+    "operation": "convert",
+    "route": "/heic-to-raf",
+    "from": "heic",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "heic",
+      "raf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heif-to-nef",
+    "name": "HEIF to NEF",
+    "description": "Convert HEIF to NEF format",
+    "operation": "convert",
+    "route": "/heif-to-nef",
+    "from": "heif",
+    "to": "nef",
+    "isActive": true,
+    "tags": [
+      "heif",
+      "nef",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heif-to-orf",
+    "name": "HEIF to ORF",
+    "description": "Convert HEIF to ORF format",
+    "operation": "convert",
+    "route": "/heif-to-orf",
+    "from": "heif",
+    "to": "orf",
+    "isActive": true,
+    "tags": [
+      "heif",
+      "orf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "heif-to-raf",
+    "name": "HEIF to RAF",
+    "description": "Convert HEIF to RAF format",
+    "operation": "convert",
+    "route": "/heif-to-raf",
+    "from": "heif",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "heif",
+      "raf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "icns-to-nef",
+    "name": "ICNS to NEF",
+    "description": "Convert ICNS to NEF format",
+    "operation": "convert",
+    "route": "/icns-to-nef",
+    "from": "icns",
+    "to": "nef",
+    "isActive": true,
+    "tags": [
+      "icns",
+      "nef",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "icns-to-orf",
+    "name": "ICNS to ORF",
+    "description": "Convert ICNS to ORF format",
+    "operation": "convert",
+    "route": "/icns-to-orf",
+    "from": "icns",
+    "to": "orf",
+    "isActive": true,
+    "tags": [
+      "icns",
+      "orf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "icns-to-raf",
+    "name": "ICNS to RAF",
+    "description": "Convert ICNS to RAF format",
+    "operation": "convert",
+    "route": "/icns-to-raf",
+    "from": "icns",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "icns",
+      "raf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ico-to-nef",
+    "name": "ICO to NEF",
+    "description": "Convert ICO to NEF format",
+    "operation": "convert",
+    "route": "/ico-to-nef",
+    "from": "ico",
+    "to": "nef",
+    "isActive": true,
+    "tags": [
+      "ico",
+      "nef",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ico-to-orf",
+    "name": "ICO to ORF",
+    "description": "Convert ICO to ORF format",
+    "operation": "convert",
+    "route": "/ico-to-orf",
+    "from": "ico",
+    "to": "orf",
+    "isActive": true,
+    "tags": [
+      "ico",
+      "orf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ico-to-raf",
+    "name": "ICO to RAF",
+    "description": "Convert ICO to RAF format",
+    "operation": "convert",
+    "route": "/ico-to-raf",
+    "from": "ico",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "ico",
+      "raf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jfif-to-nef",
+    "name": "JFIF to NEF",
+    "description": "Convert JFIF to NEF format",
+    "operation": "convert",
+    "route": "/jfif-to-nef",
+    "from": "jfif",
+    "to": "nef",
+    "isActive": true,
+    "tags": [
+      "jfif",
+      "nef",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jfif-to-orf",
+    "name": "JFIF to ORF",
+    "description": "Convert JFIF to ORF format",
+    "operation": "convert",
+    "route": "/jfif-to-orf",
+    "from": "jfif",
+    "to": "orf",
+    "isActive": true,
+    "tags": [
+      "jfif",
+      "orf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jfif-to-raf",
+    "name": "JFIF to RAF",
+    "description": "Convert JFIF to RAF format",
+    "operation": "convert",
+    "route": "/jfif-to-raf",
+    "from": "jfif",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "jfif",
+      "raf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jif-to-nef",
+    "name": "JIF to NEF",
+    "description": "Convert JIF to NEF format",
+    "operation": "convert",
+    "route": "/jif-to-nef",
+    "from": "jif",
+    "to": "nef",
+    "isActive": true,
+    "tags": [
+      "jif",
+      "nef",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jif-to-orf",
+    "name": "JIF to ORF",
+    "description": "Convert JIF to ORF format",
+    "operation": "convert",
+    "route": "/jif-to-orf",
+    "from": "jif",
+    "to": "orf",
+    "isActive": true,
+    "tags": [
+      "jif",
+      "orf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jif-to-raf",
+    "name": "JIF to RAF",
+    "description": "Convert JIF to RAF format",
+    "operation": "convert",
+    "route": "/jif-to-raf",
+    "from": "jif",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "jif",
+      "raf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-nef",
+    "name": "JPEG to NEF",
+    "description": "Convert JPEG to NEF format",
+    "operation": "convert",
+    "route": "/jpeg-to-nef",
+    "from": "jpeg",
+    "to": "nef",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "nef",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-orf",
+    "name": "JPEG to ORF",
+    "description": "Convert JPEG to ORF format",
+    "operation": "convert",
+    "route": "/jpeg-to-orf",
+    "from": "jpeg",
+    "to": "orf",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "orf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpeg-to-raf",
+    "name": "JPEG to RAF",
+    "description": "Convert JPEG to RAF format",
+    "operation": "convert",
+    "route": "/jpeg-to-raf",
+    "from": "jpeg",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "raf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-orf",
+    "name": "JPG to ORF",
+    "description": "Convert JPG to ORF format",
+    "operation": "convert",
+    "route": "/jpg-to-orf",
+    "from": "jpg",
+    "to": "orf",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "orf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jpg-to-raf",
+    "name": "JPG to RAF",
+    "description": "Convert JPG to RAF format",
+    "operation": "convert",
+    "route": "/jpg-to-raf",
+    "from": "jpg",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "raf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jxl-to-nef",
+    "name": "JXL to NEF",
+    "description": "Convert JXL to NEF format",
+    "operation": "convert",
+    "route": "/jxl-to-nef",
+    "from": "jxl",
+    "to": "nef",
+    "isActive": true,
+    "tags": [
+      "jxl",
+      "nef",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jxl-to-orf",
+    "name": "JXL to ORF",
+    "description": "Convert JXL to ORF format",
+    "operation": "convert",
+    "route": "/jxl-to-orf",
+    "from": "jxl",
+    "to": "orf",
+    "isActive": true,
+    "tags": [
+      "jxl",
+      "orf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "jxl-to-raf",
+    "name": "JXL to RAF",
+    "description": "Convert JXL to RAF format",
+    "operation": "convert",
+    "route": "/jxl-to-raf",
+    "from": "jxl",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "jxl",
+      "raf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ktx-to-nef",
+    "name": "KTX to NEF",
+    "description": "Convert KTX to NEF format",
+    "operation": "convert",
+    "route": "/ktx-to-nef",
+    "from": "ktx",
+    "to": "nef",
+    "isActive": true,
+    "tags": [
+      "ktx",
+      "nef",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ktx-to-orf",
+    "name": "KTX to ORF",
+    "description": "Convert KTX to ORF format",
+    "operation": "convert",
+    "route": "/ktx-to-orf",
+    "from": "ktx",
+    "to": "orf",
+    "isActive": true,
+    "tags": [
+      "ktx",
+      "orf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ktx-to-raf",
+    "name": "KTX to RAF",
+    "description": "Convert KTX to RAF format",
+    "operation": "convert",
+    "route": "/ktx-to-raf",
+    "from": "ktx",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "ktx",
+      "raf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ktx2-to-nef",
+    "name": "KTX2 to NEF",
+    "description": "Convert KTX2 to NEF format",
+    "operation": "convert",
+    "route": "/ktx2-to-nef",
+    "from": "ktx2",
+    "to": "nef",
+    "isActive": true,
+    "tags": [
+      "ktx2",
+      "nef",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ktx2-to-orf",
+    "name": "KTX2 to ORF",
+    "description": "Convert KTX2 to ORF format",
+    "operation": "convert",
+    "route": "/ktx2-to-orf",
+    "from": "ktx2",
+    "to": "orf",
+    "isActive": true,
+    "tags": [
+      "ktx2",
+      "orf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ktx2-to-raf",
+    "name": "KTX2 to RAF",
+    "description": "Convert KTX2 to RAF format",
+    "operation": "convert",
+    "route": "/ktx2-to-raf",
+    "from": "ktx2",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "ktx2",
+      "raf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "nef-to-nef",
+    "name": "NEF to NEF",
+    "description": "Convert NEF to NEF format",
+    "operation": "convert",
+    "route": "/nef-to-nef",
+    "from": "nef",
+    "to": "nef",
+    "isActive": true,
+    "tags": [
+      "nef",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "nef-to-orf",
+    "name": "NEF to ORF",
+    "description": "Convert NEF to ORF format",
+    "operation": "convert",
+    "route": "/nef-to-orf",
+    "from": "nef",
+    "to": "orf",
+    "isActive": true,
+    "tags": [
+      "nef",
+      "orf",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "nef-to-pam",
+    "name": "NEF to PAM",
+    "description": "Convert NEF to PAM format",
+    "operation": "convert",
+    "route": "/nef-to-pam",
+    "from": "nef",
+    "to": "pam",
+    "isActive": true,
+    "tags": [
+      "nef",
+      "pam",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "nef-to-pbm",
+    "name": "NEF to PBM",
+    "description": "Convert NEF to PBM format",
+    "operation": "convert",
+    "route": "/nef-to-pbm",
+    "from": "nef",
+    "to": "pbm",
+    "isActive": true,
+    "tags": [
+      "nef",
+      "pbm",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "nef-to-pcx",
+    "name": "NEF to PCX",
+    "description": "Convert NEF to PCX format",
+    "operation": "convert",
+    "route": "/nef-to-pcx",
+    "from": "nef",
+    "to": "pcx",
+    "isActive": true,
+    "tags": [
+      "nef",
+      "pcx",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "nef-to-pgm",
+    "name": "NEF to PGM",
+    "description": "Convert NEF to PGM format",
+    "operation": "convert",
+    "route": "/nef-to-pgm",
+    "from": "nef",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "nef",
+      "pgm",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "nef-to-ppm",
+    "name": "NEF to PPM",
+    "description": "Convert NEF to PPM format",
+    "operation": "convert",
+    "route": "/nef-to-ppm",
+    "from": "nef",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "nef",
+      "ppm",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "nef-to-psd",
+    "name": "NEF to PSD",
+    "description": "Convert NEF to PSD format",
+    "operation": "convert",
+    "route": "/nef-to-psd",
+    "from": "nef",
+    "to": "psd",
+    "isActive": true,
+    "tags": [
+      "nef",
+      "psd",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "nef-to-raf",
+    "name": "NEF to RAF",
+    "description": "Convert NEF to RAF format",
+    "operation": "convert",
+    "route": "/nef-to-raf",
+    "from": "nef",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "nef",
+      "raf",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "nef-to-rw2",
+    "name": "NEF to RW2",
+    "description": "Convert NEF to RW2 format",
+    "operation": "convert",
+    "route": "/nef-to-rw2",
+    "from": "nef",
+    "to": "rw2",
+    "isActive": true,
+    "tags": [
+      "nef",
+      "rw2",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "nef-to-svg",
+    "name": "NEF to SVG",
+    "description": "Convert NEF to SVG format",
+    "operation": "convert",
+    "route": "/nef-to-svg",
+    "from": "nef",
+    "to": "svg",
+    "isActive": true,
+    "tags": [
+      "nef",
+      "svg",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "nef-to-tga",
+    "name": "NEF to TGA",
+    "description": "Convert NEF to TGA format",
+    "operation": "convert",
+    "route": "/nef-to-tga",
+    "from": "nef",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "nef",
+      "tga",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "nef-to-tif",
+    "name": "NEF to TIF",
+    "description": "Convert NEF to TIF format",
+    "operation": "convert",
+    "route": "/nef-to-tif",
+    "from": "nef",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "nef",
+      "tif",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "nef-to-webp",
+    "name": "NEF to WebP",
+    "description": "Convert NEF to WebP format",
+    "operation": "convert",
+    "route": "/nef-to-webp",
+    "from": "nef",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "nef",
+      "webp",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "nef-to-xbm",
+    "name": "NEF to XBM",
+    "description": "Convert NEF to XBM format",
+    "operation": "convert",
+    "route": "/nef-to-xbm",
+    "from": "nef",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "nef",
+      "xbm",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "orf-to-orf",
+    "name": "ORF to ORF",
+    "description": "Convert ORF to ORF format",
+    "operation": "convert",
+    "route": "/orf-to-orf",
+    "from": "orf",
+    "to": "orf",
+    "isActive": true,
+    "tags": [
+      "orf",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "orf-to-pam",
+    "name": "ORF to PAM",
+    "description": "Convert ORF to PAM format",
+    "operation": "convert",
+    "route": "/orf-to-pam",
+    "from": "orf",
+    "to": "pam",
+    "isActive": true,
+    "tags": [
+      "orf",
+      "pam",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "orf-to-pbm",
+    "name": "ORF to PBM",
+    "description": "Convert ORF to PBM format",
+    "operation": "convert",
+    "route": "/orf-to-pbm",
+    "from": "orf",
+    "to": "pbm",
+    "isActive": true,
+    "tags": [
+      "orf",
+      "pbm",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "orf-to-pcx",
+    "name": "ORF to PCX",
+    "description": "Convert ORF to PCX format",
+    "operation": "convert",
+    "route": "/orf-to-pcx",
+    "from": "orf",
+    "to": "pcx",
+    "isActive": true,
+    "tags": [
+      "orf",
+      "pcx",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "orf-to-pgm",
+    "name": "ORF to PGM",
+    "description": "Convert ORF to PGM format",
+    "operation": "convert",
+    "route": "/orf-to-pgm",
+    "from": "orf",
+    "to": "pgm",
+    "isActive": true,
+    "tags": [
+      "orf",
+      "pgm",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "orf-to-ppm",
+    "name": "ORF to PPM",
+    "description": "Convert ORF to PPM format",
+    "operation": "convert",
+    "route": "/orf-to-ppm",
+    "from": "orf",
+    "to": "ppm",
+    "isActive": true,
+    "tags": [
+      "orf",
+      "ppm",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "orf-to-raf",
+    "name": "ORF to RAF",
+    "description": "Convert ORF to RAF format",
+    "operation": "convert",
+    "route": "/orf-to-raf",
+    "from": "orf",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "orf",
+      "raf",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "orf-to-rw2",
+    "name": "ORF to RW2",
+    "description": "Convert ORF to RW2 format",
+    "operation": "convert",
+    "route": "/orf-to-rw2",
+    "from": "orf",
+    "to": "rw2",
+    "isActive": true,
+    "tags": [
+      "orf",
+      "rw2",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "orf-to-svg",
+    "name": "ORF to SVG",
+    "description": "Convert ORF to SVG format",
+    "operation": "convert",
+    "route": "/orf-to-svg",
+    "from": "orf",
+    "to": "svg",
+    "isActive": true,
+    "tags": [
+      "orf",
+      "svg",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "orf-to-tga",
+    "name": "ORF to TGA",
+    "description": "Convert ORF to TGA format",
+    "operation": "convert",
+    "route": "/orf-to-tga",
+    "from": "orf",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "orf",
+      "tga",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "orf-to-tif",
+    "name": "ORF to TIF",
+    "description": "Convert ORF to TIF format",
+    "operation": "convert",
+    "route": "/orf-to-tif",
+    "from": "orf",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "orf",
+      "tif",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "orf-to-tiff",
+    "name": "ORF to TIFF",
+    "description": "Convert ORF to TIFF format",
+    "operation": "convert",
+    "route": "/orf-to-tiff",
+    "from": "orf",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "orf",
+      "tiff",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "orf-to-webp",
+    "name": "ORF to WebP",
+    "description": "Convert ORF to WebP format",
+    "operation": "convert",
+    "route": "/orf-to-webp",
+    "from": "orf",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "orf",
+      "webp",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "orf-to-xbm",
+    "name": "ORF to XBM",
+    "description": "Convert ORF to XBM format",
+    "operation": "convert",
+    "route": "/orf-to-xbm",
+    "from": "orf",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "orf",
+      "xbm",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "pam-to-raf",
+    "name": "PAM to RAF",
+    "description": "Convert PAM to RAF format",
+    "operation": "convert",
+    "route": "/pam-to-raf",
+    "from": "pam",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "pam",
+      "raf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pbm-to-raf",
+    "name": "PBM to RAF",
+    "description": "Convert PBM to RAF format",
+    "operation": "convert",
+    "route": "/pbm-to-raf",
+    "from": "pbm",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "pbm",
+      "raf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pcx-to-raf",
+    "name": "PCX to RAF",
+    "description": "Convert PCX to RAF format",
+    "operation": "convert",
+    "route": "/pcx-to-raf",
+    "from": "pcx",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "pcx",
+      "raf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "pgm-to-raf",
+    "name": "PGM to RAF",
+    "description": "Convert PGM to RAF format",
+    "operation": "convert",
+    "route": "/pgm-to-raf",
+    "from": "pgm",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "pgm",
+      "raf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "png-to-raf",
+    "name": "PNG to RAF",
+    "description": "Convert PNG to RAF format",
+    "operation": "convert",
+    "route": "/png-to-raf",
+    "from": "png",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "png",
+      "raf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "ppm-to-raf",
+    "name": "PPM to RAF",
+    "description": "Convert PPM to RAF format",
+    "operation": "convert",
+    "route": "/ppm-to-raf",
+    "from": "ppm",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "ppm",
+      "raf",
+      "convert",
+      "image"
+    ]
+  },
+  {
+    "id": "raf-to-raf",
+    "name": "RAF to RAF",
+    "description": "Convert RAF to RAF format",
+    "operation": "convert",
+    "route": "/raf-to-raf",
+    "from": "raf",
+    "to": "raf",
+    "isActive": true,
+    "tags": [
+      "raf",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "raf-to-rw2",
+    "name": "RAF to RW2",
+    "description": "Convert RAF to RW2 format",
+    "operation": "convert",
+    "route": "/raf-to-rw2",
+    "from": "raf",
+    "to": "rw2",
+    "isActive": true,
+    "tags": [
+      "raf",
+      "rw2",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "raf-to-svg",
+    "name": "RAF to SVG",
+    "description": "Convert RAF to SVG format",
+    "operation": "convert",
+    "route": "/raf-to-svg",
+    "from": "raf",
+    "to": "svg",
+    "isActive": true,
+    "tags": [
+      "raf",
+      "svg",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "raf-to-tga",
+    "name": "RAF to TGA",
+    "description": "Convert RAF to TGA format",
+    "operation": "convert",
+    "route": "/raf-to-tga",
+    "from": "raf",
+    "to": "tga",
+    "isActive": true,
+    "tags": [
+      "raf",
+      "tga",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "raf-to-tif",
+    "name": "RAF to TIF",
+    "description": "Convert RAF to TIF format",
+    "operation": "convert",
+    "route": "/raf-to-tif",
+    "from": "raf",
+    "to": "tif",
+    "isActive": true,
+    "tags": [
+      "raf",
+      "tif",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "raf-to-tiff",
+    "name": "RAF to TIFF",
+    "description": "Convert RAF to TIFF format",
+    "operation": "convert",
+    "route": "/raf-to-tiff",
+    "from": "raf",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "raf",
+      "tiff",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "raf-to-webp",
+    "name": "RAF to WebP",
+    "description": "Convert RAF to WebP format",
+    "operation": "convert",
+    "route": "/raf-to-webp",
+    "from": "raf",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "raf",
+      "webp",
+      "convert",
+      "image",
+      "raw"
+    ]
+  },
+  {
+    "id": "raf-to-xbm",
+    "name": "RAF to XBM",
+    "description": "Convert RAF to XBM format",
+    "operation": "convert",
+    "route": "/raf-to-xbm",
+    "from": "raf",
+    "to": "xbm",
+    "isActive": true,
+    "tags": [
+      "raf",
+      "xbm",
+      "convert",
+      "image",
+      "raw"
+    ]
   }
 ]

@@ -47,6 +47,11 @@ export function shouldUseServerConversion(fromFormat: string, toFormat: string) 
   if (serverOnly.has(toFormat.toLowerCase())) {
     return true;
   }
+  const from = fromFormat.toLowerCase();
+  const to = toFormat.toLowerCase();
+  if (from === "amr" && ["mp2", "oga", "ogg"].includes(to)) {
+    return true;
+  }
   return !detectCapabilities().supportsVideoConversion;
 }
 
@@ -196,6 +201,8 @@ export async function convertVideo(
     'mp3', 'wav', 'ogg', 'oga', 'aac', 'm4a', 'm4r', 'opus', 'flac', 'wma', 'aiff', 'mp2',
     'alac', 'amr', 'au', 'caf', 'cdda'
   ].includes(toFormat)) {
+    const needsAmrResample = fromFormat.toLowerCase() === "amr"
+      && ["mp2", "ogg", "oga"].includes(toFormat);
     if (toFormat === 'mp3') {
       args.push('-acodec', 'libmp3lame', '-b:a', '192k');
     } else if (toFormat === 'wav') {
@@ -230,6 +237,9 @@ export async function convertVideo(
       args.push('-acodec', 'pcm_s16le', '-ar', '44100', '-ac', '2', '-f', 'caf');
     } else if (toFormat === 'cdda') {
       args.push('-acodec', 'pcm_s16le', '-ar', '44100', '-ac', '2', '-f', 's16le');
+    }
+    if (needsAmrResample) {
+      args.push('-ar', '44100', '-ac', '2');
     }
     args.push('-vn'); // No video for audio extraction
   }

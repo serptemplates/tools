@@ -79,6 +79,9 @@ function buildFfmpegArgs(from: string, to: string, inputPath: string, outputPath
     } else if (to === "cdda") {
       args.push("-vn", "-c:a", "pcm_s16le", "-ar", "44100", "-ac", "2", "-f", "s16le");
     }
+    if (from === "amr" && (to === "mp2" || to === "ogg" || to === "oga")) {
+      args.push("-ar", "44100", "-ac", "2");
+    }
 
     args.push(outputPath);
     return args;
