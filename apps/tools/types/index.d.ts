@@ -1,10 +1,12 @@
 // Tool operation types - what the tool does
-export type OperationType = 
-  | 'convert'    // Transform from one format to another
-  | 'compress'   // Reduce file size
+export type OperationType =
   | 'bulk'       // Batch processing
   | 'combine'    // Merge multiple files
-  | 'download';  // Download from external sources
+  | 'compress'   // Reduce file size
+  | 'convert'    // Transform from one format to another
+  | 'download'   // Download from external sources
+  | 'edit'       // Edit existing files
+  | 'view';      // View/read files in browser
 
 // Media types - what kind of content the tool works with
 export type MediaType =

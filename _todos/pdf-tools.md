@@ -1,0 +1,4 @@
+- https://github.com/mozilla/pdf.js
+- https://github.com/react-pdf-dev/react-pdf-viewer
+- https://github.com/rudi-q/leed_pdf_viewer
+- https://github.com/Laomai-codefee/pdfjs-annotation-extension

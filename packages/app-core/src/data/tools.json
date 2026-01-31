@@ -31677,6 +31677,185 @@
     "requiresFFmpeg": true
   },
   {
+    "id": "pdf-editor",
+    "name": "PDF Editor",
+    "description": "Edit PDF files online in your browser",
+    "operation": "edit",
+    "route": "/pdf-editor",
+    "from": "pdf",
+    "to": "pdf",
+    "isActive": true,
+    "tags": [
+      "pdf",
+      "editor",
+      "edit",
+      "documents"
+    ]
+  },
+  {
+    "id": "pdf-editor-extension",
+    "name": "PDF Editor Extension",
+    "description": "Edit PDFs online without installing an extension",
+    "operation": "edit",
+    "route": "/pdf-editor-extension",
+    "from": "pdf",
+    "to": "pdf",
+    "isActive": true,
+    "tags": [
+      "pdf",
+      "editor",
+      "extension",
+      "chrome",
+      "browser"
+    ]
+  },
+  {
+    "id": "pdf-editor-mac",
+    "name": "PDF Editor for Mac",
+    "description": "Edit PDF files on Mac with a fast online editor",
+    "operation": "edit",
+    "route": "/pdf-editor-mac",
+    "from": "pdf",
+    "to": "pdf",
+    "isActive": true,
+    "tags": [
+      "pdf",
+      "editor",
+      "mac",
+      "apple"
+    ]
+  },
+  {
+    "id": "pdf-editor-windows",
+    "name": "PDF Editor for Windows",
+    "description": "Edit PDF files on Windows in your browser",
+    "operation": "edit",
+    "route": "/pdf-editor-windows",
+    "from": "pdf",
+    "to": "pdf",
+    "isActive": true,
+    "tags": [
+      "pdf",
+      "editor",
+      "windows",
+      "pc"
+    ]
+  },
+  {
+    "id": "pdf-reader",
+    "name": "PDF Reader",
+    "description": "Read PDF files online instantly",
+    "operation": "view",
+    "route": "/pdf-reader",
+    "from": "pdf",
+    "to": "pdf",
+    "isActive": true,
+    "tags": [
+      "pdf",
+      "reader",
+      "read",
+      "documents"
+    ]
+  },
+  {
+    "id": "pdf-reader-extension",
+    "name": "PDF Reader Extension",
+    "description": "Open PDFs in your browser without an extension",
+    "operation": "view",
+    "route": "/pdf-reader-extension",
+    "from": "pdf",
+    "to": "pdf",
+    "isActive": true,
+    "tags": [
+      "pdf",
+      "reader",
+      "extension",
+      "chrome",
+      "browser"
+    ]
+  },
+  {
+    "id": "pdf-reader-mac",
+    "name": "PDF Reader for Mac",
+    "description": "Read PDFs on Mac with a fast online viewer",
+    "operation": "view",
+    "route": "/pdf-reader-mac",
+    "from": "pdf",
+    "to": "pdf",
+    "isActive": true,
+    "tags": [
+      "pdf",
+      "reader",
+      "mac",
+      "apple"
+    ]
+  },
+  {
+    "id": "pdf-reader-windows",
+    "name": "PDF Reader for Windows",
+    "description": "Open PDFs on Windows with a fast online reader",
+    "operation": "view",
+    "route": "/pdf-reader-windows",
+    "from": "pdf",
+    "to": "pdf",
+    "isActive": true,
+    "tags": [
+      "pdf",
+      "reader",
+      "windows",
+      "pc"
+    ]
+  },
+  {
+    "id": "pdf-viewer",
+    "name": "PDF Viewer",
+    "description": "View PDF files online in your browser",
+    "operation": "view",
+    "route": "/pdf-viewer",
+    "from": "pdf",
+    "to": "pdf",
+    "isActive": true,
+    "tags": [
+      "pdf",
+      "viewer",
+      "view",
+      "documents"
+    ]
+  },
+  {
+    "id": "pdf-viewer-extension",
+    "name": "PDF Viewer Extension",
+    "description": "View PDFs online without installing an extension",
+    "operation": "view",
+    "route": "/pdf-viewer-extension",
+    "from": "pdf",
+    "to": "pdf",
+    "isActive": true,
+    "tags": [
+      "pdf",
+      "viewer",
+      "extension",
+      "chrome",
+      "browser"
+    ]
+  },
+  {
+    "id": "pdf-viewer-windows",
+    "name": "PDF Viewer for Windows",
+    "description": "View PDFs on Windows in a fast online viewer",
+    "operation": "view",
+    "route": "/pdf-viewer-windows",
+    "from": "pdf",
+    "to": "pdf",
+    "isActive": true,
+    "tags": [
+      "pdf",
+      "viewer",
+      "windows",
+      "pc"
+    ]
+  },
+  {
     "id": "pdf-to-jpg",
     "name": "PDF to JPG",
     "description": "Convert PDF pages to JPG images",

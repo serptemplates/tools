@@ -62,6 +62,17 @@ const iconMap: Record<string, LucideIcon> = {
   'heif-to-pdf': FileImage,
   'pdf-to-jpg': FileImage,
   'pdf-to-png': FileImage,
+  'pdf-editor': FileImage,
+  'pdf-editor-extension': FileImage,
+  'pdf-editor-mac': FileImage,
+  'pdf-editor-windows': FileImage,
+  'pdf-reader': FileImage,
+  'pdf-reader-extension': FileImage,
+  'pdf-reader-mac': FileImage,
+  'pdf-reader-windows': FileImage,
+  'pdf-viewer': FileImage,
+  'pdf-viewer-extension': FileImage,
+  'pdf-viewer-windows': FileImage,
   'jpg-to-pdf': FileImage,
   'jpeg-to-pdf': FileImage,
   'jpg-to-png': Image,
@@ -150,7 +161,9 @@ export default function HomePage() {
         else if (tool.category === "compress") catName = "Compress";
         else if (tool.category === "convert") catName = "Convert";
         else if (tool.category === "download") catName = "Download";
+        else if (tool.category === "edit") catName = "Edit";
         else if (tool.category === "bulk") catName = "Bulk Operations";
+        else if (tool.category === "view") catName = "View";
 
         categoryMap.set(tool.category, {
           id: tool.category,

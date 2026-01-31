@@ -23,6 +23,8 @@ const isCompressionTool = (tool: Tool) => {
 };
 
 const actionVerb = (tool: Tool) => {
+  if (tool.operation === "edit") return "edit";
+  if (tool.operation === "view") return "view";
   if (tool.operation === "combine") return "combine";
   if (tool.operation === "download") return "download";
   if (tool.operation === "bulk" && isCompressionTool(tool)) return "batch compress";
@@ -37,7 +39,13 @@ export function buildHowToSection(tool: Tool): HowToSectionData {
 
   let title = `How to ${verb} ${fromLabel} to ${toLabel}`;
   let intro = `Follow these steps to ${verb} ${fromLabel} to ${toLabel} online.`;
-  if (tool.operation === "combine") {
+  if (tool.operation === "view") {
+    title = `How to view ${fromLabel} files`;
+    intro = `Follow these steps to view ${fromLabel} files online.`;
+  } else if (tool.operation === "edit") {
+    title = `How to edit ${fromLabel} files`;
+    intro = `Follow these steps to edit ${fromLabel} files online.`;
+  } else if (tool.operation === "combine") {
     title = `How to combine ${fromLabel} into one ${toLabel} file`;
     intro = `Follow these steps to merge ${fromLabel} files into one ${toLabel} file.`;
   } else if (tool.operation === "download") {
@@ -52,7 +60,15 @@ export function buildHowToSection(tool: Tool): HowToSectionData {
     `Upload your ${fromLabel} file${tool.operation === "bulk" || tool.operation === "combine" ? "s" : ""}.`,
   ];
 
-  if (tool.operation === "combine") {
+  if (tool.operation === "view") {
+    steps.push(`Open and read your ${fromLabel} file in the viewer.`);
+    steps.push("Use the page and zoom controls to navigate.");
+    steps.push("Download a copy if you need it offline.");
+  } else if (tool.operation === "edit") {
+    steps.push(`Make your edits inside the ${fromLabel} editor.`);
+    steps.push("Use highlight, underline, text, or draw tools to add annotations.");
+    steps.push(`Download the updated ${toLabel} file when finished.`);
+  } else if (tool.operation === "combine") {
     steps.push("Arrange or confirm the file order before combining.");
     steps.push(`Download the merged ${toLabel} file when the process finishes.`);
   } else if (tool.operation === "bulk") {
@@ -73,7 +89,11 @@ export function buildInfoArticleSection(tool: Tool): InfoArticleSectionData {
   const { fromLabel, toLabel } = buildLabels(tool);
   const verb = actionVerb(tool);
   let title = `About ${fromLabel} to ${toLabel} conversions`;
-  if (tool.operation === "combine") {
+  if (tool.operation === "view") {
+    title = `About viewing ${fromLabel} files`;
+  } else if (tool.operation === "edit") {
+    title = `About editing ${fromLabel} files`;
+  } else if (tool.operation === "combine") {
     title = `About combining ${fromLabel} files`;
   } else if (tool.operation === "download") {
     title = `About downloading ${fromLabel} files`;
@@ -82,7 +102,11 @@ export function buildInfoArticleSection(tool: Tool): InfoArticleSectionData {
   }
 
   let summary = `${tool.name} lets you ${verb} ${fromLabel} to ${toLabel} directly in your browser. Files are processed locally so your data stays on your device.`;
-  if (tool.operation === "combine") {
+  if (tool.operation === "view") {
+    summary = `${tool.name} opens ${fromLabel} files in a fast viewer so you can read them instantly in the browser.`;
+  } else if (tool.operation === "edit") {
+    summary = `${tool.name} lets you annotate and edit ${fromLabel} files, then download an updated copy without installing software.`;
+  } else if (tool.operation === "combine") {
     summary = `${tool.name} combines multiple ${fromLabel} files into a single ${toLabel} file without installing extra software.`;
   } else if (tool.operation === "download") {
     summary = `${tool.name} helps you download ${fromLabel} files quickly and save them to your device.`;
