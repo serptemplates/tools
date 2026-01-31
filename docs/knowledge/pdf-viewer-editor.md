@@ -7,3 +7,9 @@
 - The PDF tool wrapper is a minimal iframe embed in `apps/tools/components/PdfTool.tsx`.
   - Hash params are used to set annotation defaults (username, editor active, sidebar open).
   - `ae_get_url` and `ae_post_url` are set to empty strings to suppress missing URL warnings.
+
+PDF Viewer/editor repos:
+- https://github.com/mozilla/pdf.js
+- https://github.com/react-pdf-dev/react-pdf-viewer
+- https://github.com/rudi-q/leed_pdf_viewer
+- https://github.com/Laomai-codefee/pdfjs-annotation-extension
