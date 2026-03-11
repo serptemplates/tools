@@ -5,6 +5,9 @@ import { Button } from "@serp-tools/ui/components/button";
 import { saveBlob } from "@/components/saveAs";
 import { ToolHeroLayout } from "@/components/ToolHeroLayout";
 import type { ToolProgressFile } from "@/components/ToolProgressIndicator";
+import { normalizeBlobPart } from "@/lib/blob-parts";
+import { createDownloaderRequestHeaders } from "@/lib/downloader-client";
+import { DOWNLOADER_CONSUMER } from "@/lib/downloader-contract.js";
 import { beginToolRun, getTelemetryFailure } from "@/lib/telemetry";
 import { AUDIO_FORMATS, VIDEO_FORMATS } from "@/lib/capabilities";
 
@@ -20,6 +23,8 @@ type Props = {
   title: string;
   subtitle?: string;
   mode?: "audio" | "video";
+  adsVisible?: boolean;
+  onAdsVisibleChange?: (visible: boolean) => void;
 };
 
 const SUPPORTED_EXTENSIONS = new Set([...AUDIO_FORMATS, ...VIDEO_FORMATS]);
@@ -111,8 +116,12 @@ async function downloadUrlToBlob(
 ) {
   const response = await fetch("/api/media-fetch", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ url: url.toString(), mode }),
+    headers: createDownloaderRequestHeaders(),
+    body: JSON.stringify({
+      consumer: DOWNLOADER_CONSUMER,
+      mode,
+      url: url.toString(),
+    }),
   });
 
   if (!response.ok) {
@@ -202,12 +211,7 @@ async function downloadUrlToBlob(
 
   const blobParts = chunks.map((chunk) => {
     const slice = chunk.buffer.slice(chunk.byteOffset, chunk.byteOffset + chunk.byteLength);
-    if (slice instanceof SharedArrayBuffer) {
-      const copy = new ArrayBuffer(slice.byteLength);
-      new Uint8Array(copy).set(new Uint8Array(slice));
-      return copy;
-    }
-    return slice;
+    return normalizeBlobPart(slice);
   });
   const blob = new Blob(blobParts, { type: contentType || "application/octet-stream" });
   return { blob, fileName };
@@ -218,12 +222,24 @@ export default function VideoDownloaderTool({
   title,
   subtitle,
   mode = "video",
+  adsVisible: controlledAdsVisible,
+  onAdsVisibleChange,
 }: Props) {
   const [busy, setBusy] = useState(false);
   const [currentFile, setCurrentFile] = useState<ToolProgressFile | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [urlInput, setUrlInput] = useState("");
-  const [adsVisible, setAdsVisible] = useState(false);
+  const [uncontrolledAdsVisible, setUncontrolledAdsVisible] = useState(false);
+  const adsVisible = controlledAdsVisible ?? uncontrolledAdsVisible;
+
+  function revealAds() {
+    if (adsVisible) return;
+    if (onAdsVisibleChange) {
+      onAdsVisibleChange(true);
+      return;
+    }
+    setUncontrolledAdsVisible(true);
+  }
 
   async function handleUrlSubmit() {
     if (busy) return;
@@ -233,7 +249,7 @@ export default function VideoDownloaderTool({
       return;
     }
 
-    if (!adsVisible) setAdsVisible(true);
+    revealAds();
     setErrorMessage(null);
     setBusy(true);
 
@@ -318,6 +334,7 @@ export default function VideoDownloaderTool({
       adSlotPrefix={adSlotPrefix}
       currentFile={currentFile}
       progressCompletedLabel="Download complete!"
+      showInlineAd={false}
       contentClassName="text-center"
       containerClassName="max-w-6xl px-6 py-10"
       hero={
@@ -353,9 +370,6 @@ export default function VideoDownloaderTool({
                 {busy ? "Working..." : "DOWNLOAD"}
               </Button>
             </div>
-            <p className="text-xs text-muted-foreground">
-              Public links only. Private or logged-in content is not supported yet.
-            </p>
           </div>
         </div>
       }

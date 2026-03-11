@@ -1,35 +1,31 @@
-import CharacterCounter from "@/components/CharacterCounter";
+import DownloaderExtensionCTA from "@/components/DownloaderExtensionCTA";
+import DownloaderPageHero from "@/components/DownloaderPageHero";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { BlogSection } from "@/components/sections/BlogSection";
 import { ChangelogSection } from "@/components/sections/ChangelogSection";
 import { HowToSection } from "@/components/sections/HowToSection";
 import { InfoArticleSection } from "@/components/sections/InfoArticleSection";
 import { ToolsLinkHub } from "@/components/sections/ToolsLinkHub";
-import { buildToolMetadata } from "@/lib/metadata";
-import { toolContent } from '@/lib/tool-content';
-import { requiresCoepForTool } from "@/lib/coep";
+import type { ToolContent } from "@/types";
 
-const toolId = "character-counter";
+type DownloaderPageTemplateProps = {
+  toolId: string;
+  content: ToolContent;
+};
 
-export const generateMetadata = () => buildToolMetadata(toolId);
-
-export default function Page() {
-  const content = toolContent[toolId];
-
-  if (!content) {
-    return <div>Tool not found</div>;
-  }
-  const videoEmbedId =
-    content.videoSection && !requiresCoepForTool(content.tool)
-      ? content.videoSection.embedId
-      : undefined;
-
+export default function DownloaderPageTemplate({
+  toolId,
+  content,
+}: DownloaderPageTemplateProps) {
   return (
     <main className="min-h-screen bg-background">
-      {/* Custom Character Counter Component */}
-      <CharacterCounter videoEmbedId={videoEmbedId} />
+      <DownloaderExtensionCTA />
 
-      {/* Related Tools Section - Character counter doesn't have from/to formats */}
+      <DownloaderPageHero
+        toolId={toolId}
+        title={content.tool.title}
+        subtitle={content.tool.subtitle}
+      />
 
       {content.howTo && (
         <HowToSection title={content.howTo.title} intro={content.howTo.intro} steps={content.howTo.steps} />
@@ -42,17 +38,13 @@ export default function Page() {
         />
       )}
 
-      {/* FAQs Section */}
       {content.faqs && <FAQSection faqs={content.faqs} />}
 
-      {/* Blog Articles Section */}
       {content.blogPosts && <BlogSection blogPosts={content.blogPosts} />}
 
-      {/* Changelog Section */}
       {content.changelog && <ChangelogSection changelog={content.changelog} />}
 
-      {/* All tools link hub */}
-      <ToolsLinkHub />
+      <ToolsLinkHub relatedTools={content.relatedTools} />
     </main>
   );
 }

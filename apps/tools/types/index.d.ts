@@ -129,9 +129,11 @@ export interface Tool {
   route: string;
   isActive: boolean;
   tags?: string[];
+  keywords?: string[];
   priority?: number;
   isBeta?: boolean;
   isNew?: boolean;
+  isPopular?: boolean;
   requiresFFmpeg?: boolean;
   
   // Landing page content

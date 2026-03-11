@@ -2,7 +2,7 @@ import DownloaderPageTemplate from "@/components/DownloaderPageTemplate";
 import { buildToolMetadata } from "@/lib/metadata";
 import { toolContent } from "@/lib/tool-content";
 
-const toolId = "video-downloader";
+const toolId = "download-loom-videos";
 
 export const generateMetadata = () => buildToolMetadata(toolId);
 

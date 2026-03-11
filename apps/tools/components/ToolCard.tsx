@@ -3,7 +3,8 @@
 import { useState, useRef } from "react";
 import { Card, CardDescription, CardHeader, CardTitle } from "@serp-tools/ui/components/card";
 import Link from "next/link";
-import { LucideIcon } from "lucide-react";
+
+import { getToolDirectoryIcon } from "@/lib/tool-directory";
 
 interface ToolCardProps {
   tool: {
@@ -11,7 +12,6 @@ interface ToolCardProps {
     name: string;
     description: string;
     href: string;
-    icon: LucideIcon;
   };
 }
 
@@ -33,7 +33,7 @@ const colors = [
 export function ToolCard({ tool }: ToolCardProps) {
   const [borderColor, setBorderColor] = useState<string>("");
   const colorIndexRef = useRef(0);
-  const Icon = tool.icon;
+  const Icon = getToolDirectoryIcon(tool.id);
 
   const handleMouseEnter = () => {
     // Cycle through colors sequentially instead of random

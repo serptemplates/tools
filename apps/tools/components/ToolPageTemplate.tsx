@@ -141,7 +141,7 @@ export default function ToolPageTemplate({
       {/* Changelog Section */}
       {changelog && <ChangelogSection changelog={changelog} />}
 
-      {/* Footer with all tools */}
+      {/* All tools link hub */}
       <ToolsLinkHub />
     </main>
   );

@@ -8,6 +8,12 @@ import ipaddr from "ipaddr.js";
 import { extension as extensionForType, lookup as lookupMime } from "mime-types";
 import { create as createYtDlp } from "youtube-dl-exec";
 import { AUDIO_FORMATS, VIDEO_FORMATS } from "../../../lib/capabilities";
+import { DOWNLOADER_CONSUMER } from "../../../lib/downloader-contract.js";
+import {
+  createDownloaderCooldownCookieCodec,
+  createDownloaderRateLimiter,
+  getDownloaderRateLimitIdentity,
+} from "../../../lib/downloader-rate-limit";
 
 export const runtime = "nodejs";
 
@@ -104,9 +110,13 @@ async function getYtDlpInstance() {
 }
 
 type UrlPayload = {
+  consumer?: string;
   url?: string;
   mode?: "audio" | "video";
 };
+
+const downloaderRateLimiter = createDownloaderRateLimiter();
+const downloaderCooldownCookieCodec = createDownloaderCooldownCookieCodec();
 
 function normalizeContentType(value: string | null) {
   if (!value) return "";
@@ -207,6 +217,70 @@ function buildResponseHeaders(args: {
   headers.set("x-media-extension", args.extension);
   headers.set("cache-control", "no-store");
   return headers;
+}
+
+function buildJsonErrorResponse(
+  body: Record<string, unknown>,
+  status: number,
+  extraHeaders?: HeadersInit,
+) {
+  const headers = new Headers(extraHeaders);
+  headers.set("content-type", "application/json; charset=utf-8");
+  headers.set("cache-control", "no-store");
+  return new Response(JSON.stringify(body), { status, headers });
+}
+
+function shouldRateLimitDownloader(payload: UrlPayload | null) {
+  return payload?.consumer === DOWNLOADER_CONSUMER;
+}
+
+function getRateLimitMessage(retryAfterMs: number) {
+  const retryAfterSeconds = Math.max(1, Math.ceil(retryAfterMs / 1000));
+  return `You can only download 1 video every 60 seconds. Try again in ${retryAfterSeconds}s.`;
+}
+
+function buildDownloaderRateLimitResponse(args: {
+  blockedBy: "browser" | "client" | "cookie" | "ip";
+  retryAfterMs: number;
+}) {
+  const retryAfterSeconds = Math.max(1, Math.ceil(args.retryAfterMs / 1000));
+  return buildJsonErrorResponse(
+    {
+      blockedBy: args.blockedBy,
+      error: getRateLimitMessage(args.retryAfterMs),
+      retryAfterMs: args.retryAfterMs,
+    },
+    429,
+    { "retry-after": String(retryAfterSeconds) },
+  );
+}
+
+function isSecureRequest(request: Request) {
+  const forwardedProto = request.headers.get("x-forwarded-proto");
+  if (forwardedProto) {
+    return forwardedProto.split(",")[0]?.trim() === "https";
+  }
+
+  try {
+    return new URL(request.url).protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
+function withResponseHeaders(response: Response, extraHeaders: HeadersInit) {
+  const headers = new Headers(response.headers);
+  const nextHeaders = new Headers(extraHeaders);
+
+  nextHeaders.forEach((value, key) => {
+    headers.set(key, value);
+  });
+
+  return new Response(response.body, {
+    headers,
+    status: response.status,
+    statusText: response.statusText,
+  });
 }
 
 async function tryDirectFetch(targetUrl: URL) {
@@ -336,45 +410,77 @@ export async function POST(request: Request) {
   try {
     payload = (await request.json()) as UrlPayload;
   } catch {
-    return new Response(JSON.stringify({ error: "Invalid JSON." }), { status: 400 });
+    return buildJsonErrorResponse({ error: "Invalid JSON." }, 400);
   }
 
   if (!payload?.url) {
-    return new Response(JSON.stringify({ error: "Missing url." }), { status: 400 });
+    return buildJsonErrorResponse({ error: "Missing url." }, 400);
   }
 
   if (payload.mode && payload.mode !== "audio" && payload.mode !== "video") {
-    return new Response(JSON.stringify({ error: "Invalid mode." }), { status: 400 });
+    return buildJsonErrorResponse({ error: "Invalid mode." }, 400);
+  }
+
+  const downloaderIdentity = shouldRateLimitDownloader(payload)
+    ? getDownloaderRateLimitIdentity(request.headers)
+    : null;
+
+  if (downloaderIdentity) {
+    const cookieBlock = downloaderCooldownCookieCodec.readBlock(
+      request.headers,
+      downloaderIdentity,
+    );
+    if (cookieBlock) {
+      return buildDownloaderRateLimitResponse(cookieBlock);
+    }
+
+    const inMemoryBlock = downloaderRateLimiter.check(downloaderIdentity, {
+      record: false,
+    });
+    if (!inMemoryBlock.allowed) {
+      return buildDownloaderRateLimitResponse(inMemoryBlock);
+    }
   }
 
   let targetUrl: URL;
   try {
     targetUrl = new URL(payload.url);
   } catch {
-    return new Response(JSON.stringify({ error: "Invalid url." }), { status: 400 });
+    return buildJsonErrorResponse({ error: "Invalid url." }, 400);
   }
 
   if (targetUrl.protocol !== "http:" && targetUrl.protocol !== "https:") {
-    return new Response(JSON.stringify({ error: "Only http(s) URLs are supported." }), {
-      status: 400,
-    });
+    return buildJsonErrorResponse(
+      { error: "Only http(s) URLs are supported." },
+      400,
+    );
   }
 
   try {
     await assertPublicUrl(targetUrl);
   } catch (err) {
     const message = err instanceof Error ? err.message : "URL is not allowed.";
-    return new Response(JSON.stringify({ error: message }), { status: 400 });
+    return buildJsonErrorResponse({ error: message }, 400);
   }
 
   const mode = payload.mode ?? "audio";
 
   try {
     const directResponse = await tryDirectFetch(targetUrl);
-    if (directResponse) {
-      return directResponse;
+    let response = directResponse ?? (await fetchViaYtDlp(targetUrl, mode));
+
+    if (downloaderIdentity) {
+      downloaderRateLimiter.check(downloaderIdentity);
+      const cooldownCookie = downloaderCooldownCookieCodec.createSetCookie(
+        downloaderIdentity,
+        { secure: isSecureRequest(request) },
+      );
+      response = withResponseHeaders(response, {
+        "set-cookie": cooldownCookie.headerValue,
+      });
     }
-    return await fetchViaYtDlp(targetUrl, mode);
+
+    return response;
   } catch (err) {
     const errMessage = err instanceof Error ? err.message : "";
     const stderr =
@@ -383,6 +489,6 @@ export async function POST(request: Request) {
         : "";
     const trimmedStderr = stderr.trim().split("\n")[0] || "";
     const message = errMessage || trimmedStderr || "Failed to fetch media.";
-    return new Response(JSON.stringify({ error: message }), { status: 500 });
+    return buildJsonErrorResponse({ error: message }, 500);
   }
 }

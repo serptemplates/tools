@@ -4,6 +4,7 @@ import Script from "next/script";
 import { AppHeader } from "./app-header";
 import { Providers } from "./providers";
 import { GTagManager } from "./gtag-manager";
+import { SiteFooter } from "./site-footer";
 
 import "@serp-tools/ui/globals.css";
 
@@ -28,7 +29,7 @@ export function AppLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased `}
+        className={`${fontSans.variable} ${fontMono.variable} bg-background font-sans antialiased`}
       >
         {adsenseClient && (process.env.NODE_ENV !== "development" || adsenseTestMode) ? (
           <Script
@@ -41,8 +42,11 @@ export function AppLayout({
         ) : null}
         <GTagManager />
         <Providers>
-          <AppHeader />
-          {children}
+          <div className="flex min-h-screen flex-col">
+            <AppHeader />
+            <div className="flex-1">{children}</div>
+            <SiteFooter />
+          </div>
         </Providers>
       </body>
     </html>

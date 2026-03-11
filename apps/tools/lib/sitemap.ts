@@ -1,9 +1,11 @@
 import toolsData from "@serp-tools/app-core/data/tools.json";
+import { getCategoryPagePaths } from "@/lib/tool-directory";
+import type { Tool } from "@/types";
 
 export const PAGE_SIZE = 10000;
 
-export const STATIC_PATHS = ["/"];
-const CATEGORY_PATHS: string[] = [];
+export const STATIC_PATHS = ["/", "/categories/"];
+const CATEGORY_PATHS = getCategoryPagePaths(toolsData as Tool[]);
 
 export const escapeXml = (value: string) =>
   value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");

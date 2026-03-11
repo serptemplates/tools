@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
 import toolsData from "@serp-tools/app-core/data/tools.json";
+import { DownloaderPageRenderer } from "@/components/DownloaderPageRenderer";
 import PdfToolPage from "@/components/PdfToolPage";
 import { ToolPageRenderer } from "@/components/ToolPageRenderer";
 import { buildToolMetadata } from "@/lib/metadata";
@@ -27,6 +28,10 @@ export default async function Page({ params }: PageProps) {
 
   if (tool.operation === "convert" && tool.from && tool.to) {
     return <ToolPageRenderer toolId={toolId} />;
+  }
+
+  if (tool.operation === "download") {
+    return <DownloaderPageRenderer toolId={toolId} />;
   }
 
   if (tool.operation === "view" || tool.operation === "edit") {

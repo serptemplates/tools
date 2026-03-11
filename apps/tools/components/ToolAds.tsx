@@ -8,6 +8,7 @@ import {
   DEFAULT_AD_SLOTS,
   TOOL_AD_SLOTS,
 } from "@/lib/adsense";
+import { isAdSenseSlotEnabled } from "@/lib/adsense-runtime";
 
 declare global {
   interface Window {
@@ -66,7 +67,11 @@ export function ToolAdSlot({
   label = "Advertisement",
 }: ToolAdSlotProps) {
   const resolvedSlot = resolveAdSlot(slotId);
-  const hasAdSense = Boolean(ADSENSE_CLIENT && resolvedSlot);
+  const hasAdSense = isAdSenseSlotEnabled({
+    adsenseClient: ADSENSE_CLIENT,
+    resolvedSlot,
+    adsenseTestMode: ADSENSE_TEST_MODE,
+  });
   const parsedSize = parseAdSize(size);
 
   useEffect(() => {

@@ -1,6 +1,29 @@
 # TODO
 
 
+- [x] add downloader action support to shared tool taxonomy labels
+- [x] add Loom video downloader landing page using existing downloader pipeline
+- [x] rename Loom downloader slug to `download-loom-videos` and document default `download-*` downloader slugs
+- [x] change shared downloader CTA button copy to `Get It Now`
+- [x] restore shared downloader CTA support text as a single short line
+- [x] update shared downloader CTA support text to unlimited-downloads copy
+- [x] redesign shared downloader CTA layout and colors for stronger conversion and mobile responsiveness
+- [x] add downloader keyword landers and planner rows for the requested target services
+- [x] add a shared site footer to the global tools app layout
+- [x] add a footer link to the `/categories/` hub page
+- [x] remove the homepage request-a-tool CTA section
+- [x] add operation category pages under `/category/[categoryName]/`
+- [x] fix downloader blob assembly when `SharedArrayBuffer` is unavailable
+- [x] document downloader-page CTA requirement for browser extension upsell
+- [x] add shared downloader browser extension CTA component to downloader page template
+- [x] add ad banner section to shared downloader page template
+- [x] document cobalt.tools repo and docs as downloader references
+- [x] fix downloader ad visibility for local/dev testing and desktop rails
+- [x] restore downloader ad gating so banner and rails stay hidden until action
+- [x] add Loom video downloader to planner docs
+- [x] add shared 60-second downloader rate limit with docs and coverage tests
+- [x] document `download` as a canonical tool operation in the shared taxonomy docs
+- [x] remove the public-links helper copy from the shared downloader page template
 - [ ] add 'Bulk URL Opener' tool, copy this UI & functionality: https://openbulkurl.com/
 - [x] add PDF viewer/reader/editor tools and landers
 - [x] add shared PDF viewer/editor component (pdfjs-annotation-extension viewer)

@@ -27,6 +27,13 @@ Internal related tools must reference `toolId` (not `href`); resolve routes from
 - New custom tools require an explicit `handler=custom` and a listed custom page.
 - JPG/JPEG are the same format. Use `jpg` as the canonical route/format and accept `.jpg,.jpeg` in the tool config. Do not create separate `*-to-jpeg` routes unless we explicitly add SEO alias routes.
 
+## Operation taxonomy
+- Canonical operation values are `bulk`, `combine`, `compress`, `convert`, `download`, `edit`, and `view`.
+- Downloader-style tools should use `operation: "download"` in the registry, not `downloader`.
+- User-facing labels can still render `download` as `Downloader`.
+- Downloader landing routes should default to `download-*` slug syntax.
+- Operation category pages live at `/category/{operation}/` using the canonical operation value.
+
 ## Tool groupings
 See `docs/tool-groupings.md` for how tools are grouped by operation, UI template, and processing location.
 
@@ -70,7 +77,7 @@ See `docs/tool-groupings.md` for how tools are grouped by operation, UI template
 - `/sitemap-index.xml` must include `pages-index.xml` and `tools-index.xml` (and `categories-index.xml` only if category routes exist).
 - `pages-index.xml` includes only static pages (`/`, legal, contact, etc.). Do not mix tool routes here.
 - `tools-index.xml` is generated from the tool registry (active tools only).
-- If category pages exist, add a `categories-index.xml` + paginated sitemap and keep rewrites up to date.
+- Category pages should be generated for each active operation and listed in `categories-index.xml` plus the paginated category sitemap.
 - Keep `/sitemap-:page.xml` as a compatibility alias for the combined list.
 
 ## Ads

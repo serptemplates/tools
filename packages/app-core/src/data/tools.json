@@ -36384,6 +36384,861 @@
     "requiresFFmpeg": false
   },
   {
+    "id": "download-loom-videos",
+    "name": "Loom Video Downloader",
+    "description": "Download Loom videos from public Loom links",
+    "operation": "download",
+    "route": "/download-loom-videos",
+    "from": "loom",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "loom",
+      "video",
+      "download",
+      "downloader",
+      "embed"
+    ],
+    "content": {
+      "tool": {
+        "title": "Loom Video Downloader",
+        "subtitle": "Download Loom videos from public Loom share or embed links.",
+        "from": "Loom link",
+        "to": "Video file"
+      },
+      "howTo": {
+        "title": "How to download a Loom video",
+        "intro": "Follow these steps to save a public Loom video link.",
+        "steps": [
+          "Paste a public Loom share or embed link.",
+          "Wait while we fetch the Loom video.",
+          "Download the video file to your device."
+        ]
+      },
+      "infoArticle": {
+        "title": "About Loom video downloads",
+        "markdown": "Loom Video Downloader fetches public Loom videos and prepares a downloadable file. It works with public Loom share pages and embed links.\n\nPrivate, restricted, or logged-in Loom content is not supported. If a Loom link fails, confirm that the video is public and that the share or embed URL loads in a normal browser tab.\n\n**Why use this tool**\n\n- Works with public Loom share and embed links.\n- Saves a video file you can keep or share.\n- Runs in your browser with a simple paste-and-download flow."
+      },
+      "faqs": [
+        {
+          "question": "Which Loom links work?",
+          "answer": "Public Loom share links and public Loom embed links. Private or logged-in videos are not supported."
+        },
+        {
+          "question": "Can I use an embed URL?",
+          "answer": "Yes. Public Loom embed URLs like /embed/... are supported."
+        },
+        {
+          "question": "What file type do I get?",
+          "answer": "Most Loom downloads are saved as MP4 video files."
+        },
+        {
+          "question": "Why did my Loom link fail?",
+          "answer": "The video may be private, access-restricted, expired, or temporarily blocked. Try the public share link or confirm the embed loads without signing in."
+        }
+      ],
+      "aboutSection": {
+        "title": "Loom video download",
+        "fromFormat": {
+          "name": "Loom link",
+          "fullName": "Public Loom video link",
+          "description": "A public Loom share or embed URL."
+        },
+        "toFormat": {
+          "name": "Video file",
+          "fullName": "Downloadable MP4 video file",
+          "description": "A saved Loom video file you can watch, keep, or share."
+        }
+      }
+    },
+    "requiresFFmpeg": false
+  },
+  {
+    "id": "download-skool-videos",
+    "name": "Skool Video Downloader",
+    "description": "Download Skool videos from public Skool links",
+    "operation": "download",
+    "route": "/download-skool-videos",
+    "from": "Skool",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "skool",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-vimeo-videos",
+    "name": "Vimeo Video Downloader",
+    "description": "Download Vimeo videos from public Vimeo links",
+    "operation": "download",
+    "route": "/download-vimeo-videos",
+    "from": "Vimeo",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "vimeo",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-onlyfans-videos",
+    "name": "OnlyFans Video Downloader",
+    "description": "Download OnlyFans videos from public OnlyFans links",
+    "operation": "download",
+    "route": "/download-onlyfans-videos",
+    "from": "OnlyFans",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "onlyfans",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-whop-videos",
+    "name": "Whop Video Downloader",
+    "description": "Download Whop videos from public Whop links",
+    "operation": "download",
+    "route": "/download-whop-videos",
+    "from": "Whop",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "whop",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-123movies-videos",
+    "name": "123Movies Video Downloader",
+    "description": "Download 123Movies videos from public 123Movies links",
+    "operation": "download",
+    "route": "/download-123movies-videos",
+    "from": "123Movies",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "123movies",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-circle-videos",
+    "name": "Circle Video Downloader",
+    "description": "Download Circle videos from public Circle links",
+    "operation": "download",
+    "route": "/download-circle-videos",
+    "from": "Circle",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "circle",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-clientclub-videos",
+    "name": "Clientclub Video Downloader",
+    "description": "Download Clientclub videos from public Clientclub links",
+    "operation": "download",
+    "route": "/download-clientclub-videos",
+    "from": "Clientclub",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "clientclub",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-dailymotion-videos",
+    "name": "Dailymotion Video Downloader",
+    "description": "Download Dailymotion videos from public Dailymotion links",
+    "operation": "download",
+    "route": "/download-dailymotion-videos",
+    "from": "Dailymotion",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "dailymotion",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-gohighlevel-videos",
+    "name": "GoHighLevel Video Downloader",
+    "description": "Download GoHighLevel videos from public GoHighLevel links",
+    "operation": "download",
+    "route": "/download-gohighlevel-videos",
+    "from": "GoHighLevel",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "gohighlevel",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-gokollab-videos",
+    "name": "GoKollab Video Downloader",
+    "description": "Download GoKollab videos from public GoKollab links",
+    "operation": "download",
+    "route": "/download-gokollab-videos",
+    "from": "GoKollab",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "gokollab",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-alpha-porno-videos",
+    "name": "Alpha Porno Video Downloader",
+    "description": "Download Alpha Porno videos from public Alpha Porno links",
+    "operation": "download",
+    "route": "/download-alpha-porno-videos",
+    "from": "Alpha Porno",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "alpha porno",
+      "alpha-porno",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-ashemaletube-videos",
+    "name": "Ashemaletube Video Downloader",
+    "description": "Download Ashemaletube videos from public Ashemaletube links",
+    "operation": "download",
+    "route": "/download-ashemaletube-videos",
+    "from": "Ashemaletube",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "ashemaletube",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-beeg-videos",
+    "name": "Beeg Video Downloader",
+    "description": "Download Beeg videos from public Beeg links",
+    "operation": "download",
+    "route": "/download-beeg-videos",
+    "from": "Beeg",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "beeg",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-boyfriendtv-videos",
+    "name": "Boyfriendtv Video Downloader",
+    "description": "Download Boyfriendtv videos from public Boyfriendtv links",
+    "operation": "download",
+    "route": "/download-boyfriendtv-videos",
+    "from": "Boyfriendtv",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "boyfriendtv",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-coomer-videos",
+    "name": "Coomer Video Downloader",
+    "description": "Download Coomer videos from public Coomer links",
+    "operation": "download",
+    "route": "/download-coomer-videos",
+    "from": "Coomer",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "coomer",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-eporner-videos",
+    "name": "Eporner Video Downloader",
+    "description": "Download Eporner videos from public Eporner links",
+    "operation": "download",
+    "route": "/download-eporner-videos",
+    "from": "Eporner",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "eporner",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-erome-videos",
+    "name": "Erome Video Downloader",
+    "description": "Download Erome videos from public Erome links",
+    "operation": "download",
+    "route": "/download-erome-videos",
+    "from": "Erome",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "erome",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-kajab-videos",
+    "name": "Kajab Video Downloader",
+    "description": "Download Kajab videos from public Kajab links",
+    "operation": "download",
+    "route": "/download-kajab-videos",
+    "from": "Kajab",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "kajab",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-erothots-videos",
+    "name": "Erothots Video Downloader",
+    "description": "Download Erothots videos from public Erothots links",
+    "operation": "download",
+    "route": "/download-erothots-videos",
+    "from": "Erothots",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "erothots",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-hdzog-videos",
+    "name": "Hdzog Video Downloader",
+    "description": "Download Hdzog videos from public Hdzog links",
+    "operation": "download",
+    "route": "/download-hdzog-videos",
+    "from": "Hdzog",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "hdzog",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-hentaihaven-videos",
+    "name": "Hentaihaven Video Downloader",
+    "description": "Download Hentaihaven videos from public Hentaihaven links",
+    "operation": "download",
+    "route": "/download-hentaihaven-videos",
+    "from": "Hentaihaven",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "hentaihaven",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-justforfans-videos",
+    "name": "JustForFans Video Downloader",
+    "description": "Download JustForFans videos from public JustForFans links",
+    "operation": "download",
+    "route": "/download-justforfans-videos",
+    "from": "JustForFans",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "justforfans",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-luxuretv-videos",
+    "name": "Luxuretv Video Downloader",
+    "description": "Download Luxuretv videos from public Luxuretv links",
+    "operation": "download",
+    "route": "/download-luxuretv-videos",
+    "from": "Luxuretv",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "luxuretv",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-manyvids-videos",
+    "name": "ManyVids Video Downloader",
+    "description": "Download ManyVids videos from public ManyVids links",
+    "operation": "download",
+    "route": "/download-manyvids-videos",
+    "from": "ManyVids",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "manyvids",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-motherless-videos",
+    "name": "Motherless Video Downloader",
+    "description": "Download Motherless videos from public Motherless links",
+    "operation": "download",
+    "route": "/download-motherless-videos",
+    "from": "Motherless",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "motherless",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-nhentai-videos",
+    "name": "NHentai Video Downloader",
+    "description": "Download NHentai videos from public NHentai links",
+    "operation": "download",
+    "route": "/download-nhentai-videos",
+    "from": "NHentai",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "nhentai",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-pornhub-videos",
+    "name": "Pornhub Video Downloader",
+    "description": "Download Pornhub videos from public Pornhub links",
+    "operation": "download",
+    "route": "/download-pornhub-videos",
+    "from": "Pornhub",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "pornhub",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-m3u8-videos",
+    "name": "M3U8 Video Downloader",
+    "description": "Download videos from public M3U8 playlist links",
+    "operation": "download",
+    "route": "/download-m3u8-videos",
+    "from": "M3U8",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "m3u8",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-porntrex-videos",
+    "name": "Porntrex Video Downloader",
+    "description": "Download Porntrex videos from public Porntrex links",
+    "operation": "download",
+    "route": "/download-porntrex-videos",
+    "from": "Porntrex",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "porntrex",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-redgifs-videos",
+    "name": "RedGIFs Video Downloader",
+    "description": "Download RedGIFs videos from public RedGIFs links",
+    "operation": "download",
+    "route": "/download-redgifs-videos",
+    "from": "RedGIFs",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "redgifs",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-redtube-videos",
+    "name": "Redtube Video Downloader",
+    "description": "Download Redtube videos from public Redtube links",
+    "operation": "download",
+    "route": "/download-redtube-videos",
+    "from": "Redtube",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "redtube",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-spankbang-videos",
+    "name": "SpankBang Video Downloader",
+    "description": "Download SpankBang videos from public SpankBang links",
+    "operation": "download",
+    "route": "/download-spankbang-videos",
+    "from": "SpankBang",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "spankbang",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-stripcha-videos",
+    "name": "Stripcha Video Downloader",
+    "description": "Download Stripcha videos from public Stripcha links",
+    "operation": "download",
+    "route": "/download-stripcha-videos",
+    "from": "Stripcha",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "stripcha",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-thisvid-videos",
+    "name": "ThisVid Video Downloader",
+    "description": "Download ThisVid videos from public ThisVid links",
+    "operation": "download",
+    "route": "/download-thisvid-videos",
+    "from": "ThisVid",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "thisvid",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-tnaflix-videos",
+    "name": "TNAFlix Video Downloader",
+    "description": "Download TNAFlix videos from public TNAFlix links",
+    "operation": "download",
+    "route": "/download-tnaflix-videos",
+    "from": "TNAFlix",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "tnaflix",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-tokyomotion-videos",
+    "name": "Tokyomotion Video Downloader",
+    "description": "Download Tokyomotion videos from public Tokyomotion links",
+    "operation": "download",
+    "route": "/download-tokyomotion-videos",
+    "from": "Tokyomotion",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "tokyomotion",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-txxx-videos",
+    "name": "Txxx Video Downloader",
+    "description": "Download Txxx videos from public Txxx links",
+    "operation": "download",
+    "route": "/download-txxx-videos",
+    "from": "Txxx",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "txxx",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-upornia-videos",
+    "name": "Upornia Video Downloader",
+    "description": "Download Upornia videos from public Upornia links",
+    "operation": "download",
+    "route": "/download-upornia-videos",
+    "from": "Upornia",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "upornia",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-xfantazy-videos",
+    "name": "XFantazy Video Downloader",
+    "description": "Download XFantazy videos from public XFantazy links",
+    "operation": "download",
+    "route": "/download-xfantazy-videos",
+    "from": "XFantazy",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "xfantazy",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-xhamster-videos",
+    "name": "xHamster Video Downloader",
+    "description": "Download xHamster videos from public xHamster links",
+    "operation": "download",
+    "route": "/download-xhamster-videos",
+    "from": "xHamster",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "xhamster",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-xnxx-videos",
+    "name": "XNXX Video Downloader",
+    "description": "Download XNXX videos from public XNXX links",
+    "operation": "download",
+    "route": "/download-xnxx-videos",
+    "from": "XNXX",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "xnxx",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-xvideos-videos",
+    "name": "XVideos Video Downloader",
+    "description": "Download XVideos videos from public XVideos links",
+    "operation": "download",
+    "route": "/download-xvideos-videos",
+    "from": "XVideos",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "xvideos",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-yespornplease-videos",
+    "name": "YesPornPlease Video Downloader",
+    "description": "Download YesPornPlease videos from public YesPornPlease links",
+    "operation": "download",
+    "route": "/download-yespornplease-videos",
+    "from": "YesPornPlease",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "yespornplease",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-youjizz-videos",
+    "name": "YouJizz Video Downloader",
+    "description": "Download YouJizz videos from public YouJizz links",
+    "operation": "download",
+    "route": "/download-youjizz-videos",
+    "from": "YouJizz",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "youjizz",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-youporn-videos",
+    "name": "YouPorn Video Downloader",
+    "description": "Download YouPorn videos from public YouPorn links",
+    "operation": "download",
+    "route": "/download-youporn-videos",
+    "from": "YouPorn",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "youporn",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-sprout-videos",
+    "name": "Sprout Video Downloader",
+    "description": "Download Sprout videos from public Sprout links",
+    "operation": "download",
+    "route": "/download-sprout-videos",
+    "from": "Sprout",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "sprout",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-tiktok-videos",
+    "name": "TikTok Video Downloader",
+    "description": "Download TikTok videos from public TikTok links",
+    "operation": "download",
+    "route": "/download-tiktok-videos",
+    "from": "TikTok",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "tiktok",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-wistia-videos",
+    "name": "Wistia Video Downloader",
+    "description": "Download Wistia videos from public Wistia links",
+    "operation": "download",
+    "route": "/download-wistia-videos",
+    "from": "Wistia",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "wistia",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
+    "id": "download-youtube-videos",
+    "name": "YouTube Video Downloader",
+    "description": "Download YouTube videos from public YouTube links",
+    "operation": "download",
+    "route": "/download-youtube-videos",
+    "from": "YouTube",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "youtube",
+      "video",
+      "download",
+      "downloader"
+    ]
+  },
+  {
     "id": "video-to-transcript",
     "name": "Video to Transcript",
     "description": "Transcribe video files to a text transcript",
