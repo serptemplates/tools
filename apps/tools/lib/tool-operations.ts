@@ -5,6 +5,9 @@ export const OPERATION_LABELS = {
   convert: "Convert",
   download: "Downloaders",
   edit: "Edit",
+  "video-editor": "Video Editor",
+  "image-editor": "Image Editor",
+  "audio-editor": "Audio Editor",
   view: "PDF",
 } as const;
 
@@ -17,6 +20,9 @@ export const TOOL_OPERATION_ORDER: ToolOperation[] = [
   "combine",
   "bulk",
   "edit",
+  "video-editor",
+  "image-editor",
+  "audio-editor",
   "view",
 ];
 
@@ -94,6 +100,21 @@ export function buildOperationFallbackDescription({
         return `Edit ${fromLabel} files online.`;
       }
       return description ?? "Online file editor from SERP Tools.";
+    case "video-editor":
+      if (fromLabel) {
+        return `Edit ${fromLabel} files online.`;
+      }
+      return description ?? "Online video editor from SERP Tools.";
+    case "image-editor":
+      if (fromLabel) {
+        return `Edit ${fromLabel} files online.`;
+      }
+      return description ?? "Online image editor from SERP Tools.";
+    case "audio-editor":
+      if (fromLabel) {
+        return `Edit ${fromLabel} files online.`;
+      }
+      return description ?? "Online audio editor from SERP Tools.";
     default:
       if (fromLabel && toLabel) {
         return `Convert ${fromLabel} to ${toLabel} online.`;

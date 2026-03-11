@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import toolsData from "@serp-tools/app-core/data/tools.json";
 import { DownloaderPageRenderer } from "@/components/DownloaderPageRenderer";
 import PdfToolPage from "@/components/PdfToolPage";
+import ToolPlaceholder from "@/components/ToolPlaceholder";
 import { ToolPageRenderer } from "@/components/ToolPageRenderer";
 import { buildToolMetadata } from "@/lib/metadata";
 import type { Tool } from "@/types";
@@ -26,12 +27,24 @@ export default async function Page({ params }: PageProps) {
     return notFound();
   }
 
-  if (tool.operation === "convert" && tool.from && tool.to) {
+  if (
+    (tool.operation === "convert" || tool.operation === "compress") &&
+    tool.from &&
+    tool.to
+  ) {
     return <ToolPageRenderer toolId={toolId} />;
   }
 
   if (tool.operation === "download") {
     return <DownloaderPageRenderer toolId={toolId} />;
+  }
+
+  if (
+    tool.operation === "video-editor" ||
+    tool.operation === "image-editor" ||
+    tool.operation === "audio-editor"
+  ) {
+    return <ToolPlaceholder title={tool.name} />;
   }
 
   if (tool.operation === "view" || tool.operation === "edit") {

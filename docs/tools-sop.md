@@ -95,6 +95,10 @@ See `docs/tool-groupings.md` for how tools are grouped by operation, UI template
 - `*-to-pdf` uses rasterized PDF output via `pdf-lib`.
 - `jpg-to-svg` is raster-in-SVG (not true vectorization); document this on tool pages.
 - Compression tools should never increase file size. If a compression output is larger, keep the original bytes and report the run as no-gain.
+- Image compression uses `@jsquash/oxipng` (PNG) plus jsquash codecs (JPEG/WebP) in the browser worker pipeline.
+- Server image compression for GIF/SVG/HEIC/HEIF/AVIF/TIFF/BMP runs via `/api/image-compress` (Node runtime) with the shared cooldown.
+- PDF compression runs server-side via `ghostscript-node` (`/api/pdf-compress`) and requires Ghostscript + qpdf binaries in the runtime.
+- Server-required conversion APIs (`/api/image-convert`, `/api/image-compress`, `/api/video-convert`, `/api/pdf-compress`) enforce a shared 60-second cooldown. Client requests must include `x-serp-server-action-client-id` (use `createServerActionRequestHeaders`).
 
 ## Internal dashboard
 - Route: `/internal/tools` (guard with `INTERNAL_DASHBOARD_TOKEN`).

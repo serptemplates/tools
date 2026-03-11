@@ -27,11 +27,16 @@
 - [x] restore downloader ad gating so banner and rails stay hidden until action
 - [x] add Loom video downloader to planner docs
 - [x] add shared 60-second downloader rate limit with docs and coverage tests
+- [x] add shared 60-second server action cooldown for server-required APIs with tests + docs
 - [x] document `download` as a canonical tool operation in the shared taxonomy docs
 - [x] remove the public-links helper copy from the shared downloader page template
 - [x] add downloader action-triggered CTA modal that reuses the shared browser extension CTA
 - [x] add a live 60-second cooldown countdown inside the downloader CTA modal
 - [x] show the same downloader cooldown countdown on the hero under the progress area
+- [x] add browser image compression worker using jsquash codecs (png/jpeg/webp)
+- [x] add server-side PDF compression API using ghostscript-node
+- [x] add client media compression pipeline with FFmpeg and no-grow guardrails
+- [x] add compressor tool pages for supported formats (pdf/image/audio/video)
 - [ ] add 'Bulk URL Opener' tool, copy this UI & functionality: https://openbulkurl.com/
 - [x] add PDF viewer/reader/editor tools and landers
 - [x] add shared PDF viewer/editor component (pdfjs-annotation-extension viewer)

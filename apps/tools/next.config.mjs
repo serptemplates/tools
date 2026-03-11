@@ -122,7 +122,13 @@ if (ytDlpTrace) {
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Use Vercel's Next.js runtime (no static export)
-  transpilePackages: ["@serp-tools/ui", "@serp-tools/tool-telemetry"],
+  transpilePackages: [
+    "@jsquash/jpeg",
+    "@jsquash/oxipng",
+    "@jsquash/webp",
+    "@serp-tools/ui",
+    "@serp-tools/tool-telemetry",
+  ],
   trailingSlash: true,
   env: {
     BUILD_MODE: "server",

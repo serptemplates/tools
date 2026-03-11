@@ -22,6 +22,9 @@ test("tool directory exposes one category path per active operation", () => {
     "combine",
     "bulk",
     "edit",
+    "video-editor",
+    "image-editor",
+    "audio-editor",
     "view",
   ]);
 
@@ -32,6 +35,9 @@ test("tool directory exposes one category path per active operation", () => {
     "/category/combine/",
     "/category/bulk/",
     "/category/edit/",
+    "/category/video-editor/",
+    "/category/image-editor/",
+    "/category/audio-editor/",
     "/category/view/",
   ]);
 });

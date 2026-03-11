@@ -1,4 +1,4 @@
-import { decodeHeifToRGBA, type RGBA } from "./heif";
+import { decodeHeifToRGBA, type RGBA } from "./heif.ts";
 
 type CanvasSource = CanvasImageSource & {
   width?: number;

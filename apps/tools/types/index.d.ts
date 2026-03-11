@@ -6,6 +6,9 @@ export type OperationType =
   | 'convert'    // Transform from one format to another
   | 'download'   // Download from external sources
   | 'edit'       // Edit existing files
+  | 'video-editor' // Edit video files
+  | 'image-editor' // Edit image files
+  | 'audio-editor' // Edit audio files
   | 'view';      // View/read files in browser
 
 // Media types - what kind of content the tool works with

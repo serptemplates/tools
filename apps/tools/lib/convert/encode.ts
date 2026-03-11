@@ -1,4 +1,4 @@
-import type { RGBA } from "./heif";
+import type { RGBA } from "./heif.ts";
 
 export async function encodeFromRGBA(
   toExt: string,

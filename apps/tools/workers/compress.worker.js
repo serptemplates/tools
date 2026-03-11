@@ -1,39 +1,66 @@
-import UPNG from "upng-js";
+import decodeJpeg from "@jsquash/jpeg/decode";
+import encodeJpeg from "@jsquash/jpeg/encode";
+import { optimise as optimisePng } from "@jsquash/oxipng";
+import decodeWebp from "@jsquash/webp/decode";
+import encodeWebp from "@jsquash/webp/encode";
+import {
+  mapQualityToImageQuality,
+  mapQualityToPngLevel,
+} from "../lib/compression-utils";
 
-function qualityToColorCount(quality) {
-  const clamped = Math.max(0, Math.min(1, quality));
-  if (clamped >= 0.99) {
-    return 0;
+function toArrayBuffer(data) {
+  if (data instanceof ArrayBuffer) {
+    return data;
   }
-  return Math.max(16, Math.round(clamped * 256));
+  if (data instanceof Uint8Array) {
+    return data.buffer.slice(data.byteOffset, data.byteOffset + data.byteLength);
+  }
+  throw new Error("Unsupported buffer type");
 }
+
+async function compressPng(buf, quality) {
+  const level = mapQualityToPngLevel(quality);
+  const result = await optimisePng(buf, { level });
+  return toArrayBuffer(result);
+}
+
+async function compressJpeg(buf, quality) {
+  const imageData = await decodeJpeg(buf);
+  const result = await encodeJpeg(imageData, { quality: mapQualityToImageQuality(quality) });
+  return toArrayBuffer(result);
+}
+
+async function compressWebp(buf, quality) {
+  const imageData = await decodeWebp(buf);
+  const result = await encodeWebp(imageData, { quality: mapQualityToImageQuality(quality) });
+  return toArrayBuffer(result);
+}
+
+const FORMAT_HANDLERS = {
+  png: compressPng,
+  jpg: compressJpeg,
+  jpeg: compressJpeg,
+  webp: compressWebp,
+};
 
 self.onmessage = async (e) => {
   try {
     const job = e.data;
 
-    if (job.op !== "compress-png") {
+    if (job.op !== "compress-png" && job.op !== "compress-image") {
       self.postMessage({ ok: false, error: "Unknown operation" });
       return;
     }
 
     const original = job.buf;
-    const colorCount = qualityToColorCount(job.quality ?? 0.85);
-    let output = original;
-
-    try {
-      const img = UPNG.decode(original);
-      const frames = UPNG.toRGBA8(img);
-      const frame = frames[0];
-      if (!frame) {
-        throw new Error("Failed to decode PNG frame.");
-      }
-      output = UPNG.encode([frame], img.width, img.height, colorCount);
-    } catch (err) {
-      console.error("PNG optimisation failed, returning original.", err);
-      output = original;
+    const format = (job.format || "png").toLowerCase();
+    const handler = FORMAT_HANDLERS[format];
+    if (!handler) {
+      self.postMessage({ ok: false, error: `Unsupported image format: ${format}` });
+      return;
     }
 
+    let output = await handler(original, job.quality);
     if (output.byteLength >= original.byteLength) {
       output = original;
     }

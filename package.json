@@ -26,5 +26,11 @@
   "trustedDependencies": [
     "sharp",
     "core-js-pure"
-  ]
+  ],
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "gifsicle",
+      "sharp"
+    ]
+  }
 }

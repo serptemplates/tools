@@ -31742,6 +31742,51 @@
     ]
   },
   {
+    "id": "video-editor",
+    "name": "Video Editor",
+    "description": "Edit videos online in your browser",
+    "operation": "video-editor",
+    "route": "/video-editor",
+    "from": "video",
+    "to": "video",
+    "isActive": true,
+    "tags": [
+      "video",
+      "editor",
+      "edit"
+    ]
+  },
+  {
+    "id": "image-editor",
+    "name": "Image Editor",
+    "description": "Edit images online in your browser",
+    "operation": "image-editor",
+    "route": "/image-editor",
+    "from": "image",
+    "to": "image",
+    "isActive": true,
+    "tags": [
+      "image",
+      "editor",
+      "edit"
+    ]
+  },
+  {
+    "id": "audio-editor",
+    "name": "Audio Editor",
+    "description": "Edit audio files online in your browser",
+    "operation": "audio-editor",
+    "route": "/audio-editor",
+    "from": "audio",
+    "to": "audio",
+    "isActive": true,
+    "tags": [
+      "audio",
+      "editor",
+      "edit"
+    ]
+  },
+  {
     "id": "pdf-reader",
     "name": "PDF Reader",
     "description": "Read PDF files online instantly",
@@ -50224,5 +50269,362 @@
       "image",
       "raw"
     ]
+  },
+  {
+    "id": "compress-pdf",
+    "name": "PDF Compressor",
+    "description": "Compress and optimize PDF files",
+    "operation": "compress",
+    "route": "/compress-pdf",
+    "from": "pdf",
+    "to": "pdf",
+    "isActive": true,
+    "tags": [
+      "pdf",
+      "compress",
+      "document"
+    ]
+  },
+  {
+    "id": "compress-mp3",
+    "name": "MP3 Compressor",
+    "description": "Compress and optimize MP3 files",
+    "operation": "compress",
+    "route": "/compress-mp3",
+    "from": "mp3",
+    "to": "mp3",
+    "isActive": true,
+    "tags": [
+      "mp3",
+      "compress",
+      "audio"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "compress-jpg",
+    "name": "JPG Compressor",
+    "description": "Compress and optimize JPG files",
+    "operation": "compress",
+    "route": "/compress-jpg",
+    "from": "jpg",
+    "to": "jpg",
+    "isActive": true,
+    "tags": [
+      "jpg",
+      "compress",
+      "image"
+    ]
+  },
+  {
+    "id": "compress-wav",
+    "name": "WAV Compressor",
+    "description": "Compress and optimize WAV files",
+    "operation": "compress",
+    "route": "/compress-wav",
+    "from": "wav",
+    "to": "wav",
+    "isActive": true,
+    "tags": [
+      "wav",
+      "compress",
+      "audio"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "compress-gif",
+    "name": "GIF Compressor",
+    "description": "Compress and optimize GIF files",
+    "operation": "compress",
+    "route": "/compress-gif",
+    "from": "gif",
+    "to": "gif",
+    "isActive": true,
+    "tags": [
+      "gif",
+      "compress",
+      "image"
+    ]
+  },
+  {
+    "id": "compress-svg",
+    "name": "SVG Compressor",
+    "description": "Compress and optimize SVG files",
+    "operation": "compress",
+    "route": "/compress-svg",
+    "from": "svg",
+    "to": "svg",
+    "isActive": true,
+    "tags": [
+      "svg",
+      "compress",
+      "image"
+    ]
+  },
+  {
+    "id": "compress-heic",
+    "name": "HEIC Compressor",
+    "description": "Compress and optimize HEIC files",
+    "operation": "compress",
+    "route": "/compress-heic",
+    "from": "heic",
+    "to": "heic",
+    "isActive": true,
+    "tags": [
+      "heic",
+      "compress",
+      "image"
+    ]
+  },
+  {
+    "id": "compress-heif",
+    "name": "HEIF Compressor",
+    "description": "Compress and optimize HEIF files",
+    "operation": "compress",
+    "route": "/compress-heif",
+    "from": "heif",
+    "to": "heif",
+    "isActive": true,
+    "tags": [
+      "heif",
+      "compress",
+      "image"
+    ]
+  },
+  {
+    "id": "compress-avif",
+    "name": "AVIF Compressor",
+    "description": "Compress and optimize AVIF files",
+    "operation": "compress",
+    "route": "/compress-avif",
+    "from": "avif",
+    "to": "avif",
+    "isActive": true,
+    "tags": [
+      "avif",
+      "compress",
+      "image"
+    ]
+  },
+  {
+    "id": "compress-tiff",
+    "name": "TIFF Compressor",
+    "description": "Compress and optimize TIFF files",
+    "operation": "compress",
+    "route": "/compress-tiff",
+    "from": "tiff",
+    "to": "tiff",
+    "isActive": true,
+    "tags": [
+      "tiff",
+      "compress",
+      "image"
+    ]
+  },
+  {
+    "id": "compress-bmp",
+    "name": "BMP Compressor",
+    "description": "Compress and optimize BMP files",
+    "operation": "compress",
+    "route": "/compress-bmp",
+    "from": "bmp",
+    "to": "bmp",
+    "isActive": true,
+    "tags": [
+      "bmp",
+      "compress",
+      "image"
+    ]
+  },
+  {
+    "id": "compress-jpeg",
+    "name": "JPEG Compressor",
+    "description": "Compress and optimize JPEG files",
+    "operation": "compress",
+    "route": "/compress-jpeg",
+    "from": "jpeg",
+    "to": "jpeg",
+    "isActive": true,
+    "tags": [
+      "jpeg",
+      "compress",
+      "image"
+    ]
+  },
+  {
+    "id": "compress-webp",
+    "name": "WEBP Compressor",
+    "description": "Compress and optimize WEBP files",
+    "operation": "compress",
+    "route": "/compress-webp",
+    "from": "webp",
+    "to": "webp",
+    "isActive": true,
+    "tags": [
+      "webp",
+      "compress",
+      "image"
+    ]
+  },
+  {
+    "id": "compress-mp4",
+    "name": "MP4 Compressor",
+    "description": "Compress and optimize MP4 files",
+    "operation": "compress",
+    "route": "/compress-mp4",
+    "from": "mp4",
+    "to": "mp4",
+    "isActive": true,
+    "tags": [
+      "mp4",
+      "compress",
+      "video"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "compress-mov",
+    "name": "MOV Compressor",
+    "description": "Compress and optimize MOV files",
+    "operation": "compress",
+    "route": "/compress-mov",
+    "from": "mov",
+    "to": "mov",
+    "isActive": true,
+    "tags": [
+      "mov",
+      "compress",
+      "video"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "compress-mkv",
+    "name": "MKV Compressor",
+    "description": "Compress and optimize MKV files",
+    "operation": "compress",
+    "route": "/compress-mkv",
+    "from": "mkv",
+    "to": "mkv",
+    "isActive": true,
+    "tags": [
+      "mkv",
+      "compress",
+      "video"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "compress-avi",
+    "name": "AVI Compressor",
+    "description": "Compress and optimize AVI files",
+    "operation": "compress",
+    "route": "/compress-avi",
+    "from": "avi",
+    "to": "avi",
+    "isActive": true,
+    "tags": [
+      "avi",
+      "compress",
+      "video"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "compress-webm",
+    "name": "WEBM Compressor",
+    "description": "Compress and optimize WEBM files",
+    "operation": "compress",
+    "route": "/compress-webm",
+    "from": "webm",
+    "to": "webm",
+    "isActive": true,
+    "tags": [
+      "webm",
+      "compress",
+      "video"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "compress-flv",
+    "name": "FLV Compressor",
+    "description": "Compress and optimize FLV files",
+    "operation": "compress",
+    "route": "/compress-flv",
+    "from": "flv",
+    "to": "flv",
+    "isActive": true,
+    "tags": [
+      "flv",
+      "compress",
+      "video"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "compress-aac",
+    "name": "AAC Compressor",
+    "description": "Compress and optimize AAC files",
+    "operation": "compress",
+    "route": "/compress-aac",
+    "from": "aac",
+    "to": "aac",
+    "isActive": true,
+    "tags": [
+      "aac",
+      "compress",
+      "audio"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "compress-m4a",
+    "name": "M4A Compressor",
+    "description": "Compress and optimize M4A files",
+    "operation": "compress",
+    "route": "/compress-m4a",
+    "from": "m4a",
+    "to": "m4a",
+    "isActive": true,
+    "tags": [
+      "m4a",
+      "compress",
+      "audio"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "compress-ogg",
+    "name": "OGG Compressor",
+    "description": "Compress and optimize OGG files",
+    "operation": "compress",
+    "route": "/compress-ogg",
+    "from": "ogg",
+    "to": "ogg",
+    "isActive": true,
+    "tags": [
+      "ogg",
+      "compress",
+      "audio"
+    ],
+    "requiresFFmpeg": true
+  },
+  {
+    "id": "compress-flac",
+    "name": "FLAC Compressor",
+    "description": "Compress and optimize FLAC files",
+    "operation": "compress",
+    "route": "/compress-flac",
+    "from": "flac",
+    "to": "flac",
+    "isActive": true,
+    "tags": [
+      "flac",
+      "compress",
+      "audio"
+    ],
+    "requiresFFmpeg": true
   }
 ]

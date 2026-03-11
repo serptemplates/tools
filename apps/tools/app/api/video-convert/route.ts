@@ -4,8 +4,19 @@ import { promises as fs, existsSync } from "node:fs";
 import path from "node:path";
 import { tmpdir } from "node:os";
 import ffmpegPath from "ffmpeg-static";
+import {
+  buildServerActionRateLimitResponse,
+  createServerActionCooldownCookieCodec,
+  createServerActionRateLimiter,
+  getServerActionRateLimitIdentity,
+  isSecureRequest,
+  type ServerActionRateLimitIdentity,
+} from "@/lib/server-action-rate-limit";
 
 export const runtime = "nodejs";
+
+const serverActionRateLimiter = createServerActionRateLimiter();
+const serverActionCooldownCookieCodec = createServerActionCooldownCookieCodec();
 
 const AUDIO_OUTPUTS = new Set([
   "mp3",
@@ -30,6 +41,24 @@ const FFMPEG_BINARY = ffmpegPath && existsSync(ffmpegPath) ? ffmpegPath : "ffmpe
 
 const FAST_FILTER = "fps=12,scale=320:-2:flags=fast_bilinear";
 const MXF_FILTER = "scale=320:-2:flags=fast_bilinear";
+
+function buildSuccessResponse(args: {
+  buffer: Uint8Array;
+  contentType: string;
+  identity: ServerActionRateLimitIdentity;
+  request: Request;
+}): Response {
+  serverActionRateLimiter.check(args.identity);
+  const cooldownCookie = serverActionCooldownCookieCodec.createSetCookie(args.identity, {
+    secure: isSecureRequest(args.request),
+  });
+  const headers = new Headers();
+  headers.set("Content-Type", args.contentType);
+  headers.set("Content-Length", args.buffer.length.toString());
+  headers.set("set-cookie", cooldownCookie.headerValue);
+  const body = new Uint8Array(args.buffer);
+  return new Response(body, { headers });
+}
 
 function resolveOutputExtension(to: string) {
   if (to === "hevc") return "mp4";
@@ -254,6 +283,22 @@ export async function POST(request: Request) {
     return new Response(JSON.stringify({ error: "Missing from/to parameters" }), { status: 400 });
   }
 
+  const serverActionIdentity = getServerActionRateLimitIdentity(request.headers);
+  const cookieBlock = serverActionCooldownCookieCodec.readBlock(
+    request.headers,
+    serverActionIdentity,
+  );
+  if (cookieBlock) {
+    return buildServerActionRateLimitResponse(cookieBlock);
+  }
+
+  const inMemoryBlock = serverActionRateLimiter.check(serverActionIdentity, {
+    record: false,
+  });
+  if (!inMemoryBlock.allowed) {
+    return buildServerActionRateLimitResponse(inMemoryBlock);
+  }
+
   const inputBuffer = Buffer.from(await request.arrayBuffer());
   if (!inputBuffer.length) {
     return new Response(JSON.stringify({ error: "Empty input buffer" }), { status: 400 });
@@ -272,11 +317,11 @@ export async function POST(request: Request) {
     await runFfmpeg(args);
 
     const outputBuffer = await fs.readFile(outputPath);
-    return new Response(outputBuffer, {
-      headers: {
-        "Content-Type": "application/octet-stream",
-        "Content-Length": outputBuffer.length.toString(),
-      },
+    return buildSuccessResponse({
+      buffer: outputBuffer,
+      contentType: "application/octet-stream",
+      identity: serverActionIdentity,
+      request,
     });
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : "FFmpeg failed";

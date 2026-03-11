@@ -1,6 +1,8 @@
-import { detectCapabilities, requiresVideoConversion } from "@/lib/capabilities";
-import { decodeToRGBA } from "@/lib/convert/decode";
-import { encodeFromRGBA } from "@/lib/convert/encode";
+import { detectCapabilities, requiresVideoConversion } from "../capabilities.ts";
+import { resolveCompressionTarget } from "../compression-utils.ts";
+import { decodeToRGBA } from "./decode.ts";
+import { encodeFromRGBA } from "./encode.ts";
+import { createServerActionRequestHeaders } from "../server-action-client.ts";
 
 export type ConversionOp = "raster" | "pdf-pages" | "video";
 
@@ -48,6 +50,8 @@ const MIME_MAP: Record<string, string> = {
   png: "image/png",
   jpg: "image/jpeg",
   jpeg: "image/jpeg",
+  heic: "image/heic",
+  heif: "image/heif",
   avif: "image/avif",
   webp: "image/webp",
   gif: "image/gif",
@@ -315,6 +319,20 @@ export async function compressPngWithWorker(args: {
   }
 }
 
+export async function compressImageWithWorker(args: {
+  worker: Worker;
+  format: string;
+  buf: ArrayBuffer;
+  quality?: number;
+}): Promise<ArrayBuffer> {
+  const workerBuf = args.buf.slice(0);
+  try {
+    return await compressImageWithWorkerInner({ ...args, buf: workerBuf });
+  } catch {
+    return await compressImageOnMainThread(args);
+  }
+}
+
 async function compressPngWithWorkerInner(args: {
   worker: Worker;
   buf: ArrayBuffer;
@@ -350,6 +368,48 @@ async function compressPngWithWorkerInner(args: {
     };
 
     args.worker.postMessage({ op: "compress-png", buf: args.buf, quality: args.quality }, [args.buf]);
+  });
+}
+
+async function compressImageWithWorkerInner(args: {
+  worker: Worker;
+  format: string;
+  buf: ArrayBuffer;
+  quality?: number;
+}): Promise<ArrayBuffer> {
+  return await new Promise<ArrayBuffer>((resolve, reject) => {
+    args.worker.onmessage = (ev: MessageEvent<WorkerMessage>) => {
+      if (!ev.data) {
+        return reject(new Error("Malformed worker response"));
+      }
+
+      if (!ev.data?.ok) {
+        return reject(new Error(ev.data?.error || "Compression failed"));
+      }
+
+      if (ev.data.blob) {
+        return resolve(ev.data.blob as ArrayBuffer);
+      }
+
+      return reject(new Error("Unknown worker response"));
+    };
+
+    args.worker.onerror = (error) => {
+      const detailParts = [
+        (error as ErrorEvent).message,
+        (error as ErrorEvent).filename,
+        (error as ErrorEvent).lineno,
+        (error as ErrorEvent).colno,
+        (error as ErrorEvent).error instanceof Error ? (error as ErrorEvent).error.message : null,
+      ].filter(Boolean);
+      const detail = detailParts.length ? detailParts.join(" | ") : String(error);
+      reject(new Error(`Worker error: ${detail}`));
+    };
+
+    args.worker.postMessage(
+      { op: "compress-image", format: args.format, buf: args.buf, quality: args.quality },
+      [args.buf]
+    );
   });
 }
 
@@ -392,9 +452,9 @@ async function convertImageViaApi(args: {
   try {
     response = await fetch(`${route}?from=${args.from}&to=${args.to}`, {
       method: "POST",
-      headers: {
+      headers: createServerActionRequestHeaders({
         "Content-Type": "application/octet-stream",
-      },
+      }),
       body: args.buf,
     });
   } catch (error) {
@@ -425,6 +485,114 @@ async function convertImageViaApi(args: {
   const buffer = await response.arrayBuffer();
   args.onProgress?.({ status: "processing", progress: 100 });
   return { kind: "single", buffer };
+}
+
+export async function compressPdfViaApi(args: {
+  buf: ArrayBuffer;
+  onProgress?: (update: ProgressUpdate) => void;
+}): Promise<ArrayBuffer> {
+  const route = "/api/pdf-compress";
+  const baseMetadata = {
+    route,
+    format: "pdf",
+    engine: "server-pdf",
+  };
+  args.onProgress?.({ status: "processing", progress: 5 });
+  let response: Response;
+  try {
+    response = await fetch(route, {
+      method: "POST",
+      headers: createServerActionRequestHeaders({
+        "Content-Type": "application/pdf",
+      }),
+      body: args.buf,
+    });
+  } catch (error) {
+    throw createTelemetryError(
+      "network_error",
+      "Server compression request failed",
+      { ...baseMetadata, detail: toErrorMessage(error) }
+    );
+  }
+
+  if (!response.ok) {
+    let detail = "";
+    let serverError: string | null = null;
+    try {
+      const data = await response.json();
+      serverError = data?.error ? String(data.error) : null;
+      detail = serverError ? `: ${serverError}` : "";
+    } catch {
+      detail = "";
+    }
+    throw createTelemetryError(
+      "server_compress_failed",
+      `Server compression failed (${response.status})${detail}`,
+      { ...baseMetadata, status: response.status, detail: serverError }
+    );
+  }
+
+  const buffer = await response.arrayBuffer();
+  if (buffer.byteLength >= args.buf.byteLength) {
+    return args.buf;
+  }
+  args.onProgress?.({ status: "processing", progress: 100 });
+  return buffer;
+}
+
+async function compressImageViaApi(args: {
+  buf: ArrayBuffer;
+  format: string;
+  onProgress?: (update: ProgressUpdate) => void;
+}): Promise<ArrayBuffer> {
+  const format = args.format.toLowerCase();
+  const route = "/api/image-compress";
+  const baseMetadata = {
+    route,
+    format,
+    engine: "server-image-compress",
+  };
+  args.onProgress?.({ status: "processing", progress: 5 });
+  let response: Response;
+  try {
+    response = await fetch(`${route}?format=${encodeURIComponent(format)}`, {
+      method: "POST",
+      headers: createServerActionRequestHeaders({
+        "Content-Type": "application/octet-stream",
+      }),
+      body: args.buf,
+    });
+  } catch (error) {
+    throw createTelemetryError(
+      "network_error",
+      "Server image compression request failed",
+      { ...baseMetadata, detail: toErrorMessage(error) }
+    );
+  }
+
+  if (!response.ok) {
+    let detail = "";
+    let serverError: string | null = null;
+    try {
+      const data = await response.json();
+      serverError = data?.error ? String(data.error) : null;
+      detail = serverError ? `: ${serverError}` : "";
+    } catch {
+      detail = "";
+    }
+    throw createTelemetryError(
+      "server_compress_failed",
+      `Server image compression failed (${response.status})${detail}`,
+      { ...baseMetadata, status: response.status, detail: serverError }
+    );
+  }
+
+  const buffer = await response.arrayBuffer();
+  if (buffer.byteLength >= args.buf.byteLength) {
+    return args.buf;
+  }
+  args.onProgress?.({ status: "processing", progress: 100 });
+  return buffer;
 }
 
 async function convertRasterOnMainThread(args: {
@@ -496,6 +664,26 @@ async function convertVideoOnMainThread(args: {
   return { kind: "single", buffer };
 }
 
+export async function compressMediaOnMainThread(args: {
+  format: string;
+  buf: ArrayBuffer;
+  onProgress?: (update: ProgressUpdate) => void;
+  quality?: number;
+}): Promise<ArrayBuffer> {
+  const { compressMedia } = await import("./video");
+  const buffer = await compressMedia(args.buf, args.format, {
+    quality: args.quality,
+    onProgress: (progress) => {
+      args.onProgress?.({
+        status: "processing",
+        progress: progress.ratio * 100,
+        time: progress.time,
+      });
+    },
+  });
+  return buffer;
+}
+
 async function compressPngOnMainThread(args: {
   buf: ArrayBuffer;
   quality?: number;
@@ -519,6 +707,72 @@ async function compressPngOnMainThread(args: {
   } catch {
     return original;
   }
+}
+
+async function compressImageOnMainThread(args: {
+  format: string;
+  buf: ArrayBuffer;
+  quality?: number;
+}): Promise<ArrayBuffer> {
+  const original = args.buf;
+  try {
+    const rgba = await decodeToRGBA(args.format, args.buf);
+    const blob = await encodeFromRGBA(args.format, rgba, args.quality ?? 0.8);
+    const buffer = await blob.arrayBuffer();
+    if (buffer.byteLength >= original.byteLength) {
+      return original;
+    }
+    return buffer;
+  } catch {
+    return original;
+  }
+}
+
+export async function compressFile(args: {
+  worker?: Worker;
+  format: string;
+  buf: ArrayBuffer;
+  onProgress?: (update: ProgressUpdate) => void;
+  quality?: number;
+}): Promise<ArrayBuffer> {
+  const target = resolveCompressionTarget(args.format);
+  if (target === "image-worker") {
+    if (!args.worker) {
+      throw new Error("Compression worker is required for image formats.");
+    }
+    if (args.format.toLowerCase() === "png") {
+      return compressPngWithWorker({
+        worker: args.worker,
+        buf: args.buf,
+        quality: args.quality,
+      });
+    }
+    return compressImageWithWorker({
+      worker: args.worker,
+      format: args.format,
+      buf: args.buf,
+      quality: args.quality,
+    });
+  }
+  if (target === "image-server") {
+    return compressImageViaApi({
+      buf: args.buf,
+      format: args.format,
+      onProgress: args.onProgress,
+    });
+  }
+  if (target === "pdf") {
+    return compressPdfViaApi({ buf: args.buf, onProgress: args.onProgress });
+  }
+  if (target === "audio" || target === "video") {
+    return compressMediaOnMainThread({
+      format: args.format,
+      buf: args.buf,
+      onProgress: args.onProgress,
+      quality: args.quality,
+    });
+  }
+  throw new Error(`Compression not supported for ${args.format}`);
 }
 
 function qualityToColorCount(quality: number) {

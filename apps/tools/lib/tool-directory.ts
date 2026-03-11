@@ -17,6 +17,9 @@ type OperationType =
   | "convert"
   | "download"
   | "edit"
+  | "video-editor"
+  | "image-editor"
+  | "audio-editor"
   | "view";
 
 type ToolDirectorySource = {
@@ -66,6 +69,9 @@ const OPERATION_LABELS: Record<OperationType, string> = {
   convert: "Convert",
   download: "Downloaders",
   edit: "Edit",
+  "video-editor": "Video Editor",
+  "image-editor": "Image Editor",
+  "audio-editor": "Audio Editor",
   view: "PDF",
 };
 
@@ -76,6 +82,9 @@ const TOOL_OPERATION_ORDER: OperationType[] = [
   "combine",
   "bulk",
   "edit",
+  "video-editor",
+  "image-editor",
+  "audio-editor",
   "view",
 ];
 
@@ -103,6 +112,18 @@ const CATEGORY_CONTENT: Record<OperationType, CategoryContent> = {
   edit: {
     title: "Edit Tools",
     description: "Open and edit supported files online without installing desktop software.",
+  },
+  "video-editor": {
+    title: "Video Editor Tools",
+    description: "Trim, crop, and enhance videos online without installing desktop software.",
+  },
+  "image-editor": {
+    title: "Image Editor Tools",
+    description: "Edit and enhance images online with quick adjustments and exports.",
+  },
+  "audio-editor": {
+    title: "Audio Editor Tools",
+    description: "Trim, merge, and refine audio tracks online with fast exports.",
   },
   view: {
     title: "PDF",
@@ -184,6 +205,9 @@ const iconMap: Record<string, LucideIcon> = {
   "youtube-to-transcript-generator": Mic,
   "video-downloader": Video,
   "download-loom-videos": Video,
+  "video-editor": Video,
+  "image-editor": Image,
+  "audio-editor": Music,
 };
 
 function getOperationLabel(operation: OperationType): string {

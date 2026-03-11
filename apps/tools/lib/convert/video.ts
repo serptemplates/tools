@@ -1,11 +1,15 @@
 // Load FFmpeg.wasm for video conversion
 import { FFmpeg } from '@ffmpeg/ffmpeg';
-import { detectCapabilities } from '../capabilities';
+import { AUDIO_FORMATS, VIDEO_FORMATS, detectCapabilities } from '../capabilities';
+import { mapQualityToAudioBitrate, mapQualityToVideoCrf } from "../compression-utils";
+import { createServerActionRequestHeaders } from "../server-action-client";
 
 let ffmpeg: FFmpeg | null = null;
 let loaded = false;
 const FAST_VIDEO_FILTER = "fps=12,scale=320:-2:flags=fast_bilinear";
 const FAST_GIF_FILTER = "fps=10,scale=320:-1:flags=fast_bilinear";
+const AUDIO_FORMAT_SET = new Set(AUDIO_FORMATS);
+const VIDEO_FORMAT_SET = new Set(VIDEO_FORMATS);
 
 type TelemetryError = Error & {
   telemetryCode?: string;
@@ -71,9 +75,9 @@ export async function convertVideoViaApi(
   try {
     response = await fetch(`${route}?from=${fromFormat}&to=${toFormat}`, {
       method: "POST",
-      headers: {
+      headers: createServerActionRequestHeaders({
         "Content-Type": "application/octet-stream",
-      },
+      }),
       body: inputBuffer,
     });
   } catch (error) {
@@ -447,6 +451,174 @@ export async function convertVideo(
     return ab;
   }
 
+  return buffer;
+}
+
+function buildAudioCompressionArgs(format: string, bitrate: string): string[] {
+  switch (format) {
+    case "mp3":
+      return ["-vn", "-acodec", "libmp3lame", "-b:a", bitrate];
+    case "aac":
+      return ["-vn", "-acodec", "aac", "-b:a", bitrate];
+    case "m4a":
+      return ["-vn", "-acodec", "aac", "-b:a", bitrate];
+    case "m4r":
+      return ["-vn", "-acodec", "aac", "-b:a", bitrate, "-f", "ipod"];
+    case "ogg":
+      return ["-vn", "-acodec", "libvorbis", "-q:a", "4"];
+    case "oga":
+      return ["-vn", "-acodec", "libvorbis", "-q:a", "4", "-f", "ogg"];
+    case "opus":
+      return ["-vn", "-acodec", "libopus", "-b:a", bitrate];
+    case "wma":
+      return ["-vn", "-acodec", "wmav2", "-b:a", bitrate];
+    case "mp2":
+      return ["-vn", "-acodec", "mp2", "-b:a", bitrate];
+    case "amr":
+      return ["-vn", "-acodec", "libopencore_amrnb", "-ar", "8000", "-ac", "1", "-b:a", "12.2k", "-f", "amr"];
+    case "flac":
+      return ["-vn", "-acodec", "flac", "-compression_level", "8"];
+    case "alac":
+      return ["-vn", "-acodec", "alac", "-f", "ipod"];
+    case "wav":
+      return ["-vn", "-acodec", "pcm_s16le"];
+    case "aiff":
+      return ["-vn", "-acodec", "pcm_s16be"];
+    case "au":
+      return ["-vn", "-acodec", "pcm_s16be", "-ar", "44100", "-ac", "2", "-f", "au"];
+    case "caf":
+      return ["-vn", "-acodec", "pcm_s16le", "-ar", "44100", "-ac", "2", "-f", "caf"];
+    case "cdda":
+      return ["-vn", "-acodec", "pcm_s16le", "-ar", "44100", "-ac", "2", "-f", "s16le"];
+    default:
+      return ["-vn", "-b:a", bitrate];
+  }
+}
+
+function buildVideoCompressionArgs(format: string, crf: number, audioBitrate: string): string[] {
+  if (format === "webm") {
+    const webmCrf = Math.min(63, Math.max(24, Math.round(crf * 1.6)));
+    return [
+      "-c:v",
+      "libvpx",
+      "-crf",
+      String(webmCrf),
+      "-b:v",
+      "0",
+      "-deadline",
+      "good",
+      "-cpu-used",
+      "4",
+      "-auto-alt-ref",
+      "0",
+      "-pix_fmt",
+      "yuv420p",
+      "-c:a",
+      "libvorbis",
+      "-b:a",
+      audioBitrate,
+    ];
+  }
+
+  const args = [
+    "-c:v",
+    "libx264",
+    "-preset",
+    "medium",
+    "-crf",
+    String(crf),
+    "-c:a",
+    "aac",
+    "-b:a",
+    audioBitrate,
+  ];
+
+  if (["mp4", "mov", "m4v"].includes(format)) {
+    args.push("-movflags", "+faststart");
+  }
+
+  return args;
+}
+
+export async function compressMedia(
+  inputBuffer: ArrayBuffer,
+  format: string,
+  options: {
+    quality?: number;
+    onProgress?: (progress: { ratio: number; time: number }) => void;
+  } = {}
+): Promise<ArrayBuffer> {
+  const normalized = format.toLowerCase();
+  if (!AUDIO_FORMAT_SET.has(normalized) && !VIDEO_FORMAT_SET.has(normalized)) {
+    throw new Error(`Compression not supported for ${format}`);
+  }
+
+  const ff = await loadFFmpeg();
+  const progressHandler = options.onProgress
+    ? ({ progress, time }: { progress: number; time: number }) => {
+        options.onProgress?.({
+          ratio: progress || 0,
+          time: time || 0,
+        });
+      }
+    : null;
+
+  if (progressHandler) {
+    ff.on("progress", progressHandler);
+  }
+
+  const inputName = `input.${normalized}`;
+  const outputName = `output.${normalized}`;
+  await ff.writeFile(inputName, new Uint8Array(inputBuffer));
+
+  const baseArgs = ["-y", "-nostdin", "-i", inputName];
+  const audioBitrate = mapQualityToAudioBitrate(options.quality);
+  const crf = mapQualityToVideoCrf(options.quality);
+  const specificArgs = AUDIO_FORMAT_SET.has(normalized)
+    ? buildAudioCompressionArgs(normalized, audioBitrate)
+    : buildVideoCompressionArgs(normalized, crf, audioBitrate);
+  const args = [...baseArgs, ...specificArgs, outputName];
+
+  let data: Uint8Array | string;
+  try {
+    try {
+      await ff.deleteFile(outputName);
+    } catch {
+      // Ignore missing output file
+    }
+    const exitCode = await ff.exec(args);
+    if (exitCode !== 0) {
+      throw new Error(`FFmpeg failed with exit code ${exitCode}`);
+    }
+    data = await ff.readFile(outputName);
+  } finally {
+    if (progressHandler) {
+      ff.off("progress", progressHandler);
+    }
+  }
+
+  if (!(data instanceof Uint8Array)) {
+    throw new Error("Unexpected output format from FFmpeg");
+  }
+
+  try {
+    await ff.deleteFile(inputName);
+    await ff.deleteFile(outputName);
+  } catch (cleanupErr) {
+    console.warn("Cleanup error:", cleanupErr);
+  }
+
+  if (data.byteLength >= inputBuffer.byteLength) {
+    return inputBuffer;
+  }
+
+  const buffer = data.buffer.slice(data.byteOffset, data.byteOffset + data.byteLength);
+  if (buffer instanceof SharedArrayBuffer) {
+    const ab = new ArrayBuffer(buffer.byteLength);
+    const view = new Uint8Array(ab);
+    view.set(new Uint8Array(buffer));
+    return ab;
+  }
   return buffer;
 }
 

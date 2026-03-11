@@ -6,7 +6,8 @@ import { saveBlob } from "@/components/saveAs";
 import { ToolHeroLayout } from "@/components/ToolHeroLayout";
 import type { ToolProgressFile } from "@/components/ToolProgressIndicator";
 import { beginToolRun, getTelemetryFailure } from "@/lib/telemetry";
-import { compressPngWithWorker, convertWithWorker, getOutputMimeType } from "@/lib/convert/workerClient";
+import { compressFile, convertWithWorker, getOutputMimeType } from "@/lib/convert/workerClient";
+import { resolveCompressionTarget } from "@/lib/compression-utils";
 import type { OperationType } from "@/types";
 
 type Props = {
@@ -57,18 +58,18 @@ export default function HeroConverter({
     return char.charCodeAt(0) + ((hash << 5) - hash);
   }, 0);
   const randomColor = colors[Math.abs(hashCode) % colors.length];
-  const isPngCompression =
-    operation === "compress" && from.toLowerCase() === "png" && to.toLowerCase() === "png";
+  const normalizedFrom = from.toLowerCase();
+  const normalizedTo = to.toLowerCase();
+  const isCompression = operation === "compress" && normalizedFrom === normalizedTo;
+  const compressionTarget = isCompression ? resolveCompressionTarget(normalizedFrom) : null;
+  const shouldUseCompressionWorker = compressionTarget === "image-worker";
 
   function ensureWorker() {
     if (!workerRef.current) {
-      const workerUrl = isPngCompression
+      const workerUrl = shouldUseCompressionWorker
         ? new URL("../workers/compress.worker.js", import.meta.url)
         : new URL("../workers/convert.worker.js", import.meta.url);
-      workerRef.current = new Worker(
-        workerUrl,
-        { type: "module" }
-      );
+      workerRef.current = new Worker(workerUrl, { type: "module" });
     }
     return workerRef.current;
   }
@@ -80,7 +81,7 @@ export default function HeroConverter({
   async function handleFiles(files: FileList | null) {
     if (!files || !files.length) return;
     if (!adsVisible) setAdsVisible(true);
-    const w = ensureWorker();
+    const w = shouldUseCompressionWorker || !isCompression ? ensureWorker() : null;
     setBusy(true);
 
     for (const file of Array.from(files)) {
@@ -100,26 +101,36 @@ export default function HeroConverter({
 
       try {
         const buf = await file.arrayBuffer();
-        if (isPngCompression) {
-          const compressedBuffer = await compressPngWithWorker({
-            worker: w,
+        if (isCompression) {
+          const compressedBuffer = await compressFile({
+            worker: w ?? undefined,
+            format: normalizedFrom,
             buf,
-            quality: 0.85,
+            quality: 0.82,
+            onProgress: (update) => {
+              setCurrentFile({
+                name: file.name,
+                progress: update.progress || 0,
+                status: "processing",
+                message: undefined,
+              });
+            },
           });
-          const blob = new Blob([compressedBuffer], { type: getOutputMimeType("png") });
-          const name = file.name.replace(/\.png$/i, "_compressed.png");
+          const blob = new Blob([compressedBuffer], { type: getOutputMimeType(normalizedFrom) });
+          const name = file.name.replace(/\.[^.]+$/, "") + `_compressed.${normalizedFrom}`;
           saveBlob(blob, name);
           run.finishSuccess({ outputBytes: blob.size });
           setCurrentFile({
             name: file.name,
             progress: 100,
-            status: 'completed',
-            message: 'Compression complete!'
+            status: "completed",
+            message: "Compression complete!",
           });
           continue;
         }
+        const worker = w ?? ensureWorker();
         const result = await convertWithWorker({
-          worker: w,
+          worker,
           from,
           to,
           buf,
