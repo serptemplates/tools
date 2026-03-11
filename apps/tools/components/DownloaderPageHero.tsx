@@ -40,6 +40,7 @@ export default function DownloaderPageHero({
         subtitle={subtitle}
         adsVisible={adsVisible}
         onAdsVisibleChange={handleAdsVisibleChange}
+        cooldownEndsAtMs={cooldownEndsAtMs}
       />
 
       <DownloaderExtensionCTAModal

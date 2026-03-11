@@ -31,6 +31,7 @@
 - [x] remove the public-links helper copy from the shared downloader page template
 - [x] add downloader action-triggered CTA modal that reuses the shared browser extension CTA
 - [x] add a live 60-second cooldown countdown inside the downloader CTA modal
+- [x] show the same downloader cooldown countdown on the hero under the progress area
 - [ ] add 'Bulk URL Opener' tool, copy this UI & functionality: https://openbulkurl.com/
 - [x] add PDF viewer/reader/editor tools and landers
 - [x] add shared PDF viewer/editor component (pdfjs-annotation-extension viewer)

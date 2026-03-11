@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@serp-tools/ui/components/button";
+import DownloaderCooldownNotice from "@/components/DownloaderCooldownNotice";
 import { saveBlob } from "@/components/saveAs";
 import { ToolHeroLayout } from "@/components/ToolHeroLayout";
 import type { ToolProgressFile } from "@/components/ToolProgressIndicator";
@@ -25,6 +26,7 @@ type Props = {
   mode?: "audio" | "video";
   adsVisible?: boolean;
   onAdsVisibleChange?: (visible: boolean) => void;
+  cooldownEndsAtMs?: number | null;
 };
 
 const SUPPORTED_EXTENSIONS = new Set([...AUDIO_FORMATS, ...VIDEO_FORMATS]);
@@ -224,6 +226,7 @@ export default function VideoDownloaderTool({
   mode = "video",
   adsVisible: controlledAdsVisible,
   onAdsVisibleChange,
+  cooldownEndsAtMs = null,
 }: Props) {
   const [busy, setBusy] = useState(false);
   const [currentFile, setCurrentFile] = useState<ToolProgressFile | null>(null);
@@ -327,6 +330,8 @@ export default function VideoDownloaderTool({
   }
 
   const adSlotPrefix = toolId;
+  const showCooldownNotice = cooldownEndsAtMs !== null;
+  const hasBelowContent = Boolean(errorMessage) || showCooldownNotice;
 
   return (
     <ToolHeroLayout
@@ -379,8 +384,17 @@ export default function VideoDownloaderTool({
         </div>
       }
       below={
-        errorMessage ? (
-          <div className="mt-4 text-sm text-red-600">{errorMessage}</div>
+        hasBelowContent ? (
+          <div className="mt-4 space-y-2">
+            {errorMessage ? <div className="text-sm text-red-600">{errorMessage}</div> : null}
+            {showCooldownNotice ? (
+              <DownloaderCooldownNotice
+                cooldownEndsAtMs={cooldownEndsAtMs}
+                dataTestId="downloader-hero-cooldown"
+                className="mx-auto max-w-2xl rounded-md bg-[#eef4ff] px-3 py-2 text-sm font-medium text-[#0f62fe]"
+              />
+            ) : null}
+          </div>
         ) : null
       }
     />

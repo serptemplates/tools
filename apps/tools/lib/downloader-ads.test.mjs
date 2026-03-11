@@ -30,7 +30,7 @@ test("downloader pages keep ads hidden until the user initiates the action", () 
   assert.match(downloaderPageHeroSource, /<VideoDownloaderTool[\s\S]*adsVisible={adsVisible}/);
   assert.match(
     downloaderPageHeroSource,
-    /<VideoDownloaderTool[\s\S]*onAdsVisibleChange={handleAdsVisibleChange}/,
+    /<VideoDownloaderTool[\s\S]*onAdsVisibleChange={handleAdsVisibleChange}[\s\S]*cooldownEndsAtMs={cooldownEndsAtMs}/,
   );
   assert.match(
     downloaderPageHeroSource,

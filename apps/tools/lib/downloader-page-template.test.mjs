@@ -14,6 +14,10 @@ const downloaderCtaModalSource = readFileSync(
   new URL("../components/DownloaderExtensionCTAModal.tsx", import.meta.url),
   "utf8",
 );
+const downloaderCooldownNoticeSource = readFileSync(
+  new URL("../components/DownloaderCooldownNotice.tsx", import.meta.url),
+  "utf8",
+);
 const downloaderCtaConfigSource = readFileSync(
   new URL("../lib/downloader-extension-cta.ts", import.meta.url),
   "utf8",
@@ -50,10 +54,11 @@ test("downloader page template includes the shared browser extension CTA", () =>
   assert.match(downloaderCtaModalSource, /DOWNLOADER_EXTENSION_TEXT/);
   assert.match(downloaderCtaModalSource, /DOWNLOADER_EXTENSION_LABEL/);
   assert.match(downloaderCtaModalSource, /DOWNLOADER_EXTENSION_URL/);
-  assert.match(downloaderCtaModalSource, /cooldownEndsAtMs: number \| null/);
+  assert.match(downloaderCtaModalSource, /DownloaderCooldownNotice/);
   assert.match(downloaderCtaModalSource, /downloader-cta-cooldown/);
-  assert.match(downloaderCtaModalSource, /Next download unlocks in/);
-  assert.match(downloaderCtaModalSource, /Next download is available now\./);
+  assert.match(downloaderCooldownNoticeSource, /cooldownEndsAtMs: number \| null/);
+  assert.match(downloaderCooldownNoticeSource, /Next download unlocks in/);
+  assert.match(downloaderCooldownNoticeSource, /Next download is available now\./);
   assert.match(
     downloaderCtaConfigSource,
     /Get the browser extension for unlimited downloads\./,
@@ -87,4 +92,6 @@ test("shared downloader hero does not render the old public-links helper copy", 
     videoDownloaderToolSource,
     /Public links only\. Private or logged-in content is not supported yet\./,
   );
+  assert.match(videoDownloaderToolSource, /DownloaderCooldownNotice/);
+  assert.match(videoDownloaderToolSource, /downloader-hero-cooldown/);
 });
