@@ -8,11 +8,16 @@
 - [x] restore shared downloader CTA support text as a single short line
 - [x] update shared downloader CTA support text to unlimited-downloads copy
 - [x] redesign shared downloader CTA layout and colors for stronger conversion and mobile responsiveness
+- [x] rename downloader category label to `Downloaders`
 - [x] add downloader keyword landers and planner rows for the requested target services
 - [x] add a shared site footer to the global tools app layout
 - [x] add a footer link to the `/categories/` hub page
+- [x] remove `Filetypes` from the shared header navigation links
 - [x] remove the homepage request-a-tool CTA section
 - [x] add operation category pages under `/category/[categoryName]/`
+- [x] redesign the shared all-tools section with tabbed progressive disclosure to avoid giant link walls
+- [x] align shared all-tools section tabs/sections to canonical category taxonomy
+- [x] strengthen generic `/video-downloader/` copy for broad multi-platform support while keeping shared cooldown/ads/template path
 - [x] fix downloader blob assembly when `SharedArrayBuffer` is unavailable
 - [x] document downloader-page CTA requirement for browser extension upsell
 - [x] add shared downloader browser extension CTA component to downloader page template

@@ -6,8 +6,8 @@ import {
   getOperationLabel,
 } from "./tool-operations.ts";
 
-test("getOperationLabel returns Downloader for download tools", () => {
-  assert.equal(getOperationLabel("download"), "Downloader");
+test("getOperationLabel returns Downloaders for download tools", () => {
+  assert.equal(getOperationLabel("download"), "Downloaders");
 });
 
 test("getOperationLabel falls back to Convert when missing", () => {

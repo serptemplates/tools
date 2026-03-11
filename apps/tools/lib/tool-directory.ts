@@ -64,9 +64,9 @@ const OPERATION_LABELS: Record<OperationType, string> = {
   combine: "Combine",
   compress: "Compress",
   convert: "Convert",
-  download: "Downloader",
+  download: "Downloaders",
   edit: "Edit",
-  view: "View",
+  view: "PDF",
 };
 
 const TOOL_OPERATION_ORDER: OperationType[] = [
@@ -97,7 +97,7 @@ const CATEGORY_CONTENT: Record<OperationType, CategoryContent> = {
     description: "Convert image, audio, video, document, and data files directly in your browser.",
   },
   download: {
-    title: "Downloader Tools",
+    title: "Downloaders",
     description: "Download supported public videos and media links straight to your device.",
   },
   edit: {
@@ -105,8 +105,8 @@ const CATEGORY_CONTENT: Record<OperationType, CategoryContent> = {
     description: "Open and edit supported files online without installing desktop software.",
   },
   view: {
-    title: "View Tools",
-    description: "Open and read supported files instantly in the browser.",
+    title: "PDF",
+    description: "Open, read, and edit PDF files instantly in your browser.",
   },
 };
 

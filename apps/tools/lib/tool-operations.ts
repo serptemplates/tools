@@ -3,9 +3,9 @@ export const OPERATION_LABELS = {
   combine: "Combine",
   compress: "Compress",
   convert: "Convert",
-  download: "Downloader",
+  download: "Downloaders",
   edit: "Edit",
-  view: "View",
+  view: "PDF",
 } as const;
 
 export type ToolOperation = keyof typeof OPERATION_LABELS;

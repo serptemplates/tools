@@ -30,7 +30,7 @@ Internal related tools must reference `toolId` (not `href`); resolve routes from
 ## Operation taxonomy
 - Canonical operation values are `bulk`, `combine`, `compress`, `convert`, `download`, `edit`, and `view`.
 - Downloader-style tools should use `operation: "download"` in the registry, not `downloader`.
-- User-facing labels can still render `download` as `Downloader`.
+- User-facing labels can still render `download` as `Downloaders`.
 - Downloader landing routes should default to `download-*` slug syntax.
 - Operation category pages live at `/category/{operation}/` using the canonical operation value.
 

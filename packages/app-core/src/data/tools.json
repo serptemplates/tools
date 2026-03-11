@@ -36332,7 +36332,7 @@
     "content": {
       "tool": {
         "title": "Video Downloader",
-        "subtitle": "Download videos from public links like YouTube, Vimeo, Loom, or direct files.",
+        "subtitle": "Download videos from many public platforms using one link input.",
         "from": "Video link",
         "to": "Video file"
       },
@@ -36347,12 +36347,12 @@
       },
       "infoArticle": {
         "title": "About video downloads",
-        "markdown": "Video Downloader fetches media from public links and prepares a downloadable file. It works for direct video files and many public video pages.\n\nFor private or logged-in content, downloads are not supported yet. If a link fails, try a different public source or direct file URL.\n\n**Why use this tool**\n\n- Quick downloads for public links.\n- Works on desktop and mobile browsers.\n- Saves a video file you can keep or share."
+        "markdown": "Video Downloader fetches media from public links and prepares a downloadable file. It works for direct media files and many public video platforms.\n\nSupported hosts vary over time, but this page is designed as a general downloader for public links across sites. For private or logged-in content, downloads are not supported.\n\n**Why use this tool**\n\n- One input for many public sources.\n- Works on desktop and mobile browsers.\n- Saves a video file you can keep or share."
       },
       "faqs": [
         {
           "question": "Which links work?",
-          "answer": "Public links from services like YouTube, Vimeo, Loom, or direct video file URLs. Private or logged-in content is not supported yet."
+          "answer": "Public links from many supported platforms plus direct video file URLs. Private or logged-in content is not supported."
         },
         {
           "question": "What file type do I get?",

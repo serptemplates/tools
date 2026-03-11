@@ -5,6 +5,7 @@ type FooterLink = {
 
 const featuredToolLinks: FooterLink[] = [
   { href: "/", label: "Browse All Tools" },
+  { href: "/categories/", label: "Categories" },
   { href: "/video-downloader/", label: "Video Downloader" },
   { href: "/download-loom-videos/", label: "Download Loom Videos" },
   { href: "/pdf-viewer/", label: "PDF Viewer" },

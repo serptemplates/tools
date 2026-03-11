@@ -2,7 +2,7 @@
 
 - Current canonical operation set is `bulk`, `combine`, `compress`, `convert`, `download`, `edit`, and `view`.
 - Canonical registry operation for downloader-style tools is `download`, not `downloader`.
-- Shared runtime labels should present `download` tools as `Downloader` where we show action categories to users.
+- Shared runtime labels should present `download` tools as `Downloaders` where we show action categories to users.
 - Operation category landers should use `/category/{operation}/` with the canonical operation key, for example `/category/download/`.
 - Downloader-specific routes/slugs should default to `download-*` naming.
 - Shared fallback metadata copy should branch on `operation` so new downloader tools do not inherit conversion-only wording.
