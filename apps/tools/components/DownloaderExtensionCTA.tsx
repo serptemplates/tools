@@ -1,10 +1,10 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@serp-tools/ui/components/button";
-
-const DOWNLOADER_EXTENSION_URL = "https://serp.ly/serp-video-tools";
-const DOWNLOADER_EXTENSION_TEXT =
-  "Get the browser extension for unlimited downloads.";
-const DOWNLOADER_EXTENSION_LABEL = "Get It Now";
+import {
+  DOWNLOADER_EXTENSION_LABEL,
+  DOWNLOADER_EXTENSION_TEXT,
+  DOWNLOADER_EXTENSION_URL,
+} from "@/lib/downloader-extension-cta";
 
 export default function DownloaderExtensionCTA() {
   return (

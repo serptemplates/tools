@@ -22,10 +22,16 @@ test("downloader pages keep ads hidden until the user initiates the action", () 
     "expected a shared downloader page hero component to own ad visibility",
   );
   assert.match(downloaderPageHeroSource, /const \[adsVisible, setAdsVisible\] = useState\(false\)/);
+  assert.match(downloaderPageHeroSource, /const \[ctaModalOpen, setCtaModalOpen\] = useState\(false\)/);
   assert.match(downloaderPageHeroSource, /<VideoDownloaderTool[\s\S]*adsVisible={adsVisible}/);
   assert.match(
     downloaderPageHeroSource,
-    /<VideoDownloaderTool[\s\S]*onAdsVisibleChange={setAdsVisible}/,
+    /<VideoDownloaderTool[\s\S]*onAdsVisibleChange={handleAdsVisibleChange}/,
+  );
+  assert.match(downloaderPageHeroSource, /if \(visible\) \{\s*setCtaModalOpen\(true\);/);
+  assert.match(
+    downloaderPageHeroSource,
+    /<DownloaderExtensionCTAModal[\s\S]*open={ctaModalOpen}[\s\S]*onOpenChange={setCtaModalOpen}/,
   );
   assert.match(downloaderPageHeroSource, /\{adsVisible && \(/);
 });

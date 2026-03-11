@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import DownloaderExtensionCTAModal from "@/components/DownloaderExtensionCTAModal";
 import { ToolAdInline } from "@/components/ToolAds";
 import VideoDownloaderTool from "@/components/VideoDownloaderTool";
 
@@ -20,6 +21,14 @@ export default function DownloaderPageHero({
   subtitle,
 }: DownloaderPageHeroProps) {
   const [adsVisible, setAdsVisible] = useState(false);
+  const [ctaModalOpen, setCtaModalOpen] = useState(false);
+
+  function handleAdsVisibleChange(visible: boolean) {
+    setAdsVisible(visible);
+    if (visible) {
+      setCtaModalOpen(true);
+    }
+  }
 
   return (
     <>
@@ -28,8 +37,10 @@ export default function DownloaderPageHero({
         title={title}
         subtitle={subtitle}
         adsVisible={adsVisible}
-        onAdsVisibleChange={setAdsVisible}
+        onAdsVisibleChange={handleAdsVisibleChange}
       />
+
+      <DownloaderExtensionCTAModal open={ctaModalOpen} onOpenChange={setCtaModalOpen} />
 
       {adsVisible && (
         <section className="border-y bg-muted/20">

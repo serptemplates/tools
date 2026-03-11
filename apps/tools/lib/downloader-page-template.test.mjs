@@ -10,6 +10,14 @@ const downloaderCtaSource = readFileSync(
   new URL("../components/DownloaderExtensionCTA.tsx", import.meta.url),
   "utf8",
 );
+const downloaderCtaModalSource = readFileSync(
+  new URL("../components/DownloaderExtensionCTAModal.tsx", import.meta.url),
+  "utf8",
+);
+const downloaderCtaConfigSource = readFileSync(
+  new URL("../lib/downloader-extension-cta.ts", import.meta.url),
+  "utf8",
+);
 const downloaderHeroSource = readFileSync(
   new URL("../components/DownloaderPageHero.tsx", import.meta.url),
   "utf8",
@@ -36,19 +44,25 @@ test("downloader page template includes the ad banner section", () => {
 
 test("downloader page template includes the shared browser extension CTA", () => {
   assert.match(templateSource, /DownloaderExtensionCTA/);
+  assert.match(downloaderCtaSource, /DOWNLOADER_EXTENSION_TEXT/);
+  assert.match(downloaderCtaSource, /DOWNLOADER_EXTENSION_LABEL/);
+  assert.match(downloaderCtaSource, /DOWNLOADER_EXTENSION_URL/);
+  assert.match(downloaderCtaModalSource, /DOWNLOADER_EXTENSION_TEXT/);
+  assert.match(downloaderCtaModalSource, /DOWNLOADER_EXTENSION_LABEL/);
+  assert.match(downloaderCtaModalSource, /DOWNLOADER_EXTENSION_URL/);
   assert.match(
-    downloaderCtaSource,
+    downloaderCtaConfigSource,
     /Get the browser extension for unlimited downloads\./,
   );
   assert.match(
-    downloaderCtaSource,
+    downloaderCtaConfigSource,
     /Get It Now/,
   );
   assert.match(downloaderCtaSource, /lg:justify-between/);
   assert.match(downloaderCtaSource, /lg:text-left/);
   assert.match(downloaderCtaSource, /w-full sm:w-auto/);
   assert.match(downloaderCtaSource, /bg-\[#0f62fe\]/);
-  assert.match(downloaderCtaSource, /https:\/\/serp\.ly\/serp-video-tools/);
+  assert.match(downloaderCtaConfigSource, /https:\/\/serp\.ly\/serp-video-tools/);
   assert.doesNotMatch(
     downloaderCtaSource,
     /Save time with the browser extension and launch the downloader workflow from anywhere\./,
