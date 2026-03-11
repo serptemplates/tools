@@ -50,6 +50,10 @@ test("downloader page template includes the shared browser extension CTA", () =>
   assert.match(downloaderCtaModalSource, /DOWNLOADER_EXTENSION_TEXT/);
   assert.match(downloaderCtaModalSource, /DOWNLOADER_EXTENSION_LABEL/);
   assert.match(downloaderCtaModalSource, /DOWNLOADER_EXTENSION_URL/);
+  assert.match(downloaderCtaModalSource, /cooldownEndsAtMs: number \| null/);
+  assert.match(downloaderCtaModalSource, /downloader-cta-cooldown/);
+  assert.match(downloaderCtaModalSource, /Next download unlocks in/);
+  assert.match(downloaderCtaModalSource, /Next download is available now\./);
   assert.match(
     downloaderCtaConfigSource,
     /Get the browser extension for unlimited downloads\./,

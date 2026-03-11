@@ -22,10 +22,12 @@ export default function DownloaderPageHero({
 }: DownloaderPageHeroProps) {
   const [adsVisible, setAdsVisible] = useState(false);
   const [ctaModalOpen, setCtaModalOpen] = useState(false);
+  const [cooldownEndsAtMs, setCooldownEndsAtMs] = useState<number | null>(null);
 
   function handleAdsVisibleChange(visible: boolean) {
     setAdsVisible(visible);
     if (visible) {
+      setCooldownEndsAtMs(Date.now() + 60_000);
       setCtaModalOpen(true);
     }
   }
@@ -40,7 +42,11 @@ export default function DownloaderPageHero({
         onAdsVisibleChange={handleAdsVisibleChange}
       />
 
-      <DownloaderExtensionCTAModal open={ctaModalOpen} onOpenChange={setCtaModalOpen} />
+      <DownloaderExtensionCTAModal
+        open={ctaModalOpen}
+        onOpenChange={setCtaModalOpen}
+        cooldownEndsAtMs={cooldownEndsAtMs}
+      />
 
       {adsVisible && (
         <section className="border-y bg-muted/20">

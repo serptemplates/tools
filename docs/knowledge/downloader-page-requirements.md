@@ -11,6 +11,7 @@
 - Use a CTA-specific color treatment for the button instead of the default monochrome button style.
 - Downloader pages should also include a shared ad banner section in the page template so dedicated downloader routes keep the same monetization block.
 - The shared downloader ad banner should respect the existing site ad gate and stay hidden until the user initiates the downloader action.
+- Downloader pages should open a shared browser-extension CTA modal on the first downloader action trigger, and the modal should display the shared 60-second cooldown countdown.
 - Downloader pages should use the shared downloader template and request path so the 60-second shared downloader cooldown applies automatically.
 - The generic `/video-downloader/` page should remain a broad multi-source downloader route and keep using the same shared downloader template and shared downloader request path as dedicated downloader landers.
 - Registry-backed `download-*` landers can resolve through the shared root tool route as long as they render `DownloaderPageTemplate` via the shared downloader renderer. Do not create one-off page files unless a downloader needs custom copy or behavior.
