@@ -6,6 +6,7 @@ const turboEnvAllowList = [
   "^GITHUB_TOKEN$",
   "^GH_TOKEN$",
   "^ADSENSE_PUBLISHER_ID$",
+  "^SERVER_ACTION_RATE_LIMIT_SECRET$",
 ];
 
 /** @type {import("eslint").Linter.Config} */
